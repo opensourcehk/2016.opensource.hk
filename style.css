@@ -118,7 +118,11 @@ span.brand-blue {
     margin:0;
 
 }
-.navbar.affix-top *{
+.navbar.affix-top ul,
+.navbar.affix-top li,
+.navbar.affix-top div,
+.navbar.affix-top a.dropdown-toggle,
+.navbar.affix-top a.navbar-brand {
     color: #fff !important;
     border: none;
 }
