@@ -67,6 +67,13 @@
     </div>
     <!-- menu ends -->
 
+    <div class="jumbotron dark-sections">
+        <div class="container">
+            <h1><span class="brand-blue">{% block title %}{% endblock %}</span></h1>
+            {% block description %}{% endblock %}
+        </div>
+    </div>
+
     {% block content %}(contents here){% endblock %}
 
     <div class="container content-container">
