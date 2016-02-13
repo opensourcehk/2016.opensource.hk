@@ -87,16 +87,8 @@ gulp.task('styles', function() {
 gulp.task('templates', function() {
   gulp.src(
     pageSource + '/**/*.html')
-   .pipe(swig())
+   .pipe(swig({defaults: { cache: false }}))
    .pipe(gulp.dest(baseTarget));
-//  gulp.src([
-//      pageSource + '/**/*.jade',
-//      '!' + pageIncludes + '/**/*.jade'
-//    ])
-//    .pipe(jade({
-//      locals: {}
-//    }))
-//    .pipe(gulp.dest(baseTarget));
 });
 
 // bundle scripts
