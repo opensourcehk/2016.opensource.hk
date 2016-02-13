@@ -3,6 +3,3 @@ node_modules
 
 # log files
 *.log
-
-# public folder
-public
