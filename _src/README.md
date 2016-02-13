@@ -76,7 +76,12 @@ It supports layout, include and many nice feature to work with.
 
 Please read their [documentation][swig] for more details.
 
+Most pages are extending the [default.html][default.html], except the root
+index file is extending [front.html][front.html].
+
 [swig]: http://paularmstrong.github.io/swig/docs/
+[default.html]: src/layouts/default.html
+[front.html]: src/layouts/front.html
 
 
 ### Javascript
