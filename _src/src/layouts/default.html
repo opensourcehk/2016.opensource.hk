@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hong Kong Open Source Conference 2016 (HKOSCon 2016) will be hosted in 24-25 June.">
+    <meta name="author" content="Hong Kong Open Source Conference 2016">
+    <meta property="og:title" content="Hong Kong Open Source Conference 2016" />
+    <meta property="og:url" content="http://2016.opensource.hk" />
+    <meta property="og:image" content="http://2016.opensource.hk/images/hkoscon-1025.png" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Hong Kong Open Source Conference 2016 HKOSCon (2016.06.24-25) is a annual international open source conference in Hong Kong. It is aimed to demonstrate the use of open source software technology, open hardware technology and latest development in the world." />
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:400,300|Oswald:700' rel='stylesheet' type='text/css'>
+
+    <title>{% block title %}Hong Kong Open Source Conference 2016{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-default" id="navbar" role="navigation" data-spy="affix">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">HKOSCon 2016</a>
+        </div>
+        <div id="navbar-collapse" class="navbar-collapse collapse dropup">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/about/code-of-conduct">Code of Conducts</a></li>
+                <li><a href="/about/staff">Staffs</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Events <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/schedule">Schedule</a></li>
+                <li><a href="/cfp">Call For Proposals</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sponsors <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/sponsor">Sponsor List</a></li>
+                <li><a href="/sponsor/prospectus">Sponsorship Prospectus</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-highlight"><a href="/cfp">Submit your proposal</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {% block content %}(contents here){% endblock %}
+
+    <div class="container content-container">
+      <footer>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/hk/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/hk/88x31.png" /></a>
+        <br />
+        This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/hk/">Creative Commons Attribution-ShareAlike 3.0 Hong Kong License</a>.
+        Logos and trademarks belong to their respective owners.
+      </footer>
+    </div> <!-- /container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/assets/scripts/vendors.js"></script>
+    <script src="/assets/scripts/bundle.js"></script>
+  </body>
+</html>
