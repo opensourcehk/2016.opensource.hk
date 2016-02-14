@@ -1,0 +1,18 @@
+{
+  "zh.cn": {
+    "name": "Mandarin",
+    "short": "M"
+  },
+  "zh.yue": {
+    "name": "Cantonese",
+    "short": "C"
+  },
+  "zh": {
+    "name": "Chinese",
+    "short": "C"
+  },
+  "en": {
+    "name": "English",
+    "short": "E"
+  }
+}

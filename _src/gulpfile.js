@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var webpack = require('webpack');
+var fs = require('fs');
 
 // gulp plugins
 var gconcat = require('gulp-concat');
@@ -15,6 +16,7 @@ var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 
 const baseTarget    = __dirname + '/public';
+const topicTgt      = baseTarget + '/topics'
 const assetsTarget  = baseTarget + '/assets';
 const stylesTarget  = assetsTarget + '/css';
 const scriptsTarget = assetsTarget + '/scripts';
@@ -23,6 +25,7 @@ const imagesTarget  = assetsTarget + '/images';
 const baseSource    = __dirname + '/src'
 const pageSource    = baseSource + '/pages';
 const pageLayoutSrc = baseSource + '/layouts';
+const topicSrc      = baseSource + '/topics';
 const pageIncludes  = baseSource + '/pages/includes';
 const stylesSource  = baseSource + '/css';
 const scriptsSource = baseSource + '/scripts'
@@ -54,8 +57,14 @@ gulp.task('watch', function() {
     gulp.run('styles');
   });
   watch([
+    topicSrc + '/**/*.html',
+    topicSrc + '/**/*.json',
+  ], function () {
+    gulp.run('topics');
+  });
+  watch([
     pageSource + '/**/*.html',
-    pageLayoutSrc + '/**/*.html'
+    pageLayoutSrc + '/**/*.html',
   ], function () {
     gulp.run('templates');
   });
@@ -89,6 +98,99 @@ gulp.task('templates', function() {
     pageSource + '/**/*.html')
    .pipe(swig({defaults: { cache: false }}))
    .pipe(gulp.dest(baseTarget));
+});
+
+// convert topic from templates
+gulp.task('topics', function() {
+
+  // read those files everytime with fs
+  // instead of `require` (will cache the file)
+  var topics   = JSON.parse(fs.readFileSync(topicSrc + '/data/topics.json',   'utf8'));
+  var tags     = JSON.parse(fs.readFileSync(topicSrc + '/data/tags.json',     'utf8'));
+  var speakers = JSON.parse(fs.readFileSync(topicSrc + '/data/speakers.json', 'utf8'));
+  var langs    = JSON.parse(fs.readFileSync(topicSrc + '/data/langs.json',    'utf8'));
+  var levels   = JSON.parse(fs.readFileSync(topicSrc + '/data/levels.json',   'utf8'));
+
+  // link generator
+  var url = function(type, id) {
+    if (type == 'topic') {
+      return '/topics/' + id + '/';
+    }
+  }
+
+  // filterBy filters object (e.g. topic) by the given
+  // property name and value
+  var filterBy = function(name, value) {
+    return function (obj) {
+      return obj[name] === value;
+    }
+  }
+
+  // turn an object into an array
+  var toArray = function(obj) {
+    var arr = [];
+    for ( var key in obj ) {
+        arr.push(obj[key]);
+    }
+    return arr
+  }
+
+  // formatting (or not formatting) description strings
+  var displayDesc = function (input) {
+    if (Array.isArray(input)) {
+      return input.join(' ');
+    }
+    return input;
+  }
+
+  // generate topic index
+  gulp.src(
+    topicSrc + '/topics.html')
+   .pipe(swig({
+     defaults: {cache: false},
+     load_json: false,
+     data: {
+       "url": url,
+       "toArray": toArray,
+       "filterBy": filterBy,
+       "langs": langs,
+       "levels": levels,
+       "tags": tags,
+       "speakers": speakers,
+       "topicsByType": {
+         "Talks": toArray(topics).filter(filterBy('type', 'talk')),
+         "Workshops": toArray(topics).filter(filterBy('type', 'workshop')),
+         "SITCON x HK": toArray(topics).filter(filterBy('type', 'sitconhk')),
+         "Lightning Talks": toArray(topics).filter(filterBy('type', 'lightening-talk'))
+       }
+     }
+   }))
+   .pipe(rename('/index.html'))
+   .pipe(gulp.dest(topicTgt));
+
+  // generate topic pages
+  Object.keys(topics).forEach(function (key) {
+    var topic = topics[key];
+    gulp.src(
+      topicSrc + '/topic.html')
+     .pipe(swig({
+       defaults: {cache: false},
+       load_json: false,
+       data: {
+         "url": url,
+         "displayDesc": displayDesc,
+         "key": key,
+         "tags": tags,
+         "langs": langs,
+         "levels": levels,
+         "speakers": speakers,
+         "topic": topic
+       }
+     }))
+     .pipe(rename(key+'/index.html'))
+     .pipe(gulp.dest(topicTgt));
+  });
+
 });
 
 // bundle scripts
@@ -134,6 +236,7 @@ gulp.task('build', [
   'images',
   'fonts',
   'vendors',
+  'topics',
   'webpack'
 ]);
 

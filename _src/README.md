@@ -46,6 +46,8 @@ src/          - a folder to contain all source codes
   images/     - image files
   layouts/    - HTML layout files (SWIG template)
   pages/      - HTML page files (SWIG template)
+  topics/     - topics' SWIG template and data
+    data/     - contains data json of topics, speakers, tags and etc
   scripts/    - all javascripts
     vendors/  - javascripts to be used directly (instead of webpack bundle)
 ```

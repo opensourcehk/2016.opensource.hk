@@ -1,0 +1,51 @@
+{% extends '../layouts/default.html' %}
+
+{% set speaker = speakers[topic.speaker] %}
+{% set lang = langs[topic.lang] %}
+{% set lang_slide = langs[topic.lang_slide] %}
+
+{% block title %}{{ topic.title }}{% endblock %}
+
+{% block description %}
+  <h2>Speaker: {{ speaker.name }}{% if speaker.nationality %} ({{ speaker.nationality }}){% endif %}</h2>
+  {% if speaker.community %}<p>Community: {{ speaker.community }}</p>{% endif %}
+  <p>Category: {{ topic.category }}</p>
+  <p>Language: {{ lang.name }}{% if topic.lang_slide %} (with {{ lang_slide.name }} Slides){% endif %}</p>
+  {% if topic.tags %}<p><strong>Tag:</strong> {% for tag in topic.tags %}<span class="tag">{{ tags[tag].name }}</span> {% endfor %}</p>{% endif %}
+  {% if topic.level %}
+    <div class="progress" style="width: 80%;">
+    {% if topic.level == "beginners" %}
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 33%;">
+        Beginners
+      </div>
+    {% elseif topic.level == "intermediate" %}
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 66%;">
+        Intermediate
+      </div>
+    {% elseif topic.level == "advanced" %}
+      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 100%;">
+        Advanced
+      </div>
+    {% endif %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-5">
+              <img src="{{ speaker.portrait }}" alt="Photo of {{ speaker.name }}" class="img-thumbnail">
+          </div>
+          <div class="col-sm-5">
+            <h3>About Speaker</h3>
+            {{ displayDesc(speaker.description) }}
+          </div>
+      </div>
+
+      <div class="row">
+          <h3>About the Topic</h3>
+          {{ displayDesc(topic.description) }}
+      </div>
+  </div>
+{% endblock %}
