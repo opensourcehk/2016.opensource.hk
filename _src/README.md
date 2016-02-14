@@ -31,6 +31,16 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew install node
 ```
 
+### After installing node and npm
+
+You'd need to install node packages for the repository. Go into the folder
+that contain this file. Run this command:
+
+```bash
+npm install
+```
+
+
 ******
 
 ## Development
@@ -38,8 +48,14 @@ brew install node
 
 ### Folder Structure
 
-The repository contains these folders:
+The repository contains these files and folders:
 ```
+gulpfile.js   - gulp automation files, like Makefile in nodejs
+package.json  - node js configurations
+README.MD     - this file
+configs/      - config files for the generation process
+public/       - all files in this folder is generated from src
+                should serve this folder as document root for production
 src/          - a folder to contain all source codes
   css/        - all scss / css files
     lib/      - css libraries downloaded (e.g. bootstrap)
