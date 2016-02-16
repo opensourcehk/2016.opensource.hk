@@ -1,0 +1,4 @@
+test:
+  post:
+    - npm run build
+    - npm run test
