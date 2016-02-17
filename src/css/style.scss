@@ -1,14 +1,13 @@
-@import "lib/bootstrap.min";
-@import "lib/jumbotron";
-@import "lib/progress-bar";
+@charset "UTF-8";
+@import "lib/lib";
 
-@import "color";
-@import "variable";
-
-@import "common";
-@import "dark-section";
-@import "introjumbo";
-@import "navbar";
+@import
+  "color",
+  "variable",
+  "common",
+  "dark-section",
+  "introjumbo",
+  "navbar";
 
 .speaker img {
   max-height: 168px;
