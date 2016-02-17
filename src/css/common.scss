@@ -1,0 +1,22 @@
+body, :root {
+  font-size: $default-font-size;
+  font-family: $font-family;
+}
+
+footer {
+  padding-top: 2em;
+  text-align: center;
+}
+
+.content-container {
+  padding-bottom: 2em;
+}
+
+span.brand-blue {
+  color: $menu-blue;
+}
+
+.row h2 {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}

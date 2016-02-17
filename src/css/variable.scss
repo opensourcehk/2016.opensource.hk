@@ -1,0 +1,28 @@
+/**
+ * Variables import from Bootstrap
+ */
+$brand-primary: $light-blue;
+$brand-success: $green;
+$brand-warning: $yellow;
+$brand-info   : $aqua;
+$brand-danger : $red;
+
+$border-radius-base: 4px;
+
+$font-size-base:          14px;
+$line-height-base:        1.428571429; // 20/14
+$line-height-computed:    floor(($font-size-base * $line-height-base));
+
+// Global font Setting
+$font-family: 'Alegreya Sans', sans-serif;
+$default-font-size: 18px;
+
+// Global Color Setting
+$font-color: $black;
+$theme-blue: #294454;
+$theme-yellow: #F3CB02;
+$menu-blue: #0381c4;
+
+// Variables for dark section
+$inverse-foreground: #fff;
+$inverse-background: #111;

@@ -6,3 +6,6 @@ node_modules
 
 # For Jetbrain
 /.idea
+
+# For Sass
+/.sass-cache
