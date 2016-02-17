@@ -1,0 +1,40 @@
+{
+  "topic-1": {
+    "id": "topic-1",
+    "title": "Some Topic 1",
+    "type": "talk",
+    "speaker": "speaker-1",
+    "category": "Open Source",
+    "lang": "en",
+    "tags": ["computer-vision", "data-science"],
+    "level": "advanced",
+    "description": [
+      "<p>With the GNOME 3.16 release in April many visible improvements were delivered to users around the world.</p>",
+      "<p>While many people already excitedly use GNOME 3 with the new user experience, some feature of the new and elegant desktop like a new update notification or ebook support are not yet wildly known. We also did many things on the plumbing layer such as allowing GNOME to run Wayland.</p>",
+      "<p>The talk will introduce to some of the design philosophies inherent in GNOME 3 as well as the main changes brought to users and developers. Also, since GNOME 3.16 is another step of a long lasting incrementally improved user experience, the future of GNOME's development will be speculated on.</p>"
+    ]
+  },
+  "topic-2": {
+    "id": "topic-2",
+    "title": "Some Topic 2",
+    "type": "talk",
+    "speaker": "speaker-2",
+    "category": "Open Source",
+    "lang": "zh.yue",
+    "lang_slide": "en",
+    "level": "beginners",
+    "description": "This for testing only"
+  },
+  "topic-3": {
+    "id": "topic-3",
+    "title": "Some Topic 3",
+    "type": "workshop",
+    "speaker": "speaker-2",
+    "category": "Open Source",
+    "lang": "zh.yue",
+    "lang_slide": "en",
+    "tags": ["data-science", "computer-vision"],
+    "level": "intermediate",
+    "description": "This for testing only"
+  }
+}

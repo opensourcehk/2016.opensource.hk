@@ -1,0 +1,14 @@
+{
+  "beginners": {
+    "name": "Beginners",
+    "short": "B"
+  },
+  "intermediate": {
+    "name": "Intermediate",
+    "short": "I"
+  },
+  "advanced": {
+    "name": "Advanced",
+    "short": "A"
+  }
+}

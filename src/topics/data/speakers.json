@@ -1,0 +1,30 @@
+{
+  "speaker-1": {
+    "name": "some speaker hello",
+    "nationality": "Some Country",
+    "hkoscon-sponsored": true,
+    "community": "some community",
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "description": [
+      "<p>dummy speaker is a lead member of the GNOME Bugsquad for the last",
+      "years and thus responsible for managing the bug database as well as",
+      "the team around it. He is involved in deciding on effective policies",
+      "for the bug database, actually dealing with the bugs in the database",
+      "and recruiting new members who will help triaging. He also got elected",
+      "to the Board of Directors in xxxx where he serves the GNOME Foundation",
+      "to achieve their goals of creating and distributing great Free Software",
+      "products. Besides being a Free Software and GNOME lover, he is",
+      "involved in the German security research community around the Chaos",
+      "Computer Club. Topics of interest include Platform- and",
+      "System-Security, Cryptography and Security Protocols. </p>"
+    ]
+  },
+  "speaker-2": {
+    "name": "some other speaker",
+    "nationality": "Some Other Country",
+    "hkoscon-sponsored": false,
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "community": "some other community",
+    "description": "<p>hello some description</p>"
+  }
+}
