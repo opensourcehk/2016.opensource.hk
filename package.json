@@ -6,7 +6,8 @@
     "prestart": "npm run build",
     "start": "node ./src/scripts/server.js",
     "build": "gulp build",
-    "dev": "gulp dev"
+    "dev": "gulp dev",
+    "test": "gulp build"
   },
   "author": "Koala Yeung",
   "license": "MIT",
