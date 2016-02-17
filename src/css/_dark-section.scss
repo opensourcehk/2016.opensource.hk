@@ -1,8 +1,12 @@
 .dark-sections {
   margin-bottom: 2em;
-  color: $inverse-foreground;
-  background-color: $inverse-background;
-  background-image: url("/assets/images/footer_lodyas.png");
+  color: $theme-yellow;
+  background-color: $theme-blue;
+
+  p {
+    font-weight: 400 !important;
+    text-shadow: none;
+  }
 
   h1 {
     margin: 0.8em 0 0.5em;

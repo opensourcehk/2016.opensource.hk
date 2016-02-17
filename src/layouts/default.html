@@ -39,14 +39,20 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               {% include 'includes/nav.html' %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-highlight">
+                        <a href="https://hkoscon2016.eventbrite.com/">Get Your Ticket</a>
+                    </li>
+                </ul>
             </div>
+
         </div>
     </div>
     <!-- menu ends -->
 
     <div class="jumbotron dark-sections">
         <div class="container">
-            <h1><span class="brand-blue">{% block title %}{% endblock %}</span></h1>
+            <h1><span class="brand-yellow">{% block title %}{% endblock %}</span></h1>
             {% block description %}{% endblock %}
         </div>
     </div>

@@ -1,6 +1,7 @@
 .nav-highlight, .nav-highlight a {
-  background-color: rgb(3, 129, 196);
-  color: #fff !important;
+  background-color: $theme-yellow;
+  color: $theme-blue !important;
+  font-weight: bold;
 }
 .navbar {
   border-radius: 0;
@@ -58,14 +59,17 @@
   }
 
   .nav-highlight, .nav-highlight a {
-    background-color: rgba(3, 129, 196, 0.3) !important;
+    background-color: rgba(243, 203, 2, 0.5) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
   }
   .nav-highlight:hover, .nav-highlight:hover a {
-    background-color: rgba(3, 129, 196, 0.5) !important;
+    background-color: rgba(243, 203, 2, 0.8) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
   }
   .navbar-nav li:hover {
     background-color: rgba(255, 255, 255, 0.3);
   }
+
 
   .dropdown-menu {
     border-radius: 4px;

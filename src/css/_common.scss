@@ -12,8 +12,12 @@ footer {
   padding-bottom: 2em;
 }
 
-span.brand-blue {
-  color: $menu-blue;
+.brand-blue {
+  color: $theme-blue;
+}
+
+.brand-yellow {
+  color: $theme-yellow;
 }
 
 .row h2 {
