@@ -1,0 +1,5 @@
+# module folder
+node_modules
+
+# log files
+*.log
