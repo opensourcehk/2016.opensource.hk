@@ -16,19 +16,19 @@ var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 
 const baseTarget    = __dirname + '/public';
-const topicTgt      = baseTarget + '/topics'
+const topicTgt      = baseTarget + '/topics';
 const assetsTarget  = baseTarget + '/assets';
 const stylesTarget  = assetsTarget + '/css';
 const scriptsTarget = assetsTarget + '/scripts';
 const fontsTarget   = assetsTarget + '/fonts';
 const imagesTarget  = assetsTarget + '/images';
-const baseSource    = __dirname + '/src'
+const baseSource    = __dirname + '/src';
 const pageSource    = baseSource + '/pages';
 const pageLayoutSrc = baseSource + '/layouts';
 const topicSrc      = baseSource + '/topics';
 const pageIncludes  = baseSource + '/pages/includes';
 const stylesSource  = baseSource + '/css';
-const scriptsSource = baseSource + '/scripts'
+const scriptsSource = baseSource + '/scripts';
 const fontsSource   = baseSource + '/fonts';
 const imagesSource  = baseSource + '/images';
 
@@ -58,13 +58,13 @@ gulp.task('watch', function() {
   });
   watch([
     topicSrc + '/**/*.html',
-    topicSrc + '/**/*.json',
+    topicSrc + '/**/*.json'
   ], function () {
     gulp.run('topics');
   });
   watch([
     pageSource + '/**/*.html',
-    pageLayoutSrc + '/**/*.html',
+    pageLayoutSrc + '/**/*.html'
   ], function () {
     gulp.run('templates');
   });
@@ -116,32 +116,32 @@ gulp.task('topics', function() {
     if (type == 'topic') {
       return '/topics/' + id + '/';
     }
-  }
+  },
 
   // filterBy filters object (e.g. topic) by the given
   // property name and value
-  var filterBy = function(name, value) {
+  filterBy = function(name, value) {
     return function (obj) {
       return obj[name] === value;
     }
-  }
+  },
 
   // turn an object into an array
-  var toArray = function(obj) {
+  toArray = function(obj) {
     var arr = [];
     for ( var key in obj ) {
         arr.push(obj[key]);
     }
     return arr
-  }
+  },
 
   // formatting (or not formatting) description strings
-  var displayDesc = function (input) {
+  displayDesc = function (input) {
     if (Array.isArray(input)) {
       return input.join(' ');
     }
     return input;
-  }
+  };
 
   // generate topic index
   gulp.src(
@@ -160,7 +160,6 @@ gulp.task('topics', function() {
        "topicsByType": {
          "Talks": toArray(topics).filter(filterBy('type', 'talk')),
          "Workshops": toArray(topics).filter(filterBy('type', 'workshop')),
-         "SITCON x HK": toArray(topics).filter(filterBy('type', 'sitconhk')),
          "Lightning Talks": toArray(topics).filter(filterBy('type', 'lightening-talk'))
        }
      }
@@ -210,7 +209,7 @@ gulp.task('webpack', function(callback) {
 gulp.task('vendors', function() {
   return gulp.src([
       scriptsSource + '/vendors/bootstrap.min.js',
-      scriptsSource + '/vendors/ga.js',
+      scriptsSource + '/vendors/ga.js'
     ])
     .pipe(gconcat('vendors.js'))
     .pipe(gulp.dest(scriptsTarget))
