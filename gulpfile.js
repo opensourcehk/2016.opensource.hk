@@ -96,7 +96,12 @@ gulp.task('styles', function() {
 gulp.task('templates', function() {
   gulp.src(
     pageSource + '/**/*.html')
-   .pipe(swig({defaults: { cache: false }}))
+   .pipe(swig({
+     defaults: { cache: false },
+     data: {
+       'site_host': 'http://2016.opensource.hk'
+     }
+   }))
    .pipe(gulp.dest(baseTarget));
 });
 
