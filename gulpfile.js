@@ -255,3 +255,5 @@ gulp.task('dev', [
 
 // define default task(s)
 gulp.task('run', ['dev']);
+
+gulp.task('default', ['dev']);

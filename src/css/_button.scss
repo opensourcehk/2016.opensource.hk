@@ -11,6 +11,7 @@ $hkosc-btn-border: darken($theme-yellow, 5%);
   color            :  $hkosc-btn-color;
   background-color :  $hkosc-btn-bg;
   border-color     :  $hkosc-btn-border;
+  font-weight: 700;
 
   &:focus,
   &.focus {
