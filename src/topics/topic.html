@@ -13,7 +13,8 @@
   {% if speaker.community %}<p>Community: {{ speaker.community }}</p>{% endif %}
   <p>Category: {{ topic.category }}</p>
   <p>Language: {{ lang.name }}{% if topic.lang_slide %} (with {{ lang_slide.name }} Slides){% endif %}</p>
-  {% if topic.tags %}<p><strong>Tag:</strong> {% for tag in topic.tags %}<span class="tag">{{ tags[tag].name }}</span> {% endfor %}</p>{% endif %}
+  {% if topic.tags %}<p><strong>Tag:</strong> {% for tag in topic.tags %}<span class="tag">{{ tags[tag].name
+    }}</span> {% endfor %}</p>{% endif %}
   {% if topic.level %}
     <div class="progress" style="width: 80%;">
     {% if topic.level == "beginners" %}
