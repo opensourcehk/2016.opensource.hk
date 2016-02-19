@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Hong Kong Open Source Conference 2016 (HKOSCon 2016) will be hosted in 24-25 June.">
+    <meta name="description" content="{% block meta_desc %}Hong Kong Open Source Conference 2016 (HKOSCon 2016) will be hosted in 24-25 June.{% endblock %}">
     <meta name="author" content="Hong Kong Open Source Conference 2016">
-    <meta property="og:title" content="Hong Kong Open Source Conference 2016" />
-    <meta property="og:url" content="http://2016.opensource.hk" />
-    <meta property="og:image" content="http://2016.opensource.hk/images/hkoscon-1025.png" />
-    <meta property="og:type" content="article" />
-    <meta property="og:description" content="Hong Kong Open Source Conference 2016 HKOSCon (2016.06.24-25) is a annual international open source conference in Hong Kong. It is aimed to demonstrate the use of open source software technology, open hardware technology and latest development in the world." />
+    <meta property="og:site_name" content="Hong Kong Open Source Conference 2016" />
+    <meta property="og:title" content="{% block title %}Hong Kong Open Source Conference 2016{% endblock %}" />
+    <meta property="og:url" content="{% block og_url %}http://2016.opensource.hk{% endblock %}" />
+    <meta property="og:image" content="{% block og_image %}http://2016.opensource.hk/images/hkoscon-1025.png{% endblock %}" />
+    <meta property="og:type" content="{% block og_type %}article{% endblock %}" />
+    <meta property="og:description" content="{% block og_desc %}Hong Kong Open Source Conference 2016 HKOSCon (2016.06.24-25) is a annual international open source conference in Hong Kong. It is aimed to demonstrate the use of open source software technology, open hardware technology and latest development in the world.{% endblock %}" />
     <link href='//fonts.googleapis.com/css?family=Alegreya+Sans:400,300|Oswald:700' rel='stylesheet' type='text/css'>
 
     <title>{% block title %}Hong Kong Open Source Conference 2016{% endblock %}</title>
