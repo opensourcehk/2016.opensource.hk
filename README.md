@@ -11,12 +11,31 @@ To start working, please start by installing `nodejs` and `npm` in
 your environment. Please make sure that the command `node` is
 callable before move on.
 
-### for Ubuntu
+### for Fedora, CentOS, RHEL
 
-In Ubuntu, please follow these commands:
+Most of the package manager is using to old version of `nodejs`,
+it is recommended to download from [https://nodejs.org](https://nodejs.org) and install.
 
 ```bash
-sudo apt install nodejs
+su
+tar xvf node-<VERSION>-linux-*.tar.xz -C /usr/local --strip-components=1
+npm install -g npm
+```
+
+### for Ubuntu, Debian
+
+Most of the package manager is using to old version of `nodejs`,
+it is recommended to download from [https://nodejs.org](https://nodejs.org) and install.
+
+```bash
+sudo tar xvf node-<VERSION>-linux-*.tar.xz -C /usr/local --strip-components=1
+sudo npm install -g npm
+```
+
+In Ubuntu, please follow these commands to install with `apt-get` :
+
+```bash
+sudo apt-get install nodejs
 sudo ln -s /usr/bin/nodejs /usr/local/bin/node
 ```
 

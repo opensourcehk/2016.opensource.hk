@@ -1,0 +1,35 @@
+#introjumbo {
+  color: #fff;
+  background-color: #222;
+}
+
+@media (min-width: 992px) {
+  #introjumbo {
+    background-image: url("/assets/images/hkoscon-2015-ckk.jpg");
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+  }
+}
+
+#introjumbo {
+  min-height: 100vh;
+  margin-bottom: 0;
+
+  hr {
+    border-color: $menu-blue;
+    width: 45%;
+    float: left;
+  }
+
+  h1 {
+    padding-top: 6%;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  h2 {
+    clear: left;
+    font-weight: 200;
+    color: $theme-yellow;
+  }
+}

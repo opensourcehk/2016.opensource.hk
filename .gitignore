@@ -3,3 +3,9 @@ node_modules
 
 # log files
 *.log
+
+# For Jetbrain
+/.idea
+
+# For Sass
+/.sass-cache

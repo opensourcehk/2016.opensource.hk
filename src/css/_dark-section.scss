@@ -1,0 +1,18 @@
+.dark-sections {
+  margin-bottom: 2em;
+  color: $theme-yellow;
+  background-color: $theme-blue;
+
+  p {
+    font-weight: 400 !important;
+    text-shadow: none;
+  }
+
+  h1 {
+    margin: 0.8em 0 0.5em;
+  }
+
+  .content-container a:not(.btn) {
+    color: $inverse-foreground;
+  }
+}

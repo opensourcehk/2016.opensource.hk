@@ -1,0 +1,73 @@
+{% extends '../../layouts/default.html' %}
+
+{% block title %}Venue{% endblock %}
+
+{% block description %}
+<p>
+    Cyberport, 100 Cyberport Rd, Telegraph Bay
+    <br>
+    香港數碼港道100號數碼港
+</p>
+<div id="googleMap" style="width:100%; height: 400px;"></div>
+{% endblock %}
+
+{% block content %}
+<div class="container content-container">
+    <h2>Transportation</h2>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <h2>By Bus</h2>
+                <ul>
+                    <li>30X Central</li>
+                    <li>42C North Point Ferry Pier</li>
+                    <li>73 Stanley</li>
+                    <li>73P Aberdeen</li>
+                    <li>107P Laguna Verde</li>
+                    <li>970 So Uk Estate</li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+                <h2>By Minibus</h2>
+                <ul>
+                    <li>10 Causeway Bay (Jaffe Road)</li>
+                    <li>58 Aberdeen - Cyberport - Kennedy Town (North Street)</li>
+                    <li>69 Quarry Bay (Hoi Chak Street)</li>
+                    <li>69A Aberdeen Main Road (outside St. Peter Secondary School)</li>
+                    <li>69X Causeway Bay (Lockhart Road)</li>
+                </ul>
+            </div>
+
+        </div><!-- .row -->
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+    !function () {
+        google.maps.event.addDomListener(window, 'load', function () {
+            var
+                    center = new google.maps.LatLng(22.2608009,114.130812),
+                    map = new google.maps.Map(document.getElementById("googleMap"), {
+                        center : center,
+                        zoom : 19,
+                        mapTypeId : google.maps.MapTypeId.ROADMAP
+                    }),
+                    marker = new google.maps.Marker({
+                        position : center,
+                        animation:google.maps.Animation.BOUNCE
+                    });
+            marker.setMap(map);
+        });
+    }();
+
+</script>
+{% endblock %}
