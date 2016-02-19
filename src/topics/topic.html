@@ -4,6 +4,8 @@
 {% set lang = langs[topic.lang] %}
 {% set lang_slide = langs[topic.lang_slide] %}
 
+{% block og_url %}{{ site_host }}{{ url('topic', topic_id) }}{% endblock %}
+
 {% block title %}{{ topic.title }}{% endblock %}
 
 {% block description %}

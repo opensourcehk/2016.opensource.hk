@@ -156,6 +156,7 @@ gulp.task('topics', function() {
      load_json: false,
      data: {
        "url": url,
+       "site_host": "http://2016.opensource.hk",
        "toArray": toArray,
        "filterBy": filterBy,
        "langs": langs,
@@ -173,8 +174,8 @@ gulp.task('topics', function() {
    .pipe(gulp.dest(topicTgt));
 
   // generate topic pages
-  Object.keys(topics).forEach(function (key) {
-    var topic = topics[key];
+  Object.keys(topics).forEach(function (topic_id) {
+    var topic = topics[topic_id];
     gulp.src(
       topicSrc + '/topic.html')
      .pipe(swig({
@@ -182,8 +183,9 @@ gulp.task('topics', function() {
        load_json: false,
        data: {
          "url": url,
+         "site_host": "http://2016.opensource.hk",
          "displayDesc": displayDesc,
-         "key": key,
+         "topic_id": topic_id,
          "tags": tags,
          "langs": langs,
          "levels": levels,
@@ -191,7 +193,7 @@ gulp.task('topics', function() {
          "topic": topic
        }
      }))
-     .pipe(rename(key+'/index.html'))
+     .pipe(rename(topic_id+'/index.html'))
      .pipe(gulp.dest(topicTgt));
   });
 
