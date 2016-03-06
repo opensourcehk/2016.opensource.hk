@@ -11,74 +11,59 @@
 
 {% block content %}
 
-  <div class="container">
-    <div class="row">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Platinum Sponsor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Gold Sponsors</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Silver Sponsors</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Bronze Sponsors</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>General Sponsors</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<div class="container sponsorship-tiers">
+  <div class="row">
+
+    <section class="sponsorship-tier">
+      <h2>Platinum Sponsor</h2>
+
+      <!-- sponsor list -->
+      <div class="sponsors">
+
+        <div class="sponsor sponsor-mysql">
+          <a class="logo" href="http://www.oracle.com" target="_blank">
+            <img src="/assets/images/sponsors/oracle_sig_logo.gif" alt="Oracle Corporation" style="margin: 10px 10px"><img src="/assets/images/sponsors/mysql.png" alt="MySQL" style="margin: 10px 10px"></a>
+          </a>
+          <div class="description">
+            <p>
+              MySQL is the world's most popular open source database. With its
+              proven ease-of-use, performance, and scalability, MySQL has become the
+              leading database choice for Web-based applications, used by high
+              profile web properties including Facebook, Twitter, YouTube, Yahoo!,
+              and many more. Visit <a href="https://www.mysql.com/" target="_blank">mysql.com</a>.
+            </p>
+            <p>
+              <a class="btn btn-default" target="_blank" href="https://www.oracle.com/" role="button">Oracle Website</a>
+              <a class="btn btn-default" target="_blank" href="https://www.mysql.com/" role="button">MySQL Website</a>
+            </p>
+          </div>
+        </div><!--/.sponsor-->
+
+      </div><!--/.sponsors-->
+      <!-- sponsor list end -->
+
+    </section>
+
+<!-- hide other tiers until there is sponsor of that tier -->
+<!--
+    <section class="sponsorship-tier">
+      <h2>Gold Sponsors</h2>
+    </section>
+
+    <section class="sponsorship-tier">
+      <h2>Silver Sponsors</h2>
+    </section>
+
+    <section class="sponsorship-tier">
+      <h2>Bronze Sponsors</h2>
+    </section>
+
+    <section class="sponsorship-tier">
+      <h2>General Sponsors</h2>
+    </section>
+-->
+
+  </div><!--/.row-->
+</div><!--/.container-->
 
 {% endblock %}
