@@ -1,8 +1,3 @@
-#introjumbo {
-  color: #fff;
-  background-color: #222;
-}
-
 @media (min-width: 992px) {
   #introjumbo {
     background-image: url("/assets/images/hkoscon-2015-ckk.jpg");
@@ -12,9 +7,19 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 30px;
+
+  }
+}
 #introjumbo {
   min-height: 100vh;
   margin-bottom: 0;
+
+  margin-top: 0;
+  color: #fff;
+  background-color: #222;
 
   hr {
     border-color: $menu-blue;

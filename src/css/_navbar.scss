@@ -44,14 +44,13 @@
   width: 100%;
   z-index: 100;
 }
-.navbar.affix-top {
+.navbar-front.affix-top {
   width: 100%;
   margin:0;
 
   ul, li, div,
   a.dropdown-toggle,
   a.navbar-brand,
-  .navbar-nav > li > a,
   li > a:focus,
   li > a:hover {
     transition: color 0.5s;
@@ -60,12 +59,14 @@
   }
 
   .nav-highlight, .nav-highlight a {
-    background-color: rgba(243, 203, 2, 0.5) !important;
-    color: rgba(255, 255, 255, 0.5) !important;
+    background-color: $theme-yellow !important;
+    color: $theme-blue !important;
+    font-weight: bolder;
   }
   .nav-highlight:hover, .nav-highlight:hover a {
-    background-color: rgba(243, 203, 2, 0.8) !important;
-    color: rgba(255, 255, 255, 0.8) !important;
+    background-color: $theme-yellow !important;
+    color: $theme-blue !important;
+    font-weight: bolder;
   }
   .navbar-nav li:hover {
     background-color: rgba(255, 255, 255, 0.3);
@@ -78,8 +79,17 @@
     border-bottom-left-radius: 0;
 
     > li > a:focus,
-    > li > a:hover, {
+    > li > a:hover {
       color: #262626;
     }
+  }
+
+
+  li > a {
+    color: $white !important;
+  }
+
+  .dropdown-menu > li > a {
+    color: $black !important;
   }
 }
