@@ -10,10 +10,16 @@
 
 {% block description %}
   <h2>Speaker: {{ speaker.name }}{% if speaker.nationality %} ({{ speaker.nationality }}){% endif %}</h2>
-  {% if speaker.community %}<p>Community: {{ speaker.community }}</p>{% endif %}
+  {% if speaker.community %}
+    {% if speaker.community.url %}
+      <p>Community: <a href="{ speaker.community.url }" target="_blank">{{ speaker.community.name }}</a></p>
+    {% else %}
+      <p>Community: {{ speaker.community.name }}</p>
+    {% endif %}
+  {% endif %}
   <p>Category: {{ topic.category }}</p>
   <p>Language: {{ lang.name }}{% if topic.lang_slide %} (with {{ lang_slide.name }} Slides){% endif %}</p>
-  {% if topic.tags %}<p><strong>Tag:</strong> {% for tag in topic.tags %}<span class="tag">{{ tags[tag].name
+  {% if topic.tags && (topic.tags.length > 0) %}<p><strong>Tag:</strong> {% for tag in topic.tags %}<span class="tag">{{ tags[tag].name
     }}</span> {% endfor %}</p>{% endif %}
   {% if topic.level %}
     <div class="progress" style="width: 80%;">
@@ -36,19 +42,22 @@
 
 {% block content %}
   <div class="container">
-      <div class="row">
-          <div class="col-sm-5">
-              <img src="{{ speaker.portrait }}" alt="Photo of {{ speaker.name }}" class="img-thumbnail">
-          </div>
-          <div class="col-sm-5">
-            <h3>About Speaker</h3>
-            {{ displayDesc(speaker.description) }}
-          </div>
-      </div>
 
-      <div class="row">
-          <h3>About the Topic</h3>
-          {{ displayDesc(topic.description) }}
+    <div class="row speaker">
+      <div class="col-sm-3">
+        <img src="{{ speaker.portrait }}" alt="Photo of {{ speaker.name }}" class="img-thumbnail">
       </div>
+      <div class="col-sm-9">
+        <h3>About Speaker</h3>
+        {{ displayDesc(speaker.description) }}
+      </div>
+      <!-- TODO: add social links (e.g. github) -->
+    </div>
+
+    <div class="row topic">
+      <h3>About the Topic</h3>
+      {{ displayDesc(topic.description) }}
+    </div>
+
   </div>
 {% endblock %}

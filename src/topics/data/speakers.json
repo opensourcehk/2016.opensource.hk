@@ -1,30 +1,504 @@
 {
-  "speaker-1": {
-    "name": "some speaker hello",
-    "nationality": "Some Country",
-    "hkoscon-sponsored": true,
-    "community": "some community",
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+  "mart-van-de-ven": {
+    "name": "Mart van de Ven",
+    "gender": "male",
+    "social": {
+      "github": "",
+      "nickname": ""
+    },
     "description": [
-      "<p>dummy speaker is a lead member of the GNOME Bugsquad for the last",
-      "years and thus responsible for managing the bug database as well as",
-      "the team around it. He is involved in deciding on effective policies",
-      "for the bug database, actually dealing with the bugs in the database",
-      "and recruiting new members who will help triaging. He also got elected",
-      "to the Board of Directors in xxxx where he serves the GNOME Foundation",
-      "to achieve their goals of creating and distributing great Free Software",
-      "products. Besides being a Free Software and GNOME lover, he is",
-      "involved in the German security research community around the Chaos",
-      "Computer Club. Topics of interest include Platform- and",
-      "System-Security, Cryptography and Security Protocols. </p>"
-    ]
+      "<p>Mart is the director of <a href=\"http://droste.hk\" target=\"_blank\">Droste</a>, ",
+      "a Hong Kong-based Data Science Consultancy, ",
+      "a Data Science Instructor at <a href=\"https://generalassemb.ly/\" target=\"_blank\">General Assembly</a>, ",
+      "Co-founder of <a href=\"https://opendatahk.com/\" target=\"_blank\">Open Data Hong Kong</a>, ",
+      "and the convener for <a href=\"https://generalassemb.ly/education/symbol-key-apache-spark-real-world-applications/hong-kong\" target=\"_blank\">Symbol & Key</a>.</p>"
+    ],
+    "residence": "Hong Kong",
+    "nationality": "The Netherlands",
+    "community": {
+      "name": "Symbol & Key",
+      "url": "https://generalassemb.ly/education/symbol-key-apache-spark-real-world-applications/hong-kong"
+    },
+    "company": {
+      "name": "Droste",
+      "url": "http://droste.hk"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
   },
+  "masahiro-nakagawa": {
+    "name": "Masahiro Nakagawa",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/repeatedly",
+      "nickname": "Masa"
+    },
+    "description": [
+      "<p>Work at Treasure Data. Fluentd core maintainer. D's standard library comitter.</p>"
+    ],
+    "residence": "Japan",
+    "nationality": "Japan",
+    "company": {
+      "name": "Treasure Data Inc",
+      "url": "https://www.treasuredata.com/"
+    },
+    "portrait": "https://avatars3.githubusercontent.com/u/16928?v=3&s=460",
+    "hkoscon-sponsored": false
+  },
+  "vegard-haugstvedt": {
+    "name": "Vegard Haugstvedt",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/it-vegard",
+      "nickname": ""
+    },
+    "description": [
+      "<p>Vegard is a full-stack developer at the Norwegian IT-consulting company Itera. His greatest passion is creating good user experiences on the web, but he also loves playing around with gadgets and multiple hobby-projects.</p>"
+    ],
+    "residence": "Norway",
+    "nationality": "Norway",
+    "company": {
+      "name": "Itera Norge AS",
+      "url": "http://www.itera.no/"
+    },
+    "portrait": "https://i.imgur.com/GGGmw5z.jpg",
+    "hkoscon-sponsored": false
+  },
+  "chris-van-tuin": {
+    "name": "Chris Van Tuin",
+    "gender": "male",
+    "social": {
+      "github": "",
+      "nickname": ""
+    },
+    "description": [
+      "<p>Chris Van Tuin, Chief Technologist for the Western US at Red Hat, has over 20 years of experience in IT and Software.   Since joining Red Hat in 2005, Chris has been architecting solutions for strategic customers and partners with a focus on emerging technologies including IaaS, PaaS, and DevOps.  He started his career at Intel in IT and Managed Hosting followed by leadership roles in services and sales engineering at Loudcloud and Linux startups.  Chris holds a Bachelors of Electrical Engineering from Georgia Institute of Technology.</p>"
+    ],
+    "residence": "United States",
+    "nationality": "United States",
+    "company": {
+      "name": "Red Hat",
+      "url": "https://www.redhat.com/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "andy-shu": {
+    "name": "Andy Shu",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/andyshuxin",
+      "nickname": ""
+    },
+    "description": [
+      "<p>Former editor at Mingpao Daily, Data Journalist at Initium Media; currently Frontend Engineer at Strikingly.</p>"
+    ],
+    "residence": "China",
+    "nationality": "Hong Kong",
+    "company": {
+      "name": "Strikingly",
+      "url": "https://www.strikingly.com/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "satoshi-nagayasu": {
+    "name": "Satoshi Nagayasu",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/snaga/",
+      "nickname": ""
+    },
+    "description": "Open Source, Database and Data Center Engineer. Data Steward. Coffee addicted Geek. Asian Traveler. Co-founder at Uptime Technologies. Chairperson of the board at Japan PostgreSQL Users Group. A member of the pgDay Asia organizing committee.",
+    "residence": "Japan",
+    "nationality": "Japan",
+    "community": {
+      "name": "PostgreSQL in Japan, Asia and Worldwide"
+    },
+    "company": {
+      "name": "Uptime Technologies LLC",
+      "url": "http://uptime.jp/en/"
+    },
+    "portrait": "https://pbs.twimg.com/profile_images/558413519679279106/xVdxbd_s.png",
+    "hkoscon-sponsored": false
+  },
+  "hsin-chan-chien": {
+    "name": "Hsin-Chan Chien",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/hcchien",
+      "nickname": "hcchien"
+    },
+    "description": "2003 perl/python/php party organizer in Taiwan, 2004-2005 YAPC::Taipei organizer, 2006-2014 OSDC.tw organizer in Taiwan, 2014 g0v.tw summit committee, Evangelist in The Reporter (<a href=\"https://www.twreporter.org\" target=\"_blank\">https://www.twreporter.org</a>) from 2015",
+    "residence": "Taiwan",
+    "nationality": "Taiwan",
+    "community": {
+      "name": "g0v.tw",
+      "url": "https://g0v.tw"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "qi-liu": {
+    "name": "Qi Liu",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/pingcap/tidb",
+      "nickname": ""
+    },
+    "description": "QiLiu is the co-founder of PingCAP. He has over 10+ years of experience in system infrastructure and software technologies. He is also the co-author of open source project TiDB and Codis. Prior to PingCAP, he joined Wandoulabs in Distributed System Team. Prior to Wandoulabs, he was in the infrastructure team of JingDong.",
+    "residence": "China",
+    "nationality": "China",
+    "community": {
+      "name": "NewSQL"
+    },
+    "company": {
+      "name": "PingCAP"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "leon-anavi": {
+    "name": "Leon Anavi",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/leon-anavi",
+      "nickname": ""
+    },
+    "description": "Engineer and an open source enthusiast. He works for Konsulko Group and he is the author of the Tizen Cookbook printed by Packt Publishing. Leon is a co-maintainer of Tizen on Yocto and a contributor to a lot of open source projects. His professional experience includes web and mobile application development for various platforms as well as porting Tizen to devices with i.MX6, Rockchip and Allwinner (aka sunxi) SoC. Leon holds a masters in Information Technology from Technical University Sofia. His previous speaking experience includes talks about open source software during events in San Francisco, Hong Kong, Shanghai, Shenzhen, Brussels, Bratislava, Sofia and his hometown Plovdiv.",
+    "residence": "Bulgaria",
+    "nationality": "Bulgaria",
+    "company": {
+      "name": "Konsulko Group",
+      "url": "http://www.konsulko.com/main.html"
+    },
+    "portrait": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/4/000/145/36d/3686651.jpg",
+    "hkoscon-sponsored": false
+  },
+  "anish-patil": {
+    "name": "Anish Patil",
+    "gender": "male",
+    "social": {
+      "bitbucket": "https://bitbucket.org/anish_patil/",
+      "github": "https://github.com/gnuman",
+      "nickname": "Anish"
+    },
+    "description": "Hacker who hacks on GNOME,Fedora and other web projects",
+    "residence": "Australia",
+    "nationality": "India",
+    "company": {
+      "name": "openlearning",
+      "url": "https://www.openlearning.com/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "franklin-weng": {
+    "name": "Franklin Weng",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/fweng322",
+      "nickname": "Franklin"
+    },
+    "description": "<a href=\"https://about.me/fweng322\" target=\"_blank\">https://about.me/fweng322</a>",
+    "residence": "Taiwan",
+    "nationality": "Taiwan",
+    "community": {
+      "name": "LibreOffice (representation); KDE, ezgo (participating)"
+    },
+    "company": {
+      "name": "Software Liberty Association Taiwan (SLAT)",
+      "url": "http://www.slat.org/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "hayden-chung": {
+    "name": "Hayden Chung",
+    "gender": "male",
+    "social": {
+      "nickname": "Fubuki Hoshino"
+    },
+    "description": "Hayden Chung, a freelance system administrator, describes himself as an information security fanatics which loves to try out new technology. Former guest speaker in OSHK 2014 & 2015. A community member of Mozilla Hong Kong.",
+    "residence": "Hong Kong",
+    "nationality": "Hong Kong",
+    "community": {
+      "name": "Mozilla Hong Kong",
+      "url": "http://moz.hk/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "gary-kwong": {
+    "name": "Gary Kwong",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/nth10sd/",
+      "nickname": "gkw"
+    },
+    "description": "Gary Kwong is a long-time member of the Mozilla community, and currently a senior security engineer at Mozilla Corporation. He specialises in running JavaScript fuzzers that rigorously test SpiderMonkey - the JavaScript engine of the Gecko platform on which Mozilla Firefox is based. Gary is passionate about languages and breaking things in general.",
+    "residence": "Mountain View, CA, United States",
+    "nationality": "Hong Kong",
+    "community": {
+      "name": "Mozilla"
+    },
+    "company": {
+      "name": "Mozilla Corporation",
+      "url": "https://www.mozilla.org/en-US/foundation/moco/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "ivan-tu": {
+    "name": "Ivan Tu",
+    "gender": "male",
+    "social": {
+      "blog": "http://voicefromoldsoul.blogspot.com/",
+      "nickname": "Ivan"
+    },
+    "description": "Ivan Tu is an IT veteran with 30 years experience, since 2010 he work at Oracle MySQL Japan&APAC Sales Consultant team, he helps Greater China MySQL users implement MySQL, and promoting MySQL techniques , he also organize MySQL Community in Taiwan, please refer to <a href=\"https://www.facebook.com/groups/297728497041569/\" target=\"_blank\">https://www.facebook.com/groups/297728497041569/</a> for MySQL Community details.",
+    "residence": "Taiwan",
+    "nationality": "Taiwan",
+    "community": {
+      "name": "Taiwan MySQL User Group",
+      "url": "https://www.facebook.com/groups/taiwanmysqlusergroup/"
+    },
+    "company": {
+      "name": "Oracle",
+      "url": "https://www.oracle.com/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "daniel-chcouri": {
+    "name": "Daniel Chcouri",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/theosp",
+      "nickname": ""
+    },
+    "description": "Full-Stack developer, founder and manager of MeteorSpark, a Hong Kong based Meteor consultancy",
+    "residence": "Hong Kong",
+    "nationality": "Israel",
+    "community": {
+      "name": "Meteor Hong Kong",
+      "url": "http://www.meetup.com/Meteor-HK/"
+    },
+    "company": {
+      "name": "MeteorSpark",
+      "url": "http://www.meteorspark.com/"
+    },
+    "portrait": "https://avatars2.githubusercontent.com/u/207494?v=3&s=460",
+    "hkoscon-sponsored": false
+  },
+  "irvin-chen": {
+    "name": "Irvin Chen",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/irvin",
+      "nickname": "Irvin"
+    },
+    "description": [
+      "<p>Community liaison of MozTW, Mozilla Taiwan Community. Long time Mozilla contributors and Mozilla Rep Mentor. I contributing to Mozilla on community building, recruiting volunteers, organising event and speaking for Mozilla's Mission and open culture.</p>",
+      "<p>In the mean time, I'm front-end developer in womany.net.</p>"
+    ],
+    "residence": "Taiwan",
+    "nationality": "Taiwan",
+    "community": {
+      "name": "MozTW",
+      "url": "https://moztw.org"
+    },
+    "company": {
+      "name": "女人迷 womany.net",
+      "url": "https://womany.net"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "haggen-so": {
+    "name": "Haggen So",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/lbrabbit",
+      "nickname": ""
+    },
+    "description": "Graduated from the Royal Melbourne Institute of Technology, Dr. Haggen So, has experiences in commercial software development and developed software products for renowned companies such as Kodak. Dr. So also taught in Hong Kong Baptist University as lecturer in the department of Computer Science. Dr. So was the former Project Manager for Creative Commons Hong Kong and currently the president of the Hong Kong Creative Open Technology Association.",
+    "residence": "Hong Kong",
+    "nationality": "Hong Kong",
+    "community": {
+      "name": "HKCOTA",
+      "url": "http://www.cota.hk/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "chris-choy": {
+    "name": "Chris Choy",
+    "gender": "male",
+    "social": {
+    },
+    "description": "Chris is currently a Senior Computational Scientist at ClusterTech. He has worked on tailored data mining solutions for clients in the banking and retail industry. Prior to joining ClusterTech in 2014, he earned his Dphil in Oxford with a research focus in high dimensional statistics.",
+    "residence": "Hong Kong",
+    "nationality": "Hong Kong",
+    "company": {
+      "name": "ClusterTech",
+      "url": "http://www.clustertech.com/hk/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "kevin-hu": {
+    "name": "Kevin Hu",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/kaichih",
+      "blog": "http://kaichih.com",
+      "nickname": "khu"
+    },
+    "description": [
+      "<p>Kevin Hu, previously a director of engineering project management and release management and now working on engineering community engagement at Mozilla; Technical chair at Open Web Device Compliance Review Board and adjunct lecturer at National Central University.</p>",
+      "<p>Kevin's major responsibility is to initialize, and drive engineering topics with community and internal engineering teams worldwide, define co-working models with universities and community and drive programs with them worldwide to contribute to Mozilla.</p>",
+      "<p>LinkedIn profile: <a href=\"https://www.linkedin.com/in/kaichih\" target=\"_blank\">https://www.linkedin.com/in/kaichih</a></p>",
+      "<p>Personal blog: <a href=\"http://kaichih.com\" target=\"_blank\">http://kaichih.com/</a></p>",
+      "<p>Facebook page for literary works: <a href=\"https://www.facebook.com/khu.page/?ref=hl\" target=\"_blank\">https://www.facebook.com/khu.page/?ref=hl</a></p>"
+    ],
+    "residence": "Taiwan",
+    "nationality": "Taiwan",
+    "company": {
+      "name": "Mozilla",
+      "url": "https://www.mozilla.org/en-US/foundation/moco/"
+    },
+    "portrait": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/3/000/073/2fe/2c50632.jpg",
+    "hkoscon-sponsored": false
+  },
+  "wei-ko-kao": {
+    "name": "Wei-Ko Kao",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/othree/",
+      "nickname": "othree"
+    },
+    "description": "othree，十多年前為了製作個人網頁而自學起 HTML、CSS 和 JavaScript，接著便一頭栽進網路標準的世界，並持續關注網路前端技術的發展，不時在部落格及各活動分享新知，近期關注 HTML5、CSS3、Web API、語意網等議題，被認為專長於 JavaScript，其實最喜歡寫的是漂亮的 HTML Markup。",
+    "residence": "Taiwan",
+    "nationality": "Taiwan",
+    "community": {
+      "name": "MozTW",
+      "url": "https://moztw.org/"
+    },
+    "portrait": "https://c8.staticflickr.com/3/2889/9850224343_553cf2524b_n.jpg",
+    "hkoscon-sponsored": false
+  },
+  "manikandan-selvaganesan": {
+    "name": "Manikandan Selvaganesan",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/Manikandan-Selvaganesh",
+      "nickname": "Manikandan Selvaganesh"
+    },
+    "description": "Manikandan here from India. I did my Bachelors in Computer Science and working for Red Hat currently. An Open Source enthusiast passionate to code(for work and hobby) and love to explore places, technologies and a better speaker.",
+    "residence": "India",
+    "nationality": "India",
+    "community": {
+      "name": "GlusterFS",
+      "url": "https://www.gluster.org/"
+    },
+    "company": {
+      "name": "Red Hat",
+      "url": "https://www.redhat.com/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "marcelo-araujo": {
+    "name": "Marcelo Araujo",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/araujobsd",
+      "nickname": "araujobsd"
+    },
+    "description": "As of 2007, Marcelo Araujo is a FreeBSD developer working mainly on the ports and kernel related features. Marcelo is a DevOps at Gandi and is automating everything in Gandi's cloud platform (which is entirely based on open source). Outside of the free software world, Marcelo likes hiking, bike and beers! ",
+    "residence": "Taiwan",
+    "nationality": "Brazil",
+    "community": {
+      "name": "FreeBSD",
+      "url": "https://www.freebsd.org/"
+    },
+    "company": {
+      "name": "Gandi.net",
+      "url": "https://gandi.net"
+    },
+    "portrait": "http://www.pycon.hk/speakers/marcelo-araujo.jpg",
+    "hkoscon-sponsored": false
+  },
+  "james-shubin": {
+    "name": "James Shubin",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/purpleidea/",
+      "blog": "https://ttboj.wordpress.com/",
+      "nickname": "purpleidea"
+    },
+    "description":[
+      "<p>James Shubin is best known for his work on Configuration Management, his Technical Blog, Oh-My-Vagrant, (a tool he started) and other related DevOps friendly projects.</p>",
+      "<p>Most of his writing happens on: The Technical Blog of James (<a href=\"https://ttboj.wordpress.com/\" target=\"_blank\">https://ttboj.wordpress.com/</a>), but he sometimes says things as <a href=\"https://twitter.com/purpleidea\" target=\"_blank\">@purpleidea</a> on Twitter, and he currently works for Red Hat doing research and prototyping within systems engineering.</p>",
+      "<p>He studied Physiology at university and sometimes likes to talk about cardiology.</p>"
+    ],
+    "residence": "Canada",
+    "nationality": "Canada",
+    "company": {
+      "name": "Red Hat",
+      "url": "https://www.redhat.com/"
+    },
+    "portrait": "https://pbs.twimg.com/profile_images/378800000787883472/ae1ca016a2f6fda4b2f437940c441b2d_400x400.jpeg",
+    "hkoscon-sponsored": false
+  },
+  "andy-li": {
+    "name": "Andy Li",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/andyli/",
+      "nickname": "andyli, onthewings"
+    },
+    "description": "Andy Li is a member of the Haxe Foundation. He obtained his PhD in the School of Creative Media, City University of Hong Kong. He is interested in programming language theories as well as mobile user interface, interactivity, installation art and generative graphics.Andy Li is a member of the Haxe Foundation. He obtained his PhD in the School of Creative Media, City University of Hong Kong. He is interested in programming language theories as well as mobile user interface, interactivity, installation art and generative graphics.",
+    "residence": "Hong Kong",
+    "nationality": "Hong Kong",
+    "company": {
+      "name": "Haxe Foundation",
+      "url": "http://haxe.org/foundation/"
+    },
+    "portrait": "https://en.gravatar.com/userimage/4167363/9f93993fd564f3a6a494a2faf984e9f8?size=500",
+    "hkoscon-sponsored": false
+  },
+
+
+
+  "dumy": {
+    "name": "Dummy Speaker",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/repeatedly",
+      "nickname": "Masa"
+    },
+    "description": "description",
+    "residence": "country",
+    "nationality": "country",
+    "community": {
+      "name": "Symbol & Key",
+      "url": "#"
+    },
+    "company": {
+      "name": "Droste",
+      "url": "#"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+
   "speaker-2": {
-    "name": "some other speaker",
-    "nationality": "Some Other Country",
+    "name": "Dummy Speaker",
+    "nationality": "Some Country",
     "hkoscon-sponsored": false,
     "portrait": "/assets/images/speakers/placeholder.jpg",
-    "community": "some other community",
     "description": "<p>hello some description</p>"
   }
 }
