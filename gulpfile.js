@@ -32,6 +32,14 @@ const scriptsSource = baseSource + '/scripts';
 const fontsSource   = baseSource + '/fonts';
 const imagesSource  = baseSource + '/images';
 
+function parseJSON(filename) {
+  try {
+    return JSON.parse(fs.readFileSync(filename,   'utf8'));
+  } catch (err) {
+    throw "Failed parsing "+filename+" error: "+err;
+  }
+}
+
 // watch the public files
 // hot reload if there is changes
 gulp.task('serve-dev', function() {
@@ -110,11 +118,11 @@ gulp.task('topics', function() {
 
   // read those files everytime with fs
   // instead of `require` (will cache the file)
-  var topics   = JSON.parse(fs.readFileSync(topicSrc + '/data/topics.json',   'utf8'));
-  var tags     = JSON.parse(fs.readFileSync(topicSrc + '/data/tags.json',     'utf8'));
-  var speakers = JSON.parse(fs.readFileSync(topicSrc + '/data/speakers.json', 'utf8'));
-  var langs    = JSON.parse(fs.readFileSync(topicSrc + '/data/langs.json',    'utf8'));
-  var levels   = JSON.parse(fs.readFileSync(topicSrc + '/data/levels.json',   'utf8'));
+  var topics   = parseJSON(topicSrc + '/data/topics.json',   'utf8');
+  var tags     = parseJSON(topicSrc + '/data/tags.json',     'utf8');
+  var speakers = parseJSON(topicSrc + '/data/speakers.json', 'utf8');
+  var langs    = parseJSON(topicSrc + '/data/langs.json',    'utf8');
+  var levels   = parseJSON(topicSrc + '/data/levels.json',   'utf8');
 
   // link generator
   var url = function(type, id) {
