@@ -560,7 +560,7 @@
     "title": "Software Carpentry Bootcamp: the Essential Core",
     "type": "workshop",
     "speaker": "chung-hong-chan",
-    "category": "Data",
+    "category": "DevOps",
     "level": "beginners",
     "requirement": "",
     "target_audience": ["Developers"],
