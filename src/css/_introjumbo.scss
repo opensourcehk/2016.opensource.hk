@@ -5,13 +5,6 @@
     background-size: cover;
     background-position: bottom;
     background-attachment: fixed;
-    text-shadow: black 0.3em 0.3em 0.3em;
-    p {
-      text-shadow: black 0.3em 0.3em 0.3em;
-    }
-    h1 strong {
-      font-size: 1.4em;
-    }
   }
 }
 
@@ -29,20 +22,39 @@
   color: #fff;
   background-color: #222;
 
-  hr {
-    border-color: $menu-blue;
-    width: 45%;
-    float: left;
-  }
-
   h1 {
+    font-family: 'Geomanist', sans-serif;
     padding-top: 6%;
-    font-family: 'Oswald', sans-serif;
   }
 
-  h2 {
-    clear: left;
+  h1 .slogan {
+    margin-top: 0.2em;
+    font-size: 1.2em;
+    font-family: 'Geomanist', sans-serif;
     font-weight: 200;
-    color: $theme-yellow;
+    color: $menu-blue;
+    strong {
+      font-family: 'Geomanist', sans-serif;
+      color: $theme-yellow;
+      font-weight: 600;
+    }
+  }
+
+  .info {
+    padding: 2em 5em;
+    background-color: $theme-blue;
+    h2 {
+      color: $theme-yellow;
+      clear: left;
+      font-weight: 200;
+      margin: 0 0 1em;
+      padding: 0;
+    }
+    @media (max-width: 768px) {
+      padding: 1em 2em;
+      h2 {
+        margin: 0 0 .5em;
+      }
+    }
   }
 }
