@@ -469,6 +469,49 @@
     "portrait": "https://en.gravatar.com/userimage/4167363/9f93993fd564f3a6a494a2faf984e9f8?size=500",
     "hkoscon-sponsored": false
   },
+  "ivan-ma": {
+    "name": "Ivan Ma",
+    "gender": "male",
+    "social": {
+    },
+    "description": [
+      "<p>Ivan Ma is the MySQL User Group Lead in Hong Kong. He has over 20+ years of experience in enterprise system infrastructure and software technologies. He has certification on MySQL DBA 5.6, MySQL Developer 5.1 and MySQL Cluster 5.1 DBA.</p>",
+      "<p>He Joined MySQL, is currently MySQL Principal Sales Consultant, Asia Pacific with Oracle, responsible for pre-sales consulting, technical education, and product promotions.</p>",
+      "<p>Prior to joining MySQL team, he joined Oracle in System Team from Sun Mircosystems acquisition. Prior to Sun Microsystems, he was Principal Solution Architect with Sybase APAC covering APAC regions.</p>"
+    ],
+    "residence": "Hong Kong",
+    "nationality": "Hong Kong",
+    "community": {
+      "name": "MySQL User Group Hong Kong"
+    },
+    "company": {
+      "name": "Oracle",
+      "url": "https://www.oracle.com/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
+  "chung-hong-chan": {
+    "name": "Chung-hong Chan",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/chainsawriot",
+      "nickname": "電鋸"
+    },
+    "description": "That computational social scientist or whatever.",
+    "residence": "Hong Kong",
+    "nationality": "Hong Kong",
+    "community": {
+      "name": "Hong Kong R User Group",
+      "url": ""
+    },
+    "company": {
+      "name": "JMSC, HKU",
+      "url": "https://jmsc.hku.hk/"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
 
 
 

@@ -17,8 +17,6 @@
     background-position: bottom;
     background-attachment: fixed;
     border: transparent;
-    border-top: #555 solid 1px;
-    border-bottom: #555 solid 1px;
     background-color: transparent;
   }
   .navbar *{
@@ -31,9 +29,7 @@
   .navbar.affix-top {
     bottom: 0;
     border: transparent;
-    border-top: #555 solid 1px;
-    border-bottom: #555 solid 1px;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
   }
 }
