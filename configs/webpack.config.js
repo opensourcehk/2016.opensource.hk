@@ -18,14 +18,14 @@ var loaders = [
       'babel?stage=1'
     ]
   }
-]
+];
 
 // don't bundle these libraries
 var externals =  {
   //don't bundle the 'react' npm package with our bundle.js
   //but get it from a global 'React' variable
   'react': 'React'
-}
+};
 
 var plugins = [
   new webpack.optimize.UglifyJsPlugin({minimize: true})
@@ -52,4 +52,4 @@ module.exports = [
       filename: "bundle.js"
     }
   }
-]
+];

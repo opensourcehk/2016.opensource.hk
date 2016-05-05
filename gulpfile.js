@@ -34,7 +34,7 @@ const imagesSource  = baseSource + '/images';
 
 function parseJSON(filename) {
   try {
-    return JSON.parse(fs.readFileSync(filename,   'utf8'));
+    return JSON.parse(fs.readFileSync(filename, 'utf8'));
   } catch (err) {
     throw "Failed parsing "+filename+" error: "+err;
   }
@@ -61,24 +61,16 @@ gulp.task('watch', function() {
   watch([
     stylesSource + '/**/*.sass',
     stylesSource + '/**/*.scss'
-  ], function () {
-    gulp.run('styles');
-  });
+  ], ['style']);
   watch([
     topicSrc + '/**/*.html',
     topicSrc + '/**/*.json'
-  ], function () {
-    gulp.run('topics');
-  });
+  ], ['topics']);
   watch([
     pageSource + '/**/*.html',
     pageLayoutSrc + '/**/*.html'
-  ], function () {
-    gulp.run('templates');
-  });
-  watch(scriptsSource + '/**/*.*', function () {
-    gulp.run('webpack');
-  });
+  ], ['templates']);
+  watch(scriptsSource + '/**/*.*', ['webpack']);
 });
 
 // convert styles
@@ -102,15 +94,14 @@ gulp.task('styles', function() {
 
 // convert html
 gulp.task('templates', function() {
-  gulp.src(
-    pageSource + '/**/*.html')
-   .pipe(swig({
-     defaults: { cache: false },
-     data: {
-       'site_host': 'http://2016.opensource.hk'
-     }
-   }))
-   .pipe(gulp.dest(baseTarget));
+  gulp.src(pageSource + '/**/*.html')
+    .pipe(swig({
+      defaults: { cache: false },
+      data: {
+        'site_host': 'http://2016.opensource.hk'
+      }
+    }))
+    .pipe(gulp.dest(baseTarget));
 });
 
 // convert topic from templates
@@ -126,83 +117,81 @@ gulp.task('topics', function() {
 
   // link generator
   var url = function(type, id) {
-    if (type == 'topic') {
-      return '/topics/' + id + '/';
-    }
-  },
+      if (type == 'topic') {
+        return '/topics/' + id + '/';
+      }
+    },
 
   // filterBy filters object (e.g. topic) by the given
   // property name and value
-  filterBy = function(name, value) {
-    return function (obj) {
-      return obj[name] === value;
-    }
-  },
+    filterBy = function(name, value) {
+      return function (obj) {
+        return obj[name] === value;
+      }
+    },
 
   // turn an object into an array
-  toArray = function(obj) {
-    var arr = [];
-    for ( var key in obj ) {
+    toArray = function(obj) {
+      var arr = [];
+      Object.keys(obj).forEach(function (key) {
         arr.push(obj[key]);
-    }
-    return arr
-  },
+      });
+      return arr
+    },
 
   // formatting (or not formatting) description strings
-  displayDesc = function (input) {
-    if (Array.isArray(input)) {
-      return input.join(' ');
-    }
-    return input;
-  };
+    displayDesc = function (input) {
+      if (Array.isArray(input)) {
+        return input.join(' ');
+      }
+      return input;
+    };
 
   // generate topic index
-  gulp.src(
-    topicSrc + '/topics.html')
-   .pipe(swig({
-     defaults: {cache: false},
-     load_json: false,
-     data: {
-       "url": url,
-       "site_host": "http://2016.opensource.hk",
-       "toArray": toArray,
-       "filterBy": filterBy,
-       "langs": langs,
-       "levels": levels,
-       "tags": tags,
-       "speakers": speakers,
-       "topicsByType": {
-         "Talks": toArray(topics).filter(filterBy('type', 'talk')),
-         "Workshops": toArray(topics).filter(filterBy('type', 'workshop')),
-         "Lightning Talks": toArray(topics).filter(filterBy('type', 'lightening-talk'))
-       }
-     }
-   }))
-   .pipe(rename('/index.html'))
-   .pipe(gulp.dest(topicTgt));
+  gulp.src(topicSrc + '/topics.html')
+    .pipe(swig({
+      defaults: {cache: false},
+      load_json: false,
+      data: {
+        "url": url,
+        "site_host": "http://2016.opensource.hk",
+        "toArray": toArray,
+        "filterBy": filterBy,
+        "langs": langs,
+        "levels": levels,
+        "tags": tags,
+        "speakers": speakers,
+        "topicsByType": {
+          "Talks": toArray(topics).filter(filterBy('type', 'talk')),
+          "Workshops": toArray(topics).filter(filterBy('type', 'workshop')),
+          "Lightning Talks": toArray(topics).filter(filterBy('type', 'lightening-talk'))
+        }
+      }
+    }))
+    .pipe(rename('/index.html'))
+    .pipe(gulp.dest(topicTgt));
 
   // generate topic pages
   Object.keys(topics).forEach(function (topic_id) {
     var topic = topics[topic_id];
-    gulp.src(
-      topicSrc + '/topic.html')
-     .pipe(swig({
-       defaults: {cache: false},
-       load_json: false,
-       data: {
-         "url": url,
-         "site_host": "http://2016.opensource.hk",
-         "displayDesc": displayDesc,
-         "topic_id": topic_id,
-         "tags": tags,
-         "langs": langs,
-         "levels": levels,
-         "speakers": speakers,
-         "topic": topic
-       }
-     }))
-     .pipe(rename(topic_id+'/index.html'))
-     .pipe(gulp.dest(topicTgt));
+    gulp.src(topicSrc + '/topic.html')
+      .pipe(swig({
+        defaults: {cache: false},
+        load_json: false,
+        data: {
+          "url": url,
+          "site_host": "http://2016.opensource.hk",
+          "displayDesc": displayDesc,
+          "topic_id": topic_id,
+          "tags": tags,
+          "langs": langs,
+          "levels": levels,
+          "speakers": speakers,
+          "topic": topic
+        }
+      }))
+      .pipe(rename(topic_id + '/index.html'))
+      .pipe(gulp.dest(topicTgt));
   });
 
 });
@@ -216,7 +205,10 @@ gulp.task('webpack', function(callback) {
     gutil.log('[webpack]', stats.toString({
       // output options
     }));
-    callback();
+
+    // use setImmediate prevent Stack overflow
+    // By Effective Javascript.
+    setImmediate(callback);
   });
 });
 
