@@ -9,11 +9,12 @@ var fs = require('fs');
 var gconcat = require('gulp-concat');
 var gutil = require('gulp-util');
 var swig = require('gulp-swig');
-var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
+var htmlmin = require('gulp-html-minifier');
+var minifyCss = require('gulp-clean-css');
 
 const baseTarget    = __dirname + '/public';
 const topicTgt      = baseTarget + '/topics';
@@ -101,6 +102,7 @@ gulp.task('templates', function() {
         'site_host': 'http://2016.opensource.hk'
       }
     }))
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(baseTarget));
 });
 
@@ -168,6 +170,7 @@ gulp.task('topics', function() {
         }
       }
     }))
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(rename('/index.html'))
     .pipe(gulp.dest(topicTgt));
 
@@ -190,6 +193,7 @@ gulp.task('topics', function() {
           "topic": topic
         }
       }))
+      .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(rename(topic_id + '/index.html'))
       .pipe(gulp.dest(topicTgt));
   });
