@@ -5,74 +5,94 @@
 {% block title %}Topics{% endblock %}
 
 {% block description %}
-  <p>Cloud, Maker, Community: Source and Data, Startup are 4 main themes of Hong Kong Open Source Conference 2016.</p>
-  <p>Keynotes and Talks are 45-mins and 40-mins each with 10-15 minutes break between sessions.</p>
-  <p><a class="btn btn-hkosc" href="https://hkosccon2016.eventbrite.com/" role="button">Buy Ticket &raquo;</a></p>
+<p>Cloud, Maker, Community: Source and Data, Startup are 4 main themes of Hong Kong Open Source Conference 2016.</p>
+<p>Keynotes and Talks are 45-mins and 40-mins each with 10-15 minutes break between sessions.</p>
+<p><a class="btn btn-hkosc" href="https://hkosccon2016.eventbrite.com/" role="button">Buy Ticket &raquo;</a></p>
+{% endblock %}
+
+{% block style %}
+<style>
+.topics td.speaker{width:16%}.topics td.speaker ul{font-size:.75em;color:rgba(0,0,0,.5)}.topics td.category,.topics td.level{width:10%}.topics td.language{width:15%}
+</style>
 {% endblock %}
 
 
 {% block content %}
 
-  <div class="container">
+<div class="container topics">
 
-    <div class="row">
-      <p>A preliminary schedule is also available <a href="/schedule/">here</a>.</p>
-    </div>
-
-    <div class="row">
-      {% for topics in topicsByType %}
-        {% set typeName = loop.key %}
-        {% if topics.length > 0 %}
-          <div class="panel-heading">
-            <h2 class="panel-title">{{ typeName }}</h2>
-          </div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Speaker</th>
-                <th>Category</th>
-                <th>Level</th>
-                <th>Language</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for topic in topics %}
-                {% set speaker = speakers[topic.speaker] %}
-                {% set lang = langs[topic.lang] %}
-                {% set lang_slide = langs[topic.lang_slide] %}
-                {% set level = levels[topic.level] %}
-                <tr>
-                  <td class="title">
-                    <a href="{{ url('topic', topic.id) }}">{{ topic.title }}</a>
-                  </td>
-                  <td style="width: 16%;">
-                    <span class="speaker-name">{{ speaker.name }}</span>
-                    {% if speaker['hkoscon-sponsored'] == true %}
-                      <span class="speaker-sponsored">(*1)</span>
-                    {% endif %}
-                    {% if speaker.company || speaker.community %}
-                      <ul style="font-size: 0.75em; color: rgba(0,0,0,0.5);">
-                      {% if speaker.nationality %}<li class="nationality" title="Nationality">{{ speaker.nationality }}</li>{% endif %}
-                      {% if speaker.community %}<li class="community" title="Community">{{ speaker.community.name }}</li>{% endif %}
-                      {% if speaker.company %}<li class="company" title="Company">{{ speaker.company.name }}</li>{% endif %}
-                      </ul>
-                    {% endif %}
-                  </td>
-                  <td style="width: 10%">{{ topic.category }}</td>
-                  <td style="width: 10%">{{ level.name }}</td>
-                  <td style="width: 15%">
-                    {{ lang.name }}
-                    {% if lang_slide.name %}<br/>(with {{ lang_slide.name }} Slides){% endif %}
-                  </td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-          <!-- end of topic {{ loop.key }} -->
-        {% endif %}
-      {% endfor %}
-    </div><!--/.row-->
+  <div class="row">
+    <p>A preliminary schedule is also available <a href="/schedule/">here</a>.</p>
   </div>
+
+  <div class="row">
+    {% for topics in topicsByType %}
+      {% set typeName = loop.key %}
+      {% if topics.length > 0 %}
+        <div class="panel-heading">
+          <h2 class="panel-title">{{ typeName }}</h2>
+        </div>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Speaker</th>
+            <th>Category</th>
+            <th>Level</th>
+            <th>Language</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for topic in topics %}
+          {% set speaker = speakers[topic.speaker] %}
+          {% set lang = langs[topic.lang] %}
+          {% set lang_slide = langs[topic.lang_slide] %}
+          {% set level = levels[topic.level] %}
+          <tr>
+            <td class="title">
+              <a href="{{ url('topic', topic.id) }}">{{ topic.title }}</a>
+            </td>
+            <td class="speaker">
+              <span class="speaker-name">{{ speaker.name }}</span>
+              {% if speaker['hkoscon-sponsored'] == true %}
+                <span class="speaker-sponsored">(*1)</span>
+              {% endif %}
+              {% if speaker.company || speaker.community %}
+                <ul>
+                  {% if speaker.nationality %}
+                    <li class="nationality" title="Nationality">
+                      {{ speaker.nationality }}
+                    </li>
+                  {% endif %}
+                  {% if speaker.community %}
+                    <li class="community" title="Community">
+                      {{ speaker.community.name }}
+                    </li>
+                  {% endif %}
+                  {% if speaker.company %}
+                    <li class="company" title="Company">
+                      {{ speaker.company.name }}
+                    </li>
+                  {% endif %}
+                </ul>
+              {% endif %}
+            </td>
+            <td class="category">{{ topic.category }}</td>
+            <td class="level" data-level="{{ level.name }}">{{ level.name }}</td>
+            <td class="language">
+              {{ lang.name }}
+              {% if lang_slide.name %}
+                <br/>(with {{ lang_slide.name }} Slides)
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <!-- end of topic {{ loop.key }} -->
+      {% endif %}
+    {% endfor %}
+  </div><!--/.row-->
+</div>
 
 {% endblock %}
