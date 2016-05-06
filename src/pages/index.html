@@ -14,6 +14,13 @@
         <h2>Internet of Things // Data // Cloud // DevOps</h2>
         24-26 June 2016 (Friday-Sunday)<br />
         <span class="brand-yellow">Cyberport 3, 100 Cyberport Road, Telegraph Bay</span>
+
+        <a id="promotion-video" style="float: right" class="btn btn-hkosc"
+           href="https://www.youtube.com/watch?v=43uVMqES0Kk"
+           rel="prettyPhoto"
+           title="">
+          Watch Video
+        </a>
       </div>
     </div>
   </div>
@@ -43,5 +50,22 @@
       </div>
     </div>
   </div>
+{% endblock %}
 
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.1/js.cookie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prettyPhoto/3.1.6/js/jquery.prettyPhoto.min.js"></script>
+<script>
+  !function () {
+    var width = $(window).width(), height = $(window).height();
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+      default_width: width * 0.8,
+      default_height: height * 0.8
+    });
+    if (typeof Cookies.get('viewed') === 'undefined') {
+      Cookies.set('viewed', 1);
+      $(document.getElementById('promotion-video')).click();
+    }
+  }();
+</script>
 {% endblock %}
