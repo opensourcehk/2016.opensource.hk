@@ -1,4 +1,24 @@
 {
+  "live-demo-write-a-cross-platform-chat-bot-using-skygear-an-open-source-backend": {
+    "id": "live-demo-write-a-cross-platform-chat-bot-using-skygear-an-open-source-backend",
+    "title": "Live Demo - Write a cross-platform chat bot using Skygear, an open-source backend",
+    "type": "talk",
+    "speaker": "david-ng",
+    "category": "DevOps",
+    "level": "beginners",
+    "requirement": "",
+    "target_audience": ["Developers", "IT Managers"],
+    "short_desc": "Writing a cross-platform messenger bot for Slack, FB Messenger and Telegram using Skygear, an open source backend.",
+    "description": [
+      "<p>We developed Skygear, a backend solution written in Go and Python to replace Parse for internal use. Recently, we open source it and share it with the developer community. It allows developers to add new features such as chat, push notification and geo-location to their apps with the iOS / Android / JS SDK.</p>",
+      "<p>In the talk, our developer, David NG, will introduce the basics of Skygear and live code a cross-platform messenger bot for Slack, FB Messenger and Telegram using Skygear.</p>"
+    ],
+    "lang": "zh.yue",
+    "lang_slide": "en",
+    "length": "30min",
+    "licence_video": "cc-4.0",
+    "licence_slide": "cc-4.0"
+  },
   "interactive-dashboard-development-with-plotly": {
     "id": "interactive-dashboard-development-with-plotly",
     "title": "Interactive Dashboard Development with Plotly",

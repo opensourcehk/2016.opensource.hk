@@ -30,9 +30,16 @@
       <div class="row">
         <div class="col-md-4">
           <h2>News &amp; Updates</h2>
-          <ul>
-            <li><a href="http://hkoscon2016.eventbrite.com/?aff=website" target="_blank">HKOSCon 2016 Early Bird Tickets Sales begins (2016/02/14)</a></li>
-            <li><a href="/cfp">HKOSCon 2016 Call for Proposal begins (2016/02/01)</a></li>
+          <ul class="news-updates">
+            {% for item in news %}
+              {% if item.published %}
+                <li><a href="{{ item.url }}"
+                  {% if item.external %}target="_blank"{% endif %}>
+                  <span class="title">{{ item.title }}</span>
+                  <span class="date">({{ item.date }})</span>
+                </a></li>
+              {% endif %}
+            {% endfor %}
           </ul>
         </div>
         <div class="col-md-4">

@@ -102,7 +102,7 @@
       {
         "id": "oursky",
         "grantedPerm": true,
-        "description": "",
+        "description": "Oursky is a Hong Kong based app development studio with a talented team of 40 people. Our apps are loved by millions of users and got features by the App Store from time to time. Apart from building apps, we have also been striving to contribute to the developer community and this year, we open source our backend solution, Skygear, which is originally built for internal use to replace Parse.",
         "logos": [
           {
             "title": "OurSky",

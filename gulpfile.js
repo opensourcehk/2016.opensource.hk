@@ -140,6 +140,7 @@ gulp.task('styles', function() {
 // convert html
 gulp.task('templates', function() {
   var sponsors   = parseJSON(dataSource + '/sponsors.json',   'utf8');
+  var news       = parseJSON(dataSource + '/news.json',       'utf8');
   gulp.src(
     pageSource + '/**/*.html')
    .pipe(swig({
@@ -147,6 +148,7 @@ gulp.task('templates', function() {
      data: {
        'site_host': 'http://2016.opensource.hk',
        "displayDesc": displayDesc,
+       'news': news,
        'sponsors': sponsors
      }
    }))
@@ -180,6 +182,7 @@ gulp.task('topics', function() {
         "tags": tags,
         "speakers": speakers,
         "topicsByType": {
+          "Keynotes": toArray(topics).filter(filterBy('type', 'keynote')),
           "Talks": toArray(topics).filter(filterBy('type', 'talk')),
           "Workshops": toArray(topics).filter(filterBy('type', 'workshop')),
           "Lightning Talks": toArray(topics).filter(filterBy('type', 'lightening-talk'))
