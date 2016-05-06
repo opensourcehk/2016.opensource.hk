@@ -9,5 +9,10 @@ $hkosc-btn-border: darken($theme-yellow, 5%);
 
 .btn-hkosc {
   @include button-variant($hkosc-btn-color, $hkosc-btn-bg, $hkosc-btn-border);
+  font-weight: bolder;
+}
+
+.btn-hkosc-reverse {
+  @include button-variant($theme-yellow, $theme-blue, darken($theme-blue, 5%));
   font-weight: bold;
 }
