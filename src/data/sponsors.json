@@ -47,15 +47,15 @@
         "logos": [
           {
             "title": "VMWare",
-            "alt": "IBM logo",
+            "alt": "VMWare logo",
             "img": "//2016.opensource.hk/statics/images/sponsors/vmware_logo_gry_110.jpg",
-            "url": "https://www.ibm.com/"
+            "url": "https://www.vmware.com/"
           }
         ],
         "links": [
           {
-            "text": "IBM Website",
-            "url": "https://www.ibm.com/"
+            "text": "VMWare Website",
+            "url": "https://www.vmware.com/"
           }
         ]
       }
@@ -91,7 +91,7 @@
         "links": [
           {
             "text": "Oracle Website",
-            "url": "https://www.oracle.com/"
+            "url": "https://www.mysql.com/"
           },
           {
             "text": "MySQL Website",
@@ -189,7 +189,7 @@
         ],
         "links": [
           {
-            "text": "Google Website",
+            "text": "JetBrains Website",
             "url": "https://www.jetbrains.com/"
           }
         ]
