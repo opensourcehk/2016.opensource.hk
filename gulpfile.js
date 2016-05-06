@@ -62,16 +62,24 @@ gulp.task('watch', function() {
   watch([
     stylesSource + '/**/*.sass',
     stylesSource + '/**/*.scss'
-  ], ['style']);
+  ], function () {
+    gulp.run('style');
+  });
   watch([
     topicSrc + '/**/*.html',
     topicSrc + '/**/*.json'
-  ], ['topics']);
+  ], function () {
+    gulp.run('topics');
+  } );
   watch([
     pageSource + '/**/*.html',
     pageLayoutSrc + '/**/*.html'
-  ], ['templates']);
-  watch(scriptsSource + '/**/*.*', ['webpack']);
+  ], function () {
+    gulp.run('templates')
+  });
+  watch(scriptsSource + '/**/*.*', function () {
+    gulp.run('webpack');
+  });
 });
 
 // convert styles
