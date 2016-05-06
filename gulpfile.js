@@ -12,7 +12,6 @@ var swig = require('gulp-swig');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
-var watch = require('gulp-watch');
 var htmlmin = require('gulp-html-minifier');
 var minifyCss = require('gulp-clean-css');
 
@@ -94,28 +93,20 @@ gulp.task('serve-dev', function() {
 // watch the source files
 // generates public files
 gulp.task('watch', function() {
-  watch([
+  gulp.watch([
     stylesSource + '/**/*.sass',
     stylesSource + '/**/*.scss'
-  ], function () {
-    gulp.run('style');
-  });
-  watch([
+  ], ["styles"]);
+  gulp.watch([
     topicSrc + '/**/*.html',
     dataSource + '/*.json'
-  ], function () {
-    gulp.run('topics');
-  } );
-  watch([
+  ], ["topics"]);
+  gulp.watch([
     pageSource + '/**/*.html',
     pageLayoutSrc + '/**/*.html',
     dataSource + '/*.json'
-  ], function () {
-    gulp.run('templates')
-  });
-  watch(scriptsSource + '/**/*.*', function () {
-    gulp.run('webpack');
-  });
+  ], ["templates"]);
+  gulp.watch(scriptsSource + '/**/*.*', ['webpack']);
 });
 
 // convert styles
