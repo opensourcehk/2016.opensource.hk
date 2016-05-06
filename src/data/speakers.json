@@ -512,6 +512,23 @@
     "portrait": "/assets/images/speakers/placeholder.jpg",
     "hkoscon-sponsored": false
   },
+  "david-ng": {
+    "name": "NG, Ka Hung",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/repeatedly",
+      "nickname": "David Ng"
+    },
+    "description": "All-the-time a code geek and sometimes an evangelist. Product manager at Oursky.",
+    "residence": "Hong Kong",
+    "nationality": "Hong Kong",
+    "company": {
+      "name": "OurSky",
+      "url": "https://oursky.com"
+    },
+    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "hkoscon-sponsored": false
+  },
 
 
 

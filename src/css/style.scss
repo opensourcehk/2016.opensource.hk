@@ -66,3 +66,19 @@
 #schedule .day:target {
   background: #FFD;
 }
+
+#promotion-video {
+  display: block;
+  background-image: url('/assets/images/noun_10352_100.png');
+  background-size: cover;
+  width: 80px;
+  height: 60px;
+  margin: 2.5em 0 0 auto;
+  .text {
+    margin-left: -99999px;
+  }
+}
+
+.pp_pic_holder .pp_description {
+  display: none !important;
+}

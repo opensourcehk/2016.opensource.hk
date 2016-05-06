@@ -81,11 +81,11 @@ public/       - all files in this folder is generated from src
 src/          - a folder to contain all source codes
   css/        - all scss / css files
     lib/      - css libraries downloaded (e.g. bootstrap)
+  data/       - contains data json of topics, speakers, tags and etc
   images/     - image files
   layouts/    - HTML layout files (SWIG template)
   pages/      - HTML page files (SWIG template)
   topics/     - topics' SWIG template and data
-    data/     - contains data json of topics, speakers, tags and etc
   scripts/    - all javascripts
     vendors/  - javascripts to be used directly (instead of webpack bundle)
 ```

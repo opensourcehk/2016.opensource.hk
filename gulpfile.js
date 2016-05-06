@@ -12,7 +12,6 @@ var swig = require('gulp-swig');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
-var watch = require('gulp-watch');
 var htmlmin = require('gulp-html-minifier');
 var minifyCss = require('gulp-clean-css');
 
@@ -30,6 +29,7 @@ const topicSrc      = baseSource + '/topics';
 const pageIncludes  = baseSource + '/pages/includes';
 const stylesSource  = baseSource + '/css';
 const scriptsSource = baseSource + '/scripts';
+const dataSource    = baseSource + '/data';
 const fontsSource   = baseSource + '/fonts';
 const imagesSource  = baseSource + '/images';
 
@@ -40,6 +40,40 @@ function parseJSON(filename) {
     throw "Failed parsing "+filename+" error: "+err;
   }
 }
+
+// link generator
+function url (type, id) {
+  if (type == 'topic') {
+    return '/topics/' + id + '/';
+  }
+}
+
+// filterBy filters object (e.g. topic) by the given
+// property name and value
+function filterBy (name, value) {
+  return function (obj) {
+    return obj[name] === value;
+  }
+}
+
+// turn an object into an array
+function toArray (obj) {
+  var arr = [];
+  for ( var key in obj ) {
+      arr.push(obj[key]);
+  }
+  return arr
+}
+
+// formatting (or not formatting) description strings
+function displayDesc (input) {
+  if (Array.isArray(input)) {
+    return input.join(' ');
+  }
+  return input;
+}
+
+
 
 // watch the public files
 // hot reload if there is changes
@@ -59,27 +93,20 @@ gulp.task('serve-dev', function() {
 // watch the source files
 // generates public files
 gulp.task('watch', function() {
-  watch([
+  gulp.watch([
     stylesSource + '/**/*.sass',
     stylesSource + '/**/*.scss'
-  ], function () {
-    gulp.run('style');
-  });
-  watch([
+  ], ["styles"]);
+  gulp.watch([
     topicSrc + '/**/*.html',
-    topicSrc + '/**/*.json'
-  ], function () {
-    gulp.run('topics');
-  } );
-  watch([
+    dataSource + '/*.json'
+  ], ["topics"]);
+  gulp.watch([
     pageSource + '/**/*.html',
-    pageLayoutSrc + '/**/*.html'
-  ], function () {
-    gulp.run('templates')
-  });
-  watch(scriptsSource + '/**/*.*', function () {
-    gulp.run('webpack');
-  });
+    pageLayoutSrc + '/**/*.html',
+    dataSource + '/*.json'
+  ], ["templates"]);
+  gulp.watch(scriptsSource + '/**/*.*', ['webpack']);
 });
 
 // convert styles
@@ -103,15 +130,21 @@ gulp.task('styles', function() {
 
 // convert html
 gulp.task('templates', function() {
-  gulp.src(pageSource + '/**/*.html')
-    .pipe(swig({
-      defaults: { cache: false },
-      data: {
-        'site_host': 'http://2016.opensource.hk'
-      }
-    }))
-    .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest(baseTarget));
+  var sponsors   = parseJSON(dataSource + '/sponsors.json',   'utf8');
+  var news       = parseJSON(dataSource + '/news.json',       'utf8');
+  gulp.src(
+    pageSource + '/**/*.html')
+   .pipe(swig({
+     defaults: { cache: false },
+     data: {
+       'site_host': 'http://2016.opensource.hk',
+       "displayDesc": displayDesc,
+       'news': news,
+       'sponsors': sponsors
+     }
+   }))
+   .pipe(htmlmin({collapseWhitespace: true}))
+   .pipe(gulp.dest(baseTarget));
 });
 
 // convert topic from templates
@@ -119,43 +152,11 @@ gulp.task('topics', function() {
 
   // read those files everytime with fs
   // instead of `require` (will cache the file)
-  var topics   = parseJSON(topicSrc + '/data/topics.json',   'utf8');
-  var tags     = parseJSON(topicSrc + '/data/tags.json',     'utf8');
-  var speakers = parseJSON(topicSrc + '/data/speakers.json', 'utf8');
-  var langs    = parseJSON(topicSrc + '/data/langs.json',    'utf8');
-  var levels   = parseJSON(topicSrc + '/data/levels.json',   'utf8');
-
-  // link generator
-  var url = function(type, id) {
-      if (type == 'topic') {
-        return '/topics/' + id + '/';
-      }
-    },
-
-  // filterBy filters object (e.g. topic) by the given
-  // property name and value
-    filterBy = function(name, value) {
-      return function (obj) {
-        return obj[name] === value;
-      }
-    },
-
-  // turn an object into an array
-    toArray = function(obj) {
-      var arr = [];
-      Object.keys(obj).forEach(function (key) {
-        arr.push(obj[key]);
-      });
-      return arr
-    },
-
-  // formatting (or not formatting) description strings
-    displayDesc = function (input) {
-      if (Array.isArray(input)) {
-        return input.join(' ');
-      }
-      return input;
-    };
+  var topics   = parseJSON(dataSource + '/topics.json',   'utf8');
+  var tags     = parseJSON(dataSource + '/tags.json',     'utf8');
+  var speakers = parseJSON(dataSource + '/speakers.json', 'utf8');
+  var langs    = parseJSON(dataSource + '/langs.json',    'utf8');
+  var levels   = parseJSON(dataSource + '/levels.json',   'utf8');
 
   // generate topic index
   gulp.src(topicSrc + '/topics.html')
@@ -172,6 +173,7 @@ gulp.task('topics', function() {
         "tags": tags,
         "speakers": speakers,
         "topicsByType": {
+          "Keynotes": toArray(topics).filter(filterBy('type', 'keynote')),
           "Talks": toArray(topics).filter(filterBy('type', 'talk')),
           "Workshops": toArray(topics).filter(filterBy('type', 'workshop')),
           "Lightning Talks": toArray(topics).filter(filterBy('type', 'lightening-talk'))
