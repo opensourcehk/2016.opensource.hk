@@ -1,18 +1,13 @@
+'use strict';
 
-var webpack = require('webpack');
+import webpack from 'webpack';
 
 // loaders to use for different file type
 var loaders = [
   {
     //tell webpack to use babel for all *.js files
     test: /\.js$/,
-    loader: 'babel',
-    query: {
-      presets: [
-        'react',
-        'es2015'
-      ]
-    },
+    loader: 'babel'
   },
   {
     test: /\.json$/,
@@ -36,7 +31,7 @@ var plugins = [
   new webpack.optimize.UglifyJsPlugin({minimize: true})
 ];
 
-module.exports = [
+export default [
   {
     name: "browser",
     context: __dirname + "/../src/scripts",
