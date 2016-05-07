@@ -1,5 +1,12 @@
 [
   {
+    "date": "2016/05/06",
+    "title": "A new promotional video has come out",
+    "url": "https://www.youtube.com/watch?v=43uVMqES0Kk",
+    "external": true,
+    "published": true
+  },
+  {
     "date": "2016/05/05",
     "title": "CFP results has announced. Please read the Topics page for the finalists",
     "url": "/topics/",
