@@ -73,7 +73,10 @@ function displayDesc (input) {
   return input;
 }
 
-
+// capitalize string
+function capitalize(type) {
+  return type[0].toUpperCase() + type.slice(1);
+}
 
 // watch the public files
 // hot reload if there is changes
@@ -168,6 +171,7 @@ gulp.task('topics', function() {
         "site_host": "http://2016.opensource.hk",
         "toArray": toArray,
         "filterBy": filterBy,
+        "capitalize": capitalize,
         "langs": langs,
         "levels": levels,
         "tags": tags,
@@ -195,6 +199,7 @@ gulp.task('topics', function() {
           "url": url,
           "site_host": "http://2016.opensource.hk",
           "displayDesc": displayDesc,
+          "capitalize": capitalize,
           "topic_id": topic_id,
           "tags": tags,
           "langs": langs,

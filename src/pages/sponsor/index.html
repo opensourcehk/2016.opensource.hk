@@ -17,26 +17,31 @@
     {% for tier in sponsors %}
       <section class="sponsorship-tier">
         <h2>{{ tier.name }}</h2>
-        <div class="sponsors">
+        <div class="sponsors container">
           {% for sponsor in tier.sponsors %}
             {% if sponsor.grantedPerm %}
               <div class="sponsor sponsor-{{ sponsor.id }}">
-                {% for logo in sponsor.logos %}
-                  <a class="logo" href="{{ logo.url }}" title="{{ logo.title }}" target="_blank">
-                    <img src="{{ logo.img }}" alt="{{ logo.alt }}" style="margin: 10px 10px">
-                  </a>
-                {% endfor %}
-                <div class="description">
-                  <p>
-                    {{ displayDesc(sponsor.description) }}
-                  </p>
-                  <p>
-                    {% for link in sponsor.links %}
-                      <a class="btn btn-default" target="_blank" href="{{ link.url }}" role="button">{{ link.text }}</a>
+                <div class="row">
+                  <div class="col-md-2 logos">
+                    {% for logo in sponsor.logos %}
+                      <a class="logo" href="{{ logo.url }}" title="{{ logo.title }}" target="_blank">
+                        <img src="{{ logo.img }}" alt="{{ logo.alt }}" style="margin: 10px 10px">
+                      </a>
                     {% endfor %}
-                  </p>
-                </div>
-              </div><!--/.sponsor-->
+                  </div>
+                  <div class="col-md-10 description">
+                    <h3>{{ sponsor.name }}</h3>
+                    <p>
+                      {{ displayDesc(sponsor.description) }}
+                    </p>
+                    <div class="links">
+                      {% for link in sponsor.links %}
+                        <a class="btn btn-default" target="_blank" href="{{ link.url }}" role="button">{{ link.text }}</a>
+                      {% endfor %}
+                    </div><!--/.links-->
+                  </div>
+                </div><!--/.row-->
+              </div><!--/.sponsor row-->
             {% endif %}
           {% endfor %}
         </div><!--/.sponsors-->
