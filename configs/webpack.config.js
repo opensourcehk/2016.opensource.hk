@@ -4,19 +4,15 @@ var webpack = require('webpack');
 // loaders to use for different file type
 var loaders = [
   {
-    //tell webpack to use jsx-loader and babel for all *.jsx files
-    test: /\.jsx$/,
-    loaders: [
-      'jsx?insertPragma=React.DOM&harmony',
-      'babel?stage=1'
-    ]
-  },
-  {
     //tell webpack to use babel for all *.js files
     test: /\.js$/,
-    loaders: [
-      'babel?stage=1'
-    ]
+    loader: 'babel',
+    query: {
+      presets: [
+        'react',
+        'es2015'
+      ]
+    },
   },
   {
     test: /\.json$/,
