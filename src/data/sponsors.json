@@ -4,6 +4,7 @@
     "sponsors": [
       {
         "id": "elastic",
+        "name": "Elastic",
         "grantedPerm": false,
         "description": "",
         "logos": [
@@ -23,25 +24,31 @@
       },
       {
         "id": "ibm",
+        "name": "IBM",
         "grantedPerm": true,
-        "description": "",
+        "description": [
+          "<p>IBM is an innovation and technology company headquartered in New York with operations in over 175 countries. It delivers innovative solutions, software and infrastructures to improve client outcomes, create new value and solve business problems through integrated solutions that leverage IT and deep knowledge in business processes. These solutions draw from an industry leading portfolio of business and technology consulting, delivery and implementation services, as well as enterprise software, systems and financing.</p>",
+          "<p>IBM opened for business in Hong Kong in 1957, and has since played a pivotal role in Hong Kong’s development and transformation. For more information, visit <a href=\"httsp://www.ibm.com/hk\" target=\"_blank\">www.ibm.com/hk</a></p>"
+        ],
+        "_readme": "description from last year. need to confirm description this year",
         "logos": [
           {
             "title": "IBM",
             "alt": "IBM logo",
             "img": "//2016.opensource.hk/statics/images/sponsors/ibmpos_blue_110.jpg",
-            "url": "https://www.ibm.com/"
+            "url": "https://www.ibm.com/hk/"
           }
         ],
         "links": [
           {
-            "text": "IBM Website",
-            "url": "https://www.ibm.com/"
+            "text": "IBM China / Hong Kong Website",
+            "url": "https://www.ibm.com/hk/"
           }
         ]
       },
       {
         "id": "vmware",
+        "name": "VMWare",
         "grantedPerm": false,
         "description": "",
         "logos": [
@@ -66,6 +73,7 @@
     "sponsors": [
       {
         "id": "oracle",
+        "name": "Oracle",
         "grantedPerm": true,
         "description": [
           "MySQL is the world's most popular open source database. With its",
@@ -85,13 +93,13 @@
             "title": "MySQL",
             "alt": "MySQL logo",
             "img": "//2016.opensource.hk/statics/images/sponsors/mysql-110.png",
-            "url": "https://www.oracle.com/"
+            "url": "https://www.mysql.com/"
           }
         ],
         "links": [
           {
             "text": "Oracle Website",
-            "url": "https://www.mysql.com/"
+            "url": "https://www.oracle.com/"
           },
           {
             "text": "MySQL Website",
@@ -101,6 +109,7 @@
       },
       {
         "id": "oursky",
+        "name": "OurSky",
         "grantedPerm": true,
         "description": "Oursky is a Hong Kong based app development studio with a talented team of 40 people. Our apps are loved by millions of users and got features by the App Store from time to time. Apart from building apps, we have also been striving to contribute to the developer community and this year, we open source our backend solution, Skygear, which is originally built for internal use to replace Parse.",
         "logos": [
@@ -120,6 +129,7 @@
       },
       {
         "id": "microsoft",
+        "name": "Microsoft",
         "grantedPerm": true,
         "description": [
           "Since its founding in 1975, Microsoft has been a leader in this ",
@@ -153,6 +163,7 @@
       },
       {
         "id": "google",
+        "name": "Google",
         "grantedPerm": false,
         "description": "",
         "logos": [
@@ -177,6 +188,7 @@
     "sponsors": [
       {
         "id": "jetbrains",
+        "name": "JetBrains",
         "grantedPerm": true,
         "description": "",
         "logos": [
