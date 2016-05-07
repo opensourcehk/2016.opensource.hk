@@ -9,54 +9,124 @@
 {% block title %}{{ topic.title }}{% endblock %}
 
 {% block description %}
-  <h2>Speaker: {{ speaker.name }}{% if speaker.nationality %} ({{ speaker.nationality }}){% endif %}</h2>
-  {% if speaker.community %}
-    {% if speaker.community.url %}
-      <p>Community: <a href="{ speaker.community.url }" target="_blank">{{ speaker.community.name }}</a></p>
-    {% else %}
-      <p>Community: {{ speaker.community.name }}</p>
-    {% endif %}
-  {% endif %}
-  <p>Category: {{ topic.category }}</p>
-  <p>Language: {{ lang.name }}{% if topic.lang_slide %} (with {{ lang_slide.name }} Slides){% endif %}</p>
-  {% if topic.tags && (topic.tags.length > 0) %}<p><strong>Tag:</strong> {% for tag in topic.tags %}<span class="tag">{{ tags[tag].name
-    }}</span> {% endfor %}</p>{% endif %}
-  {% if topic.level %}
-    <div class="progress" style="width: 80%;">
-    {% if topic.level == "beginners" %}
-      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 33%;">
-        Beginners
-      </div>
-    {% elseif topic.level == "intermediate" %}
-      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 66%;">
-        Intermediate
-      </div>
-    {% elseif topic.level == "advanced" %}
-      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 100%;">
-        Advanced
-      </div>
-    {% endif %}
-    </div>
-  {% endif %}
+  <div class="page-topic-header">
+    <p>By {{ speaker.name }}{% if speaker.social.nickname %} <span class="nickname">({{ speaker.social.nickname }})</span>{% endif %}</p>
+    <p>{{ displayDesc(topic.short_desc) }}</p>
+  </div>
 {% endblock %}
 
 {% block content %}
-  <div class="container">
+  <div class="page-topic container">
 
-    <div class="row speaker">
-      <div class="col-sm-3">
-        <img src="{{ speaker.portrait }}" alt="Photo of {{ speaker.name }}" class="img-thumbnail">
+    <div class="row">
+      <div class="col-md-8 topic">
+
+        <h2 class="visible-md visible-lg">Details</h2>
+
+        <dl class="datasheet">
+
+          <dt>Type</dt>
+          <dd>{{ capitalize(topic.type) }}</dd>
+
+          <dt>Category</dt>
+          <dd>{{ topic.category }}</dd>
+
+          <dt>Language</dt>
+          <dd>{{ lang.name }}{% if topic.lang_slide %} (with {{ lang_slide.name }} Slides){% endif %}</dd>
+
+          {% if topic.tags && (topic.tags.length > 0) %}
+            <dt>Tags</dt>
+            <dd>{% for tag in topic.tags %}<span class="tag">{{ tags[tag].name}}</span> {% endfor %}</dd>
+          {% endif %}
+
+          <dt>Target Audience</dt>
+          <dd>{{ topic.target_audience.join(", ") }}</dd>
+
+          {% if topic.requirement %}
+            <dt>Requirement</dt>
+            <dd>{{ topic.requirement }}</dd>
+          {% endif %}
+
+        </dl>
+
+        {% if topic.level %}
+          <div class="progress">
+          {% if topic.level == "beginners" %}
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 33%;">
+              Beginners
+            </div>
+          {% elseif topic.level == "intermediate" %}
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 66%;">
+              Intermediate
+            </div>
+          {% elseif topic.level == "advanced" %}
+            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 100%;">
+              Advanced
+            </div>
+          {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="description">
+          {{ displayDesc(topic.description) }}
+        </div>
+
       </div>
-      <div class="col-sm-9">
-        <h3>About Speaker</h3>
-        {{ displayDesc(speaker.description) }}
+      <div class="col-md-4 speaker">
+
+        <h2>{{ speaker.name }}{% if speaker.social.nickname %} <span class="nickname">{{ speaker.social.nickname }}</span>{% endif %}</h2>
+
+        {% if speaker.social.github or speaker.social.blog %}
+          <div class="social">
+            {% if speaker.social.github %}
+              <a title="Github of {{ speaker.name }}" href="{{ speaker.social.github }}" target="_blank"><span class="genericon genericon-github"></span></a>
+            {% endif %}
+            {% if speaker.social.blog %}
+              <a title="Blog of {{ speaker.name }}" href="{{ speaker.social.blog }}" target="_blank"><span class="genericon genericon-website"></span></a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if speaker.portrait %}
+          <div class="portrait">
+            <img src="{{ speaker.portrait }}" alt="Photo of {{ speaker.name }}" class="img-thumbnail">
+          </div>
+        {% endif %}
+
+        <dl class="datasheet">
+          {% if speaker.nationality %}
+            <dt>Origin</dt>
+            <dd>{{ speaker.nationality }}</dd>
+          {% endif %}
+          {% if speaker.residence and (speaker.residence != speaker.nationality)%}
+            <dt>Residence</dt>
+            <dd>{{ speaker.residence }}</dd>
+          {% endif %}
+
+          {% if speaker.community %}
+            <dt>Community</dt>
+            {% if speaker.community.url %}
+              <dd><a href="{{ speaker.community.url }}" target="_blank">{{ speaker.community.name }}</a></dd>
+            {% else %}
+              <dd>{{ speaker.community.name }}</dd>
+            {% endif %}
+          {% endif %}
+
+          {% if speaker.company %}
+            <dt>Company</dt>
+            {% if speaker.company.url %}
+              <dd><a href="{{ speaker.company.url }}" target="_blank">{{ speaker.company.name }}</a></dd>
+            {% else %}
+              <dd>{{ speaker.company.name }}</dd>
+            {% endif %}
+          {% endif %}
+        </dl>
+
+        <h3>Biography</h3>
+        <p>{{ displayDesc(speaker.description) }}</p>
+
       </div>
       <!-- TODO: add social links (e.g. github) -->
-    </div>
-
-    <div class="row topic">
-      <h3>About the Topic</h3>
-      {{ displayDesc(topic.description) }}
     </div>
 
   </div>
