@@ -29,9 +29,7 @@
     {% for topics in topicsByType %}
       {% set typeName = loop.key %}
       {% if topics.length > 0 %}
-        <div class="panel-heading">
-          <h2 class="panel-title">{{ typeName }}</h2>
-        </div>
+        <h2>{{ typeName }}</h2>
         <table class="table table-hover">
           <thead>
           <tr>

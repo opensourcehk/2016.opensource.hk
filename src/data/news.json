@@ -1,0 +1,28 @@
+[
+  {
+    "date": "2016/05/06",
+    "title": "A new promotional video has come out",
+    "url": "https://www.youtube.com/watch?v=43uVMqES0Kk",
+    "external": true,
+    "published": true
+  },
+  {
+    "date": "2016/05/05",
+    "title": "CFP results has announced. Please read the Topics page for the finalists",
+    "url": "/topics/",
+    "published": true
+  },
+  {
+    "date": "2016/02/14",
+    "title": "HKOSCon 2016 Early Bird Tickets Sales begins",
+    "url": "http://hkoscon2016.eventbrite.com/?aff=website",
+    "external": true,
+    "published": true
+  },
+  {
+    "date": "2016/02/01",
+    "title": "HKOSCon 2016 Call for Proposal begins",
+    "url": "/cfp/",
+    "published": false
+  }
+]

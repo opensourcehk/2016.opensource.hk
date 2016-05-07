@@ -23,7 +23,7 @@
       "name": "Droste",
       "url": "http://droste.hk"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "masahiro-nakagawa": {
@@ -34,7 +34,9 @@
       "nickname": "Masa"
     },
     "description": [
-      "<p>Work at Treasure Data. Fluentd core maintainer. D's standard library comitter.</p>"
+      "<p>Work at Treasure Data.</p>",
+      "<p><a href=\"https://github.com/fluent/fluentd\" target=\"_blank\">Fluentd</a> core maintainer.</p>",
+      "<p>D's standard library comitter.</p>"
     ],
     "residence": "Japan",
     "nationality": "Japan",
@@ -61,6 +63,23 @@
       "name": "Itera Norge AS",
       "url": "http://www.itera.no/"
     },
+    "portrait": "https://pbs.twimg.com/profile_images/703254582013644800/ZC1qGxRj.jpg",
+    "hkoscon-sponsored": false
+  },
+  "quentin-adam": {
+    "name": "Quentin Adam",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/waxzce",
+      "nickname": "waxzce"
+    },
+    "description": "Quentin ADAM is the CEO of Clever Cloud: an IT automation company, running a Platform as a Service allowing you to run java, scala, ruby, node.js, php, python or go applications, with auto scaling and auto healing features. This position allow him to study lots of applications, code, practice, and extract some talks and advises. Regular speaker at various tech conference, he’s focused to help developers to deliver quickly and happily good applications.",
+    "residence": "France",
+    "nationality": "France",
+    "company": {
+      "name": "Clever Cloud",
+      "url": "https://www.clever-cloud.com/en/"
+    },
     "portrait": "https://i.imgur.com/GGGmw5z.jpg",
     "hkoscon-sponsored": false
   },
@@ -80,7 +99,7 @@
       "name": "Red Hat",
       "url": "https://www.redhat.com/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "andy-shu": {
@@ -99,7 +118,7 @@
       "name": "Strikingly",
       "url": "https://www.strikingly.com/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "satoshi-nagayasu": {
@@ -136,7 +155,7 @@
       "name": "g0v.tw",
       "url": "https://g0v.tw"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "qi-liu": {
@@ -155,7 +174,7 @@
     "company": {
       "name": "PingCAP"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "leon-anavi": {
@@ -190,7 +209,7 @@
       "name": "openlearning",
       "url": "https://www.openlearning.com/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "franklin-weng": {
@@ -210,7 +229,7 @@
       "name": "Software Liberty Association Taiwan (SLAT)",
       "url": "http://www.slat.org/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "hayden-chung": {
@@ -226,7 +245,7 @@
       "name": "Mozilla Hong Kong",
       "url": "http://moz.hk/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "gary-kwong": {
@@ -246,7 +265,7 @@
       "name": "Mozilla Corporation",
       "url": "https://www.mozilla.org/en-US/foundation/moco/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "ivan-tu": {
@@ -267,7 +286,7 @@
       "name": "Oracle",
       "url": "https://www.oracle.com/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "daniel-chcouri": {
@@ -312,7 +331,7 @@
       "name": "女人迷 womany.net",
       "url": "https://womany.net"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "haggen-so": {
@@ -329,7 +348,7 @@
       "name": "HKCOTA",
       "url": "http://www.cota.hk/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "chris-choy": {
@@ -344,7 +363,7 @@
       "name": "ClusterTech",
       "url": "http://www.clustertech.com/hk/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "kevin-hu": {
@@ -393,7 +412,7 @@
     "gender": "male",
     "social": {
       "github": "https://github.com/Manikandan-Selvaganesh",
-      "nickname": "Manikandan Selvaganesh"
+      "nickname": ""
     },
     "description": "Manikandan here from India. I did my Bachelors in Computer Science and working for Red Hat currently. An Open Source enthusiast passionate to code(for work and hobby) and love to explore places, technologies and a better speaker.",
     "residence": "India",
@@ -406,7 +425,7 @@
       "name": "Red Hat",
       "url": "https://www.redhat.com/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "marcelo-araujo": {
@@ -482,13 +501,14 @@
     "residence": "Hong Kong",
     "nationality": "Hong Kong",
     "community": {
-      "name": "MySQL User Group Hong Kong"
+      "name": "MySQL User Group Hong Kong",
+      "url": "https://www.facebook.com/groups/hkmysqlusergroup/"
     },
     "company": {
       "name": "Oracle",
       "url": "https://www.oracle.com/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
   "chung-hong-chan": {
@@ -509,7 +529,24 @@
       "name": "JMSC, HKU",
       "url": "https://jmsc.hku.hk/"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
+    "hkoscon-sponsored": false
+  },
+  "david-ng": {
+    "name": "NG, Ka Hung",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/repeatedly",
+      "nickname": "David Ng"
+    },
+    "description": "All-the-time a code geek and sometimes an evangelist. Product manager at <a href=\"https://oursky.com\" target=\"_blank\">Oursky</a>.",
+    "residence": "Hong Kong",
+    "nationality": "Hong Kong",
+    "company": {
+      "name": "OurSky",
+      "url": "https://oursky.com"
+    },
+    "portrait": "",
     "hkoscon-sponsored": false
   },
 
@@ -533,7 +570,7 @@
       "name": "Droste",
       "url": "#"
     },
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "hkoscon-sponsored": false
   },
 
@@ -541,7 +578,7 @@
     "name": "Dummy Speaker",
     "nationality": "Some Country",
     "hkoscon-sponsored": false,
-    "portrait": "/assets/images/speakers/placeholder.jpg",
+    "portrait": "",
     "description": "<p>hello some description</p>"
   }
 }
