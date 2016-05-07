@@ -50,10 +50,16 @@
 
     {% block content %}(contents here){% endblock %}
 
+    <div id="playground" class="container">
+      <!-- TODO: render the precomibled html here -->
+    </div>
+
     <div class="container content-container">
       {% include 'includes/footer.html' %}
     </div> <!-- /container -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="/assets/scripts/vendors.js"></script>
     <script src="/assets/scripts/bundle.js"></script>

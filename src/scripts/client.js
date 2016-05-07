@@ -1,16 +1,20 @@
-!function () {
-  'use strict';
-  var $navbar = $('.navbar-front'), drop = $('#navbar-collapse', $navbar);
-  $navbar.affix({
-    offset: {
-      top: $('.jumbotron').height() + $navbar.height()
-    }
-  });
-  $navbar.on('affixed.bs.affix', function () {
-    drop.removeClass('dropup');
-  });
-  $navbar.on('affixed-top.bs.affix', function () {
-    drop.addClass('dropup');
-  });
+'use strict';
 
-}(window.jQuery);
+import React from "react";
+import ReactDOM from "react-dom";
+import navBar from "./utils/navBar";
+import TimeTable from "./components/TimeTable";
+
+import speakers from "../data/speakers.json";
+import topics   from "../data/topics.json";
+import langs    from "../data/langs.json";
+
+navBar();
+
+function hello() {
+  return (
+    <TimeTable speakers={speakers} topics={topics} langs={langs} />
+  )
+}
+
+ReactDOM.render(hello(), document.getElementById('playground'));
