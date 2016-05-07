@@ -78,6 +78,8 @@ function capitalize(type) {
   return type[0].toUpperCase() + type.slice(1);
 }
 
+var timeHash = new Buffer(Date.now().toString()).toString('base64').slice(0,6);
+
 // watch the public files
 // hot reload if there is changes
 gulp.task('serve-dev', function() {
@@ -142,6 +144,7 @@ gulp.task('templates', function() {
      data: {
        'site_host': 'http://2016.opensource.hk',
        "displayDesc": displayDesc,
+       "timeHash": timeHash,
        'news': news,
        'sponsors': sponsors
      }
@@ -172,6 +175,7 @@ gulp.task('topics', function() {
         "toArray": toArray,
         "filterBy": filterBy,
         "capitalize": capitalize,
+        "timeHash": timeHash,
         "langs": langs,
         "levels": levels,
         "tags": tags,
@@ -197,6 +201,7 @@ gulp.task('topics', function() {
         load_json: false,
         data: {
           "url": url,
+          "timeHash": timeHash,
           "site_host": "http://2016.opensource.hk",
           "displayDesc": displayDesc,
           "capitalize": capitalize,
