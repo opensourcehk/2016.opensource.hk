@@ -34,7 +34,7 @@
           <dt>Language</dt>
           <dd>{{ lang.name }}{% if topic.lang_slide %} (with {{ lang_slide.name }} Slides){% endif %}</dd>
 
-          {% if topic.tags && (topic.tags.length > 0) %}
+          {% if topic.tags and (topic.tags.length > 0) %}
             <dt>Tags</dt>
             <dd>{% for tag in topic.tags %}<span class="tag">{{ tags[tag].name}}</span> {% endfor %}</dd>
           {% endif %}
@@ -74,23 +74,29 @@
       </div>
       <div class="col-md-4 speaker">
 
-        <h2>{{ speaker.name }}{% if speaker.social.nickname %} <span class="nickname">{{ speaker.social.nickname }}</span>{% endif %}</h2>
+        <h2>
+          <span class="name">{{ speaker.name }}</span>
+          {% if speaker.social.nickname %}<span class="nickname">{{ speaker.social.nickname }}</span>{% endif %}
+        </h2>
 
-        {% if speaker.social.github or speaker.social.blog %}
-          <div class="social">
-            {% if speaker.social.github %}
-              <a title="Github of {{ speaker.name }}" href="{{ speaker.social.github }}" target="_blank"><span class="genericon genericon-github"></span></a>
-            {% endif %}
-            {% if speaker.social.blog %}
-              <a title="Blog of {{ speaker.name }}" href="{{ speaker.social.blog }}" target="_blank"><span class="genericon genericon-website"></span></a>
-            {% endif %}
-          </div>
-        {% endif %}
-
-        {% if speaker.portrait %}
-          <div class="portrait">
-            <img src="{{ speaker.portrait }}" alt="Photo of {{ speaker.name }}" class="img-thumbnail">
-          </div>
+        {% if speaker.social.github or speaker.social.blog or speaker.portrait %}
+        <div class="quick-info {% if speaker.portrait %}thumbnail{% endif %}">
+          {% if speaker.portrait %}
+            <div class="portrait">
+              <img src="{{ speaker.portrait }}" alt="Photo of {{ speaker.name }}">
+            </div>
+          {% endif %}
+          {% if speaker.social.github or speaker.social.blog %}
+            <div class="social">
+              {% if speaker.social.github %}
+                <a title="Github of {{ speaker.name }}" href="{{ speaker.social.github }}" target="_blank"><span class="genericon genericon-github"></span></a>
+              {% endif %}
+              {% if speaker.social.blog %}
+                <a title="Blog of {{ speaker.name }}" href="{{ speaker.social.blog }}" target="_blank"><span class="genericon genericon-website"></span></a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
         {% endif %}
 
         <dl class="datasheet">

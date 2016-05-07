@@ -18,6 +18,9 @@
   }
 }
 
+/**
+ * topic page
+ */
 .page-topic {
 
   .topic {
@@ -37,17 +40,67 @@
       }
     }
     .progress {
+      height: 40px;
       width: 95%;
+      .progress-bar {
+        line-height: 40px;
+      }
     }
   }
 
   .speaker {
-    h2 .nickname {
+    h2 {
+      .name {
+        display: block;
+      }
+      .nickname {
+        color: rgba(0, 0, 0, .4);
+        font-size: 0.8em;
+        font-weight: normal;
+        margin-top: 0.3em;
+      }
+    }
+    .quick-info {
       display: block;
-      color: rgba(0, 0, 0, .4);
-      font-size: 0.8em;
-      font-weight: normal;
-      margin-top: 0.3em;
+      position: relative;
+      width: 70%;
+      min-height: 2em;
+
+      img {
+        width: 100%;
+      }
+
+      &.thumbnail .social {
+        padding: 8px 6px 4px;
+        margin-top: 4px;
+        border-top: solid 1px rgba(0, 0, 0, 0.2);
+      }
+
+      .social {
+        text-align: left;
+        background-color: rgba(255, 255, 255, 0.8);
+        a {
+          text-decoration: none;
+          color: inherit;
+          :hover {
+            color: rgba(0, 0, 0, 0.6);
+          }
+        }
+        .genericon {
+          font-size: 28pt;
+        }
+      }
+    }
+    @media (max-width: $width-md) {
+      .quick-info {
+        width: 100%;
+        .social {
+          text-align: center;
+          .genericon {
+            font-size: 40pt;
+          }
+        }
+      }
     }
     .datasheet {
       display: block;
@@ -63,37 +116,33 @@
         margin-left: 30%;
       }
     }
-    img {
-      max-height: 500px;
-    }
-    .portrait {
-      width: 50%;
-    }
-    .social {
-      margin: .5em 0 1em;
-      a {
-        text-decoration: none;
-        color: inherit;
-        :hover {
-          color: rgba(0, 0, 0, 0.6);
-        }
-      }
-      .genericon {
-        font-size: 30pt;
-      }
-    }
-    @media (max-width: $width-md) {
-      .portrait {
-        width: 100%;
-      }
-      .social {
-        text-align: center;
-      }
-    }
   }
 
 }
 
+/**
+ * topics page
+ */
+.page-topics {
+  .table {
+    .title {
+      font-size: 1.2em;
+    }
+    .speaker {
+      width: 16%;
+      ul {
+        font-size:.75em;color:rgba(0,0,0,.5);
+        padding: 0.5em 0 0 1.5em;
+      }
+    }
+    .category, .topics, .level {
+      width: 10%;
+    }
+    .language {
+      width: 15%;
+    }
+  }
+}
 
 @media (max-width: 992px) {
   .media-body {
