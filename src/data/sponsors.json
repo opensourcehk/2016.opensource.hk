@@ -5,13 +5,30 @@
       {
         "id": "elastic",
         "name": "Elastic",
-        "grantedPerm": false,
-        "description": "",
+        "grantedPerm": true,
+        "description": [
+          "Founded in 2012 by the people behind the Elasticsearch and Apache ",
+          "Lucene open source projects, Elastic provides real-time insights ",
+          "and makes massive amounts of structured and unstructured data ",
+          "usable for developers and enterprises. By focusing on scalability, ",
+          "ease-of-use, and ease-of-integration, Elastic’s suite of ",
+          "open-source products (Elasticsearch, Logstash, Kibana, Beats) and ",
+          "subscription plugins (Shield, Watcher, Marvel) can be deployed ",
+          "either on-premise or in the cloud with Elastic’s Found offering. ",
+          "To date, these products have achieved more than 50 million ",
+          "cumulative downloads and power many of the world’s leading mobile, ",
+          "social, consumer and mission critical business applications. ",
+          "Elastic is backed by Benchmark Capital, Index Ventures, and NEA ",
+          "with headquarters in Amsterdam and Mountain View, California, and ",
+          "offices and employees around the world. To learn more, visit ",
+          "<a href=\"https://www.elastic.co\" target=\"_blank\">",
+          "www.elastic.co</a>."
+        ],
         "logos": [
           {
             "title": "Elastic",
             "alt": "Elastic logo",
-            "img": "//2016.opensource.hk/statics/images/sponsors/elastic-logo-v-full-color-110.png",
+            "img": "//2016.opensource.hk/statics/images/sponsors/elastic-logo-h-large.jpg",
             "url": "https://www.elastic.co/"
           }
         ],

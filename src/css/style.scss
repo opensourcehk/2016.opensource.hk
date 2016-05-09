@@ -199,8 +199,13 @@
     .description {
       text-align: justify;
     }
-    .logo img {
-      margin: 10px 10px;
+    .logo{
+      display: block;
+      max-width: 80%;
+      img {
+        display: block;
+        width: 100%;
+      }
     }
     @media (max-width: $width-md) {
       .logos {
