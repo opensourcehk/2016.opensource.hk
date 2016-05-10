@@ -207,7 +207,15 @@
         "id": "jetbrains",
         "name": "JetBrains",
         "grantedPerm": true,
-        "description": "",
+        "description": [
+          "JetBrains PyCharm is the intelligent Python IDE for ",
+          "Professional Developers providing a complete set of tools for ",
+          "productive Python, Web and Scientific development. PyCharm comes ",
+          "in two editions. The free and open-source PyCharm Community ",
+          "Edition is perfect for pure Python and scientific development. ",
+          "PyCharm Professional Edition is designed for professional Python ",
+          "and Web developers."
+        ],
         "logos": [
           {
             "title": "JetBrains",
