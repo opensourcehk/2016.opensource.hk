@@ -234,5 +234,13 @@
         }
       ]
     }
+  ],
+  "patrons": [
+    {
+      "name": "Ms. Connie Leung"
+    },
+    {
+      "name": "Nintex"
+    }
   ]
 }
