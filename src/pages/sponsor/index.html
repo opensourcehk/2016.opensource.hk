@@ -12,9 +12,9 @@
 {% block content %}
 
 <div class="container sponsorship-tiers">
-  <div class="row">
 
-    {% for tier in sponsors %}
+  <div class="row">
+    {% for tier in sponsors.sponsors %}
       <section class="sponsorship-tier">
         <h2>{{ tier.name }}</h2>
         <div class="sponsors container">
@@ -47,8 +47,8 @@
         </div><!--/.sponsors-->
       </section>
     {% endfor %}
-
   </div><!--/.row-->
+
 </div><!--/.container-->
 
 {% endblock %}
