@@ -45,8 +45,8 @@ function parseJSON(filename) {
   }
 }
 
-// link generator
-function url (type, id) {
+// topicURL generator
+function topicURL (type, id) {
   if (type == 'topic') {
     return '/topics/' + id + '/';
   }
@@ -82,7 +82,37 @@ function capitalize(type) {
   return type[0].toUpperCase() + type.slice(1);
 }
 
-var timeHash = new Buffer(Date.now().toString()).toString('base64').slice(0,6);
+const data = {
+  "timeHash":  new Buffer(Date.now().toString()).toString('base64').slice(0,6),
+  "site_host": "http://2016.opensource.hk",
+
+  // read those files everytime with fs
+  // instead of `require` (will cache the file)
+  "topics":   parseJSON(dataSource + '/topics.json',   'utf8'),
+  "tags":     parseJSON(dataSource + '/tags.json',     'utf8'),
+  "speakers": parseJSON(dataSource + '/speakers.json', 'utf8'),
+  "langs":    parseJSON(dataSource + '/langs.json',    'utf8'),
+  "levels":   parseJSON(dataSource + '/levels.json',   'utf8'),
+  "sponsors": parseJSON(dataSource + '/sponsors.json', 'utf8'),
+  "news":     parseJSON(dataSource + '/news.json',     'utf8')
+};
+
+const dataExtended = {
+  "topicsByType": {
+    "Keynotes": toArray(data.topics).filter(filterBy('type', 'keynote')),
+    "Talks": toArray(data.topics).filter(filterBy('type', 'talk')),
+    "Workshops": toArray(data.topics).filter(filterBy('type', 'workshop')),
+    "Lightning Talks": toArray(data.topics).filter(filterBy('type', 'lightening-talk'))
+  }
+};
+
+const helperFuncs = {
+  "capitalize": capitalize,
+  "displayDesc": displayDesc,
+  "filterBy": filterBy,
+  "toArray": toArray,
+  "topicURL": topicURL
+};
 
 // watch the public files
 // hot reload if there is changes
@@ -139,19 +169,16 @@ gulp.task('styles', function() {
 
 // convert html
 gulp.task('templates', function() {
-  var sponsors   = parseJSON(dataSource + '/sponsors.json',   'utf8');
-  var news       = parseJSON(dataSource + '/news.json',       'utf8');
   gulp.src(
     pageSource + '/**/*.html')
    .pipe(swig({
      defaults: { cache: false },
-     data: {
-       'site_host': 'http://2016.opensource.hk',
-       "displayDesc": displayDesc,
-       "timeHash": timeHash,
-       'news': news,
-       'sponsors': sponsors
-     }
+     data: Object.assign(
+       {},
+       data,
+       dataExtended,
+       helperFuncs
+     )
    }))
    .pipe(htmlmin({collapseWhitespace: true}))
    .pipe(gulp.dest(baseTarget));
@@ -160,68 +187,43 @@ gulp.task('templates', function() {
 // convert topic from templates
 gulp.task('topics', function() {
 
-  // read those files everytime with fs
-  // instead of `require` (will cache the file)
-  var topics   = parseJSON(dataSource + '/topics.json',   'utf8');
-  var tags     = parseJSON(dataSource + '/tags.json',     'utf8');
-  var speakers = parseJSON(dataSource + '/speakers.json', 'utf8');
-  var langs    = parseJSON(dataSource + '/langs.json',    'utf8');
-  var levels   = parseJSON(dataSource + '/levels.json',   'utf8');
-
   // generate topic index
   gulp.src(topicSrc + '/topics.html')
     .pipe(swig({
       defaults: {cache: false},
       load_json: false,
-      data: {
-        "url": url,
-        "site_host": "http://2016.opensource.hk",
-        "toArray": toArray,
-        "filterBy": filterBy,
-        "capitalize": capitalize,
-        "timeHash": timeHash,
-        "langs": langs,
-        "levels": levels,
-        "tags": tags,
-        "speakers": speakers,
-        "topicsByType": {
-          "Keynotes": toArray(topics).filter(filterBy('type', 'keynote')),
-          "Talks": toArray(topics).filter(filterBy('type', 'talk')),
-          "Workshops": toArray(topics).filter(filterBy('type', 'workshop')),
-          "Lightning Talks": toArray(topics).filter(filterBy('type', 'lightening-talk'))
-        }
-      }
+      data: Object.assign(
+        {},
+        data,
+        dataExtended,
+        helperFuncs
+      )
     }))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(rename('/index.html'))
     .pipe(gulp.dest(topicTgt));
 
   // generate topic pages
-  Object.keys(topics).forEach(function (topic_id) {
-    var topic = topics[topic_id];
+  Object.keys(data.topics).forEach(function (topic_id) {
+    var topic = data.topics[topic_id];
     gulp.src(topicSrc + '/topic.html')
       .pipe(swig({
         defaults: {cache: false},
         load_json: false,
-        data: {
-          "url": url,
-          "timeHash": timeHash,
-          "site_host": "http://2016.opensource.hk",
-          "displayDesc": displayDesc,
-          "capitalize": capitalize,
-          "topic_id": topic_id,
-          "tags": tags,
-          "langs": langs,
-          "levels": levels,
-          "speakers": speakers,
-          "topic": topic
-        }
+        data: Object.assign(
+          {
+            "topic_id": topic_id,
+            "topic": topic
+          },
+          data,
+          dataExtended,
+          helperFuncs
+        )
       }))
       .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(rename(topic_id + '/index.html'))
       .pipe(gulp.dest(topicTgt));
   });
-
 });
 
 // bundle scripts
