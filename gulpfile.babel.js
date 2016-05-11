@@ -169,8 +169,10 @@ gulp.task('styles', function() {
 
 // convert html
 gulp.task('templates', function() {
-  gulp.src(
-    pageSource + '/**/*.html')
+  gulp.src([
+   pageSource + '/**/*.html',
+   '!/**/_*.html'
+ ])
    .pipe(swig({
      defaults: { cache: false },
      data: Object.assign(
@@ -187,26 +189,10 @@ gulp.task('templates', function() {
 // convert topic from templates
 gulp.task('topics', function() {
 
-  // generate topic index
-  gulp.src(topicSrc + '/topics.html')
-    .pipe(swig({
-      defaults: {cache: false},
-      load_json: false,
-      data: Object.assign(
-        {},
-        data,
-        dataExtended,
-        helperFuncs
-      )
-    }))
-    .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(rename('/index.html'))
-    .pipe(gulp.dest(topicTgt));
-
   // generate topic pages
   Object.keys(data.topics).forEach(function (topic_id) {
     var topic = data.topics[topic_id];
-    gulp.src(topicSrc + '/topic.html')
+    gulp.src(pageSource + '/topics/_topic.html')
       .pipe(swig({
         defaults: {cache: false},
         load_json: false,
