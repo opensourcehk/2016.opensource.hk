@@ -236,7 +236,8 @@
     "name": "Hayden Chung",
     "gender": "male",
     "social": {
-      "nickname": "Fubuki Hoshino"
+      "nickname": "Fubuki Hoshino",
+      "github": "https://github.com/fhoshino"
     },
     "description": "Hayden Chung, a freelance system administrator, describes himself as an information security fanatics which loves to try out new technology. Former guest speaker in OSHK 2014 & 2015. A community member of Mozilla Hong Kong.",
     "residence": "Hong Kong",
