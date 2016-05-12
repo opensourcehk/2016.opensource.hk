@@ -2,8 +2,8 @@
 
 // basic
 import gulp from 'gulp';
-import browserSync from 'browser-sync';
 import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
 import fs from 'fs';
 
 // some config files
@@ -117,16 +117,25 @@ const helperFuncs = {
 // watch the public files
 // hot reload if there is changes
 gulp.task('serve-dev', function() {
-  var files = [
-    baseTarget    + '/**/*.html',
-    stylesTarget  + '/**/*.css',
-    scriptsTarget + '/**/*.js'
-  ];
-  browserSync.init(files, {
-    server: {
-      baseDir: baseTarget
-    }
+  var server = new WebpackDevServer(webpack(webpackCfg), {
+    contentBase: "./public",
+    hot: true,
+    historyApiFallback: false,
+
+    // webpack-dev-middleware options
+    quiet: false,
+    noInfo: false,
+    lazy: true,
+    filename: "bundle.js",
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000
+    },
+    publicPath: "/assets/",
+    headers: { "X-Custom-Header": "yes" },
+    stats: { colors: true },
   });
+  server.listen(3000, "localhost", function () {});
 });
 
 // watch the source files
@@ -219,6 +228,7 @@ gulp.task('webpack', function(callback) {
     if(err) throw new gutil.PluginError('webpack', err);
     gutil.log('[webpack]', stats.toString({
       // output options
+      colors: true
     }));
 
     // use setImmediate prevent Stack overflow
