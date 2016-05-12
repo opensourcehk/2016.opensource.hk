@@ -1,22 +1,17 @@
+'use strict';
 
-var webpack = require('webpack');
+import webpack from 'webpack';
 
 // loaders to use for different file type
 var loaders = [
   {
-    //tell webpack to use jsx-loader and babel for all *.jsx files
-    test: /\.jsx$/,
-    loaders: [
-      'jsx?insertPragma=React.DOM&harmony',
-      'babel?stage=1'
-    ]
-  },
-  {
     //tell webpack to use babel for all *.js files
     test: /\.js$/,
-    loaders: [
-      'babel?stage=1'
-    ]
+    loader: 'babel'
+  },
+  {
+    test: /\.json$/,
+    loader: 'json'
   }
 ];
 
@@ -24,14 +19,19 @@ var loaders = [
 var externals =  {
   //don't bundle the 'react' npm package with our bundle.js
   //but get it from a global 'React' variable
-  'react': 'React'
+  'react': 'React',
+
+  //don't bundle the 'react' npm package with our bundle.js
+  //but get it from a global 'React' variable
+  'react-dom': 'ReactDOM'
+
 };
 
 var plugins = [
   new webpack.optimize.UglifyJsPlugin({minimize: true})
 ];
 
-module.exports = [
+export default [
   {
     name: "browser",
     context: __dirname + "/../src/scripts",
