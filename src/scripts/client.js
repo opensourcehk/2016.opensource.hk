@@ -13,8 +13,11 @@ navBar();
 
 function hello() {
   return (
-    <TimeTable speakers={speakers} topics={topics} langs={langs} />
+    <div>
+      <TimeTable />
+      <TimeTable speakers={speakers} topics={topics} langs={langs} />
+    </div>
   )
 }
 
-ReactDOM.render(hello(), document.getElementById('playground'));
+ReactDOM.render(hello(), document.getElementById('timetable'));

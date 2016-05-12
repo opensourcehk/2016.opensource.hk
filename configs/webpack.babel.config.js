@@ -49,6 +49,7 @@ export default [
     },
     output: {
       path: __dirname + "/../public/assets/scripts",
+      publicPath: "/assets/scripts",
       filename: "bundle.js"
     }
   }

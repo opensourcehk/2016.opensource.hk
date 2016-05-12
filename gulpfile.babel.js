@@ -5,6 +5,7 @@ import gulp from 'gulp';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import fs from 'fs';
+import path from 'path';
 
 // some config files
 import webpackCfg from './configs/webpack.babel.config';
@@ -117,25 +118,50 @@ const helperFuncs = {
 // watch the public files
 // hot reload if there is changes
 gulp.task('serve-dev', function() {
-  var server = new WebpackDevServer(webpack(webpackCfg), {
+  var devConfig = {
+    devtool: 'eval',
+    entry: [
+      'webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+      './src/scripts/client'
+    ],
+    output: {
+      path: path.join(__dirname, 'public/assets/scripts'),
+      filename: 'bundle.js',
+      publicPath: '/assets/scripts/'
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ],
+    module: {
+      loaders: [
+        {
+          test: /\.js$/,
+          loaders: ['react-hot', 'babel'],
+          include: path.join(__dirname, 'src')
+        },
+        {
+          test: /\.json$/,
+          loader: 'json'
+        }
+      ]
+    }
+  };
+
+  var server = new WebpackDevServer(webpack(devConfig), {
     contentBase: "./public",
+    publicPath: devConfig.output.publicPath,
     hot: true,
     historyApiFallback: false,
-
-    // webpack-dev-middleware options
-    quiet: false,
-    noInfo: false,
-    lazy: true,
-    filename: "bundle.js",
-    watchOptions: {
-      aggregateTimeout: 300,
-      poll: 1000
-    },
-    publicPath: "/assets/",
-    headers: { "X-Custom-Header": "yes" },
-    stats: { colors: true },
+    stats: { colors: true }
   });
-  server.listen(3000, "localhost", function () {});
+  server.listen(3000, "localhost", function (err, result) {
+    if (err) {
+      return console.log(err);
+    }
+
+    gutil.log('Listening at http://localhost:3000/');
+  });
 });
 
 // watch the source files
@@ -260,20 +286,25 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest(fontsTarget));
 });
 
-// build the source files
-gulp.task('build', [
+// build all static source files
+gulp.task('build-assets', [
   'styles',
   'templates',
   'images',
   'fonts',
   'vendors',
-  'topics',
+  'topics'
+])
+
+// build statics and javascripts
+gulp.task('build', [
+  'build-assets',
   'webpack'
 ]);
 
 // dev default task(s)
 gulp.task('dev', [
-  'build',
+  'build-assets',
   'watch',
   'serve-dev'
 ]);
