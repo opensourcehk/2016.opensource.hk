@@ -1,211 +1,246 @@
-[
-  {
-    "name": "Gold Sponsors",
-    "sponsors": [
-      {
-        "id": "elastic",
-        "name": "Elastic",
-        "grantedPerm": false,
-        "description": "",
-        "logos": [
-          {
-            "title": "Elastic",
-            "alt": "Elastic logo",
-            "img": "//2016.opensource.hk/statics/images/sponsors/elastic-logo-v-full-color-110.png",
-            "url": "https://www.elastic.co/"
-          }
-        ],
-        "links": [
-          {
-            "text": "Elastic Website",
-            "url": "https://www.elastic.co/"
-          }
-        ]
-      },
-      {
-        "id": "ibm",
-        "name": "IBM",
-        "grantedPerm": true,
-        "description": [
-          "<p>IBM is an innovation and technology company headquartered in New York with operations in over 175 countries. It delivers innovative solutions, software and infrastructures to improve client outcomes, create new value and solve business problems through integrated solutions that leverage IT and deep knowledge in business processes. These solutions draw from an industry leading portfolio of business and technology consulting, delivery and implementation services, as well as enterprise software, systems and financing.</p>",
-          "<p>IBM opened for business in Hong Kong in 1957, and has since played a pivotal role in Hong Kong’s development and transformation. For more information, visit <a href=\"httsp://www.ibm.com/hk\" target=\"_blank\">www.ibm.com/hk</a></p>"
-        ],
-        "_readme": "description from last year. need to confirm description this year",
-        "logos": [
-          {
-            "title": "IBM",
-            "alt": "IBM logo",
-            "img": "//2016.opensource.hk/statics/images/sponsors/ibmpos_blue_110.jpg",
-            "url": "https://www.ibm.com/hk/"
-          }
-        ],
-        "links": [
-          {
-            "text": "IBM China / Hong Kong Website",
-            "url": "https://www.ibm.com/hk/"
-          }
-        ]
-      },
-      {
-        "id": "vmware",
-        "name": "VMWare",
-        "grantedPerm": false,
-        "description": "",
-        "logos": [
-          {
-            "title": "VMWare",
-            "alt": "VMWare logo",
-            "img": "//2016.opensource.hk/statics/images/sponsors/vmware_logo_gry_110.jpg",
-            "url": "https://www.vmware.com/"
-          }
-        ],
-        "links": [
-          {
-            "text": "VMWare Website",
-            "url": "https://www.vmware.com/"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Silver Sponsors",
-    "sponsors": [
-      {
-        "id": "oracle",
-        "name": "Oracle",
-        "grantedPerm": true,
-        "description": [
-          "MySQL is the world's most popular open source database. With its",
-          "proven ease-of-use, performance, and scalability, MySQL has become the",
-          "leading database choice for Web-based applications, used by high",
-          "profile web properties including Facebook, Twitter, YouTube, Yahoo!,",
-          "and many more. Visit <a href=\"https://www.mysql.com/\" target=\"_blank\">mysql.com</a>."
-        ],
-        "logos": [
-          {
-            "title": "Oracle Corporation",
-            "alt": "Oracle Corpration logo",
-            "img": "//2016.opensource.hk/statics/images/sponsors/oracle_sig_logo.gif",
-            "url": "https://www.oracle.com/"
-          },
-          {
-            "title": "MySQL",
-            "alt": "MySQL logo",
-            "img": "//2016.opensource.hk/statics/images/sponsors/mysql-110.png",
-            "url": "https://www.mysql.com/"
-          }
-        ],
-        "links": [
-          {
-            "text": "Oracle Website",
-            "url": "https://www.oracle.com/"
-          },
-          {
-            "text": "MySQL Website",
-            "url": "https://www.mysql.com/"
-          }
-        ]
-      },
-      {
-        "id": "oursky",
-        "name": "OurSky",
-        "grantedPerm": true,
-        "description": "Oursky is a Hong Kong based app development studio with a talented team of 40 people. Our apps are loved by millions of users and got features by the App Store from time to time. Apart from building apps, we have also been striving to contribute to the developer community and this year, we open source our backend solution, Skygear, which is originally built for internal use to replace Parse.",
-        "logos": [
-          {
-            "title": "OurSky",
-            "alt": "OurSky logo",
-            "img": "//2016.opensource.hk/statics/images/sponsors/oursky-110.jpg",
-            "url": "https://oursky.com/"
-          }
-        ],
-        "links": [
-          {
-            "text": "OurSky Website",
-            "url": "https://oursky.com/"
-          }
-        ]
-      },
-      {
-        "id": "microsoft",
-        "name": "Microsoft",
-        "grantedPerm": true,
-        "description": [
-          "Since its founding in 1975, Microsoft has been a leader in this ",
-          "transformation. As a reflection of that role - and to help the ",
-          "company to focus on the opportunities that lie ahead - Microsoft ",
-          "has established and embraced a new corporate mission: To empower ",
-          "every person and every organization on the planet to achieve more. ",
-          "The company offers a wide range of products and services designed ",
-          "to empower people through great software – any time, any place and ",
-          "on any device. These include operating systems for personal ",
-          "computers and networks, server applications for client/server ",
-          "environments, business and consumer productivity applications, ",
-          "interactive media programs and Internet platform and development ",
-          "tools. Microsoft also offers online services and entertainment and ",
-          "hardware devices."
-        ],
-        "logos": [
-          {
-            "title": "Microsoft",
-            "alt": "Microsoft logo",
-            "img": "//2016.opensource.hk/statics/images/sponsors/msft-logo-110.png",
-            "url": "https://www.microsoft.com/"
-          }
-        ],
-        "links": [
-          {
-            "text": "Microsoft Website",
-            "url": "https://www.microsoft.com/"
-          }
-        ]
-      },
-      {
-        "id": "google",
-        "name": "Google",
-        "grantedPerm": false,
-        "description": "",
-        "logos": [
-          {
-            "title": "Google",
-            "alt": "Google logo",
-            "img": "//2016.opensource.hk/statics/images/sponsors/Google_2015_logo_110.png",
-            "url": "https://www.google.com/about/"
-          }
-        ],
-        "links": [
-          {
-            "text": "Google Website",
-            "url": "https://www.google.com/about/"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Prize Sponsors",
-    "sponsors": [
-      {
-        "id": "jetbrains",
-        "name": "JetBrains",
-        "grantedPerm": true,
-        "description": "",
-        "logos": [
-          {
-            "title": "JetBrains",
-            "alt": "JetBrains logo",
-            "img": "//2016.opensource.hk/statics/images/sponsors/logo_jetbrains_3_110.png",
-            "url": "https://www.jetbrains.com/"
-          }
-        ],
-        "links": [
-          {
-            "text": "JetBrains Website",
-            "url": "https://www.jetbrains.com/"
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "sponsors": [
+    {
+      "name": "Gold Sponsors",
+      "sponsors": [
+        {
+          "id": "elastic",
+          "name": "Elastic",
+          "grantedPerm": true,
+          "description": [
+            "Founded in 2012 by the people behind the Elasticsearch and Apache ",
+            "Lucene open source projects, Elastic provides real-time insights ",
+            "and makes massive amounts of structured and unstructured data ",
+            "usable for developers and enterprises. By focusing on scalability, ",
+            "ease-of-use, and ease-of-integration, Elastic’s suite of ",
+            "open-source products (Elasticsearch, Logstash, Kibana, Beats) and ",
+            "subscription plugins (Shield, Watcher, Marvel) can be deployed ",
+            "either on-premise or in the cloud with Elastic’s Found offering. ",
+            "To date, these products have achieved more than 50 million ",
+            "cumulative downloads and power many of the world’s leading mobile, ",
+            "social, consumer and mission critical business applications. ",
+            "Elastic is backed by Benchmark Capital, Index Ventures, and NEA ",
+            "with headquarters in Amsterdam and Mountain View, California, and ",
+            "offices and employees around the world. To learn more, visit ",
+            "<a href=\"https://www.elastic.co\" target=\"_blank\">",
+            "www.elastic.co</a>."
+          ],
+          "logos": [
+            {
+              "title": "Elastic",
+              "alt": "Elastic logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/elastic-logo-h-large.jpg",
+              "url": "https://www.elastic.co/"
+            }
+          ],
+          "links": [
+            {
+              "text": "Elastic Website",
+              "url": "https://www.elastic.co/"
+            }
+          ]
+        },
+        {
+          "id": "ibm",
+          "name": "IBM",
+          "grantedPerm": true,
+          "description": [
+            "<p>IBM is an innovation and technology company headquartered in New York with operations in over 175 countries. It delivers innovative solutions, software and infrastructures to improve client outcomes, create new value and solve business problems through integrated solutions that leverage IT and deep knowledge in business processes. These solutions draw from an industry leading portfolio of business and technology consulting, delivery and implementation services, as well as enterprise software, systems and financing.</p>",
+            "<p>IBM opened for business in Hong Kong in 1957, and has since played a pivotal role in Hong Kong’s development and transformation. For more information, visit <a href=\"httsp://www.ibm.com/hk\" target=\"_blank\">www.ibm.com/hk</a></p>"
+          ],
+          "_readme": "description from last year. need to confirm description this year",
+          "logos": [
+            {
+              "title": "IBM",
+              "alt": "IBM logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/ibmpos_blue_110.jpg",
+              "url": "https://www.ibm.com/hk/"
+            }
+          ],
+          "links": [
+            {
+              "text": "IBM China / Hong Kong Website",
+              "url": "https://www.ibm.com/hk/"
+            }
+          ]
+        },
+        {
+          "id": "vmware",
+          "name": "VMWare",
+          "grantedPerm": false,
+          "description": "",
+          "logos": [
+            {
+              "title": "VMWare",
+              "alt": "VMWare logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/vmware_logo_gry_110.jpg",
+              "url": "https://www.vmware.com/"
+            }
+          ],
+          "links": [
+            {
+              "text": "VMWare Website",
+              "url": "https://www.vmware.com/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Silver Sponsors",
+      "sponsors": [
+        {
+          "id": "oracle",
+          "name": "Oracle",
+          "grantedPerm": true,
+          "description": [
+            "MySQL is the world's most popular open source database. With its",
+            "proven ease-of-use, performance, and scalability, MySQL has become the",
+            "leading database choice for Web-based applications, used by high",
+            "profile web properties including Facebook, Twitter, YouTube, Yahoo!,",
+            "and many more. Visit <a href=\"https://www.mysql.com/\" target=\"_blank\">mysql.com</a>."
+          ],
+          "logos": [
+            {
+              "title": "Oracle Corporation",
+              "alt": "Oracle Corpration logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/oracle_sig_logo.gif",
+              "url": "https://www.oracle.com/"
+            },
+            {
+              "title": "MySQL",
+              "alt": "MySQL logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/mysql-110.png",
+              "url": "https://www.mysql.com/"
+            }
+          ],
+          "links": [
+            {
+              "text": "Oracle Website",
+              "url": "https://www.oracle.com/"
+            },
+            {
+              "text": "MySQL Website",
+              "url": "https://www.mysql.com/"
+            }
+          ]
+        },
+        {
+          "id": "oursky",
+          "name": "OurSky",
+          "grantedPerm": true,
+          "description": "Oursky is a Hong Kong based app development studio with a talented team of 40 people. Our apps are loved by millions of users and got features by the App Store from time to time. Apart from building apps, we have also been striving to contribute to the developer community and this year, we open source our backend solution, Skygear, which is originally built for internal use to replace Parse.",
+          "logos": [
+            {
+              "title": "OurSky",
+              "alt": "OurSky logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/oursky-110.jpg",
+              "url": "https://oursky.com/"
+            }
+          ],
+          "links": [
+            {
+              "text": "OurSky Website",
+              "url": "https://oursky.com/"
+            }
+          ]
+        },
+        {
+          "id": "microsoft",
+          "name": "Microsoft",
+          "grantedPerm": true,
+          "description": [
+            "Since its founding in 1975, Microsoft has been a leader in this ",
+            "transformation. As a reflection of that role - and to help the ",
+            "company to focus on the opportunities that lie ahead - Microsoft ",
+            "has established and embraced a new corporate mission: To empower ",
+            "every person and every organization on the planet to achieve more. ",
+            "The company offers a wide range of products and services designed ",
+            "to empower people through great software – any time, any place and ",
+            "on any device. These include operating systems for personal ",
+            "computers and networks, server applications for client/server ",
+            "environments, business and consumer productivity applications, ",
+            "interactive media programs and Internet platform and development ",
+            "tools. Microsoft also offers online services and entertainment and ",
+            "hardware devices."
+          ],
+          "logos": [
+            {
+              "title": "Microsoft",
+              "alt": "Microsoft logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/msft-logo-110.png",
+              "url": "https://www.microsoft.com/"
+            }
+          ],
+          "links": [
+            {
+              "text": "Microsoft Website",
+              "url": "https://www.microsoft.com/"
+            }
+          ]
+        },
+        {
+          "id": "google",
+          "name": "Google",
+          "grantedPerm": false,
+          "description": "",
+          "logos": [
+            {
+              "title": "Google",
+              "alt": "Google logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/Google_2015_logo_110.png",
+              "url": "https://www.google.com/about/"
+            }
+          ],
+          "links": [
+            {
+              "text": "Google Website",
+              "url": "https://www.google.com/about/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Prize Sponsors",
+      "sponsors": [
+        {
+          "id": "jetbrains",
+          "name": "JetBrains",
+          "grantedPerm": true,
+          "description": [
+            "JetBrains PyCharm is the intelligent Python IDE for ",
+            "Professional Developers providing a complete set of tools for ",
+            "productive Python, Web and Scientific development. PyCharm comes ",
+            "in two editions. The free and open-source PyCharm Community ",
+            "Edition is perfect for pure Python and scientific development. ",
+            "PyCharm Professional Edition is designed for professional Python ",
+            "and Web developers."
+          ],
+          "logos": [
+            {
+              "title": "JetBrains",
+              "alt": "JetBrains logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/logo_jetbrains_3_110.png",
+              "url": "https://www.jetbrains.com/"
+            }
+          ],
+          "links": [
+            {
+              "text": "JetBrains Website",
+              "url": "https://www.jetbrains.com/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "patrons": [
+    {
+      "name": "Ms. Connie Leung"
+    },
+    {
+      "name": "Nintex"
+    }
+  ]
+}

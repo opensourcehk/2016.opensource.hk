@@ -175,7 +175,8 @@
 /**
  * sponsors
  */
-.sponsorship-tier {
+.sponsorship-tiers {
+
   h1, h2, h3, h4, h5, h6 {
     display: block;
     font-family: "Alegreya Sans",sans-serif;
@@ -199,8 +200,13 @@
     .description {
       text-align: justify;
     }
-    .logo img {
-      margin: 10px 10px;
+    .logo{
+      display: block;
+      max-width: 80%;
+      img {
+        display: block;
+        width: 100%;
+      }
     }
     @media (max-width: $width-md) {
       .logos {
@@ -220,6 +226,23 @@
       }
     }
   }
+
+  .patrons {
+    display: block;
+    list-style-type: none;
+    padding: 0;
+    .patron {
+      display: inline-block;
+      margin-right: .5em;
+    }
+    .patron::after {
+      content: ", ";
+    }
+    .patron:last-child::after{
+      content: "";
+    }
+  }
+
 }
 
 #schedule .day:target {
