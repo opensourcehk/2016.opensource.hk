@@ -21,7 +21,6 @@ var htmlmin = require('gulp-html-minifier');
 var minifyCss = require('gulp-clean-css');
 
 const baseTarget    = __dirname + '/public';
-const topicTgt      = baseTarget + '/topics';
 const assetsTarget  = baseTarget + '/assets';
 const stylesTarget  = assetsTarget + '/css';
 const scriptsTarget = assetsTarget + '/scripts';
@@ -30,7 +29,6 @@ const imagesTarget  = assetsTarget + '/images';
 const baseSource    = __dirname + '/src';
 const pageSource    = baseSource + '/pages';
 const pageLayoutSrc = baseSource + '/layouts';
-const topicSrc      = baseSource + '/topics';
 const pageIncludes  = baseSource + '/pages/includes';
 const stylesSource  = baseSource + '/css';
 const scriptsSource = baseSource + '/scripts';
@@ -174,15 +172,11 @@ gulp.task('watch', function() {
     stylesSource + '/**/*.scss'
   ], ["styles"]);
   gulp.watch([
-    topicSrc + '/**/*.html',
-    dataSource + '/*.json'
-  ], ["topics"]);
-  gulp.watch([
     pageSource + '/**/*.html',
     pageLayoutSrc + '/**/*.html',
     dataSource + '/*.json'
-  ], ["templates"]);
-  gulp.watch(scriptsSource + '/**/*.*', ['webpack']);
+  ], ["pages"]);
+  gulp.watch(scriptsSource + '/**/*.*', ['scripts-bundle']);
 });
 
 // convert styles
@@ -205,26 +199,24 @@ gulp.task('styles', function() {
 });
 
 // convert html
-gulp.task('templates', function() {
-  gulp.src([
-   pageSource + '/**/*.html',
-   '!/**/_*.html'
- ])
-   .pipe(swig({
-     defaults: { cache: false },
-     data: Object.assign(
-       {},
-       data,
-       dataExtended,
-       helperFuncs
-     )
-   }))
-   .pipe(htmlmin({collapseWhitespace: true}))
-   .pipe(gulp.dest(baseTarget));
-});
+gulp.task('pages', function() {
 
-// convert topic from templates
-gulp.task('topics', function() {
+  // most pages
+  gulp.src([
+    pageSource + '/**/*.html',
+    '!/**/_*.html'
+  ])
+     .pipe(swig({
+       defaults: { cache: false },
+       data: Object.assign(
+         {},
+         data,
+         dataExtended,
+         helperFuncs
+       )
+    }))
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest(baseTarget));
 
   // generate topic pages
   Object.keys(data.topics).forEach(function (topic_id) {
@@ -245,12 +237,13 @@ gulp.task('topics', function() {
       }))
       .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(rename(topic_id + '/index.html'))
-      .pipe(gulp.dest(topicTgt));
+      .pipe(gulp.dest(baseTarget + "/topics/"));
   });
+
 });
 
 // bundle scripts
-gulp.task('webpack', function(callback) {
+gulp.task('scripts-bundle', function(callback) {
   // run webpack
   webpack(webpackCfg, function(err, stats) {
     if(err) throw new gutil.PluginError('webpack', err);
@@ -266,7 +259,7 @@ gulp.task('webpack', function(callback) {
 });
 
 // concat and mangle vendor scripts
-gulp.task('vendors', function() {
+gulp.task('scripts-vendors', function() {
   return gulp.src([
       scriptsSource + '/vendors/bootstrap.min.js',
       scriptsSource + '/vendors/ga.js'
@@ -291,17 +284,16 @@ gulp.task('fonts', function() {
 // build all static source files
 gulp.task('build-assets', [
   'styles',
-  'templates',
+  'pages',
   'images',
   'fonts',
-  'vendors',
-  'topics'
+  'scripts-vendors'
 ])
 
 // build statics and javascripts
 gulp.task('build', [
   'build-assets',
-  'webpack'
+  'scripts-bundle'
 ]);
 
 // dev default task(s)
