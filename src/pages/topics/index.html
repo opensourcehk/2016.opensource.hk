@@ -1,4 +1,4 @@
-{% extends '../layouts/default.html' %}
+{% extends '../../layouts/default.html' %}
 
 {% block og_url %}{{ site_host }}/topics/{% endblock %}
 
@@ -41,7 +41,7 @@
           {% set level = levels[topic.level] %}
           <tr>
             <td class="title">
-              <a href="{{ url('topic', topic.id) }}">{{ topic.title }}</a>
+              <a href="{{ topicURL('topic', topic.id) }}">{{ topic.title }}</a>
             </td>
             <td class="speaker">
               <span class="speaker-name">{{ speaker.name }}</span>

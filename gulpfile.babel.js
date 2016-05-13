@@ -1,9 +1,14 @@
+'use strict';
 
 // basic
-var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var webpack = require('webpack');
-var fs = require('fs');
+import gulp from 'gulp';
+import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import fs from 'fs';
+import path from 'path';
+
+// some config files
+import webpackCfg from './configs/webpack.babel.config';
 
 // gulp plugins
 var gconcat = require('gulp-concat');
@@ -16,7 +21,6 @@ var htmlmin = require('gulp-html-minifier');
 var minifyCss = require('gulp-clean-css');
 
 const baseTarget    = __dirname + '/public';
-const topicTgt      = baseTarget + '/topics';
 const assetsTarget  = baseTarget + '/assets';
 const stylesTarget  = assetsTarget + '/css';
 const scriptsTarget = assetsTarget + '/scripts';
@@ -25,7 +29,6 @@ const imagesTarget  = assetsTarget + '/images';
 const baseSource    = __dirname + '/src';
 const pageSource    = baseSource + '/pages';
 const pageLayoutSrc = baseSource + '/layouts';
-const topicSrc      = baseSource + '/topics';
 const pageIncludes  = baseSource + '/pages/includes';
 const stylesSource  = baseSource + '/css';
 const scriptsSource = baseSource + '/scripts';
@@ -41,8 +44,8 @@ function parseJSON(filename) {
   }
 }
 
-// link generator
-function url (type, id) {
+// topicURL generator
+function topicURL (type, id) {
   if (type == 'topic') {
     return '/topics/' + id + '/';
   }
@@ -78,20 +81,86 @@ function capitalize(type) {
   return type[0].toUpperCase() + type.slice(1);
 }
 
-var timeHash = new Buffer(Date.now().toString()).toString('base64').slice(0,6);
+const data = {
+  "timeHash":  new Buffer(Date.now().toString()).toString('base64').slice(0,6),
+  "site_host": "http://2016.opensource.hk",
+
+  // read those files everytime with fs
+  // instead of `require` (will cache the file)
+  "topics":   parseJSON(dataSource + '/topics.json',   'utf8'),
+  "tags":     parseJSON(dataSource + '/tags.json',     'utf8'),
+  "speakers": parseJSON(dataSource + '/speakers.json', 'utf8'),
+  "langs":    parseJSON(dataSource + '/langs.json',    'utf8'),
+  "levels":   parseJSON(dataSource + '/levels.json',   'utf8'),
+  "sponsors": parseJSON(dataSource + '/sponsors.json', 'utf8'),
+  "news":     parseJSON(dataSource + '/news.json',     'utf8')
+};
+
+const dataExtended = {
+  "topicsByType": {
+    "Keynotes": toArray(data.topics).filter(filterBy('type', 'keynote')),
+    "Talks": toArray(data.topics).filter(filterBy('type', 'talk')),
+    "Workshops": toArray(data.topics).filter(filterBy('type', 'workshop')),
+    "Lightning Talks": toArray(data.topics).filter(filterBy('type', 'lightening-talk'))
+  }
+};
+
+const helperFuncs = {
+  "capitalize": capitalize,
+  "displayDesc": displayDesc,
+  "filterBy": filterBy,
+  "toArray": toArray,
+  "topicURL": topicURL
+};
+
+// TODO: add pre-rendered Programmes app (initial state) to the programmes page
 
 // watch the public files
 // hot reload if there is changes
 gulp.task('serve-dev', function() {
-  var files = [
-    baseTarget    + '/**/*.html',
-    stylesTarget  + '/**/*.css',
-    scriptsTarget + '/**/*.js'
-  ];
-  browserSync.init(files, {
-    server: {
-      baseDir: baseTarget
+  var devConfig = {
+    devtool: 'eval',
+    entry: [
+      'webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+      './src/scripts/client'
+    ],
+    output: {
+      path: path.join(__dirname, 'public/assets/scripts'),
+      filename: 'bundle.js',
+      publicPath: '/assets/scripts/'
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ],
+    module: {
+      loaders: [
+        {
+          test: /\.js$/,
+          loaders: ['react-hot', 'babel'],
+          include: path.join(__dirname, 'src')
+        },
+        {
+          test: /\.json$/,
+          loader: 'json'
+        }
+      ]
     }
+  };
+
+  var server = new WebpackDevServer(webpack(devConfig), {
+    contentBase: "./public",
+    publicPath: devConfig.output.publicPath,
+    hot: true,
+    historyApiFallback: false,
+    stats: { colors: true }
+  });
+  server.listen(3000, "localhost", function (err, result) {
+    if (err) {
+      return console.log(err);
+    }
+
+    gutil.log('Listening at http://localhost:3000/');
   });
 });
 
@@ -103,15 +172,11 @@ gulp.task('watch', function() {
     stylesSource + '/**/*.scss'
   ], ["styles"]);
   gulp.watch([
-    topicSrc + '/**/*.html',
-    dataSource + '/*.json'
-  ], ["topics"]);
-  gulp.watch([
     pageSource + '/**/*.html',
     pageLayoutSrc + '/**/*.html',
     dataSource + '/*.json'
-  ], ["templates"]);
-  gulp.watch(scriptsSource + '/**/*.*', ['webpack']);
+  ], ["pages"]);
+  gulp.watch(scriptsSource + '/**/*.*', ['scripts-bundle']);
 });
 
 // convert styles
@@ -134,100 +199,57 @@ gulp.task('styles', function() {
 });
 
 // convert html
-gulp.task('templates', function() {
-  var sponsors   = parseJSON(dataSource + '/sponsors.json',   'utf8');
-  var news       = parseJSON(dataSource + '/news.json',       'utf8');
-  gulp.src(
-    pageSource + '/**/*.html')
-   .pipe(swig({
-     defaults: { cache: false },
-     data: {
-       'site_host': 'http://2016.opensource.hk',
-       "displayDesc": displayDesc,
-       "timeHash": timeHash,
-       'news': news,
-       'sponsors': sponsors
-     }
-   }))
-   .pipe(htmlmin({collapseWhitespace: true}))
-   .pipe(gulp.dest(baseTarget));
-});
+gulp.task('pages', function() {
 
-// convert topic from templates
-gulp.task('topics', function() {
-
-  // read those files everytime with fs
-  // instead of `require` (will cache the file)
-  var topics   = parseJSON(dataSource + '/topics.json',   'utf8');
-  var tags     = parseJSON(dataSource + '/tags.json',     'utf8');
-  var speakers = parseJSON(dataSource + '/speakers.json', 'utf8');
-  var langs    = parseJSON(dataSource + '/langs.json',    'utf8');
-  var levels   = parseJSON(dataSource + '/levels.json',   'utf8');
-
-  // generate topic index
-  gulp.src(topicSrc + '/topics.html')
-    .pipe(swig({
-      defaults: {cache: false},
-      load_json: false,
-      data: {
-        "url": url,
-        "site_host": "http://2016.opensource.hk",
-        "toArray": toArray,
-        "filterBy": filterBy,
-        "capitalize": capitalize,
-        "timeHash": timeHash,
-        "langs": langs,
-        "levels": levels,
-        "tags": tags,
-        "speakers": speakers,
-        "topicsByType": {
-          "Keynotes": toArray(topics).filter(filterBy('type', 'keynote')),
-          "Talks": toArray(topics).filter(filterBy('type', 'talk')),
-          "Workshops": toArray(topics).filter(filterBy('type', 'workshop')),
-          "Lightning Talks": toArray(topics).filter(filterBy('type', 'lightening-talk'))
-        }
-      }
+  // most pages
+  gulp.src([
+    pageSource + '/**/*.html',
+    '!/**/_*.html'
+  ])
+     .pipe(swig({
+       defaults: { cache: false },
+       data: Object.assign(
+         {},
+         data,
+         dataExtended,
+         helperFuncs
+       )
     }))
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(rename('/index.html'))
-    .pipe(gulp.dest(topicTgt));
+    .pipe(gulp.dest(baseTarget));
 
   // generate topic pages
-  Object.keys(topics).forEach(function (topic_id) {
-    var topic = topics[topic_id];
-    gulp.src(topicSrc + '/topic.html')
+  Object.keys(data.topics).forEach(function (topic_id) {
+    var topic = data.topics[topic_id];
+    gulp.src(pageSource + '/topics/_topic.html')
       .pipe(swig({
         defaults: {cache: false},
         load_json: false,
-        data: {
-          "url": url,
-          "timeHash": timeHash,
-          "site_host": "http://2016.opensource.hk",
-          "displayDesc": displayDesc,
-          "capitalize": capitalize,
-          "topic_id": topic_id,
-          "tags": tags,
-          "langs": langs,
-          "levels": levels,
-          "speakers": speakers,
-          "topic": topic
-        }
+        data: Object.assign(
+          {
+            "topic_id": topic_id,
+            "topic": topic
+          },
+          data,
+          dataExtended,
+          helperFuncs
+        )
       }))
       .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(rename(topic_id + '/index.html'))
-      .pipe(gulp.dest(topicTgt));
+      .pipe(gulp.dest(baseTarget + "/topics/"));
   });
 
 });
 
 // bundle scripts
-gulp.task('webpack', function(callback) {
+gulp.task('scripts-bundle', function(callback) {
   // run webpack
-  var webpackCfg = require('./configs/webpack.config');
   webpack(webpackCfg, function(err, stats) {
     if(err) throw new gutil.PluginError('webpack', err);
     gutil.log('[webpack]', stats.toString({
       // output options
+      colors: true
     }));
 
     // use setImmediate prevent Stack overflow
@@ -237,7 +259,7 @@ gulp.task('webpack', function(callback) {
 });
 
 // concat and mangle vendor scripts
-gulp.task('vendors', function() {
+gulp.task('scripts-vendors', function() {
   return gulp.src([
       scriptsSource + '/vendors/bootstrap.min.js',
       scriptsSource + '/vendors/ga.js'
@@ -259,20 +281,24 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest(fontsTarget));
 });
 
-// build the source files
-gulp.task('build', [
+// build all static source files
+gulp.task('build-assets', [
   'styles',
-  'templates',
+  'pages',
   'images',
   'fonts',
-  'vendors',
-  'topics',
-  'webpack'
+  'scripts-vendors'
+])
+
+// build statics and javascripts
+gulp.task('build', [
+  'build-assets',
+  'scripts-bundle'
 ]);
 
 // dev default task(s)
 gulp.task('dev', [
-  'build',
+  'build-assets',
   'watch',
   'serve-dev'
 ]);
