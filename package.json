@@ -20,6 +20,7 @@
   "dependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.2.4",
+    "babel-register": "^6.8.0",
     "browser-request": "^0.3.3",
     "express": "^4.13.3",
     "gulp": "^3.9.1",
