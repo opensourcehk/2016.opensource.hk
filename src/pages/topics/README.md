@@ -1,6 +1,5 @@
-Topics
-======
+# Topics templates
 
-Topics are mantained in the `src/topics` folder.
-Please see the template and json data there.
+- [index.html](index.html) is the template for topic listing
 
+- [_topic.html](_topic.html) is the template for single topic page
