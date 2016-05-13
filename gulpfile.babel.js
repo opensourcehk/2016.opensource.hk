@@ -115,6 +115,8 @@ const helperFuncs = {
   "topicURL": topicURL
 };
 
+// TODO: add pre-rendered Programmes app (initial state) to the programmes page
+
 // watch the public files
 // hot reload if there is changes
 gulp.task('serve-dev', function() {
