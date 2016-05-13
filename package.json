@@ -6,6 +6,7 @@
   "scripts": {
     "prestart": "npm run build",
     "start": "node ./src/scripts/server.js",
+    "clean": "rm -Rf ./public/*",
     "build": "gulp build",
     "dev": "gulp dev",
     "test": "gulp build"
