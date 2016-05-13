@@ -7,6 +7,7 @@ var loaders = [
   {
     //tell webpack to use babel for all *.js files
     test: /\.js$/,
+    exclude: /node_modules/,
     loader: 'babel'
   },
   {
@@ -49,6 +50,7 @@ export default [
     },
     output: {
       path: __dirname + "/../public/assets/scripts",
+      publicPath: "/assets/scripts",
       filename: "bundle.js"
     }
   }

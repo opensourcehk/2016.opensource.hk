@@ -1,9 +1,11 @@
 'use strict';
 
-import React from "react";
-import ReactDOM from "react-dom";
 import navBar from "./utils/navBar";
-import TimeTable from "./components/TimeTable";
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import Store from "./apps/Programmes/Store";
+import Programmes from "./apps/Programmes/Programmes";
 
 import speakers from "../data/speakers.json";
 import topics   from "../data/topics.json";
@@ -11,10 +13,22 @@ import langs    from "../data/langs.json";
 
 navBar();
 
-function hello() {
-  return (
-    <TimeTable speakers={speakers} topics={topics} langs={langs} />
-  )
-}
+var store = Store({
+  speakers: speakers,
+  topics: topics,
+  langs: langs,
 
-ReactDOM.render(hello(), document.getElementById('playground'));
+  // TODO: render speakers, topics information into a list of programmes to be
+  // displayed in timetable ("all")
+  all: [],
+
+  filtered: topics,
+});
+
+render((
+    <Provider store={store}>
+      <Programmes store={store}/>
+    </Provider>
+  ),
+  document.getElementById('timetable')
+);
