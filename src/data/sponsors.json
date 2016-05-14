@@ -53,7 +53,7 @@
             {
               "title": "IBM",
               "alt": "IBM logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/ibmpos_blue_110.jpg",
+              "img": "//2016.opensource.hk/statics/images/sponsors/ibmpos_blue_500.jpg",
               "url": "https://www.ibm.com/hk/"
             }
           ],
@@ -104,13 +104,13 @@
             {
               "title": "Oracle Corporation",
               "alt": "Oracle Corpration logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/oracle_sig_logo.gif",
+              "img": "//2016.opensource.hk/statics/images/sponsors/oracle_clr_rgb_500.jpg",
               "url": "https://www.oracle.com/"
             },
             {
               "title": "MySQL",
               "alt": "MySQL logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/mysql-110.png",
+              "img": "//2016.opensource.hk/statics/images/sponsors/logo-mysql-500.jpg?v=2",
               "url": "https://www.mysql.com/"
             }
           ],
@@ -134,7 +134,7 @@
             {
               "title": "OurSky",
               "alt": "OurSky logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/oursky-110.jpg",
+              "img": "//2016.opensource.hk/statics/images/sponsors/oursky-square-tag-500.jpg?v3",
               "url": "https://oursky.com/"
             }
           ],
@@ -168,7 +168,7 @@
             {
               "title": "Microsoft",
               "alt": "Microsoft logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/msft-logo-110.png",
+              "img": "//2016.opensource.hk/statics/images/sponsors/msft-logo-500.jpg",
               "url": "https://www.microsoft.com/"
             }
           ],
@@ -188,7 +188,7 @@
             {
               "title": "Google",
               "alt": "Google logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/Google_2015_logo_110.png",
+              "img": "//2016.opensource.hk/statics/images/sponsors/Google_2015_logo_500.jpg",
               "url": "https://www.google.com/about/"
             }
           ],
@@ -221,7 +221,7 @@
             {
               "title": "Gandi.net",
               "alt": "Gandi.net logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/gandi.jpg",
+                "img": "//2016.opensource.hk/statics/images/sponsors/gandi_logo_black.jpg",
               "url": "https://www.gandi.net/"
             }
           ],
@@ -254,7 +254,7 @@
             {
               "title": "JetBrains",
               "alt": "JetBrains logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/logo_jetbrains_3_110.png",
+              "img": "//2016.opensource.hk/statics/images/sponsors/logo_jetbrains_3_500.jpg",
               "url": "https://www.jetbrains.com/"
             }
           ],
