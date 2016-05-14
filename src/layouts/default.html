@@ -54,18 +54,20 @@
     </div>
     <!-- menu ends -->
 
-    <div class="jumbotron dark-sections">
+    <header class="jumbotron dark-sections">
         <div class="container">
             <h1><span class="brand-yellow">{% block title %}{% endblock %}</span></h1>
             {% block description %}{% endblock %}
         </div>
-    </div>
+    </header>
 
+    <main>
     {% block content %}(contents here){% endblock %}
+    </main>
 
-    <div class="container content-container">
+    <footer class="container content-container">
       {% include 'includes/footer.html' %}
-    </div> <!-- /container -->
+    </footer> <!-- /container -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom.min.js"></script>
