@@ -6,6 +6,7 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import fs from 'fs';
 import path from 'path';
+import chalk from 'chalk';
 
 // some config files
 import webpackCfg from './configs/webpack.babel.config';
@@ -180,9 +181,9 @@ gulp.task('pages', function() {
     .pipe(gulp.dest(baseTarget));
 
   // generate topic pages
-  gutil.log('generate topic pages');
   Object.keys(data.topics).forEach(function (topic_id) {
     var topic = data.topics[topic_id];
+    gutil.log('Generate: \'/topics/' + chalk.magenta(topic_id) + '/index.html\'')
     gulp.src(pageSource + '/topics/_topic.html')
       .pipe(swig({
         defaults: {cache: false},
