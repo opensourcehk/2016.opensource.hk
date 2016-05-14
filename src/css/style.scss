@@ -239,6 +239,7 @@ main {
     .patron {
       display: inline-block;
       margin-right: .5em;
+      font-size: 1.3em;
     }
     .patron::after {
       content: ", ";

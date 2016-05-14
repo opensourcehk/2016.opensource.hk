@@ -52,12 +52,14 @@
   <div class="row">
     <section class="sponsorship-tier">
       <h2>Patrons</h2>
-      <ul class="patrons">
-        {% for patron in sponsors.patrons %}
-          <li class="patron">{{ patron.name }}</li><!--/.patron-->
-        {% endfor %}
-      </ul><!--/.patrons-->
-      <p>(Patrons are listed above in alphabetical orders).</p>
+      <div class="container">
+        <ul class="patrons">
+          {% for patron in sponsors.patrons %}
+            <li class="patron">{{ patron.name }}</li><!--/.patron-->
+          {% endfor %}
+        </ul><!--/.patrons-->
+        <p>(Patrons are listed above in alphabetical orders).</p>
+      </div>
     </section>
   </div><!--/.row-->
 
