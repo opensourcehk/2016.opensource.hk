@@ -202,6 +202,39 @@
       ]
     },
     {
+      "name": "Bronze Sponsors",
+      "sponsors": [
+        {
+          "id": "gandi",
+          "name": "Gandi.net",
+          "grantedPerm": true,
+          "description": [
+            "Gandi is the No Bullshit™ domain name registrar and hosting ",
+            "provider. Created in France in 1999, Gandi is now present in 3 ",
+            "continents,with offices in Paris, San Francisco, Luxembourg, and ",
+            "Taipei. We position ourselves as the next port of call for those ",
+            "who want to create an online presence, right after Internet ",
+            "access providers, since domain names are the firststep in ",
+            "creating your own piece of the Internet."
+          ],
+          "logos": [
+            {
+              "title": "Gandi.net",
+              "alt": "Gandi.net logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/gandi.jpg",
+              "url": "https://www.gandi.net/"
+            }
+          ],
+          "links": [
+            {
+              "text": "Gandi.net Website",
+              "url": "https://www.gandi.net/"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Prize Sponsors",
       "sponsors": [
         {
