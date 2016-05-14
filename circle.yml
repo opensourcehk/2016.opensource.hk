@@ -3,4 +3,5 @@ machine:
     version: 4.0.0
 test:
   pre:
+    - npm rebuild node-sass
     - npm run build
