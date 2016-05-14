@@ -578,9 +578,9 @@
     "licence_video": "all-rights-reserved",
     "licence_slide": "all-rights-reserved"
   },
-  "software-carpentry-bootcamp-the-essential-core": {
-    "id": "software-carpentry-bootcamp-the-essential-core",
-    "title": "Software Carpentry Bootcamp: the Essential Core",
+  "practical-computing-for-everyone": {
+    "id": "practical-computing-for-everyone",
+    "title": "Practical computing for everyone",
     "type": "workshop",
     "speaker": "chung-hong-chan",
     "category": "DevOps",
