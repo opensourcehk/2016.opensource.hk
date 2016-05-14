@@ -136,6 +136,9 @@ gulp.task('watch', function() {
     pageLayoutSrc + '/**/*.html',
     dataSource + '/*.json'
   ], ["pages"]);
+  gulp.watch([
+    imagesSource + '/**/*.*'
+  ], ["images"]);
   gulp.watch(scriptsSource + '/**/*.*', ['scripts-bundle']);
 });
 
