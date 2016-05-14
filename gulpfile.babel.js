@@ -19,6 +19,7 @@ import sass      from 'gulp-sass';
 import uglify    from 'gulp-uglify';
 import htmlmin   from 'gulp-html-minifier';
 import minifyCss from 'gulp-clean-css';
+import helperFuncs from './src/scripts/utils/helperFuncs';
 
 const baseTarget    = __dirname + '/public';
 const assetsTarget  = baseTarget + '/assets';
@@ -44,43 +45,6 @@ function parseJSON(filename) {
   }
 }
 
-// topicURL generator
-function topicURL (type, id) {
-  if (type == 'topic') {
-    return '/topics/' + id + '/';
-  }
-}
-
-// filterBy filters object (e.g. topic) by the given
-// property name and value
-function filterBy (name, value) {
-  return function (obj) {
-    return obj[name] === value;
-  }
-}
-
-// turn an object into an array
-function toArray (obj) {
-  var arr = [];
-  for ( var key in obj ) {
-      arr.push(obj[key]);
-  }
-  return arr
-}
-
-// formatting (or not formatting) description strings
-function displayDesc (input) {
-  if (Array.isArray(input)) {
-    return input.join(' ');
-  }
-  return input;
-}
-
-// capitalize string
-function capitalize(type) {
-  return type[0].toUpperCase() + type.slice(1);
-}
-
 const data = {
   "timeHash":  new Buffer(Date.now().toString()).toString('base64').slice(0,6),
   "site_host": "http://2016.opensource.hk",
@@ -98,19 +62,11 @@ const data = {
 
 const dataExtended = {
   "topicsByType": {
-    "Keynotes": toArray(data.topics).filter(filterBy('type', 'keynote')),
-    "Talks": toArray(data.topics).filter(filterBy('type', 'talk')),
-    "Workshops": toArray(data.topics).filter(filterBy('type', 'workshop')),
-    "Lightning Talks": toArray(data.topics).filter(filterBy('type', 'lightening-talk'))
+    "Keynotes":        helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'keynote')),
+    "Talks":           helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'talk')),
+    "Workshops":       helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'workshop')),
+    "Lightning Talks": helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'lightening-talk'))
   }
-};
-
-const helperFuncs = {
-  "capitalize": capitalize,
-  "displayDesc": displayDesc,
-  "filterBy": filterBy,
-  "toArray": toArray,
-  "topicURL": topicURL
 };
 
 // TODO: add pre-rendered Programmes app (initial state) to the programmes page
