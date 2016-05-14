@@ -45,29 +45,32 @@ function parseJSON(filename) {
   }
 }
 
-const data = {
-  "timeHash":  new Buffer(Date.now().toString()).toString('base64').slice(0,6),
-  "site_host": "http://2016.opensource.hk",
+function getData(dataSource) {
+  var data = {
+    "timeHash":  new Buffer(Date.now().toString()).toString('base64').slice(0,6),
+    "site_host": "http://2016.opensource.hk",
 
-  // read those files everytime with fs
-  // instead of `require` (will cache the file)
-  "topics":   parseJSON(dataSource + '/topics.json',   'utf8'),
-  "tags":     parseJSON(dataSource + '/tags.json',     'utf8'),
-  "speakers": parseJSON(dataSource + '/speakers.json', 'utf8'),
-  "langs":    parseJSON(dataSource + '/langs.json',    'utf8'),
-  "levels":   parseJSON(dataSource + '/levels.json',   'utf8'),
-  "sponsors": parseJSON(dataSource + '/sponsors.json', 'utf8'),
-  "news":     parseJSON(dataSource + '/news.json',     'utf8')
-};
+    // read those files everytime with fs
+    // instead of `require` (will cache the file)
+    "topics":   parseJSON(dataSource + '/topics.json',   'utf8'),
+    "tags":     parseJSON(dataSource + '/tags.json',     'utf8'),
+    "speakers": parseJSON(dataSource + '/speakers.json', 'utf8'),
+    "langs":    parseJSON(dataSource + '/langs.json',    'utf8'),
+    "levels":   parseJSON(dataSource + '/levels.json',   'utf8'),
+    "sponsors": parseJSON(dataSource + '/sponsors.json', 'utf8'),
+    "news":     parseJSON(dataSource + '/news.json',     'utf8')
+  };
+  var dataExtended = {
+    "topicsByType": {
+      "Keynotes":        helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'keynote')),
+      "Talks":           helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'talk')),
+      "Workshops":       helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'workshop')),
+      "Lightning Talks": helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'lightening-talk'))
+    }
+  };
 
-const dataExtended = {
-  "topicsByType": {
-    "Keynotes":        helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'keynote')),
-    "Talks":           helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'talk')),
-    "Workshops":       helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'workshop')),
-    "Lightning Talks": helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'lightening-talk'))
-  }
-};
+  return Object.assign({}, data, dataExtended);
+}
 
 // TODO: add pre-rendered Programmes app (initial state) to the programmes page
 
@@ -157,6 +160,9 @@ gulp.task('styles', function() {
 // convert html
 gulp.task('pages', function() {
 
+  // get data from JSON every compile time
+  const data = getData(dataSource);
+
   // most pages
   gulp.src([
     pageSource + '/**/*.html',
@@ -167,7 +173,6 @@ gulp.task('pages', function() {
        data: Object.assign(
          {},
          data,
-         dataExtended,
          helperFuncs
        )
     }))
@@ -175,6 +180,7 @@ gulp.task('pages', function() {
     .pipe(gulp.dest(baseTarget));
 
   // generate topic pages
+  gutil.log('generate topic pages');
   Object.keys(data.topics).forEach(function (topic_id) {
     var topic = data.topics[topic_id];
     gulp.src(pageSource + '/topics/_topic.html')
@@ -187,7 +193,6 @@ gulp.task('pages', function() {
             "topic": topic
           },
           data,
-          dataExtended,
           helperFuncs
         )
       }))
