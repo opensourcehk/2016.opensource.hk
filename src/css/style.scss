@@ -11,6 +11,18 @@
   "button"
 ;
 
+main {
+  margin-bottom: 4em;
+}
+
+/** mobile friendly tables **/
+@media screen and (max-width: 640px) {
+	table {
+		overflow-x: auto;
+		display: block;
+	}
+}
+
 .page-topic-header {
   a {
     text-decoration: underline;
@@ -215,13 +227,16 @@
       }
       .logo {
         display: block;
+        max-width: 100%;
         width: 100%;
         img {
-          width: 50%;
+          width: 70%;
           margin: 0 auto;
         }
+        margin: 1em 0 3em;
       }
       .links {
+        margin: 2em 0 1em;
         text-align: right;
       }
     }
@@ -234,6 +249,7 @@
     .patron {
       display: inline-block;
       margin-right: .5em;
+      font-size: 1.3em;
     }
     .patron::after {
       content: ", ";
@@ -263,4 +279,19 @@
 
 .pp_pic_holder .pp_description {
   display: none !important;
+}
+
+#map-infowindow {
+  color: #000;
+  .address {
+    font-size: 1.1em;
+    font-weight: bolder;
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+  .address:hover {
+    color: rgba(0,0,0,0.4);
+    text-decoration: underline;
+  }
 }
