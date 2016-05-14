@@ -11,14 +11,14 @@ import path from 'path';
 import webpackCfg from './configs/webpack.babel.config';
 
 // gulp plugins
-var gconcat = require('gulp-concat');
-var gutil = require('gulp-util');
-var swig = require('gulp-swig');
-var rename = require('gulp-rename');
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var htmlmin = require('gulp-html-minifier');
-var minifyCss = require('gulp-clean-css');
+import gconcat   from 'gulp-concat';
+import gutil     from 'gulp-util';
+import swig      from 'gulp-swig';
+import rename    from 'gulp-rename';
+import sass      from 'gulp-sass';
+import uglify    from 'gulp-uglify';
+import htmlmin   from 'gulp-html-minifier';
+import minifyCss from 'gulp-clean-css';
 
 const baseTarget    = __dirname + '/public';
 const assetsTarget  = baseTarget + '/assets';
