@@ -11,14 +11,15 @@ import path from 'path';
 import webpackCfg from './configs/webpack.babel.config';
 
 // gulp plugins
-var gconcat = require('gulp-concat');
-var gutil = require('gulp-util');
-var swig = require('gulp-swig');
-var rename = require('gulp-rename');
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var htmlmin = require('gulp-html-minifier');
-var minifyCss = require('gulp-clean-css');
+import gconcat   from 'gulp-concat';
+import gutil     from 'gulp-util';
+import swig      from 'gulp-swig';
+import rename    from 'gulp-rename';
+import sass      from 'gulp-sass';
+import uglify    from 'gulp-uglify';
+import htmlmin   from 'gulp-html-minifier';
+import minifyCss from 'gulp-clean-css';
+import helperFuncs from './src/scripts/utils/helperFuncs';
 
 const baseTarget    = __dirname + '/public';
 const assetsTarget  = baseTarget + '/assets';
@@ -44,74 +45,32 @@ function parseJSON(filename) {
   }
 }
 
-// topicURL generator
-function topicURL (type, id) {
-  if (type == 'topic') {
-    return '/topics/' + id + '/';
-  }
+function getData(dataSource) {
+  var data = {
+    "timeHash":  new Buffer(Date.now().toString()).toString('base64').slice(0,6),
+    "site_host": "http://2016.opensource.hk",
+
+    // read those files everytime with fs
+    // instead of `require` (will cache the file)
+    "topics":   parseJSON(dataSource + '/topics.json',   'utf8'),
+    "tags":     parseJSON(dataSource + '/tags.json',     'utf8'),
+    "speakers": parseJSON(dataSource + '/speakers.json', 'utf8'),
+    "langs":    parseJSON(dataSource + '/langs.json',    'utf8'),
+    "levels":   parseJSON(dataSource + '/levels.json',   'utf8'),
+    "sponsors": parseJSON(dataSource + '/sponsors.json', 'utf8'),
+    "news":     parseJSON(dataSource + '/news.json',     'utf8')
+  };
+  var dataExtended = {
+    "topicsByType": {
+      "Keynotes":        helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'keynote')),
+      "Talks":           helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'talk')),
+      "Workshops":       helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'workshop')),
+      "Lightning Talks": helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'lightening-talk'))
+    }
+  };
+
+  return Object.assign({}, data, dataExtended);
 }
-
-// filterBy filters object (e.g. topic) by the given
-// property name and value
-function filterBy (name, value) {
-  return function (obj) {
-    return obj[name] === value;
-  }
-}
-
-// turn an object into an array
-function toArray (obj) {
-  var arr = [];
-  for ( var key in obj ) {
-      arr.push(obj[key]);
-  }
-  return arr
-}
-
-// formatting (or not formatting) description strings
-function displayDesc (input) {
-  if (Array.isArray(input)) {
-    return input.join(' ');
-  }
-  return input;
-}
-
-// capitalize string
-function capitalize(type) {
-  return type[0].toUpperCase() + type.slice(1);
-}
-
-const data = {
-  "timeHash":  new Buffer(Date.now().toString()).toString('base64').slice(0,6),
-  "site_host": "http://2016.opensource.hk",
-
-  // read those files everytime with fs
-  // instead of `require` (will cache the file)
-  "topics":   parseJSON(dataSource + '/topics.json',   'utf8'),
-  "tags":     parseJSON(dataSource + '/tags.json',     'utf8'),
-  "speakers": parseJSON(dataSource + '/speakers.json', 'utf8'),
-  "langs":    parseJSON(dataSource + '/langs.json',    'utf8'),
-  "levels":   parseJSON(dataSource + '/levels.json',   'utf8'),
-  "sponsors": parseJSON(dataSource + '/sponsors.json', 'utf8'),
-  "news":     parseJSON(dataSource + '/news.json',     'utf8')
-};
-
-const dataExtended = {
-  "topicsByType": {
-    "Keynotes": toArray(data.topics).filter(filterBy('type', 'keynote')),
-    "Talks": toArray(data.topics).filter(filterBy('type', 'talk')),
-    "Workshops": toArray(data.topics).filter(filterBy('type', 'workshop')),
-    "Lightning Talks": toArray(data.topics).filter(filterBy('type', 'lightening-talk'))
-  }
-};
-
-const helperFuncs = {
-  "capitalize": capitalize,
-  "displayDesc": displayDesc,
-  "filterBy": filterBy,
-  "toArray": toArray,
-  "topicURL": topicURL
-};
 
 // TODO: add pre-rendered Programmes app (initial state) to the programmes page
 
@@ -201,6 +160,9 @@ gulp.task('styles', function() {
 // convert html
 gulp.task('pages', function() {
 
+  // get data from JSON every compile time
+  const data = getData(dataSource);
+
   // most pages
   gulp.src([
     pageSource + '/**/*.html',
@@ -211,7 +173,6 @@ gulp.task('pages', function() {
        data: Object.assign(
          {},
          data,
-         dataExtended,
          helperFuncs
        )
     }))
@@ -219,6 +180,7 @@ gulp.task('pages', function() {
     .pipe(gulp.dest(baseTarget));
 
   // generate topic pages
+  gutil.log('generate topic pages');
   Object.keys(data.topics).forEach(function (topic_id) {
     var topic = data.topics[topic_id];
     gulp.src(pageSource + '/topics/_topic.html')
@@ -231,7 +193,6 @@ gulp.task('pages', function() {
             "topic": topic
           },
           data,
-          dataExtended,
           helperFuncs
         )
       }))

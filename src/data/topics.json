@@ -19,6 +19,26 @@
     "licence_video": "cc-4.0",
     "licence_slide": "cc-4.0"
   },
+  "gandi-net-ngtlds-and-gandi-in-asia": {
+    "id": "gandi-net-ngtlds-and-gandi-in-asia",
+    "title": "Gandi.net, nGTLD's and Gandi in Asia",
+    "type": "talk",
+    "speaker": "thomas-kulper",
+    "category": "Cloud",
+    "level": "beginners",
+    "requirement": "",
+    "target_audience": ["IT Managers", "Developers", "Users"],
+    "short_desc": "Introduction to the services of Gandi.net, the new domain name extensions (nGTLD's), and our story so far in Asia.",
+    "description": [
+      "<p>We launched Gandi Asia in 2014 and since our arrival provided support for the open source and tech community in this region.</p>",
+      "<p>We got direct accreditation with many domain name registries. This talk will give an introduction to them as well as the other new domain name extensions (such as .TECH, .STORE, .CLUB)</p>"
+    ],
+    "lang": "en",
+    "lang_slide": "en",
+    "length": "30min",
+    "licence_video": "cc-by-nc-2.0",
+    "licence_slide": "cc-by-nc-2.0"
+  },
   "interactive-dashboard-development-with-plotly": {
     "id": "interactive-dashboard-development-with-plotly",
     "title": "Interactive Dashboard Development with Plotly",
@@ -578,9 +598,9 @@
     "licence_video": "all-rights-reserved",
     "licence_slide": "all-rights-reserved"
   },
-  "software-carpentry-bootcamp-the-essential-core": {
-    "id": "software-carpentry-bootcamp-the-essential-core",
-    "title": "Software Carpentry Bootcamp: the Essential Core",
+  "practical-computing-for-everyone": {
+    "id": "practical-computing-for-everyone",
+    "title": "Practical computing for everyone",
     "type": "workshop",
     "speaker": "chung-hong-chan",
     "category": "DevOps",

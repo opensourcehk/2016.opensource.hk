@@ -23,7 +23,7 @@
       "name": "Droste",
       "url": "http://droste.hk"
     },
-    "portrait": "",
+    "portrait": "/assets/images/speakers/mart.jpg",
     "hkoscon-sponsored": false
   },
   "masahiro-nakagawa": {
@@ -536,7 +536,7 @@
     "name": "NG, Ka Hung",
     "gender": "male",
     "social": {
-      "github": "https://github.com/repeatedly",
+      "github": "https:// github.com/david90",
       "nickname": "David Ng"
     },
     "description": "All-the-time a code geek and sometimes an evangelist. Product manager at <a href=\"https://oursky.com\" target=\"_blank\">Oursky</a>.",
@@ -547,6 +547,33 @@
       "url": "https://oursky.com"
     },
     "portrait": "",
+    "hkoscon-sponsored": false
+  },
+  "thomas-kulper": {
+    "name": "Thomas Kuiper",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/engerim42/",
+      "nickname": "Engerim"
+    },
+    "description": [
+      "Thomas, originally from Germany, started his Taiwan adventure in the ",
+      "Hsinchu Science Park around ten years ago where he developed software ",
+      "for Internet access devices with customers in Europe and Japan. He ",
+      "then moved to Taipei in 2011 to manage the development of medical ",
+      "tablet software. As expert for telecom related software (embedded ",
+      "devices, applications) he launched Gand Asia in Taipei in 2014 to ",
+      "better support Gandi’s customers in Taiwan and nearby countries. ",
+      "Besides German and English, Thomas is also fluent in French as he ",
+      "worked for five years in Paris at an Internet access provider."
+    ],
+    "residence": "Taiwan",
+    "nationality": "Germany",
+    "company": {
+      "name": "Gandi.net",
+      "url": "https://gandi.net"
+    },
+    "portrait": "https://media.licdn.com/media/p/8/005/0af/02d/01b56c6.jpg",
     "hkoscon-sponsored": false
   },
 
