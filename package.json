@@ -36,6 +36,8 @@
     "gulp-util": "^3.0.7",
     "json-loader": "^0.5.4",
     "jsx-loader": "^0.13.2",
+    "striptags": "^2.1.1",
+    "truncate": "^2.0.0",
     "webpack": "^1.13.0"
   },
   "devDependencies": {

@@ -1,4 +1,7 @@
 
+import striptags from 'striptags';
+import truncate from 'truncate';
+
 // topicURL generator
 function topicURL (type, id) {
   if (type == 'topic') {
@@ -23,6 +26,14 @@ function toArray (obj) {
   return arr
 }
 
+// strip tags from description text and return
+function displayDescText(input, length=400) {
+  if (Array.isArray(input)) {
+    return displayDescText(input.join(' '));
+  }
+  return truncate(striptags(input), length);
+}
+
 // formatting (or not formatting) description strings
 function displayDesc (input) {
   if (Array.isArray(input)) {
@@ -38,6 +49,7 @@ function capitalize(type) {
 
 export default {
   "capitalize": capitalize,
+  "displayDescText": displayDescText,
   "displayDesc": displayDesc,
   "filterBy": filterBy,
   "toArray": toArray,

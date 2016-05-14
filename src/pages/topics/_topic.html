@@ -4,13 +4,15 @@
 {% set lang = langs[topic.lang] %}
 {% set lang_slide = langs[topic.lang_slide] %}
 
+{% block meta_desc %}{{ displayDescText(topic.short_desc, 200) }}{% endblock %}
+{% block og_desc %}{{ displayDescText(topic.short_desc, 300) }}{% endblock %}
 {% block og_url %}{{ site_host }}{{ topicURL('topic', topic_id) }}{% endblock %}
 
 {% block title %}{{ topic.title }}{% endblock %}
 
 {% block description %}
   <div class="page-topic-header">
-    <p>By {{ speaker.name }}{% if speaker.social.nickname %} <span class="nickname">({{ speaker.social.nickname }})</span>{% endif %}</p>
+    <p>By <span class="name">{{ speaker.name }}</span>{% if speaker.social.nickname %} <span class="nickname">({{ speaker.social.nickname }})</span>{% endif %}</p>
     <p>{{ displayDesc(topic.short_desc) }}</p>
   </div>
 {% endblock %}
