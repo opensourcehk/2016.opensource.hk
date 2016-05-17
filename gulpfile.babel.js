@@ -71,7 +71,7 @@ function getData(dataSource) {
     }
   };
 
-  return Object.assign({}, data, dataExtended);
+  return Object.assign({data: data}, data, dataExtended);
 }
 
 // TODO: add pre-rendered Programmes app (initial state) to the programmes page
