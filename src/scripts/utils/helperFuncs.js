@@ -2,6 +2,19 @@
 import striptags from 'striptags';
 import truncate from 'truncate';
 
+// topicSummary generates link (a tag) to topic
+// for the schedule / agenda page
+function topicSummary(data, id) {
+  if (typeof data.topics[id] != "undefined") {
+    var topic = data.topics[id];
+    return `<div class="topic-summary">`+
+        `<span class="type">` + capitalize(topic.type) + `:</span> ` +
+        `<a class="title" href="${topicURL("topic", id)}">${topic.title}</a> `+
+        `<span class="time">(${data.timeLengths[topic.length].desc})</span>`+
+      `</div>`;
+  }
+}
+
 // topicURL generator
 function topicURL (type, id) {
   if (type == 'topic') {
@@ -53,5 +66,6 @@ export default {
   "displayDesc": displayDesc,
   "filterBy": filterBy,
   "toArray": toArray,
+  "topicSummary": topicSummary,
   "topicURL": topicURL
 };

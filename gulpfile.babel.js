@@ -53,13 +53,15 @@ function getData(dataSource) {
 
     // read those files everytime with fs
     // instead of `require` (will cache the file)
-    "topics":   parseJSON(dataSource + '/topics.json',   'utf8'),
-    "tags":     parseJSON(dataSource + '/tags.json',     'utf8'),
-    "speakers": parseJSON(dataSource + '/speakers.json', 'utf8'),
-    "langs":    parseJSON(dataSource + '/langs.json',    'utf8'),
-    "levels":   parseJSON(dataSource + '/levels.json',   'utf8'),
-    "sponsors": parseJSON(dataSource + '/sponsors.json', 'utf8'),
-    "news":     parseJSON(dataSource + '/news.json',     'utf8')
+    "topics":      parseJSON(dataSource + '/topics.json',      'utf8'),
+    "venues":      parseJSON(dataSource + '/venues.json',      'utf8'),
+    "timeLengths": parseJSON(dataSource + '/timeLengths.json', 'utf8'),
+    "tags":        parseJSON(dataSource + '/tags.json',        'utf8'),
+    "speakers":    parseJSON(dataSource + '/speakers.json',    'utf8'),
+    "langs":       parseJSON(dataSource + '/langs.json',       'utf8'),
+    "levels":      parseJSON(dataSource + '/levels.json',      'utf8'),
+    "sponsors":    parseJSON(dataSource + '/sponsors.json',    'utf8'),
+    "news":        parseJSON(dataSource + '/news.json',        'utf8')
   };
   var dataExtended = {
     "topicsByType": {
@@ -70,7 +72,7 @@ function getData(dataSource) {
     }
   };
 
-  return Object.assign({}, data, dataExtended);
+  return Object.assign({data: data}, data, dataExtended);
 }
 
 // TODO: add pre-rendered Programmes app (initial state) to the programmes page
