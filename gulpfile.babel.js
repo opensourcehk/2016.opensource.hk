@@ -54,6 +54,7 @@ function getData(dataSource) {
     // read those files everytime with fs
     // instead of `require` (will cache the file)
     "topics":      parseJSON(dataSource + '/topics.json',      'utf8'),
+    "venues":      parseJSON(dataSource + '/venues.json',      'utf8'),
     "timeLengths": parseJSON(dataSource + '/timeLengths.json', 'utf8'),
     "tags":        parseJSON(dataSource + '/tags.json',        'utf8'),
     "speakers":    parseJSON(dataSource + '/speakers.json',    'utf8'),
