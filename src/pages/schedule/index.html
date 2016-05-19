@@ -42,11 +42,15 @@
             </tr>
             <tr>
                 <th>10:15 - 10:55</th>
-                <td>Keynote #1 (40 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Keynote #1 (40 mins)", {start: '2016-06-24T10:15:00+0800', venue: 'big-hall'}) }}
+                </td>
             </tr>
             <tr>
                 <th>11:00 - 11:40</th>
-                <td>Keynote #2 (40 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Keynote #2 (40 mins)", {start: '2016-06-24T10:15:00+0800', venue: 'big-hall'}) }}
+                </td>
             </tr>
             <tr>
                 <th>11:40 - 12:00</th>
@@ -54,7 +58,7 @@
             </tr>
             <tr>
                 <th>12:00 - 12:40</th>
-                <td>{{topicSummary(data, "be-innovative-with-copyright-introduction-to-open-source-business-models")}}</td>
+                <td>{{ findTopicSummary(data, "Talk #1", {start: '2016-06-24T12:00:00+0800', venue: 'big-hall'}) }}</td>
             </tr>
             <tr>
                 <th>12:40 - 13:40</th>
@@ -66,11 +70,15 @@
             </tr>
             <tr>
                 <th>14:25 - 14:50</th>
-                <td>Talk #1 (25 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk #1 (25 mins)", {start: '2016-06-24T14:25:00+0800', venue: 'big-hall'}) }}
+                </td>
             </tr>
            <tr>
                 <th>14:55 - 15:20</th>
-                <td>Talk #2 (25 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk #2 (25 mins)", {start: '2016-06-24T14:55:00+0800', venue: 'big-hall'}) }}
+                </td>
             </tr>
            <tr>
                 <th>15:20 - 15:40</th>
@@ -78,15 +86,21 @@
             </tr>
            <tr>
                 <th>15:40 - 16:05</th>
-                <td>Talk #3 (25 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk #3 (25 mins)", {start: '2016-06-24T15:40:00+0800', venue: 'big-hall'}) }}
+                </td>
             </tr>
            <tr>
                 <th>16:10 - 16:35</th>
-                <td>Talk #4 (25 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk #4 (25 mins)", {start: '2016-06-24T16:10:00+0800', venue: 'big-hall'}) }}
+                </td>
             </tr>
            <tr>
                 <th>16:40 - 17:05</th>
-                <td>Talk #5 (25 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk #5 (25 mins)", {start: '2016-06-24T16:40:00+0800', venue: 'big-hall'}) }}
+                </td>
             </tr>
            <tr>
                 <th>17:05 - 17:30</th>
@@ -131,11 +145,15 @@
             </tr>
             <tr>
                 <th>10:00 - 10:50</th>
-                <td colspan="4">Day 2 Keynote #1 (40 mins)</td>
+                <td colspan="4">
+                  {{ findTopicSummary(data, "Day 2 Keynote #1 (40 mins)", {start: '2016-06-25T10:00:00+0800', venue: 'big-hall'}) }}
+                </td>
             </tr>
             <tr>
                 <th>10:55 - 11:35</th>
-                <td colspan="4">Day 2 Keynote #2 (40 mins)</td>
+                <td colspan="4">
+                  {{ findTopicSummary(data, "Day 2 Keynote #2 (40 mins)", {start: '2016-06-25T10:55:00+0800', venue: 'big-hall'}) }}
+                </td>
             </tr>
             <tr>
                 <th>11:35 - 11:55</th>
@@ -143,7 +161,9 @@
             </tr>
             <tr>
                 <th>11:55 - 12:35</th>
-                <td colspan="4">Day 2 Keynote #3 (40 mins)</td>
+                <td colspan="4">
+                  {{ findTopicSummary(data, "Day 2 Keynote #3 (40 mins)", {start: '2016-06-25T11:55:00+0800', venue: 'big-hall'}) }}
+                </td>
             </tr>
             <tr>
                 <th>12:35 - 13:35</th>
@@ -152,24 +172,48 @@
 
             <tr>
                 <th>13:35 - 14:05</th>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T13:35:00+0800', venue: 'fn-room-1'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T13:35:00+0800', venue: 'fn-room-2'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T13:35:00+0800', venue: 'fn-room-3'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T13:35:00+0800', venue: 'tr-theatre'}) }}
+                </td>
             </tr>
             <tr>
                 <th>14:10 - 14:40</th>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:10:00+0800', venue: 'fn-room-1'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:10:00+0800', venue: 'fn-room-2'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:10:00+0800', venue: 'fn-room-3'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:10:00+0800', venue: 'tr-theatre'}) }}
+                </td>
             </tr>
             <tr>
                 <th>14:45 - 15:15</th>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>HKOSP for Youth</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:45:00+0800', venue: 'fn-room-1'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:45:00+0800', venue: 'fn-room-2'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:45:00+0800', venue: 'fn-room-3'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "HKOSP for Youth", {start: '2016-06-25T14:45:00+0800', venue: 'tr-theatre'}) }}
+                </td>
             </tr>
             <tr>
                 <th>15:15 - 15:35</th>
@@ -177,24 +221,48 @@
             </tr>
             <tr>
                 <th>15:35 - 16:05</th>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T15:15:00+0800', venue: 'fn-room-1'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T15:15:00+0800', venue: 'fn-room-2'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T15:15:00+0800', venue: 'fn-room-3'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T15:15:00+0800', venue: 'tr-theatre'}) }}
+                </td>
             </tr>
             <tr>
                 <th>16:10 - 16:40</th>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:10:00+0800', venue: 'fn-room-1'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:10:00+0800', venue: 'fn-room-2'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:10:00+0800', venue: 'fn-room-3'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:10:00+0800', venue: 'tr-theatre'}) }}
+                </td>
             </tr>
             <tr>
                 <th>16:45 - 17:15</th>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
-                <td>Talk (30 mins)</td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:45:00+0800', venue: 'fn-room-1'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:45:00+0800', venue: 'fn-room-2'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:45:00+0800', venue: 'fn-room-3'}) }}
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:45:00+0800', venue: 'tr-theatre'}) }}
+                </td>
             </tr>
             <tr>
                 <th>17:15 - 17:30</th>
@@ -232,9 +300,17 @@
             </tr>
             <tr>
                 <th>14:00 - 15:30</th>
-                <td>Workshop (90 mins)<br />(Pre-registration is required)</td>
-                <td>Workshop (90 mins)<br />(Pre-registration is required)</td>
-                <td>Reserved</td>
+                <td>
+                  {{ findTopicSummary(data, "Workshop (90 mins)", {start: '2016-06-26T14:00:00+0800', venue: 'workshiop-fn-room-1-2'}) }}
+                  <br />(Pre-registration is required)
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Workshop (90 mins)", {start: '2016-06-26T14:00:00+0800', venue: 'workshiop-fn-room-3'}) }}
+                  <br />(Pre-registration is required)
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Reserved", {start: '2016-06-26T14:00:00+0800', venue: 'workshiop-tr-theatre'}) }}
+                </td>
             </tr>
             <tr>
                 <th>15:30 - 15:45</th>
@@ -242,9 +318,17 @@
             </tr>
             <tr>
                 <th>15:45 - 17:15</th>
-                <td>Workshop (90 mins)<br />(Pre-registration is required)</td>
-                <td>Workshop (90 mins)<br />(Pre-registration is required)</td>
-                <td>Reserved</td>
+                <td>
+                  {{ findTopicSummary(data, "Workshop (90 mins)", {start: '2016-06-26T15:45:00+0800', venue: 'workshiop-fn-room-1-2'}) }}
+                  <br />(Pre-registration is required)
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Workshop (90 mins)", {start: '2016-06-26T15:45:00+0800', venue: 'workshiop-fn-room-3'}) }}
+                  <br />(Pre-registration is required)
+                </td>
+                <td>
+                  {{ findTopicSummary(data, "Reserved", {start: '2016-06-26T15:45:00+0800', venue: 'workshiop-tr-theatre'}) }}
+                </td>
             </tr>
             <tr>
                 <th>17:15 - 17:30</th>
