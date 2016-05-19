@@ -94,13 +94,13 @@
         {
           "id": "vmware",
           "name": "VMWare",
-          "grantedPerm": false,
+          "grantedPerm": true,
           "description": "",
           "logos": [
             {
               "title": "VMWare",
               "alt": "VMWare logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/vmware_logo_gry_110.jpg",
+              "img": "//2016.opensource.hk/statics/images/sponsors/vmware_logo_gry_rgb_500.jpg",
               "url": "https://www.vmware.com/"
             }
           ],
@@ -229,7 +229,7 @@
       ]
     },
     {
-      "name": "Bronze Sponsors",
+      "name": "Bronze Sponsor",
       "sponsors": [
         {
           "id": "gandi",
@@ -262,7 +262,7 @@
       ]
     },
     {
-      "name": "Prize Sponsors",
+      "name": "Prize Sponsor",
       "sponsors": [
         {
           "id": "jetbrains",
