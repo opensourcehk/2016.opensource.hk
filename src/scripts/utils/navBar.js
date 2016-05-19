@@ -1,6 +1,10 @@
 'use strict';
 
+import TicketButton from '../apps/TicketButton';
+import { render } from 'react-dom';
+
 export default function () {
+
   !function () {
     let $navbar = $('.navbar-front');
     if ($navbar.length === 0) return;
@@ -16,5 +20,8 @@ export default function () {
     $navbar.on('affixed-top.bs.affix', function () {
       drop.addClass('dropup');
     });
+
+
+    render(<TicketButton />, document.getElementById('ticket'));
   }(jQuery);
 }
