@@ -22,7 +22,7 @@ var store = Store({
   // displayed in timetable ("all")
   all: [],
 
-  filtered: topics,
+  filtered: topics
 });
 
 render((
