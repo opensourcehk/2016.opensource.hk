@@ -40,8 +40,8 @@
               {% if item.published %}
                 <li><a href="{{ item.url }}"
                   {% if item.external %}target="_blank"{% endif %}>
+                  <span class="date">[{{ item.date }}]</span>
                   <span class="title">{{ item.title }}</span>
-                  <span class="date">({{ item.date }})</span>
                 </a></li>
               {% endif %}
             {% endfor %}
