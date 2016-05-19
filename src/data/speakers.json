@@ -577,7 +577,40 @@
     "portrait": "https://media.licdn.com/media/p/8/005/0af/02d/01b56c6.jpg",
     "hkoscon-sponsored": false
   },
-
+  "kajiyama-ryusuke": {
+    "name": "Kajiyama Ryusuke",
+    "gender": "male",
+    "social": {
+      "nickname": "RKajiyama",
+      "twitter": "https://twitter.com/rkajiyama"
+    },
+    "description": [
+      "Ryusuke Kajiyama is Open Source Specialist with 10+ years of ",
+      "experience of systems design using MySQL and open source solutions. ",
+      "He originally joined <a href=\"https://en.wikipedia.org/wiki/MySQL_AB\"",
+      " target=\"_blank\">MySQL AB</a>, ",
+      "and is currently managing MySQL Sales Consultant",
+      "team of Asia Pacific region at Oracle. Prior to join MySQL, ",
+      "he was Consultant at <a href=\"https://www.nri.com/\" target=\"_blank\"",
+      ">Nomura Research Institute</a>, working on enterprise ",
+      "systems design with Oracle Database, WebLogic, Solaris, and various ",
+      "Open Source software including MySQL, JBoss and Linux. He is a ",
+      "Co-Founder of <a href=\"https://en.osdn.jp/projects/jjboss/\" ",
+      "target=\"_blank\">Japan JBoss Users Group</a>."
+    ],
+    "residence": "Japan",
+    "nationality": "Japan",
+    "community": {
+      "name": "MySQL",
+      "url": "https://www.mysql.com/"
+    },
+    "company": {
+      "name": "Oracle",
+      "url": "https://www.oracle.com/"
+    },
+    "portrait": "",
+    "hkoscon-sponsored": false
+  },
 
 
   "dumy": {
