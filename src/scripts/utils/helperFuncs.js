@@ -7,10 +7,13 @@ import truncate from 'truncate';
 function topicSummary(data, id) {
   if (typeof data.topics[id] != "undefined") {
     var topic = data.topics[id];
+    var timeLength = data.timeLengths[topic.length];
+    var speaker = data.speakers[topic.speaker];
     return `<div class="topic-summary">`+
         `<span class="type">` + capitalize(topic.type) + `:</span> ` +
         `<a class="title" href="${topicURL("topic", id)}">${topic.title}</a> `+
-        `<span class="time">(${data.timeLengths[topic.length].desc})</span>`+
+        `by <span class="speaker">{${speaker.name}}</span>`+
+        `<span class="time">(${timeLength.desc})</span>`+
       `</div>`;
   }
 }
