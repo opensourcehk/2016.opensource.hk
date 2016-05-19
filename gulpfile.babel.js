@@ -7,6 +7,7 @@ import WebpackDevServer from 'webpack-dev-server';
 import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
+import 'babel-polyfill';
 
 // some config files
 import webpackCfg from './configs/webpack.babel.config';

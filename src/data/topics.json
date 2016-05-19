@@ -1,4 +1,36 @@
 {
+  "the-latest-innovation-mysql-document-store": {
+    "id": "the-latest-innovation-mysql-document-store",
+    "title": "The latest Innovation -  MySQL Document Store",
+    "type": "talk",
+    "speaker": "kajiyama-ryusuke",
+    "category": "Cloud",
+    "level": "intermediate",
+    "requirement": "The audience should have basic coding skills.",
+    "target_audience": ["Developers", "IT Managers"],
+    "short_desc": "The MySQL Document Store is the latest innovation in MySQL, enabled by the JSON support in MySQL 5.7.",
+    "description": [
+      "<p>MySQL can now be used as a document store, combining the flexibility of ",
+      "the document store model with the power of the relational model. Maybe ",
+      "you already knew that we added a native JSON datatype, Virtual Columns ",
+      "and Indexing, and many new JSON functions. But there’s now a lot more... ",
+      "It is about the MySQL Document Store and what’s new across all levels of ",
+      "the database stack – storage, structure, protocol, APIs, tools…etc.</p>",
+      "<p>Whether you’re a developer, DBA or LOB owner, you’ll understand why ",
+      "you’ll be able to choose MySQL for your Relational AND Document Store ",
+      "needs, avoiding significant trade-offs and being forced into choosing ",
+      "multiple solutions.</p>"
+    ],
+    "lang": "en",
+    "lang_slide": "en",
+    "length": "25min",
+    "licence_video": "all-rights-reserved",
+    "licence_slide": "all-rights-reserved",
+    "isSponsorTopic": true,
+    "venue": "big-hall",
+    "start": "2016-06-24T14:25:00+0800",
+    "end": "2016-06-24T14:50:00+0800"
+  },
   "live-demo-write-a-cross-platform-chat-bot-using-skygear-an-open-source-backend": {
     "id": "live-demo-write-a-cross-platform-chat-bot-using-skygear-an-open-source-backend",
     "title": "Live Demo - Write a cross-platform chat bot using Skygear, an open-source backend",
@@ -15,9 +47,13 @@
     ],
     "lang": "zh.yue",
     "lang_slide": "en",
-    "length": "30min",
+    "length": "25min",
     "licence_video": "cc-4.0",
-    "licence_slide": "cc-4.0"
+    "licence_slide": "cc-4.0",
+    "isSponsorTopic": true,
+    "venue": "big-hall",
+    "start": "2016-06-24T14:55:00+0800",
+    "end": "2016-06-24T15:20:00+0800"
   },
   "gandi-net-ngtlds-and-gandi-in-asia": {
     "id": "gandi-net-ngtlds-and-gandi-in-asia",
@@ -35,9 +71,13 @@
     ],
     "lang": "en",
     "lang_slide": "en",
-    "length": "30min",
+    "length": "25min",
     "licence_video": "cc-by-nc-2.0",
-    "licence_slide": "cc-by-nc-2.0"
+    "licence_slide": "cc-by-nc-2.0",
+    "isSponsorTopic": true,
+    "venue": "big-hall",
+    "start": "2016-06-24T16:10:00+0800",
+    "end": "2016-06-24T16:35:00+0800"
   },
   "interactive-dashboard-development-with-plotly": {
     "id": "interactive-dashboard-development-with-plotly",

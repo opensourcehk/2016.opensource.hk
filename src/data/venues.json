@@ -3,5 +3,40 @@
     "name": "Big Hall",
     "short": "BH",
     "capacity": 220
+  },
+  "fn-room-1": {
+    "name": "Function Room 1",
+    "short": "FR1",
+    "capacity": 60
+  },
+  "fn-room-2": {
+    "name": "Function Room 2",
+    "short": "FR2",
+    "capacity": 90
+  },
+  "fn-room-3": {
+    "name": "Function Room 3",
+    "short": "FR3",
+    "capacity": 60
+  },
+  "tr-theatre": {
+    "name": "Training Theatre",
+    "short": "TT",
+    "capacity": 60
+  },
+  "workshop-fn-room-1-2": {
+    "name": "Function Room 1+2",
+    "short": "FR1+2",
+    "capacity": 70
+  },
+  "workshop-fn-room-3": {
+    "name": "Function Room 3",
+    "short": "FR3",
+    "capacity": 20
+  },
+  "workshop-tr-theatre": {
+    "name": "Training Theatre",
+    "short": "TT",
+    "capacity": 60
   }
 }

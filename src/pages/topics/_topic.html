@@ -49,6 +49,26 @@
             <dd>{{ topic.requirement }}</dd>
           {% endif %}
 
+          {% if topic.start and topic.end %}
+            <dt>Date &amp; Time</dt>
+            <dd>
+              <span class="day-name">
+                {{ formatTime(topic.start, 'Do MMMM') }} ({{ dayName(topic.start) }})
+              </span>
+              <span class="time-range">
+                <span class="time">{{ formatTime(topic.start, 'HH:mm') }}</span> -
+                <span class="time">{{ formatTime(topic.end, 'HH:mm') }}</span>
+              </span>
+            </dd>
+          {% endif %}
+
+          {% if topic.venue %}
+            <dt>Location</dt>
+            <dd>
+              {{ venues[topic.venue].name }}
+            </dd>
+          {% endif %}
+
         </dl>
 
         {% if topic.level %}

@@ -1,17 +1,64 @@
 
 import striptags from 'striptags';
 import truncate from 'truncate';
+import moment from 'moment';
+
+
+// dayName returns "Day 1", "Day 2" or "Day 3"
+// according to the date of the given timeStr
+function dayName(timeStr) {
+  switch (formatTime(timeStr, 'DD')) {
+    case "24":
+      return "Day 1";
+    case "25":
+      return "Day 2";
+    case "26":
+      return "Day 3";
+  }
+  return null;
+}
+
+// formatTome parse input time string
+// and properly reformat it to display
+function formatTime(timeStr, formatStr='YYYY-MM-DD HH:mm zz') {
+  return moment(timeStr).format(formatStr)
+}
+
+// findTopic finds the topic by props provided
+// and display the topic summary
+function findTopicSummary(data, placeholder, props) {
+  var result = Object.entries(data.topics).find(([id, topic]) => {
+    for (var prop in props) {
+      if (topic[prop] != props[prop]) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  // if topic not found, show placeholder
+  if (typeof result == "undefined") {
+    return placeholder;
+  }
+
+  // show topic summary
+  var [id, topic] = result;
+  return topicSummary(data, id);
+}
 
 // topicSummary generates link (a tag) to topic
 // for the schedule / agenda page
 function topicSummary(data, id) {
   if (typeof data.topics[id] != "undefined") {
     var topic = data.topics[id];
-    return `<div class="topic-summary">`+
-        `<span class="type">` + capitalize(topic.type) + `:</span> ` +
-        `<a class="title" href="${topicURL("topic", id)}">${topic.title}</a> `+
-        `<span class="time">(${data.timeLengths[topic.length].desc})</span>`+
-      `</div>`;
+    var timeLength = data.timeLengths[topic.length];
+    var speaker = data.speakers[topic.speaker];
+    return `<a class="topic-summary" id="topic-summary-s-${id}" href="${topicURL("topic", id)}">`+
+        `<span class="type">${capitalize(topic.type)}</span> ` +
+        `<span class="title">${topic.title}</span> `+
+        `<span class="speaker">${speaker.name}</span> `+
+        `<span class="time">${timeLength.desc}</span>`+
+      `</a>`;
   }
 }
 
@@ -62,10 +109,13 @@ function capitalize(type) {
 
 export default {
   "capitalize": capitalize,
+  "dayName": dayName,
   "displayDescText": displayDescText,
   "displayDesc": displayDesc,
   "filterBy": filterBy,
   "toArray": toArray,
+  "findTopicSummary": findTopicSummary,
+  "formatTime": formatTime,
   "topicSummary": topicSummary,
   "topicURL": topicURL
 };
