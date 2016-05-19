@@ -26,6 +26,7 @@
     "length": "25min",
     "licence_video": "all-rights-reserved",
     "licence_slide": "all-rights-reserved",
+    "isSponsorTopic": true,
     "venue": "big-hall",
     "start": "2016-06-24T14:25:00+0800",
     "end": "2016-06-24T14:50:00+0800"
@@ -49,6 +50,7 @@
     "length": "25min",
     "licence_video": "cc-4.0",
     "licence_slide": "cc-4.0",
+    "isSponsorTopic": true,
     "venue": "big-hall",
     "start": "2016-06-24T14:55:00+0800",
     "end": "2016-06-24T15:20:00+0800"
@@ -72,6 +74,7 @@
     "length": "25min",
     "licence_video": "cc-by-nc-2.0",
     "licence_slide": "cc-by-nc-2.0",
+    "isSponsorTopic": true,
     "venue": "big-hall",
     "start": "2016-06-24T16:10:00+0800",
     "end": "2016-06-24T16:35:00+0800"
