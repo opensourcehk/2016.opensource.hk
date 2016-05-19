@@ -2,6 +2,28 @@
 import striptags from 'striptags';
 import truncate from 'truncate';
 
+// findTopic finds the topic by props provided
+// and display the topic summary
+function findTopicSummary(data, placeholder, props) {
+  var result = Object.entries(data.topics).find(([id, topic]) => {
+    for (var prop in props) {
+      if (topic[prop] != props[prop]) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  // if topic not found, show placeholder
+  if (typeof result == "undefined") {
+    return placeholder;
+  }
+
+  // show topic summary
+  var [id, topic] = result;
+  return topicSummary(data, id);
+}
+
 // topicSummary generates link (a tag) to topic
 // for the schedule / agenda page
 function topicSummary(data, id) {
@@ -12,7 +34,7 @@ function topicSummary(data, id) {
     return `<div class="topic-summary">`+
         `<span class="type">` + capitalize(topic.type) + `:</span> ` +
         `<a class="title" href="${topicURL("topic", id)}">${topic.title}</a> `+
-        `by <span class="speaker">{${speaker.name}}</span>`+
+        `by <span class="speaker">${speaker.name}</span> `+
         `<span class="time">(${timeLength.desc})</span>`+
       `</div>`;
   }
@@ -69,6 +91,7 @@ export default {
   "displayDesc": displayDesc,
   "filterBy": filterBy,
   "toArray": toArray,
+  "findTopicSummary": findTopicSummary,
   "topicSummary": topicSummary,
   "topicURL": topicURL
 };
