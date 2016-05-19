@@ -1,6 +1,33 @@
 {
   "sponsors": [
     {
+      "name": "Platinum Sponsor",
+      "sponsors": [
+        {
+          "id": "cyberport",
+          "name": "Cyberport",
+          "grantedPerm": true,
+          "description": [
+            "Cyberport is a creative digital cluster with over 700 community members. With a vision to build a legacy of entrepreneurial excellence that establishes Cyberport as a leading global innovation and technology hub, Cyberport is committed to facilitating the local economy by nurturing digital industry start-ups and entrepreneurs, driving collaboration to pool resources and create business opportunities, and accelerating digital adoption through strategic initiatives and partnerships."
+          ],
+          "logos": [
+            {
+              "title": "Cyberport",
+              "alt": "Cyberport logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/cyberport_master_brand_logo_500.jpg",
+              "url": "https://www.cyberport.hk/en/"
+            }
+          ],
+          "links": [
+            {
+              "text": "Cyberport Website",
+              "url": "https://www.cyberport.hk/en/"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Gold Sponsors",
       "sponsors": [
         {
