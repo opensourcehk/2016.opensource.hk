@@ -47,9 +47,19 @@ function parseJSON(filename) {
   }
 }
 
+function timeHash() {
+  var buffer = new Buffer(Date.now().toString()).toString('base64')
+  return buffer
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/\=+$/, '')
+    .split("").reverse().join("")
+    .slice(0,6);
+}
+
 function getData(dataSource) {
   var data = {
-    "timeHash":  new Buffer(Date.now().toString()).toString('base64').slice(0,6),
+    "timeHash":  timeHash(),
     "site_host": "http://2016.opensource.hk",
 
     // read those files everytime with fs
@@ -64,6 +74,9 @@ function getData(dataSource) {
     "sponsors":    parseJSON(dataSource + '/sponsors.json',    'utf8'),
     "news":        parseJSON(dataSource + '/news.json',        'utf8')
   };
+  console.info("Date.now().toString()=", Date.now().toString());
+  console.info(new Buffer(Date.now().toString()).toString('base64'));
+  console.info("timeHash: ", data.timeHash);
   var dataExtended = {
     "topicsByType": {
       "Keynotes":        helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'keynote')),
