@@ -29,7 +29,6 @@
             <th>Title</th>
             <th>Speaker</th>
             <th>Category</th>
-            <th>Level</th>
             <th>Language</th>
           </tr>
           </thead>
@@ -41,7 +40,7 @@
           {% set level = levels[topic.level] %}
           <tr>
             <td class="title">
-              <a href="{{ topicURL('topic', topic.id) }}">{{ topic.title }}</a>
+              <div class="topic-title"><a href="{{ topicURL('topic', topic.id) }}">{{ topic.title }}</a></div>
             </td>
             <td class="speaker">
               <span class="speaker-name">{{ speaker.name }}</span>
@@ -49,7 +48,7 @@
                 <span class="speaker-sponsored">(*1)</span>
               {% endif %}
               {% if speaker.company || speaker.community %}
-                <ul>
+                <ul class="props-list">
                   {% if speaker.nationality %}
                     <li class="nationality" title="Nationality">
                       {{ speaker.nationality }}
@@ -68,11 +67,18 @@
                 </ul>
               {% endif %}
             </td>
-            <td class="category">{{ topic.category }}</td>
-            <td class="level" data-level="{{ level.name }}">{{ level.name }}</td>
+            <td class="category">
+              {{ topic.category }}
+              <ul class="props-list">
+                <li>{{ level.name }}</li>
+                {% for audience in topic.target_audience %}
+                  <li>{{ audience }}</li>
+                {% endfor %}
+              </ul>
+            </td>
             <td class="language">
               {{ lang.name }}
-              {% if lang_slide.name %}
+              {% if lang_slide.name and lang_slide.name != lang.name %}
                 <br/>(with {{ lang_slide.name }} Slides)
               {% endif %}
             </td>

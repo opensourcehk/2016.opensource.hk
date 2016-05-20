@@ -15,4 +15,9 @@ class Programmes extends Component {
   }
 }
 
+Programmes.contextTypes = {
+  // define store to receive it from Provider
+  store:  React.PropTypes.object
+};
+
 export default Programmes;
