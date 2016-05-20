@@ -26,16 +26,20 @@ var store = Store({
   filtered: topics
 });
 
-let ticket = document.getElementById('ticket');
-if (typeof ticket != "undefined") {
+let ticketDiv = document.getElementById('ticket');
+if ((typeof ticketDiv != "undefined") && (ticketDiv != null)) {
   render(<TicketButton className="btn btn-lg btn-hkosc button-front-mobile-ticket" />,
-    ticket);
+    ticketDiv);
 }
 
-render((
-    <Provider store={store}>
-      <Programmes store={store}/>
-    </Provider>
-  ),
-  document.getElementById('timetable')
-);
+let timetableDiv = document.getElementById('timetable');
+if ((typeof timetableDiv != "undefined") && (timetableDiv != null)) {
+  console.log("run here");
+  render((
+      <Provider store={store}>
+        <Programmes store={store}/>
+      </Provider>
+    ),
+    timetableDiv
+  );
+}
