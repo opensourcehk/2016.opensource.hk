@@ -5,6 +5,7 @@ import gulp from 'gulp';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import fs from 'fs';
+import net from 'net';
 import path from 'path';
 import chalk from 'chalk';
 import 'babel-polyfill';
@@ -131,13 +132,39 @@ gulp.task('serve-dev', function() {
     historyApiFallback: false,
     stats: { colors: true }
   });
-  server.listen(3000, "localhost", function (err, result) {
-    if (err) {
-      return console.log(err);
-    }
 
-    gutil.log('Listening at http://localhost:3000/');
+  var portInUse = function(port, callback) {
+    var server = net.createServer(function(socket) {
+      socket.write('Echo server\r\n');
+      socket.pipe(socket);
+    });
+
+    server.listen(port, '127.0.0.1');
+    server.on('error', function (e) {
+      callback(true, port);
+    });
+
+    server.on('listening', function (e) {
+      server.close();
+      callback(false, port);
+    });
+  };
+
+  // test if port in use
+  portInUse(3000, function (inUse, port) {
+    if (inUse) {
+      gutil.log('Port ' + chalk.magenta(`localhost:${port}`) + ' is in use. ' + chalk.red.bold('[failed]'));
+      process.exit(1); // quit with fail code
+    }
+    server.listen(port, "localhost", function (err, result) {
+      if (err) {
+        return console.log(err);
+      }
+
+      gutil.log('Listening at ' + chalk.magenta(`http://localhost:${port}/`) + ' ' + chalk.green.bold('[success]'));
+    });
   });
+
 });
 
 // watch the source files
