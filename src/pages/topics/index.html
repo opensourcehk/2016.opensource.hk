@@ -72,7 +72,7 @@
             <td class="level" data-level="{{ level.name }}">{{ level.name }}</td>
             <td class="language">
               {{ lang.name }}
-              {% if lang_slide.name %}
+              {% if lang_slide.name and lang_slide.name != lang.name %}
                 <br/>(with {{ lang_slide.name }} Slides)
               {% endif %}
             </td>
