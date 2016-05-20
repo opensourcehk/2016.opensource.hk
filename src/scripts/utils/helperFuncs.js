@@ -53,11 +53,13 @@ function topicSummary(data, id) {
     var topic = data.topics[id];
     var timeLength = data.timeLengths[topic.length];
     var speaker = data.speakers[topic.speaker];
+    var preReg = topic.pre_register ? `<span class="pre-register">(Pre-registration is required)</span>` : '';
     return `<a class="topic-summary" id="topic-summary-s-${id}" href="${topicURL("topic", id)}">`+
         `<span class="type">${capitalize(topic.type)}</span> ` +
         `<span class="title">${topic.title}</span> `+
         `<span class="speaker">${speaker.name}</span> `+
-        `<span class="time">${timeLength.desc}</span>`+
+        `<span class="time">${timeLength.desc}</span> `+
+        preReg +
       `</a>`;
   }
 }
