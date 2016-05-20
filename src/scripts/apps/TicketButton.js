@@ -17,7 +17,7 @@ export default class TicketButton extends Component {
 	render() {
 		let status = this.state.display ? 'inline-block' : 'none';
 		return (
-			<a className="btn btn-lg btn-hkosc" style={{ 'display': status }}>
+			<a {...this.props} style={{ 'display': status }}>
 				Get Your Ticket
 			</a>
 		);
