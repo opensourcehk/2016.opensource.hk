@@ -27,7 +27,7 @@ var store = Store({
 });
 
 let ticketDiv = document.getElementById('ticket');
-if ((typeof ticketDiv != "undefined") && (ticketDiv != null)) {
+if ((typeof ticketDiv !== "undefined") && (ticketDiv !== null)) {
   render((
     <TicketButton
       className="btn btn-lg btn-hkosc button-front-mobile-ticket"
@@ -39,7 +39,7 @@ if ((typeof ticketDiv != "undefined") && (ticketDiv != null)) {
 }
 
 let timetableDiv = document.getElementById('timetable');
-if ((typeof timetableDiv != "undefined") && (timetableDiv != null)) {
+if ((typeof timetableDiv !== "undefined") && (timetableDiv !== null)) {
   console.log("run here");
   render((
       <Provider store={store}>

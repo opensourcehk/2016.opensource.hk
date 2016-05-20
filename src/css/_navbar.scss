@@ -25,6 +25,16 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 993px) {
+  .navbar .dropdown-menu a {
+    color: #333 !important;
+  }
+
+  .navbar-front .dropdown-menu {
+    background-color: $white;
+  }
+}
+
 @media (min-width: 992px) {
   .navbar.affix-top {
     bottom: 0;
