@@ -37,7 +37,7 @@ if ((typeof timetableDiv != "undefined") && (timetableDiv != null)) {
   console.log("run here");
   render((
       <Provider store={store}>
-        <Programmes store={store}/>
+        <Programmes/>
       </Provider>
     ),
     timetableDiv
