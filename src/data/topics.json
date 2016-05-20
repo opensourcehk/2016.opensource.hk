@@ -637,9 +637,13 @@
     "description": "The workshop will guide you thru the installation of MySQL 5.7 together with the setup of MySQL Group Replication.  The use of MySQL Router to point to multiple node of MySQL Server Instance where the group of MySQL instances are all synchronized with data.",
     "lang": "zh.yue",
     "lang_slide": "en",
-    "length": "60-75min",
+    "length": "90min",
     "licence_video": "all-rights-reserved",
-    "licence_slide": "all-rights-reserved"
+    "licence_slide": "all-rights-reserved",
+    "pre_register": true,
+    "venue": "workshop-fn-room-1-2",
+    "start": "2016-06-26T15:45:00+0800",
+    "end": "2016-06-26T17:15:00+0800"
   },
   "practical-computing-for-everyone": {
     "id": "practical-computing-for-everyone",
@@ -658,8 +662,12 @@
     ],
     "lang": "en",
     "lang_slide": "en",
-    "length": "30min",
+    "length": "180min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "pre_register": true,
+    "venue": "workshop-fn-room-3",
+    "start": "2016-06-26T14:00:00+0800",
+    "end": "2016-06-26T17:15:00+0800"
   }
 }
