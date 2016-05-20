@@ -28,8 +28,14 @@ var store = Store({
 
 let ticketDiv = document.getElementById('ticket');
 if ((typeof ticketDiv != "undefined") && (ticketDiv != null)) {
-  render(<TicketButton className="btn btn-lg btn-hkosc button-front-mobile-ticket" />,
-    ticketDiv);
+  render((
+    <TicketButton
+      className="btn btn-lg btn-hkosc button-front-mobile-ticket"
+      target="_blank"
+      href="https://hkoscon2016.eventbrite.com/?aff=website" />
+    ),
+    ticketDiv
+  );
 }
 
 let timetableDiv = document.getElementById('timetable');
