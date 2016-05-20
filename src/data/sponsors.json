@@ -209,8 +209,19 @@
         {
           "id": "google",
           "name": "Google",
-          "grantedPerm": false,
-          "description": "",
+          "grantedPerm": true,
+          "description": [
+            "\"The perfect search engine,\" says Google co-founder Larry Page,",
+            "\"would understand exactly what you mean and give back exactly",
+            "what you want.\" Given the state of search technology today,",
+            "that's a far-reaching vision requiring research, development,",
+            "and innovation to realize. Google is committed to blazing that",
+            "trail. Though acknowledged as the world's leading search",
+            "technology company, Google's goal is to provide a much higher",
+            "level of service to all those who seek information, whether",
+            "they're at a desk in Boston, driving through Bonn, or",
+            "strolling in Bangkok"
+          ],
           "logos": [
             {
               "title": "Google",
