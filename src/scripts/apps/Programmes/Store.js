@@ -4,10 +4,10 @@ const actions = {
   "filter": function (props) {
     return {
       "type": "FILTER",
-      "props": props,
+      "props": props
     }
   }
-}
+};
 
 function filter(props, all) {
   // TODO: reduce all to a list of filtered elements
@@ -25,7 +25,7 @@ function reducer(state, action) {
         {},
         state,
         {
-          "filtered": filtered,
+          "filtered": filtered
         }
       );
   }

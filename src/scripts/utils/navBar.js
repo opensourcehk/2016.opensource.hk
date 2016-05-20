@@ -1,8 +1,11 @@
 'use strict';
 
-function navBar () {
+export default function () {
+
   !function () {
-    var $navbar = $('.navbar-front'), drop = $('#navbar-collapse', $navbar);
+    let $navbar = $('.navbar-front');
+    if ($navbar.length === 0) return;
+    let drop = $('#navbar-collapse', $navbar);
     $navbar.affix({
       offset: {
         top: $('.jumbotron').height() + $navbar.height()
@@ -16,5 +19,3 @@ function navBar () {
     });
   }(jQuery);
 }
-
-export default navBar;

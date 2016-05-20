@@ -225,12 +225,7 @@
               "url": "https://www.google.com/about/"
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "Bronze Sponsor",
-      "sponsors": [
+        },
         {
           "id": "gandi",
           "name": "Gandi.net",

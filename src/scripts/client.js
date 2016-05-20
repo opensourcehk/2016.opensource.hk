@@ -5,6 +5,7 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import Store from "./apps/Programmes/Store";
+import TicketButton from './apps/TicketButton';
 import Programmes from "./apps/Programmes/Programmes";
 
 import speakers from "../data/speakers.json";
@@ -22,8 +23,14 @@ var store = Store({
   // displayed in timetable ("all")
   all: [],
 
-  filtered: topics,
+  filtered: topics
 });
+
+let ticket = document.getElementById('ticket');
+if (typeof ticket != "undefined") {
+  render(<TicketButton className="btn btn-lg btn-hkosc button-front-mobile-ticket" />,
+    ticket);
+}
 
 render((
     <Provider store={store}>
