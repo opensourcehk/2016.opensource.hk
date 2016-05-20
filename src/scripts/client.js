@@ -28,7 +28,7 @@ var store = Store({
 
 let ticket = document.getElementById('ticket');
 if (typeof ticket != "undefined") {
-  render(<TicketButton className="btn btn-lg btn-hkosc" />,
+  render(<TicketButton className="btn btn-lg btn-hkosc button-front-mobile-ticket" />,
     ticket);
 }
 
