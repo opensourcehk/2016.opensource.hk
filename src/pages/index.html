@@ -69,16 +69,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.1/js.cookie.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettyPhoto/3.1.6/js/jquery.prettyPhoto.min.js"></script>
 <script>
-  !function () {
-    var width = $(window).width(), height = $(window).height();
+  !function ($, c, id) {
+    var $window = $(window);
     $("a[rel='promotion-popup']").prettyPhoto({
-      default_width: width * 0.8,
-      default_height: height * 0.8
+      default_width: $window.width() * .8,
+      default_height: $window.width() * .8
     });
-    if (typeof Cookies.get('viewed') === 'undefined') {
-      Cookies.set('viewed', 1);
-      $(document.getElementById('promotion-video')).click();
-    }
-  }();
+    void 0===c.get("viewed")&&(c.set("viewed",1),$(document.getElementById(id)).click());
+  }(jQuery, Cookies, 'promotion-video');
 </script>
 {% endblock %}

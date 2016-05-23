@@ -110,14 +110,14 @@ function capitalize(type) {
 }
 
 export default {
-  "capitalize": capitalize,
-  "dayName": dayName,
-  "displayDescText": displayDescText,
-  "displayDesc": displayDesc,
-  "filterBy": filterBy,
-  "toArray": toArray,
-  "findTopicSummary": findTopicSummary,
-  "formatTime": formatTime,
-  "topicSummary": topicSummary,
-  "topicURL": topicURL
+  capitalize,
+  dayName,
+  displayDescText,
+  displayDesc,
+  filterBy,
+  toArray,
+  findTopicSummary,
+  formatTime,
+  topicSummary,
+  topicURL
 };

@@ -11,38 +11,38 @@
 
 {% block scripts %}
 <script>
-    !function ($) {
-        var script = document.createElement('script'), wrap = document.getElementById('wrap');
+    !function ($, d, w) {
+        var script = d.createElement('script'), wrap = d.getElementById('wrap');
         script.src = "https://www.youtube.com/iframe_api";
-        document.body.appendChild(script);
+        d.body.appendChild(script);
         window.onYouTubeIframeAPIReady = function () {
-            $('[data-youtube-id]', $(document.getElementById('wrap'))).each(function (index) {
+            $('[data-youtube-id]', $(wrap)).each(function (index) {
                 var
                         $this = $(this),
                         id = $this.attr('id'),
                         title = $this.attr('data-title'),
                         player = new YT.Player($this.attr('id'), {
                             videoId: $this.attr('data-youtube-id'),
-                            width: screen.width * 0.7,
-                            height: screen.height * 0.7
+                            width: screen.width * .7,
+                            height: screen.height * .7
                         });
 
                 player.addEventListener('onReady', function (event) {
-                    var iframe = document.getElementById(id), ele = document.createElement('h2');
+                    var iframe = d.getElementById(id), ele = d.createElement('h2'), target = event.target;
                     if (index == 0) {
-                        event.target.playVideo();
+                        target.playVideo();
                         $('html, body').animate({
                             scrollTop: $(iframe).offset().top
                         }, 500);
                     }
                     ele.innerHTML = title;
                     wrap.insertBefore(ele, iframe);
-                    event.target.setPlaybackQuality(event.target.getAvailableQualityLevels()[0] || 'hd1080');
+                    target.setPlaybackQuality(target.getAvailableQualityLevels()[0] || 'hd1080');
 
                 });
 
             });
         };
-    }(jQuery);
+    }(jQuery, document, window);
 </script>
 {% endblock %}
