@@ -5,20 +5,24 @@ import gulp from 'gulp';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import fs from 'fs';
+import net from 'net';
 import path from 'path';
+import chalk from 'chalk';
+import 'babel-polyfill';
 
 // some config files
 import webpackCfg from './configs/webpack.babel.config';
 
 // gulp plugins
-var gconcat = require('gulp-concat');
-var gutil = require('gulp-util');
-var swig = require('gulp-swig');
-var rename = require('gulp-rename');
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var htmlmin = require('gulp-html-minifier');
-var minifyCss = require('gulp-clean-css');
+import gconcat   from 'gulp-concat';
+import gutil     from 'gulp-util';
+import swig      from 'gulp-swig';
+import rename    from 'gulp-rename';
+import sass      from 'gulp-sass';
+import uglify    from 'gulp-uglify';
+import htmlmin   from 'gulp-html-minifier';
+import minifyCss from 'gulp-clean-css';
+import helperFuncs from './src/scripts/utils/helperFuncs';
 
 const baseTarget    = __dirname + '/public';
 const assetsTarget  = baseTarget + '/assets';
@@ -44,74 +48,47 @@ function parseJSON(filename) {
   }
 }
 
-// topicURL generator
-function topicURL (type, id) {
-  if (type == 'topic') {
-    return '/topics/' + id + '/';
-  }
+function timeHash() {
+  var buffer = new Buffer(Date.now().toString()).toString('base64')
+  return buffer
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/\=+$/, '')
+    .split("").reverse().join("")
+    .slice(0,6);
 }
 
-// filterBy filters object (e.g. topic) by the given
-// property name and value
-function filterBy (name, value) {
-  return function (obj) {
-    return obj[name] === value;
-  }
+function getData(dataSource) {
+  var data = {
+    "timeHash":  timeHash(),
+    "site_host": "http://2016.opensource.hk",
+
+    // read those files everytime with fs
+    // instead of `require` (will cache the file)
+    "topics":      parseJSON(dataSource + '/topics.json',      'utf8'),
+    "venues":      parseJSON(dataSource + '/venues.json',      'utf8'),
+    "timeLengths": parseJSON(dataSource + '/timeLengths.json', 'utf8'),
+    "tags":        parseJSON(dataSource + '/tags.json',        'utf8'),
+    "speakers":    parseJSON(dataSource + '/speakers.json',    'utf8'),
+    "langs":       parseJSON(dataSource + '/langs.json',       'utf8'),
+    "levels":      parseJSON(dataSource + '/levels.json',      'utf8'),
+    "sponsors":    parseJSON(dataSource + '/sponsors.json',    'utf8'),
+    "news":        parseJSON(dataSource + '/news.json',        'utf8')
+  };
+  console.info("Date.now().toString()=", Date.now().toString());
+  console.info(new Buffer(Date.now().toString()).toString('base64'));
+  console.info("timeHash: ", data.timeHash);
+  var dataExtended = {
+    "topicsByType": {
+      "Keynotes":        helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'keynote')),
+      "Talks":           helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'talk')),
+      "Workshops":       helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'workshop')),
+      "Lightning Talks": helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'lightening-talk'))
+    }
+  };
+
+  return Object.assign({data: data}, data, dataExtended);
 }
-
-// turn an object into an array
-function toArray (obj) {
-  var arr = [];
-  for ( var key in obj ) {
-      arr.push(obj[key]);
-  }
-  return arr
-}
-
-// formatting (or not formatting) description strings
-function displayDesc (input) {
-  if (Array.isArray(input)) {
-    return input.join(' ');
-  }
-  return input;
-}
-
-// capitalize string
-function capitalize(type) {
-  return type[0].toUpperCase() + type.slice(1);
-}
-
-const data = {
-  "timeHash":  new Buffer(Date.now().toString()).toString('base64').slice(0,6),
-  "site_host": "http://2016.opensource.hk",
-
-  // read those files everytime with fs
-  // instead of `require` (will cache the file)
-  "topics":   parseJSON(dataSource + '/topics.json',   'utf8'),
-  "tags":     parseJSON(dataSource + '/tags.json',     'utf8'),
-  "speakers": parseJSON(dataSource + '/speakers.json', 'utf8'),
-  "langs":    parseJSON(dataSource + '/langs.json',    'utf8'),
-  "levels":   parseJSON(dataSource + '/levels.json',   'utf8'),
-  "sponsors": parseJSON(dataSource + '/sponsors.json', 'utf8'),
-  "news":     parseJSON(dataSource + '/news.json',     'utf8')
-};
-
-const dataExtended = {
-  "topicsByType": {
-    "Keynotes": toArray(data.topics).filter(filterBy('type', 'keynote')),
-    "Talks": toArray(data.topics).filter(filterBy('type', 'talk')),
-    "Workshops": toArray(data.topics).filter(filterBy('type', 'workshop')),
-    "Lightning Talks": toArray(data.topics).filter(filterBy('type', 'lightening-talk'))
-  }
-};
-
-const helperFuncs = {
-  "capitalize": capitalize,
-  "displayDesc": displayDesc,
-  "filterBy": filterBy,
-  "toArray": toArray,
-  "topicURL": topicURL
-};
 
 // TODO: add pre-rendered Programmes app (initial state) to the programmes page
 
@@ -155,13 +132,39 @@ gulp.task('serve-dev', function() {
     historyApiFallback: false,
     stats: { colors: true }
   });
-  server.listen(3000, "localhost", function (err, result) {
-    if (err) {
-      return console.log(err);
-    }
 
-    gutil.log('Listening at http://localhost:3000/');
+  var portInUse = function(port, callback) {
+    var server = net.createServer(function(socket) {
+      socket.write('Echo server\r\n');
+      socket.pipe(socket);
+    });
+
+    server.listen(port, '127.0.0.1');
+    server.on('error', function (e) {
+      callback(true, port);
+    });
+
+    server.on('listening', function (e) {
+      server.close();
+      callback(false, port);
+    });
+  };
+
+  // test if port in use
+  portInUse(3000, function (inUse, port) {
+    if (inUse) {
+      gutil.log('Port ' + chalk.magenta(`localhost:${port}`) + ' is in use. ' + chalk.red.bold('[failed]'));
+      process.exit(1); // quit with fail code
+    }
+    server.listen(port, "localhost", function (err, result) {
+      if (err) {
+        return console.log(err);
+      }
+
+      gutil.log('Listening at ' + chalk.magenta(`http://localhost:${port}/`) + ' ' + chalk.green.bold('[success]'));
+    });
   });
+
 });
 
 // watch the source files
@@ -176,6 +179,9 @@ gulp.task('watch', function() {
     pageLayoutSrc + '/**/*.html',
     dataSource + '/*.json'
   ], ["pages"]);
+  gulp.watch([
+    imagesSource + '/**/*.*'
+  ], ["images"]);
   gulp.watch(scriptsSource + '/**/*.*', ['scripts-bundle']);
 });
 
@@ -201,6 +207,9 @@ gulp.task('styles', function() {
 // convert html
 gulp.task('pages', function() {
 
+  // get data from JSON every compile time
+  const data = getData(dataSource);
+
   // most pages
   gulp.src([
     pageSource + '/**/*.html',
@@ -211,7 +220,6 @@ gulp.task('pages', function() {
        data: Object.assign(
          {},
          data,
-         dataExtended,
          helperFuncs
        )
     }))
@@ -221,6 +229,7 @@ gulp.task('pages', function() {
   // generate topic pages
   Object.keys(data.topics).forEach(function (topic_id) {
     var topic = data.topics[topic_id];
+    gutil.log('Generate: \'/topics/' + chalk.magenta(topic_id) + '/index.html\'')
     gulp.src(pageSource + '/topics/_topic.html')
       .pipe(swig({
         defaults: {cache: false},
@@ -231,7 +240,6 @@ gulp.task('pages', function() {
             "topic": topic
           },
           data,
-          dataExtended,
           helperFuncs
         )
       }))

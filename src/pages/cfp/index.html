@@ -2,45 +2,51 @@
 
 {% block og_url %}{{ site_host }}/cfp/{% endblock %}
 
-{% block title %}Call for Proposals{% endblock %}
+{% block title %}Call for Proposals Results{% endblock %}
 
 {% block content %}
 
 <div class="container">
 
-    <h2>Call for Proposals (CFP) is Closed. Thanks!</h2>
+    <h2>CFP Results are Here!</h2>
     <p>
-      Our CFP deadline was <b>2016/02/28 Sunday 23:00 HKT (GMT+8)</b>.
+      We are pleased to announce the CFP results. We have received
+      <strong>48</strong> submissions before our deadline
+      2016/02/28 23:00 (GMT+8). The volunteers in our Program Committee
+      had a hard time to shortlist them to fit in <a href="/schedule">our
+      agenda</a>.
     </p>
     <p>
-      If you wanted to submit your topic, we're sorry :-(
+      Here is the list of the accepted CFP topics:
+      <ul id="cfp-results">
+        {% for topic in topics %}
+          {% if !topic.isSponsorTopic %}
+            {% set speaker = speakers[topic.speaker] %}
+            <li>
+              <a href="{{ topicURL('topic', topic.id) }}">{{ topic.title }}</a>
+              ({{ speaker.name }})
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
     </p>
+
     <p>
-      But there is still hope! We'll have <b>Unconference Session</b> during the
+      If your topic is not selected, don't worry.
+      You may still share your topic in our <b>Unconference Session</b> at
       <a href="/schedule/#day-2">Lunch of Day 2 (Saturday)</a>.
     </p>
     <p>
-      Come and pitch your topic to all participants. You can still grab your
-      chance to share!
-    </p>
-    <p>
       Get your ticket
-      <a href="https://hkoscon2016.eventbrite.com/" target="_blank">here</a> :-)
+      <a href="https://hkoscon2016.eventbrite.com/?aff=website" target="_blank">here</a> :-)
     </p>
 
-    <h2>Results</h2>
+    <h2>More Information</h2>
     <p>
-      Please reference our <a href="/topics/">Topics</a> page for result
-    </p>
-    <p>
-      Please subscribe to our
+      We're constantly updating our Facebook. Please subscribe our
       <a href="https://www.facebook.com/hkoscon/" target="_blank">Facebook Page</a>
       for more updates.
     </p>
-
-    <h2>HKOSCon 2016 information</h2>
-    <p>Date: 2016/06/24-26 (Friday - Sunday)</p>
-    <p>Website: <a href="http://2016.opensource.hk" target="_blank">http://2016.opensource.hk</a></p>
     <p>For enquiry/any special requests, please feel free to contact us at <a href="mailto:conference@opensource.hk">conference@opensource.hk</a></p>
 
 </div>

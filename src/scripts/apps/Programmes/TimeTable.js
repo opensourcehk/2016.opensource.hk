@@ -20,12 +20,12 @@ class TimeTable extends React.Component {
 TimeTable.defaultProps = {
   all: [],
   filtered: []
-}
+};
 
 TimeTable.contextTypes = {
   // define store to receive it from Provider
   store:  React.PropTypes.object
-}
+};
 
 // mapStateToProps standard react-redux callback for connect
 var mapStateToProps = function (state) {
@@ -34,6 +34,6 @@ var mapStateToProps = function (state) {
     return TimeTable.defaultProps;
   }
   return state;
-}
+};
 
 export default connect(mapStateToProps)(TimeTable);

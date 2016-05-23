@@ -5,6 +5,7 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import Store from "./apps/Programmes/Store";
+import TicketButton from './apps/TicketButton';
 import Programmes from "./apps/Programmes/Programmes";
 
 import speakers from "../data/speakers.json";
@@ -22,13 +23,29 @@ var store = Store({
   // displayed in timetable ("all")
   all: [],
 
-  filtered: topics,
+  filtered: topics
 });
 
-render((
-    <Provider store={store}>
-      <Programmes store={store}/>
-    </Provider>
-  ),
-  document.getElementById('timetable')
-);
+let ticketDiv = document.getElementById('ticket');
+if ((typeof ticketDiv !== "undefined") && (ticketDiv !== null)) {
+  render((
+    <TicketButton
+      className="btn btn-lg btn-hkosc button-front-mobile-ticket"
+      target="_blank"
+      href="https://hkoscon2016.eventbrite.com/?aff=website" />
+    ),
+    ticketDiv
+  );
+}
+
+let timetableDiv = document.getElementById('timetable');
+if ((typeof timetableDiv !== "undefined") && (timetableDiv !== null)) {
+  console.log("run here");
+  render((
+      <Provider store={store}>
+        <Programmes/>
+      </Provider>
+    ),
+    timetableDiv
+  );
+}

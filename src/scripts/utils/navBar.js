@@ -1,20 +1,28 @@
 'use strict';
 
-function navBar () {
-  !function () {
-    var $navbar = $('.navbar-front'), drop = $('#navbar-collapse', $navbar);
-    $navbar.affix({
-      offset: {
-        top: $('.jumbotron').height() + $navbar.height()
-      }
-    });
-    $navbar.on('affixed.bs.affix', function () {
-      drop.removeClass('dropup');
-    });
-    $navbar.on('affixed-top.bs.affix', function () {
-      drop.addClass('dropup');
-    });
-  }(jQuery);
-}
+var largeScreen = screen.width > 993;
 
-export default navBar;
+export default function () {
+  let $navbar = $('.navbar-front');
+  if ($navbar.length === 0) return;
+  let drop = $('#navbar-collapse', $navbar);
+  if (!largeScreen)
+    drop.removeClass('dropup');
+  $navbar.affix({
+    offset: {
+      top: $('.jumbotron').height() + $navbar.height()
+    }
+  });
+  $navbar.on('affixed.bs.affix', function () {
+    if (largeScreen)
+      drop.removeClass('dropup');
+  });
+  $navbar.on('affixed-top.bs.affix', function () {
+    if (largeScreen)
+      drop.addClass('dropup');
+  });
+
+  $(window).resize(function () {
+    largeScreen = screen.width > 993;
+  });
+}

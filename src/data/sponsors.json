@@ -1,6 +1,33 @@
 {
   "sponsors": [
     {
+      "name": "Platinum Sponsor",
+      "sponsors": [
+        {
+          "id": "cyberport",
+          "name": "Cyberport",
+          "grantedPerm": true,
+          "description": [
+            "Cyberport is a creative digital cluster with over 700 community members. With a vision to build a legacy of entrepreneurial excellence that establishes Cyberport as a leading global innovation and technology hub, Cyberport is committed to facilitating the local economy by nurturing digital industry start-ups and entrepreneurs, driving collaboration to pool resources and create business opportunities, and accelerating digital adoption through strategic initiatives and partnerships."
+          ],
+          "logos": [
+            {
+              "title": "Cyberport",
+              "alt": "Cyberport logo",
+              "img": "//2016.opensource.hk/statics/images/sponsors/cyberport_master_brand_logo_500.jpg",
+              "url": "https://www.cyberport.hk/en/"
+            }
+          ],
+          "links": [
+            {
+              "text": "Cyberport Website",
+              "url": "https://www.cyberport.hk/en/"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Gold Sponsors",
       "sponsors": [
         {
@@ -46,14 +73,14 @@
           "grantedPerm": true,
           "description": [
             "<p>IBM is an innovation and technology company headquartered in New York with operations in over 175 countries. It delivers innovative solutions, software and infrastructures to improve client outcomes, create new value and solve business problems through integrated solutions that leverage IT and deep knowledge in business processes. These solutions draw from an industry leading portfolio of business and technology consulting, delivery and implementation services, as well as enterprise software, systems and financing.</p>",
-            "<p>IBM opened for business in Hong Kong in 1957, and has since played a pivotal role in Hong Kong’s development and transformation. For more information, visit <a href=\"httsp://www.ibm.com/hk\" target=\"_blank\">www.ibm.com/hk</a></p>"
+            "<p>IBM opened for business in Hong Kong in 1957, and has since played a pivotal role in Hong Kong’s development and transformation. For more information, visit <a href=\"https://www.ibm.com/hk\" target=\"_blank\">www.ibm.com/hk</a></p>"
           ],
           "_readme": "description from last year. need to confirm description this year",
           "logos": [
             {
               "title": "IBM",
               "alt": "IBM logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/ibmpos_blue_110.jpg",
+              "img": "//2016.opensource.hk/statics/images/sponsors/ibmpos_blue_500.jpg",
               "url": "https://www.ibm.com/hk/"
             }
           ],
@@ -67,13 +94,13 @@
         {
           "id": "vmware",
           "name": "VMWare",
-          "grantedPerm": false,
+          "grantedPerm": true,
           "description": "",
           "logos": [
             {
               "title": "VMWare",
               "alt": "VMWare logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/vmware_logo_gry_110.jpg",
+              "img": "//2016.opensource.hk/statics/images/sponsors/vmware_logo_gry_rgb_500.jpg",
               "url": "https://www.vmware.com/"
             }
           ],
@@ -104,13 +131,13 @@
             {
               "title": "Oracle Corporation",
               "alt": "Oracle Corpration logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/oracle_sig_logo.gif",
+              "img": "//2016.opensource.hk/statics/images/sponsors/oracle_clr_rgb_500.jpg",
               "url": "https://www.oracle.com/"
             },
             {
               "title": "MySQL",
               "alt": "MySQL logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/mysql-110.png",
+              "img": "//2016.opensource.hk/statics/images/sponsors/logo-mysql-500.jpg?v=2",
               "url": "https://www.mysql.com/"
             }
           ],
@@ -134,7 +161,7 @@
             {
               "title": "OurSky",
               "alt": "OurSky logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/oursky-110.jpg",
+              "img": "//2016.opensource.hk/statics/images/sponsors/oursky-square-tag-500.jpg?v3",
               "url": "https://oursky.com/"
             }
           ],
@@ -168,7 +195,7 @@
             {
               "title": "Microsoft",
               "alt": "Microsoft logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/msft-logo-110.png",
+              "img": "//2016.opensource.hk/statics/images/sponsors/msft-logo-500.jpg",
               "url": "https://www.microsoft.com/"
             }
           ],
@@ -182,13 +209,24 @@
         {
           "id": "google",
           "name": "Google",
-          "grantedPerm": false,
-          "description": "",
+          "grantedPerm": true,
+          "description": [
+            "\"The perfect search engine,\" says Google co-founder Larry Page,",
+            "\"would understand exactly what you mean and give back exactly",
+            "what you want.\" Given the state of search technology today,",
+            "that's a far-reaching vision requiring research, development,",
+            "and innovation to realize. Google is committed to blazing that",
+            "trail. Though acknowledged as the world's leading search",
+            "technology company, Google's goal is to provide a much higher",
+            "level of service to all those who seek information, whether",
+            "they're at a desk in Boston, driving through Bonn, or",
+            "strolling in Bangkok"
+          ],
           "logos": [
             {
               "title": "Google",
               "alt": "Google logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/Google_2015_logo_110.png",
+              "img": "//2016.opensource.hk/statics/images/sponsors/Google_2015_logo_500.jpg",
               "url": "https://www.google.com/about/"
             }
           ],
@@ -198,11 +236,39 @@
               "url": "https://www.google.com/about/"
             }
           ]
+        },
+        {
+          "id": "gandi",
+          "name": "Gandi.net",
+          "grantedPerm": true,
+          "description": [
+            "Gandi is the No Bullshit™ domain name registrar and hosting ",
+            "provider. Created in France in 1999, Gandi is now present in 3 ",
+            "continents,with offices in Paris, San Francisco, Luxembourg, and ",
+            "Taipei. We position ourselves as the next port of call for those ",
+            "who want to create an online presence, right after Internet ",
+            "access providers, since domain names are the firststep in ",
+            "creating your own piece of the Internet."
+          ],
+          "logos": [
+            {
+              "title": "Gandi.net",
+              "alt": "Gandi.net logo",
+                "img": "//2016.opensource.hk/statics/images/sponsors/gandi_logo_black.jpg",
+              "url": "https://www.gandi.net/"
+            }
+          ],
+          "links": [
+            {
+              "text": "Gandi.net Website",
+              "url": "https://www.gandi.net/"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "Prize Sponsors",
+      "name": "Prize Sponsor",
       "sponsors": [
         {
           "id": "jetbrains",
@@ -221,7 +287,7 @@
             {
               "title": "JetBrains",
               "alt": "JetBrains logo",
-              "img": "//2016.opensource.hk/statics/images/sponsors/logo_jetbrains_3_110.png",
+              "img": "//2016.opensource.hk/statics/images/sponsors/logo_jetbrains_3_500.jpg",
               "url": "https://www.jetbrains.com/"
             }
           ],

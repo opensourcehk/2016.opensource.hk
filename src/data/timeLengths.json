@@ -1,0 +1,17 @@
+{
+  "25min": {
+    "desc": "25 mins"
+  },
+  "30min": {
+    "desc": "30 mins"
+  },
+  "40min": {
+    "desc": "40 mins"
+  },
+  "90min": {
+    "desc": "90 mins"
+  },
+  "180min": {
+    "desc": "180 mins"
+  }
+}
