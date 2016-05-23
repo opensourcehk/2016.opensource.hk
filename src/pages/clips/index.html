@@ -1,0 +1,48 @@
+{% extends '../../layouts/default.html' %}
+
+{% block title %}Clips{% endblock %}
+
+{% block content %}
+<div id="wrap" class="container">
+    <div id="promotion-video-1" data-youtube-id="43uVMqES0Kk" data-title="Promotional Video 1"></div>
+    <div id="promotion-video-2" data-youtube-id="ljES4eYV0J0" data-title="Go beyond Open Source!"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    !function ($) {
+        var script = document.createElement('script'), wrap = document.getElementById('wrap');
+        script.src = "https://www.youtube.com/iframe_api";
+        document.body.appendChild(script);
+        window.onYouTubeIframeAPIReady = function () {
+            $('[data-youtube-id]', $(document.getElementById('wrap'))).each(function (index) {
+                var
+                        $this = $(this),
+                        id = $this.attr('id'),
+                        title = $this.attr('data-title'),
+                        player = new YT.Player($this.attr('id'), {
+                            videoId: $this.attr('data-youtube-id'),
+                            width: screen.width * 0.7,
+                            height: screen.height * 0.7
+                        });
+
+                player.addEventListener('onReady', function (event) {
+                    var iframe = document.getElementById(id), ele = document.createElement('h2');
+                    if (index == 0) {
+                        event.target.playVideo();
+                        $('html, body').animate({
+                            scrollTop: $(iframe).offset().top
+                        }, 500);
+                    }
+                    ele.innerHTML = title;
+                    wrap.insertBefore(ele, iframe);
+                    event.target.setPlaybackQuality(event.target.getAvailableQualityLevels()[0] || 'hd1080');
+
+                });
+
+            });
+        };
+    }(jQuery);
+</script>
+{% endblock %}
