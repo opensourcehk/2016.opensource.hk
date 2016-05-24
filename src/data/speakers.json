@@ -611,6 +611,28 @@
     "portrait": "",
     "hkoscon-sponsored": false
   },
+  "joshua-rich": {
+    "name": "Joshua Rich",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/joshuar",
+      "nickname": "Josh"
+    },
+    "description": [
+      "Joshua came to Elastic from a background in scientific research and",
+      "high-performance computing and is no stranger to dealing with big data",
+      "solutions.  He now helps our customers get the most out of our products",
+      "providing passionate and enthusiastic advice and support."
+    ],
+    "residence": "Australia",
+    "nationality": "Australia",
+    "company": {
+      "name": "Elastic",
+      "url": "https://www.elastic.co/"
+    },
+    "portrait": "/assets/images/speakers/josh.jpg",
+    "hkoscon-sponsored": false
+  },
 
 
   "dumy": {
