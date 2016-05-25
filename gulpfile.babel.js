@@ -11,6 +11,7 @@ import chalk from 'chalk';
 import 'babel-polyfill';
 import moment from 'moment';
 import ls from 'ls';
+import deepFreeze from 'deep-freeze';
 
 // some config files
 import webpackCfg from './configs/webpack.babel.config';
@@ -214,6 +215,9 @@ gulp.task('pages', function() {
     }
   );
 
+  // freeze all objects within data
+  deepFreeze(data);
+
   // most pages
   gulp.src([
     pageSource + '/**/*.html',
@@ -231,7 +235,7 @@ gulp.task('pages', function() {
     .pipe(gulp.dest(baseTarget));
 
   // generate topic pages
-  Object.keys(data.topics).forEach(function (topic_id) {
+  for (let topic_id in data.topics) {
     var topic = data.topics[topic_id];
     gutil.log('Generate: \'/topics/' + chalk.magenta(topic_id) + '/index.html\'')
     gulp.src(pageSource + '/topics/_topic.html')
@@ -250,7 +254,7 @@ gulp.task('pages', function() {
       .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(rename(topic_id + '/index.html'))
       .pipe(gulp.dest(baseTarget + "/topics/"));
-  });
+  }
 
 });
 
