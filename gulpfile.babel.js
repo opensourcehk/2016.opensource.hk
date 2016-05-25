@@ -9,6 +9,7 @@ import net from 'net';
 import path from 'path';
 import chalk from 'chalk';
 import 'babel-polyfill';
+import moment from 'moment';
 
 // some config files
 import webpackCfg from './configs/webpack.babel.config';
@@ -60,6 +61,7 @@ function timeHash() {
 
 function getData(dataSource) {
   var data = {
+    "now":       moment().utcOffset("+08:00"),
     "timeHash":  timeHash(),
     "site_host": "http://2016.opensource.hk",
 
