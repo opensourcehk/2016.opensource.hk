@@ -18,10 +18,10 @@
     <p>A preliminary schedule is also available <a href="/schedule/">here</a>.</p>
   </div>
 
-  <div class="row">
-    {% for topics in topicsByType %}
-      {% set typeName = loop.key %}
-      {% if topics.length > 0 %}
+  {% for topics in topicsByType %}
+    {% set typeName = loop.key %}
+    {% if topics.length > 0 %}
+      <div id="{{ typeName }}" class="row">
         <h2>{{ typeName }}</h2>
         <table class="table table-hover">
           <thead>
@@ -87,9 +87,9 @@
           </tbody>
         </table>
         <!-- end of topic {{ loop.key }} -->
-      {% endif %}
-    {% endfor %}
-  </div><!--/.row-->
+      </div><!--/.row-->
+    {% endif %}
+  {% endfor %}
 </div>
 
 {% endblock %}
