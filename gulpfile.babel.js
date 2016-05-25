@@ -10,6 +10,7 @@ import path from 'path';
 import chalk from 'chalk';
 import 'babel-polyfill';
 import moment from 'moment';
+import ls from 'ls';
 
 // some config files
 import webpackCfg from './configs/webpack.babel.config';
@@ -59,24 +60,21 @@ function timeHash() {
     .slice(0,6);
 }
 
+// getData read those files everytime with fs
+// instead of `require` (will cache the file)
 function getData(dataSource) {
   var data = {
     "now":       moment().utcOffset("+08:00"),
     "timeHash":  timeHash(),
-    "site_host": "http://2016.opensource.hk",
-
-    // read those files everytime with fs
-    // instead of `require` (will cache the file)
-    "topics":      parseJSON(dataSource + '/topics.json',      'utf8'),
-    "venues":      parseJSON(dataSource + '/venues.json',      'utf8'),
-    "timeLengths": parseJSON(dataSource + '/timeLengths.json', 'utf8'),
-    "tags":        parseJSON(dataSource + '/tags.json',        'utf8'),
-    "speakers":    parseJSON(dataSource + '/speakers.json',    'utf8'),
-    "langs":       parseJSON(dataSource + '/langs.json',       'utf8'),
-    "levels":      parseJSON(dataSource + '/levels.json',      'utf8'),
-    "sponsors":    parseJSON(dataSource + '/sponsors.json',    'utf8'),
-    "news":        parseJSON(dataSource + '/news.json',        'utf8')
+    "site_host": "http://2016.opensource.hk"
   };
+
+  // read every json file in the dataSource directory
+  for (let file of ls(`${dataSource}/*.json`)) {
+    // i.e. hello.json will be imported into data["hello"]
+    data[file.name] = parseJSON(file.full, 'utf8');
+  }
+
   console.info("Date.now().toString()=", Date.now().toString());
   console.info(new Buffer(Date.now().toString()).toString('base64'));
   console.info("timeHash: ", data.timeHash);
