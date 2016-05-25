@@ -37,8 +37,6 @@ main {
   margin: 2em 0 0.5em;
 }
 
-
-
 @media (max-width: 992px) {
   .media-body {
     display: table-row;
@@ -153,6 +151,13 @@ main {
   }
   table th:nth-child(n+2) {
     width: 28%;
+  }
+  // customized height to content
+  tr:nth-child(2) td a {
+    min-height: 9em;
+  }
+  tr:nth-child(4) td a {
+    min-height: 8em;
   }
 }
 
