@@ -75,9 +75,6 @@ function getData(dataSource) {
     data[file.name] = parseJSON(file.full, 'utf8');
   }
 
-  console.info("Date.now().toString()=", Date.now().toString());
-  console.info(new Buffer(Date.now().toString()).toString('base64'));
-  console.info("timeHash: ", data.timeHash);
   var dataExtended = {
     "topicsByType": {
       "Keynotes":        helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'keynote')),
