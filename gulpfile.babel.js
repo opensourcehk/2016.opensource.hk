@@ -72,19 +72,10 @@ function getData(dataSource) {
   // read every json file in the dataSource directory
   for (let file of ls(`${dataSource}/*.json`)) {
     // i.e. hello.json will be imported into data["hello"]
+    gutil.log(`getData parse: '${dataSource}/${chalk.magenta(file.name)}.json'`);
     data[file.name] = parseJSON(file.full, 'utf8');
   }
-
-  var dataExtended = {
-    "topicsByType": {
-      "Keynotes":        helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'keynote')),
-      "Talks":           helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'talk')),
-      "Workshops":       helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'workshop')),
-      "Lightning Talks": helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'lightening-talk'))
-    }
-  };
-
-  return Object.assign({data: data}, data, dataExtended);
+  return data;
 }
 
 // TODO: add pre-rendered Programmes app (initial state) to the programmes page
@@ -205,7 +196,23 @@ gulp.task('styles', function() {
 gulp.task('pages', function() {
 
   // get data from JSON every compile time
-  const data = getData(dataSource);
+  const rawData = getData(dataSource);
+
+  // extend data with topicsByType
+  const data = Object.assign(
+    {
+      data: rawData
+    },
+    rawData,
+    {
+      "topicsByType": {
+        "Keynotes":        helperFuncs.toArray(rawData.topics).filter(helperFuncs.filterBy('type', 'keynote')),
+        "Talks":           helperFuncs.toArray(rawData.topics).filter(helperFuncs.filterBy('type', 'talk')),
+        "Workshops":       helperFuncs.toArray(rawData.topics).filter(helperFuncs.filterBy('type', 'workshop')),
+        "Lightning Talks": helperFuncs.toArray(rawData.topics).filter(helperFuncs.filterBy('type', 'lightening-talk'))
+      }
+    }
+  );
 
   // most pages
   gulp.src([
