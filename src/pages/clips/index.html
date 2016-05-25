@@ -4,45 +4,17 @@
 
 {% block content %}
 <div id="wrap" class="container">
-    <div id="promotion-video-1" data-youtube-id="43uVMqES0Kk" data-title="Promotional Video 1"></div>
-    <div id="promotion-video-2" data-youtube-id="ljES4eYV0J0" data-title="Go beyond Open Source!"></div>
+    <div class="row">
+        <h2>Promotion Video 1</h2>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe width="956" height="538" src="https://www.youtube.com/embed/43uVMqES0Kk" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="row">
+        <h2>Marcelo Araujo: Go beyond Open Source !</h2>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe width="956" height="538" src="https://www.youtube.com/embed/QcQlh-BoeFM" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-    !function ($, d, w) {
-        var script = d.createElement('script'), wrap = d.getElementById('wrap');
-        script.src = "https://www.youtube.com/iframe_api";
-        d.body.appendChild(script);
-        window.onYouTubeIframeAPIReady = function () {
-            $('[data-youtube-id]', $(wrap)).each(function (index) {
-                var
-                        $this = $(this),
-                        id = $this.attr('id'),
-                        title = $this.attr('data-title'),
-                        player = new YT.Player($this.attr('id'), {
-                            videoId: $this.attr('data-youtube-id'),
-                            width: screen.width * .7,
-                            height: screen.height * .7
-                        });
-
-                player.addEventListener('onReady', function (event) {
-                    var iframe = d.getElementById(id), ele = d.createElement('h2'), target = event.target;
-                    if (index == 0) {
-                        target.playVideo();
-                        $('html, body').animate({
-                            scrollTop: $(iframe).offset().top
-                        }, 500);
-                    }
-                    ele.innerHTML = title;
-                    wrap.insertBefore(ele, iframe);
-                    target.setPlaybackQuality(target.getAvailableQualityLevels()[0] || 'hd1080');
-
-                });
-
-            });
-        };
-    }(jQuery, document, window);
-</script>
 {% endblock %}

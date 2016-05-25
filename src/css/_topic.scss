@@ -1,0 +1,203 @@
+/**
+ * topic page
+ */
+.page-topic {
+
+  .topic {
+    .datasheet {
+      display: block;
+      overflow: auto;
+      margin-top: 1em;
+      dt {
+        display: block;
+        float: left;
+        width: 160px;
+      }
+      dd {
+        display: block;
+        margin-left: 160px;
+        margin-bottom: 0.5em;
+      }
+    }
+    .progress {
+      height: 40px;
+      width: 95%;
+      .progress-bar {
+        line-height: 40px;
+      }
+    }
+  }
+
+  .speaker {
+    h2 {
+      .name {
+        display: block;
+      }
+      .nickname {
+        color: rgba(0, 0, 0, .4);
+        font-size: 0.8em;
+        font-weight: normal;
+        margin-top: 0.3em;
+      }
+    }
+    .quick-info {
+      display: block;
+      position: relative;
+      width: 70%;
+      min-height: 2em;
+
+      img {
+        width: 100%;
+      }
+
+      &.thumbnail .social {
+        padding: 8px 6px 4px;
+        margin-top: 4px;
+        border-top: solid 1px rgba(0, 0, 0, 0.2);
+      }
+
+      .social {
+        text-align: left;
+        background-color: rgba(255, 255, 255, 0.8);
+        a {
+          text-decoration: none;
+          color: inherit;
+          :hover {
+            color: rgba(0, 0, 0, 0.6);
+          }
+        }
+        .genericon {
+          font-size: 28pt;
+        }
+      }
+    }
+    @media (max-width: $width-md) {
+      .quick-info {
+        width: 100%;
+        .social {
+          text-align: center;
+          .genericon {
+            font-size: 40pt;
+          }
+        }
+      }
+    }
+    .datasheet {
+      display: block;
+      overflow: auto;
+      margin-top: 1em;
+      dt {
+        display: block;
+        float: left;
+        width: 30%;
+      }
+      dd {
+        display: block;
+        margin-left: 30%;
+      }
+    }
+  }
+
+}
+
+/**
+ * schedule / agenda page
+ */
+.topic-summary {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  outline: solid 8px #FFF;
+  transition: all .5s;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+    background-color: #FFE;
+    outline: solid 8px #FFE;
+  }
+  .type {
+    display: block;
+    font-size: 0.8em;
+    font-weight: bolder;
+  }
+  .title {
+    display: inline-block;
+    font-weight: bolder;
+    color: #337ab7;
+  }
+  .speaker {
+    display: block;
+    font-size: 0.8em;
+  }
+  .speaker::before {
+    content: "by ";
+  }
+  .time {
+    display: block;
+    font-size: 0.8em;
+    color: rgba(0,0,0,0.6);
+  }
+}
+
+/**
+ * topics page
+ */
+.page-topics {
+  .table {
+    ul.props-list {
+      display: block;
+      margin: 0;
+      font-size:.9em;
+      color:rgba(0,0,0,.4);
+      padding: 0.2em 0 0 0.4em;
+
+      li {
+        display: block;
+        margin-right: .5em;
+        &::after {
+          content: ", ";
+        }
+        &:last-child{
+          margin-right: 0;
+          &::after {
+            content: "";
+          }
+        }
+      }
+    }
+
+    .title {
+      .topic-title {
+        font-size: 1.2em;
+      }
+    }
+    .speaker {
+      width: 18%;
+    }
+    .category {
+      width: 14%;
+    }
+    .language {
+      width: 14%;
+    }
+  }
+}
+
+// Copy from Stack overflow
+.tag{
+  color: #ffffff;
+  background-color: #0381c4;
+  border-bottom: 1px solid #0365a7;
+  border-right: 1px solid #0365a7;
+  border-radius: 3px;
+  padding: 3px 4px 3px 4px;
+  margin: 2px 2px 2px 0;
+  text-decoration: none;
+  font-size: 90%;
+  line-height: 1.4;
+  white-space: nowrap;
+  display: inline-block
+}
+
