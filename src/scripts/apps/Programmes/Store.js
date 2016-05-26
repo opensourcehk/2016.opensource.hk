@@ -92,6 +92,9 @@ const initialState = {
 
 // apply filter add / remove actions to the store
 function reducer(state = initialState, action) {
+
+  const { data, all } = state;
+
   switch (action.type) {
 
     case "FILTER_SET":
@@ -114,9 +117,10 @@ function reducer(state = initialState, action) {
       return Object.assign(
         {},
         {
-          all: state.all,
+          data,
+          all,
           filters,
-          display: filterer(filters, state.all)
+          display: filterer(filters, all)
         }
       );
 
@@ -144,9 +148,10 @@ function reducer(state = initialState, action) {
       return Object.assign(
         {},
         {
-          all: state.all,
+          data,
+          all,
           filters,
-          display: filterer(filters, state.all)
+          display: filterer(filters, all)
         }
       );
 

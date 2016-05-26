@@ -240,4 +240,34 @@ describe('reducer', () => {
 
   });
 
+  it("data should be passed by in any circumstances", () => {
+
+    const data = {
+      foo: "bar",
+      something: "passby"
+    }
+    const all = [
+      {var1: "value1"},
+      {var1: "value2"},
+      {var1: "value3"}
+    ];
+    const display = [];
+    const filters = {var1: ["value1"]};
+
+    expect(
+      reducer(
+        { data, all, display, filters },
+        actions.addFilter("var1", "value2")
+      ).data
+    ).toEqual(data);
+
+    expect(
+      reducer(
+        { data, all, display, filters },
+        actions.removeFilter("var1", "value2")
+      ).data
+    ).toEqual(data);
+
+  });
+
 });
