@@ -196,3 +196,19 @@
   width: 100%;
   height: 400px;
 }
+
+/**
+ * Programmes
+ */
+.filter-toggle {
+  display: inline-block;
+  margin-right: 1em;
+  transition: background-color .5s;
+  cursor: pointer;
+  &:hover {
+    background-color: #FFD;
+  }
+  &.active {
+    background-color: #FFA;
+  }
+}
