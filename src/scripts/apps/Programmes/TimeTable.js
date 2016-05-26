@@ -26,7 +26,9 @@ class TimeTable extends Component {
     //       with start time as first column
     return (
       <div className={ className }>
-        Hello TimeTable
+        { display.map((item) => {
+          return <Row key={item.topic.id} item={item} data={data} />
+        }) }
       </div>
     )
   }
