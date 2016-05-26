@@ -24,11 +24,7 @@ export default class TicketButton extends Component {
 	}
 
 	decideToShow() {
-		if (screen.width < 768) {
-			this.display()
-		} else {
-			this.hide()
-		}
+		this[screen.width < 768 ? 'display' : 'hide']();
 	}
 
 	componentDidMount() {

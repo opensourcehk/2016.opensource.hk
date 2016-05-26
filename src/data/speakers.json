@@ -436,16 +436,12 @@
       "github": "https://github.com/araujobsd",
       "nickname": "araujobsd"
     },
-    "description": "As of 2007, Marcelo Araujo is a FreeBSD developer working mainly on the ports and kernel related features. Marcelo is a DevOps at Gandi and is automating everything in Gandi's cloud platform (which is entirely based on open source). Outside of the free software world, Marcelo likes hiking, bike and beers! ",
+    "description": "As of 2007, Marcelo Araujo is a FreeBSD developer working mainly on the ports and kernel related features. Outside of the free software world, Marcelo likes hiking, bike and beers! ",
     "residence": "Taiwan",
     "nationality": "Brazil",
     "community": {
       "name": "FreeBSD",
       "url": "https://www.freebsd.org/"
-    },
-    "company": {
-      "name": "Gandi.net",
-      "url": "https://gandi.net"
     },
     "portrait": "http://www.pycon.hk/speakers/marcelo-araujo.jpg",
     "hkoscon-sponsored": false
