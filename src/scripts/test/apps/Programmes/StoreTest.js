@@ -137,213 +137,106 @@ describe('reducer', () => {
 
   it('addFilter will add filter properties and filter the display array', () => {
 
+    const all = [
+      {"var1": "value1"},
+      {"var1": "value2"},
+      {"var1": "value3"}
+    ];
+    const display = [];
+
     expect(
-      reducer(
-        {
-          "all": [
-            {"var1": "value1"},
-            {"var1": "value2"},
-            {"var1": "value3"}
-          ],
-          "filters": {},
-          "display": []
+      reducer({
+          all,
+          display,
+          filters: {}
         },
         actions.addFilter("var1", "value2")
-      )
-    ).toEqual(
-      {
-        "all": [
-          {"var1": "value1"},
-          {"var1": "value2"},
-          {"var1": "value3"}
-        ],
-        "filters": {
-          "var1": ["value2"]
-        },
-        "display": [
-          {"var1": "value2"}
-        ]
-      }
-    );
+      ).filters
+    ).toEqual({
+      "var1": ["value2"]
+    });
 
     expect(
       reducer(
         {
-          "all": [
-            {"var1": "value1"},
-            {"var1": "value2"},
-            {"var1": "value3"}
-          ],
-          "filters": {
-            "var1": ["value3"]
-          },
-          "display": []
+          all,
+          display,
+          filters: {var1: ["value3"]}
         },
         actions.addFilter("var1", "value2")
-      )
-    ).toEqual(
-      {
-        "all": [
-          {"var1": "value1"},
-          {"var1": "value2"},
-          {"var1": "value3"}
-        ],
-        "filters": {
-          "var1": ["value3", "value2"]
-        },
-        "display": [
-          {"var1": "value2"},
-          {"var1": "value3"}
-        ]
-      }
-    );
+      ).filters
+    ).toEqual({
+      "var1": ["value3", "value2"]
+    });
 
     expect(
       reducer(
         {
-          "all": [
-            {"var1": ["value1"]},
-            {"var1": ["value2"]},
-            {"var1": ["value3"]}
-          ],
-          "filters": {},
-          "display": []
+          all,
+          display,
+          filters: {var1: ["value2"]}
         },
-        actions.addFilter("var1", "value2")
-      )
-    ).toEqual(
-      {
-        "all": [
-          {"var1": ["value1"]},
-          {"var1": ["value2"]},
-          {"var1": ["value3"]}
-        ],
-        "filters": {
-          "var1": ["value2"]
-        },
-        "display": [
-          {"var1": ["value2"]}
-        ]
-      }
-    );
-
-    expect(
-      reducer(
-        {
-          "all": [
-            {"var1": ["value1", "value2"]},
-            {"var1": ["value2", "value3"]},
-            {"var1": ["value3"]}
-          ],
-          "filters": {},
-          "display": []
-        },
-        actions.addFilter("var1", "value2")
-      )
-    ).toEqual(
-      {
-        "all": [
-          {"var1": ["value1", "value2"]},
-          {"var1": ["value2", "value3"]},
-          {"var1": ["value3"]}
-        ],
-        "filters": {
-          "var1": ["value2"]
-        },
-        "display": [
-          {"var1": ["value1", "value2"]},
-          {"var1": ["value2", "value3"]}
-        ]
-      }
-    );
-
-    expect(
-      reducer(
-        {
-          "all": [
-            {"var1": ["value1", "value2"]},
-            {"var1": ["value2", "value3"]},
-            {"var1": ["value3"]}
-          ],
-          "filters": {
-            "var1": ["value2"]
-          },
-          "display": []
-        },
-        actions.addFilter("var1", "value3")
-      )
-    ).toEqual(
-      {
-        "all": [
-          {"var1": ["value1", "value2"]},
-          {"var1": ["value2", "value3"]},
-          {"var1": ["value3"]}
-        ],
-        "filters": {
-          "var1": ["value2", "value3"]
-        },
-        "display": [
-          {"var1": ["value1", "value2"]},
-          {"var1": ["value2", "value3"]},
-          {"var1": ["value3"]}
-        ]
-      }
-    );
+        actions.addFilter("var2", "value2")
+      ).filters
+    ).toEqual({
+      "var1": ["value2"],
+      "var2": ["value2"]
+    });
 
   });
 
   it('removeFilter will remove a value from filter', () => {
 
+    const all = [
+      {"var1": "value1"},
+      {"var1": "value2"},
+      {"var1": "value3"}
+    ];
+    const display = [];
+
+    // remove existing property
     expect(
       reducer(
         {
-          "all": [
-            {"var1": ["value1"]}
-          ],
-          "filters": {
-            "var1": ["value2"]
-          },
-          "display": []
+          all,
+          display,
+          "filters": {"var1": ["value2"]},
         },
         actions.removeFilter("var1", "value2")
-      )
-    ).toEqual(
-      {
-        "all": [
-          {"var1": ["value1"]}
-        ],
-        "filters": {},
-        "display": [
-          {"var1": ["value1"]}
-        ]
-      }
-    );
+      ).filters
+    ).toEqual({
+      // empty
+    });
+
+    // remove non-existing property
+    expect(
+      reducer(
+        {
+          all,
+          display,
+          "filters": {"var1": ["value2"]},
+        },
+        actions.removeFilter("var2", "value2")
+      ).filters
+    ).toEqual({
+      "var1": ["value2"]
+    });
 
     // handles duplicateions
     expect(
       reducer(
         {
-          "all": [
-            {"var1": ["value1"]}
-          ],
+          all,
+          display,
           "filters": {
             "var1": ["value2", "value2"]
-          },
-          "display": []
+          }
         },
         actions.removeFilter("var1", "value2")
-      )
-    ).toEqual(
-      {
-        "all": [
-          {"var1": ["value1"]}
-        ],
-        "filters": {},
-        "display": [
-          {"var1": ["value1"]}
-        ]
-      }
-    );
+      ).filters
+    ).toEqual({
+      // empty
+    });
 
   });
 
