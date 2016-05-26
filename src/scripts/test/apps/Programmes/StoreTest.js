@@ -47,3 +47,176 @@ describe('actions', () => {
   });
 
 });
+
+describe('reducer', () => {
+
+  it('should return initial state', () => {
+    expect(
+      reducer(undefined, {})
+    ).toEqual(
+      {
+        all: [],
+        filters: {},
+        display: []
+      }
+    );
+  });
+
+  it('addFilter will add filter properties and filter the display array', () => {
+
+    expect(
+      reducer(
+        {
+          "all": [
+            {"var1": "value1"},
+            {"var1": "value2"},
+            {"var1": "value3"}
+          ],
+          "filters": {},
+          "display": []
+        },
+        actions.addFilter("var1", "value2")
+      )
+    ).toEqual(
+      {
+        "all": [
+          {"var1": "value1"},
+          {"var1": "value2"},
+          {"var1": "value3"}
+        ],
+        "filters": {
+          "var1": ["value2"]
+        },
+        "display": [
+          {"var1": "value2"}
+        ]
+      }
+    );
+
+    expect(
+      reducer(
+        {
+          "all": [
+            {"var1": "value1"},
+            {"var1": "value2"},
+            {"var1": "value3"}
+          ],
+          "filters": {
+            "var1": ["value3"]
+          },
+          "display": []
+        },
+        actions.addFilter("var1", "value2")
+      )
+    ).toEqual(
+      {
+        "all": [
+          {"var1": "value1"},
+          {"var1": "value2"},
+          {"var1": "value3"}
+        ],
+        "filters": {
+          "var1": ["value3", "value2"]
+        },
+        "display": [
+          {"var1": "value2"},
+          {"var1": "value3"}
+        ]
+      }
+    );
+
+    expect(
+      reducer(
+        {
+          "all": [
+            {"var1": ["value1"]},
+            {"var1": ["value2"]},
+            {"var1": ["value3"]}
+          ],
+          "filters": {},
+          "display": []
+        },
+        actions.addFilter("var1", "value2")
+      )
+    ).toEqual(
+      {
+        "all": [
+          {"var1": ["value1"]},
+          {"var1": ["value2"]},
+          {"var1": ["value3"]}
+        ],
+        "filters": {
+          "var1": ["value2"]
+        },
+        "display": [
+          {"var1": ["value2"]}
+        ]
+      }
+    );
+
+    expect(
+      reducer(
+        {
+          "all": [
+            {"var1": ["value1", "value2"]},
+            {"var1": ["value2", "value3"]},
+            {"var1": ["value3"]}
+          ],
+          "filters": {},
+          "display": []
+        },
+        actions.addFilter("var1", "value2")
+      )
+    ).toEqual(
+      {
+        "all": [
+          {"var1": ["value1", "value2"]},
+          {"var1": ["value2", "value3"]},
+          {"var1": ["value3"]}
+        ],
+        "filters": {
+          "var1": ["value2"]
+        },
+        "display": [
+          {"var1": ["value1", "value2"]},
+          {"var1": ["value2", "value3"]}
+        ]
+      }
+    );
+
+    expect(
+      reducer(
+        {
+          "all": [
+            {"var1": ["value1", "value2"]},
+            {"var1": ["value2", "value3"]},
+            {"var1": ["value3"]}
+          ],
+          "filters": {
+            "var1": ["value2"]
+          },
+          "display": []
+        },
+        actions.addFilter("var1", "value3")
+      )
+    ).toEqual(
+      {
+        "all": [
+          {"var1": ["value1", "value2"]},
+          {"var1": ["value2", "value3"]},
+          {"var1": ["value3"]}
+        ],
+        "filters": {
+          "var1": ["value2", "value3"]
+        },
+        "display": [
+          {"var1": ["value1", "value2"]},
+          {"var1": ["value2", "value3"]},
+          {"var1": ["value3"]}
+        ]
+      }
+    );
+
+  });
+
+});
