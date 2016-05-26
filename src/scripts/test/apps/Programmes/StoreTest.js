@@ -52,51 +52,69 @@ describe('filterer', () => {
 
   it('should return all values if no filter is provided', () => {
 
-    expect(
-      filterer({}, [{"var1": "hello"}, {"var1": "world"}])
-    ).toEqual(
-      [{"var1": "hello"}, {"var1": "world"}]
-    );
+    const all = [{"var1": "hello"}, {"var1": "world"}];
+    expect(filterer({}, all)).toEqual(all);
 
   });
 
   it('should return values that matches filter description', () => {
 
+    const allString = [
+      {"var1": "hello"},
+      {"var1": "world"}
+    ];
     expect(
-      filterer(
-        {"var1": ["hello"]},
-        [{"var1": "hello"}, {"var1": "world"}]
-      )
+      filterer({"var1": ["hello"]}, allString)
     ).toEqual(
       [{"var1": "hello"}]
     );
-
     expect(
-      filterer(
-        {"var1": ["world"]},
-        [{"var1": "hello"}, {"var1": "world"}]
-      )
+      filterer({"var1": ["world"]}, allString)
     ).toEqual(
       [{"var1": "world"}]
     );
-
     expect(
-      filterer(
-        {"var1": ["foobar"]},
-        [{"var1": "hello"}, {"var1": "world"}]
-      )
+      filterer({"var1": ["foobar"]}, allString)
+    ).toEqual(
+      []
+    );
+    expect(
+      filterer({"var2": ["hello"]}, allString)
     ).toEqual(
       []
     );
 
+    const allArray = [
+      {"var1": ["hello", "foo"]},
+      {"var1": ["world", "bar"]},
+      {"var1": ["wonder", "land"]}
+    ];
     expect(
-      filterer(
-        {"var2": ["hello"]},
-        [{"var1": "hello"}, {"var1": "world"}]
-      )
-    ).toEqual(
-      []
-    );
+      filterer({"var1": ["hello"]}, allArray)
+    ).toEqual([
+      {"var1": ["hello", "foo"]}
+    ]);
+    expect(
+      filterer({"var1": ["world"]}, allArray)
+    ).toEqual([
+      {"var1": ["world", "bar"]}
+    ]);
+    expect(
+      filterer({"var1": ["hello", "world"]}, allArray)
+    ).toEqual([
+      {"var1": ["hello", "foo"]},
+      {"var1": ["world", "bar"]}
+    ]);
+    expect(
+      filterer({"var1": ["foobar"]}, allArray)
+    ).toEqual([
+      // no result
+    ]);
+    expect(
+      filterer({"var2": ["hello"]}, allArray)
+    ).toEqual([
+      // no result
+    ]);
 
   });
 
