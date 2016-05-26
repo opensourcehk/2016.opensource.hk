@@ -40,8 +40,8 @@ class actions {
 
 }
 
-// filter the all array by the definition of filters
-function filter(filters, all) {
+// filterer the all array by the definition of filters
+function filterer(filters, all) {
   return all.filter((item) => {
     for (let key in filters) {
       var match = false
@@ -92,7 +92,7 @@ function reducer(state = initialState, action) {
         {
           all: state.all,
           filters,
-          display: filter(filters, state.all)
+          display: filterer(filters, state.all)
         }
       );
 
@@ -122,7 +122,7 @@ function reducer(state = initialState, action) {
         {
           all: state.all,
           filters,
-          display: filter(filters, state.all)
+          display: filterer(filters, state.all)
         }
       );
 
@@ -131,7 +131,7 @@ function reducer(state = initialState, action) {
   }
 }
 
-export { actions, reducer };
+export { actions, filterer, reducer };
 
 export default function (initialState) {
   return createStore(reducer, initialState);

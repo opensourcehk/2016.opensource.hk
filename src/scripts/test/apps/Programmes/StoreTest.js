@@ -1,5 +1,5 @@
 import configureMockStore from "redux-mock-store";
-import { actions, reducer } from "../../../apps/Programmes/Store";
+import { actions, filterer, reducer } from "../../../apps/Programmes/Store";
 import expect from "expect";
 
 describe('actions', () => {
@@ -47,6 +47,60 @@ describe('actions', () => {
   });
 
 });
+
+describe('filterer', () => {
+
+  it('should return all values if no filter is provided', () => {
+
+    expect(
+      filterer({}, [{"var1": "hello"}, {"var1": "world"}])
+    ).toEqual(
+      [{"var1": "hello"}, {"var1": "world"}]
+    );
+
+  });
+
+  it('should return values that matches filter description', () => {
+
+    expect(
+      filterer(
+        {"var1": ["hello"]},
+        [{"var1": "hello"}, {"var1": "world"}]
+      )
+    ).toEqual(
+      [{"var1": "hello"}]
+    );
+
+    expect(
+      filterer(
+        {"var1": ["world"]},
+        [{"var1": "hello"}, {"var1": "world"}]
+      )
+    ).toEqual(
+      [{"var1": "world"}]
+    );
+
+    expect(
+      filterer(
+        {"var1": ["foobar"]},
+        [{"var1": "hello"}, {"var1": "world"}]
+      )
+    ).toEqual(
+      []
+    );
+
+    expect(
+      filterer(
+        {"var2": ["hello"]},
+        [{"var1": "hello"}, {"var1": "world"}]
+      )
+    ).toEqual(
+      []
+    );
+
+  });
+
+})
 
 describe('reducer', () => {
 
