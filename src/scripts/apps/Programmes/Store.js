@@ -95,6 +95,37 @@ function reducer(state = initialState, action) {
           display: filter(filters, state.all)
         }
       );
+
+    case "FILTER_REMOVE_PROP":
+
+      // remove filter properties
+      var filters = Object.assign({}, state.filters);
+      if (typeof state.filters[action.key] !== "undefined") {
+        var keyFilter = filters[action.key].reduce((results, current) => {
+          if (action.value !== current) {
+            results.push(current);
+          }
+          return results;
+        }, []);
+
+        // delete filter[action.key] if it is empty
+        if (keyFilter.length === 0) {
+          delete filters[action.key];
+        } else {
+          filters[action.key] = keyFilter;
+        }
+      }
+
+      // apply filter properties and deduct the display array
+      return Object.assign(
+        {},
+        {
+          all: state.all,
+          filters,
+          display: filter(filters, state.all)
+        }
+      );
+
     default:
       return state;
   }

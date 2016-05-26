@@ -219,4 +219,59 @@ describe('reducer', () => {
 
   });
 
+  it('removeFilter will remove a value from filter', () => {
+
+    expect(
+      reducer(
+        {
+          "all": [
+            {"var1": ["value1"]}
+          ],
+          "filters": {
+            "var1": ["value2"]
+          },
+          "display": []
+        },
+        actions.removeFilter("var1", "value2")
+      )
+    ).toEqual(
+      {
+        "all": [
+          {"var1": ["value1"]}
+        ],
+        "filters": {},
+        "display": [
+          {"var1": ["value1"]}
+        ]
+      }
+    );
+
+    // handles duplicateions
+    expect(
+      reducer(
+        {
+          "all": [
+            {"var1": ["value1"]}
+          ],
+          "filters": {
+            "var1": ["value2", "value2"]
+          },
+          "display": []
+        },
+        actions.removeFilter("var1", "value2")
+      )
+    ).toEqual(
+      {
+        "all": [
+          {"var1": ["value1"]}
+        ],
+        "filters": {},
+        "display": [
+          {"var1": ["value1"]}
+        ]
+      }
+    );
+
+  });
+
 });
