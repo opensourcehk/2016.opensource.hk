@@ -7,6 +7,7 @@ class TimeTable extends Component {
     // store inherited from root react-redux Provider
     const { data, display } = this.props;
 
+    console.log('data', data);
     console.log('should display these objects', display);
 
     // TODO: render the topics into timetable rows by their time

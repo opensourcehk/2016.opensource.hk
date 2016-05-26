@@ -31,7 +31,7 @@ if ((typeof ticketDiv !== "undefined") && (ticketDiv !== null)) {
 // store to filter
 function topicStoreAll(data = {topics: {}}) {
   var all = [];
-  for (let id in topics) {
+  for (let id in data.topics) {
     let topic = topics[id];
     all.push({
       topic,
@@ -44,7 +44,7 @@ function topicStoreAll(data = {topics: {}}) {
 }
 
 var data = {speakers, topics, langs};
-var all = topicStoreAll();
+var all = topicStoreAll(data);
 var store = Store({
   data,
   all,
