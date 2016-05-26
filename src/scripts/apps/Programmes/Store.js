@@ -73,6 +73,9 @@ const initialState = {
 function reducer(state = initialState, action) {
   switch (action.type) {
 
+    case "FILTER_SET":
+      throw "FILTER_SET is not implmented by the reducer yet";
+
     case "FILTER_ADD_PROP":
 
       // add filter properties
