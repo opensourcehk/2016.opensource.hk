@@ -1,13 +1,42 @@
 import { createStore } from "redux";
 
-const actions = {
-  "filter": function (props) {
+class actions {
+
+  // set all properties of the filters at once
+  static setFilters(props) {
     return {
-      "type": "FILTER",
-      "props": props
+      "type": "FILTER_SET",
+      props
     }
   }
-};
+
+  // reset filter properties to empty object
+  static resetFilters(props) {
+    return {
+      "type": "FILTER_SET",
+      "props": {}
+    }
+  }
+
+  // add a specific filter
+  static addFilter(key, value) {
+    return {
+      "type": "FILTER_ADD_PROP",
+      key,
+      value
+    }
+  }
+
+  // remove a specific filter
+  static removeFilter(key, value) {
+    return {
+      "type": "FILTER_REMOVE_PROP",
+      key,
+      value
+    }
+  }
+
+}
 
 function filter(props, all) {
   // TODO: reduce all to a list of filtered elements
