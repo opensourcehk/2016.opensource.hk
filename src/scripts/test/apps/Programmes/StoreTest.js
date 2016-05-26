@@ -109,6 +109,7 @@ describe('reducer', () => {
       reducer(undefined, {})
     ).toEqual(
       {
+        data: {},
         all: [],
         filters: {},
         display: []
