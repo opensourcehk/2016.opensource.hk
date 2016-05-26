@@ -1,18 +1,31 @@
 import { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 
+class Row extends Component {
+
+  render() {
+    const { item, data } = this.props;
+    const speaker = data.speakers[item.topic.speaker];
+    return (
+      <div>
+        { item.topic.title } by { speaker.name }
+      </div>
+    )
+  }
+
+}
+
 class TimeTable extends Component {
 
   render() {
     // store inherited from root react-redux Provider
-    const { data, display } = this.props;
+    const { data, display, className } = this.props;
 
-    console.log('data', data);
-    console.log('should display these objects', display);
-
-    // TODO: render the topics into timetable rows by their time
+    // TODO: sort display by start time
+    // TODO: group display by start time as RowGroup
+    //       with start time as first column
     return (
-      <div className="time-table">
+      <div className={ className }>
         Hello TimeTable
       </div>
     )
@@ -21,6 +34,7 @@ class TimeTable extends Component {
 }
 
 TimeTable.defaultProps = {
+  className: "",
   data: {},
   display: []
 };

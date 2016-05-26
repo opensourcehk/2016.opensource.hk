@@ -8,8 +8,8 @@ class Programmes extends Component {
   render() {
     return (
       <div className="programmes">
-        <Filters />
-        <TimeTable />
+        <Filters className="filters" />
+        <TimeTable className="time-table" />
       </div>
     )
   }

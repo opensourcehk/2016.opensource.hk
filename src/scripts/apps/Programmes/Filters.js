@@ -63,9 +63,11 @@ class Filters extends Component {
   }
 
   render() {
+    const { className } = this.props;
+
     // TODO: render the topics into timetable rows by their time
     return (
-      <div className="filters">
+      <div className={ className }>
         <div className="group">
           <h2>Level</h2>
           <FilterToggle innerText="Beginners"
@@ -87,6 +89,7 @@ class Filters extends Component {
 }
 
 Filters.defaultProps = {
+  className: "",
   data: {},
   filters: {}
 }
