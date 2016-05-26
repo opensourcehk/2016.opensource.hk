@@ -1,12 +1,13 @@
-
-import React from "react";
+import { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 
-class TimeTable extends React.Component {
+class TimeTable extends Component {
+
   render() {
     // store inherited from root react-redux Provider
-    const { store } = this.context;
-    console.log('store in TimeTable: ', store);
+    const { data, display } = this.props;
+
+    console.log('should display these objects', display);
 
     // TODO: render the topics into timetable rows by their time
     return (
@@ -15,25 +16,25 @@ class TimeTable extends React.Component {
       </div>
     )
   }
+
 }
 
 TimeTable.defaultProps = {
-  all: [],
-  filtered: []
+  data: {},
+  display: []
 };
 
 TimeTable.contextTypes = {
   // define store to receive it from Provider
-  store:  React.PropTypes.object
+  store:  PropTypes.object
 };
 
 // mapStateToProps standard react-redux callback for connect
-var mapStateToProps = function (state) {
-  // TODO: get state from context store (?)
-  if (typeof state == "undefined") {
-    return TimeTable.defaultProps;
-  }
-  return state;
+// that short lists states in store
+//
+// (read Store.js to find what these parameters are)
+var mapStateToProps = function ({data, display}) {
+  return { data, display };
 };
 
 export default connect(mapStateToProps)(TimeTable);

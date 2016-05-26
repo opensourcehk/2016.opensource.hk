@@ -14,17 +14,6 @@ import langs    from "../data/langs.json";
 
 navBar();
 
-var store = Store({
-  speakers: speakers,
-  topics: topics,
-  langs: langs,
-
-  // TODO: render speakers, topics information into a list of programmes to be
-  // displayed in timetable ("all")
-  all: [],
-
-  filtered: topics
-});
 
 let ticketDiv = document.getElementById('ticket');
 if ((typeof ticketDiv !== "undefined") && (ticketDiv !== null)) {
@@ -38,9 +27,33 @@ if ((typeof ticketDiv !== "undefined") && (ticketDiv !== null)) {
   );
 }
 
+// translate data into array that's suitable for
+// store to filter
+function topicStoreAll(data = {topics: {}}) {
+  var all = [];
+  for (let id in topics) {
+    let topic = topics[id];
+    all.push({
+      topic,
+      category: [topic.category],
+      target_audience: topic.target_audience,
+      level: topic.level
+    });
+  }
+  return all;
+}
+
+var data = {speakers, topics, langs};
+var all = topicStoreAll();
+var store = Store({
+  data,
+  all,
+  filters: {},
+  display: all
+});
+
 let timetableDiv = document.getElementById('timetable');
 if ((typeof timetableDiv !== "undefined") && (timetableDiv !== null)) {
-  console.log("run here");
   render((
       <Provider store={store}>
         <Programmes/>

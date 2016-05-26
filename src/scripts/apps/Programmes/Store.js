@@ -65,11 +65,32 @@ function filterer(filters, all) {
 }
 
 const initialState = {
+  // full data tree for rendering
+  "data": {},
+
+  // array of processed topic objects for filtering to work with
   "all": [],
+
+  // an object to store all filters in the format:
+  //   {
+  //     "prop1": ["value1", "value2"],
+  //     "prop2": ["value3", "value4"],
+  //   }
+  //
+  // as in to search for:
+  //
+  //   objects in all with
+  //       (prop1 is / has "value1" or "value2") and
+  //       (prop2 is / has "value3" or "value4")
+  //
   "filters": {},
+
+  // a shortlisted version of "all" array according to filters criteria
+  // (Note: if filters is empty, show all items in "all")
   "display": []
 }
 
+// apply filter add / remove actions to the store
 function reducer(state = initialState, action) {
   switch (action.type) {
 
