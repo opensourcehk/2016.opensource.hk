@@ -1,6 +1,6 @@
 import configureMockStore from "redux-mock-store";
 import { actions, filterer, reducer } from "../../../apps/Programmes/Store";
-import expect from "expect";
+import should from "should";
 
 describe('actions', () => {
 
@@ -13,7 +13,7 @@ describe('actions', () => {
       type: 'FILTER_SET',
       props
     }
-    expect(actions.setFilters(props)).toEqual(expectedAction);
+    should(actions.setFilters(props)).deepEqual(expectedAction);
   });
 
   it('resetFilters should create an action to set filter properties to empty object', () => {
@@ -21,7 +21,7 @@ describe('actions', () => {
       type: 'FILTER_SET',
       props: {}
     }
-    expect(actions.resetFilters()).toEqual(expectedAction);
+    should(actions.resetFilters()).deepEqual(expectedAction);
   });
 
   it('addFilter should create an action to add a filter property', () => {
@@ -32,7 +32,7 @@ describe('actions', () => {
       key,
       value
     }
-    expect(actions.addFilter(key, value)).toEqual(expectedAction);
+    should(actions.addFilter(key, value)).deepEqual(expectedAction);
   });
 
   it('removeFilter should create an action to remove a filter property', () => {
@@ -43,7 +43,7 @@ describe('actions', () => {
       key,
       value
     }
-    expect(actions.removeFilter(key, value)).toEqual(expectedAction);
+    should(actions.removeFilter(key, value)).deepEqual(expectedAction);
   });
 
 });
@@ -53,7 +53,7 @@ describe('filterer', () => {
   it('should return all values if no filter is provided', () => {
 
     const all = [{"var1": "hello"}, {"var1": "world"}];
-    expect(filterer({}, all)).toEqual(all);
+    should(filterer({}, all)).deepEqual(all);
 
   });
 
@@ -63,24 +63,24 @@ describe('filterer', () => {
       {"var1": "hello"},
       {"var1": "world"}
     ];
-    expect(
+    should(
       filterer({"var1": ["hello"]}, allString)
-    ).toEqual(
+    ).deepEqual(
       [{"var1": "hello"}]
     );
-    expect(
+    should(
       filterer({"var1": ["world"]}, allString)
-    ).toEqual(
+    ).deepEqual(
       [{"var1": "world"}]
     );
-    expect(
+    should(
       filterer({"var1": ["foobar"]}, allString)
-    ).toEqual(
+    ).deepEqual(
       []
     );
-    expect(
+    should(
       filterer({"var2": ["hello"]}, allString)
-    ).toEqual(
+    ).deepEqual(
       []
     );
 
@@ -89,30 +89,30 @@ describe('filterer', () => {
       {"var1": ["world", "bar"]},
       {"var1": ["wonder", "land"]}
     ];
-    expect(
+    should(
       filterer({"var1": ["hello"]}, allArray)
-    ).toEqual([
+    ).deepEqual([
       {"var1": ["hello", "foo"]}
     ]);
-    expect(
+    should(
       filterer({"var1": ["world"]}, allArray)
-    ).toEqual([
+    ).deepEqual([
       {"var1": ["world", "bar"]}
     ]);
-    expect(
+    should(
       filterer({"var1": ["hello", "world"]}, allArray)
-    ).toEqual([
+    ).deepEqual([
       {"var1": ["hello", "foo"]},
       {"var1": ["world", "bar"]}
     ]);
-    expect(
+    should(
       filterer({"var1": ["foobar"]}, allArray)
-    ).toEqual([
+    ).deepEqual([
       // no result
     ]);
-    expect(
+    should(
       filterer({"var2": ["hello"]}, allArray)
-    ).toEqual([
+    ).deepEqual([
       // no result
     ]);
 
@@ -123,9 +123,9 @@ describe('filterer', () => {
 describe('reducer', () => {
 
   it('should return initial state', () => {
-    expect(
+    should(
       reducer(undefined, {})
-    ).toEqual(
+    ).deepEqual(
       {
         data: {},
         all: [],
@@ -144,7 +144,7 @@ describe('reducer', () => {
     ];
     const display = [];
 
-    expect(
+    should(
       reducer({
           all,
           display,
@@ -152,11 +152,11 @@ describe('reducer', () => {
         },
         actions.addFilter("var1", "value2")
       ).filters
-    ).toEqual({
+    ).deepEqual({
       "var1": ["value2"]
     });
 
-    expect(
+    should(
       reducer(
         {
           all,
@@ -165,11 +165,11 @@ describe('reducer', () => {
         },
         actions.addFilter("var1", "value2")
       ).filters
-    ).toEqual({
+    ).deepEqual({
       "var1": ["value3", "value2"]
     });
 
-    expect(
+    should(
       reducer(
         {
           all,
@@ -178,7 +178,7 @@ describe('reducer', () => {
         },
         actions.addFilter("var2", "value2")
       ).filters
-    ).toEqual({
+    ).deepEqual({
       "var1": ["value2"],
       "var2": ["value2"]
     });
@@ -195,7 +195,7 @@ describe('reducer', () => {
     const display = [];
 
     // remove existing property
-    expect(
+    should(
       reducer(
         {
           all,
@@ -204,12 +204,12 @@ describe('reducer', () => {
         },
         actions.removeFilter("var1", "value2")
       ).filters
-    ).toEqual({
+    ).deepEqual({
       // empty
     });
 
     // remove non-existing property
-    expect(
+    should(
       reducer(
         {
           all,
@@ -218,12 +218,12 @@ describe('reducer', () => {
         },
         actions.removeFilter("var2", "value2")
       ).filters
-    ).toEqual({
+    ).deepEqual({
       "var1": ["value2"]
     });
 
     // handles duplicateions
-    expect(
+    should(
       reducer(
         {
           all,
@@ -234,7 +234,7 @@ describe('reducer', () => {
         },
         actions.removeFilter("var1", "value2")
       ).filters
-    ).toEqual({
+    ).deepEqual({
       // empty
     });
 
@@ -254,19 +254,19 @@ describe('reducer', () => {
     const display = [];
     const filters = {var1: ["value1"]};
 
-    expect(
+    should(
       reducer(
         { data, all, display, filters },
         actions.addFilter("var1", "value2")
       ).data
-    ).toEqual(data);
+    ).deepEqual(data);
 
-    expect(
+    should(
       reducer(
         { data, all, display, filters },
         actions.removeFilter("var1", "value2")
       ).data
-    ).toEqual(data);
+    ).deepEqual(data);
 
   });
 
