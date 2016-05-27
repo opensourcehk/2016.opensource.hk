@@ -12,7 +12,7 @@
   "topic"
 ;
 
-main {
+#main {
   margin-bottom: 4em;
 }
 
@@ -36,8 +36,6 @@ main {
   width: 100%;
   margin: 2em 0 0.5em;
 }
-
-
 
 @media (max-width: 992px) {
   .media-body {
@@ -154,6 +152,13 @@ main {
   table th:nth-child(n+2) {
     width: 28%;
   }
+  // customized height to content
+  tr:nth-child(2) td a {
+    min-height: 9em;
+  }
+  tr:nth-child(4) td a {
+    min-height: 8em;
+  }
 }
 
 #promotion-video {
@@ -190,4 +195,26 @@ main {
 #googleMap {
   width: 100%;
   height: 400px;
+}
+
+/**
+ * Programmes
+ */
+.programmes {
+  .filters {
+    padding: 1em 0;
+
+    .filter-toggle {
+      display: inline-block;
+      margin-right: 1em;
+      transition: background-color .5s;
+      cursor: pointer;
+      &:hover {
+        background-color: #FFD;
+      }
+      &.active {
+        background-color: #FFA;
+      }
+    }
+  }
 }

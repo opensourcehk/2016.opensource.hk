@@ -18,14 +18,10 @@ var loaders = [
 
 // don't bundle these libraries
 var externals =  {
-  //don't bundle the 'react' npm package with our bundle.js
-  //but get it from a global 'React' variable
   'react': 'React',
-
-  //don't bundle the 'react' npm package with our bundle.js
-  //but get it from a global 'React' variable
-  'react-dom': 'ReactDOM'
-
+  'react-dom': 'ReactDOM',
+  'redux': 'Redux',
+  'react-redux': 'ReactRedux'
 };
 
 var plugins = [

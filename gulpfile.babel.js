@@ -9,6 +9,9 @@ import net from 'net';
 import path from 'path';
 import chalk from 'chalk';
 import 'babel-polyfill';
+import moment from 'moment';
+import ls from 'ls';
+import deepFreeze from 'deep-freeze';
 
 // some config files
 import webpackCfg from './configs/webpack.babel.config';
@@ -58,36 +61,22 @@ function timeHash() {
     .slice(0,6);
 }
 
+// getData read those files everytime with fs
+// instead of `require` (will cache the file)
 function getData(dataSource) {
   var data = {
+    "now":       moment().utcOffset("+08:00"),
     "timeHash":  timeHash(),
-    "site_host": "http://2016.opensource.hk",
-
-    // read those files everytime with fs
-    // instead of `require` (will cache the file)
-    "topics":      parseJSON(dataSource + '/topics.json',      'utf8'),
-    "venues":      parseJSON(dataSource + '/venues.json',      'utf8'),
-    "timeLengths": parseJSON(dataSource + '/timeLengths.json', 'utf8'),
-    "tags":        parseJSON(dataSource + '/tags.json',        'utf8'),
-    "speakers":    parseJSON(dataSource + '/speakers.json',    'utf8'),
-    "langs":       parseJSON(dataSource + '/langs.json',       'utf8'),
-    "levels":      parseJSON(dataSource + '/levels.json',      'utf8'),
-    "sponsors":    parseJSON(dataSource + '/sponsors.json',    'utf8'),
-    "news":        parseJSON(dataSource + '/news.json',        'utf8')
-  };
-  console.info("Date.now().toString()=", Date.now().toString());
-  console.info(new Buffer(Date.now().toString()).toString('base64'));
-  console.info("timeHash: ", data.timeHash);
-  var dataExtended = {
-    "topicsByType": {
-      "Keynotes":        helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'keynote')),
-      "Talks":           helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'talk')),
-      "Workshops":       helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'workshop')),
-      "Lightning Talks": helperFuncs.toArray(data.topics).filter(helperFuncs.filterBy('type', 'lightening-talk'))
-    }
+    "site_host": "http://2016.opensource.hk"
   };
 
-  return Object.assign({data: data}, data, dataExtended);
+  // read every json file in the dataSource directory
+  for (let file of ls(`${dataSource}/*.json`)) {
+    // i.e. hello.json will be imported into data["hello"]
+    gutil.log(`getData parse: '${dataSource}/${chalk.magenta(file.name)}.json'`);
+    data[file.name] = parseJSON(file.full, 'utf8');
+  }
+  return data;
 }
 
 // TODO: add pre-rendered Programmes app (initial state) to the programmes page
@@ -208,7 +197,26 @@ gulp.task('styles', function() {
 gulp.task('pages', function() {
 
   // get data from JSON every compile time
-  const data = getData(dataSource);
+  const rawData = getData(dataSource);
+
+  // extend data with topicsByType
+  const data = Object.assign(
+    {
+      data: rawData
+    },
+    rawData,
+    {
+      "topicsByType": {
+        "Keynotes":        helperFuncs.toArray(rawData.topics).filter(helperFuncs.filterBy('type', 'keynote')),
+        "Talks":           helperFuncs.toArray(rawData.topics).filter(helperFuncs.filterBy('type', 'talk')),
+        "Workshops":       helperFuncs.toArray(rawData.topics).filter(helperFuncs.filterBy('type', 'workshop')),
+        "Lightning Talks": helperFuncs.toArray(rawData.topics).filter(helperFuncs.filterBy('type', 'lightening-talk'))
+      }
+    }
+  );
+
+  // freeze all objects within data
+  deepFreeze(data);
 
   // most pages
   gulp.src([
@@ -227,7 +235,7 @@ gulp.task('pages', function() {
     .pipe(gulp.dest(baseTarget));
 
   // generate topic pages
-  Object.keys(data.topics).forEach(function (topic_id) {
+  for (let topic_id in data.topics) {
     var topic = data.topics[topic_id];
     gutil.log('Generate: \'/topics/' + chalk.magenta(topic_id) + '/index.html\'')
     gulp.src(pageSource + '/topics/_topic.html')
@@ -246,7 +254,7 @@ gulp.task('pages', function() {
       .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(rename(topic_id + '/index.html'))
       .pipe(gulp.dest(baseTarget + "/topics/"));
-  });
+  }
 
 });
 

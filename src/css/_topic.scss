@@ -111,11 +111,14 @@
   outline: solid 8px #FFF;
   transition: all .5s;
 
-  &:hover {
+  &:active, &:focus, &:hover {
     text-decoration: none;
     color: inherit;
+    outline: solid 8px #FFF;
+  }
+  &:hover {
     background-color: #FFE;
-    outline: solid 8px #FFE;
+    outline-color: #FFE;
   }
   .type {
     display: block;
@@ -183,21 +186,8 @@
       width: 14%;
     }
   }
-}
 
-// Copy from Stack overflow
-.tag{
-  color: #ffffff;
-  background-color: #0381c4;
-  border-bottom: 1px solid #0365a7;
-  border-right: 1px solid #0365a7;
-  border-radius: 3px;
-  padding: 3px 4px 3px 4px;
-  margin: 2px 2px 2px 0;
-  text-decoration: none;
-  font-size: 90%;
-  line-height: 1.4;
-  white-space: nowrap;
-  display: inline-block
+  .topic-type:target table {
+    background-color: #FFE;
+  }
 }
-
