@@ -22,6 +22,14 @@ class TopicRow extends Component {
           <li className="speaker">{ speaker.name }</li>
           <li className="venue">{ venue.name }</li>
         </ul>
+        <ul className="details">
+          <li className="category">{ topic.category }</li>
+          { topic.target_audience.map((audience, index) => {
+            return (
+              <li className="target-audience">{ audience }</li>
+            );
+          }) }
+        </ul>
       </a>
     )
   }
