@@ -9,7 +9,7 @@ class Programmes extends Component {
     return (
       <div className="programmes">
         <Filters className="filters" />
-        <TimeTable className="time-table" />
+        <TimeTable className="timetable" />
       </div>
     )
   }

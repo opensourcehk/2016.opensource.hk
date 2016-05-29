@@ -217,4 +217,79 @@
       }
     }
   }
+  .timetable {
+    font-size: 1.2em;
+
+    .day-container {
+      margin: 0 0 2em;
+    }
+
+    .schedule-item {
+      background-color: rgba(0, 0, 0, .02);
+      border-bottom: solid 1px rgba(0, 0, 0, .1);
+      .col-time {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        vertical-align: top;
+        line-height: 1.2em;
+        color: rgba(0, 0, 0, .45);
+        .hour {
+          font-size: 2em;
+        }
+        .minute {
+          font-size: 1.2em;
+        }
+        .ampm {
+          font-size: .7em;
+        }
+      }
+      .col-topic {
+        .schedule-row, .topic-row {
+          transition: background-color .3s;
+          display: block;
+          padding: 1em;
+          text-decoration: none;
+          color: inherit;
+          &:hover {
+            color: inherit;
+            background-color: rgba(0, 0, 0, .03);
+          }
+          &:active, &:focus {
+            outline: none;
+          }
+        }
+        .topic-row {
+          .title {
+            font-size: 1.2em;
+          }
+          .type {
+            color: rgba(0, 0, 0, .5);
+          }
+          .details {
+            list-style-type: none;
+            display: block;
+            padding: 0;
+            color: rgba(0, 0, 0, .5);
+            li {
+              display: inline-block;
+              margin-right: .2em;
+              &:not(:last-child)::after {
+                content: ' / ';
+              }
+            }
+          }
+        }
+        .topic-row:not(:first-child) {
+          padding-top: 1em;
+        }
+        .topic-row:not(:last-child) {
+          padding-bottom: 1em;
+          border-bottom: solid 1px rgba(0, 0, 0, .1);
+        }
+      }
+    }
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+  }
 }
