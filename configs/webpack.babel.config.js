@@ -21,7 +21,8 @@ var externals =  {
   'react': 'React',
   'react-dom': 'ReactDOM',
   'redux': 'Redux',
-  'react-redux': 'ReactRedux'
+  'react-redux': 'ReactRedux',
+  'moment': 'moment'
 };
 
 var plugins = [

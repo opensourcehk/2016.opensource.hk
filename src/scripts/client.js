@@ -8,9 +8,13 @@ import Store from "./apps/Programmes/Store";
 import TicketButton from './apps/TicketButton';
 import Programmes from "./apps/Programmes/Programmes";
 
-import speakers from "../data/speakers.json";
-import topics   from "../data/topics.json";
-import langs    from "../data/langs.json";
+import langs       from "../data/langs.json";
+import schedule    from "../data/schedule.json";
+import speakers    from "../data/speakers.json";
+import timeLengths from "../data/timeLengths.json";
+import topics      from "../data/topics.json";
+import venues      from "../data/venues.json";
+
 
 navBar();
 
@@ -43,7 +47,15 @@ function topicStoreAll(data = {topics: {}}) {
   return all;
 }
 
-var data = {speakers, topics, langs};
+var data = {
+  langs,
+  schedule,
+  speakers,
+  topics,
+  timeLengths,
+  venues
+};
+
 var all = topicStoreAll(data);
 var store = Store({
   data,

@@ -171,7 +171,6 @@ gulp.task('watch', function() {
   gulp.watch([
     imagesSource + '/**/*.*'
   ], ["images"]);
-  gulp.watch(scriptsSource + '/**/*.*', ['scripts-bundle']);
 });
 
 // convert styles
