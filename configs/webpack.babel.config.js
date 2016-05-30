@@ -40,10 +40,7 @@ export default [
     externals: externals,
     plugins: plugins,
     resolve: {
-      extensions: ['', '.js', '.jsx'],
-      alias: {
-          "request": "browser-request"
-      }
+      extensions: ['', '.js', '.jsx', '.json'],
     },
     output: {
       path: __dirname + "/../public/assets/scripts",
