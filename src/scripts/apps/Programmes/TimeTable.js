@@ -3,26 +3,65 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import _ from 'lodash';
 
+class Details extends Component {
+
+  render() {
+    const { length, venue, speaker, data } = this.props;
+    var inner = [];
+    if (length !== "undefined") {
+      const timeLength = data.timeLengths[length];
+      if (typeof timeLength !== "undefined") {
+        inner.push(<li className="time-length">{ timeLength.desc }</li>);
+      }
+    }
+    if (speaker !== "undefined") {
+      const speakerDetails = data.speakers[speaker];
+      if (typeof speakerDetails !== "undefined") {
+        inner.push(<li className="speaker">{ speakerDetails.name }</li>);
+      }
+    }
+    if (typeof venue !== "undefined") {
+      const venueDetails = data.venues[venue];
+      if (typeof venueDetails !== "undefined") {
+        inner.push(<li className="venue">{ venueDetails.name }</li>);
+      }
+    }
+
+    return (
+      <ul className="details">{ inner }</ul>
+    );
+  }
+
+}
+
 // TopicRow display a topic
 class TopicRow extends Component {
 
   render() {
     const { item, data, className } = this.props;
     const { topic } = item;
-    const timeLength = data.timeLengths[topic.length]
-    const speaker = data.speakers[topic.speaker];
-    const venue = data.venues[topic.venue];
-
     return (
       <a className={className} target="_blank" href={`/topics/${topic.id}/`}>
         <div className="type">{ _.capitalize(topic.type) }</div>
         <div className="title">{ topic.title }</div>
-        <ul className="details">
-          <li className="time-length">{ timeLength.desc }</li>
-          <li className="speaker">{ speaker.name }</li>
-          <li className="venue">{ venue.name }</li>
-        </ul>
+        <Details data={data}
+          length={topic.length} speaker={topic.speaker} venue={topic.venue} />
       </a>
+    )
+  }
+
+}
+
+// ScheduleRow display a schedule
+class ScheduleRow extends Component {
+
+  render() {
+    const { text, length, venue, data, className } = this.props;
+    return (
+      <div className={className}>
+        <div className="title">{ text }</div>
+        <Details length={length} venue={venue} data={data} />
+      </div>
     )
   }
 
@@ -35,6 +74,7 @@ class ScheduleItem extends Component {
   render() {
     const { className, item, display, hasFilter, data } = this.props
     var start = moment(item.start);
+    var inner = null;
 
     if (item.hasTopics === true) {
       // this item is a topic container
@@ -50,12 +90,17 @@ class ScheduleItem extends Component {
       // if a topic container has no topic in it
       // while no filter is in place
       if (inner.length === 0) {
-        // show the item name for now
-        var inner = (hasFilter !== true) ? <div className="row schedule-row">{item.name}</div> : null;
+        inner = null;
       }
-    } else {
-        // if this schedule item is not a topic container
-        var inner = (hasFilter) ? null : <div className="row schedule-row">{item.name}</div>;
+    }
+
+    // show something anyway if there is no filter
+    // (for non-topic-container)
+    if (inner === null && hasFilter !== true) {
+        var inner = (
+          <ScheduleRow className="row schedule-row" data={data}
+            text={item.name} venue={item.venue} length={item.length} />
+        );
     }
 
     // if there is inner item, display it
