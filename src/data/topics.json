@@ -154,7 +154,7 @@
     "target_audience": ["Developers", "Data Scientists"],
     "lang": "en",
     "lang_slide": "en",
-    "length": "30min",
+    "length": "40min",
     "licence_video": "cc",
     "licence_slide": "cc",
     "level": "beginners",
@@ -163,7 +163,10 @@
     ],
     "description": [
       "<p>Plotly works with modern data science workflows that use R, Python, and MATLAB - the data science triumvirate that has taken engineering and business analytics by storm. Since plotly open sourced its JavaScript graphing library, it's become possible to use it to build out your own interactive dashboards. This talk covers how to use an assemblage of Flask, Socketio, Jinja, and Plotly to easily create data visualization web-apps with your Python data analysis backend.</p>"
-    ]
+    ],
+    "venue": "big-hall",
+    "start": "2016-06-25T10:55:00+0800",
+    "end": "2016-06-25T11:35:00+0800"
   },
   "fluentd-unified-logging-layer": {
     "id": "fluentd-unified-logging-layer",
@@ -181,9 +184,12 @@
     ],
     "lang": "en",
     "lang_slide": "en",
-    "length": "30min",
+    "length": "40min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "big-hall",
+    "start": "2016-06-25T11:55:00+0800",
+    "end": "2016-06-25T12:35:00+0800"
   },
   "offline-first-and-search-on-steroids-with-couchbase-mobile-and-elasticsearch": {
     "id": "offline-first-and-search-on-steroids-with-couchbase-mobile-and-elasticsearch",
@@ -210,7 +216,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-1",
+    "start": "2016-06-25T14:10:00+0800",
+    "end": "2016-06-25T14:40:00+0800"
   },
   "deep-dive-and-learn-about-your-os": {
     "id": "deep-dive-and-learn-about-your-os",
@@ -227,7 +236,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "all-rights-reserved",
-    "licence_slide": "all-rights-reserved"
+    "licence_slide": "all-rights-reserved",
+    "venue": "fn-room-2",
+    "start": "2016-06-25T14:10:00+0800",
+    "end": "2016-06-25T14:40:00+0800"
   },
   "a-devops-state-of-mind": {
     "id": "a-devops-state-of-mind",
@@ -253,7 +265,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-2",
+    "start": "2016-06-25T13:35:00+0800",
+    "end": "2016-06-25T14:05:00+0800"
   },
   "optimizing-chinese-webfont-and-typography": {
     "id": "optimizing-chinese-webfont-and-typography",
@@ -279,7 +294,10 @@
     ],
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-1",
+    "start": "2016-06-25T13:35:00+0800",
+    "end": "2016-06-25T14:05:00+0800"
   },
   "10-reasons-why-you-should-start-analytics-project-with-postgresql": {
     "id": "10-reasons-why-you-should-start-analytics-project-with-postgresql",
@@ -317,7 +335,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "tr-theatre",
+    "start": "2016-06-25T13:35:00+0800",
+    "end": "2016-06-25T14:05:00+0800"
   },
 
 
@@ -337,7 +358,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-1",
+    "start": "2016-06-25T15:35:00+0800",
+    "end": "2016-06-25T16:05:00+0800"
   },
   "how-to-build-a-newsql-database": {
     "id": "how-to-build-a-newsql-database",
@@ -357,7 +381,10 @@
     ],
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "tr-theatre",
+    "start": "2016-06-25T14:10:00+0800",
+    "end": "2016-06-25T15:40:00+0800"
   },
   "connecting-internet-of-things-to-the-cloud-with-mqtt": {
     "id": "connecting-internet-of-things-to-the-cloud-with-mqtt",
@@ -383,7 +410,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-3",
+    "start": "2016-06-25T13:35:00+0800",
+    "end": "2016-06-25T14:05:00+0800"
   },
   "developing-applications-with-react-and-redux": {
     "id": "developing-applications-with-react-and-redux",
@@ -400,7 +430,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-2",
+    "start": "2016-06-25T15:35:00+0800",
+    "end": "2016-06-25T16:05:00+0800"
   },
   "migrating-odf-and-libreoffice-in-taiwan-government-enterprise-and-npo": {
     "id": "migrating-odf-and-libreoffice-in-taiwan-government-enterprise-and-npo",
@@ -417,7 +450,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-3",
+    "start": "2016-06-25T15:35:00+0800",
+    "end": "2016-06-25T16:05:00+0800"
   },
   "pentest-fun-with-metasploit": {
     "id": "pentest-fun-with-metasploit",
@@ -434,7 +470,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "tr-theatre",
+    "start": "2016-06-25T16:10:00+0800",
+    "end": "2016-06-25T16:40:00+0800"
   },
   "fuzzing-and-mozilla-2015": {
     "id": "fuzzing-and-mozilla-2015",
@@ -451,7 +490,10 @@
     "lang_slide": "en_US/zh_CN/zh_TW/ja_JP",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "tr-theatre",
+    "start": "2016-06-25T15:35:00+0800",
+    "end": "2016-06-25T16:05:00+0800"
   },
 
 
@@ -483,7 +525,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "tr-theatre",
+    "start": "2016-06-25T14:45:00+0800",
+    "end": "2016-06-25T15:15:00+0800"
   },
   "understanding-js": {
     "id": "understanding-js",
@@ -504,12 +549,14 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-2",
+    "start": "2016-06-25T16:10:00+0800",
+    "end": "2016-06-25T16:40:00+0800"
   },
   "my-mozilla-contributing-journey": {
     "id": "my-mozilla-contributing-journey",
     "title": "My Mozilla Contributing Journey",
-
     "type": "talk",
     "speaker": "irvin-chen",
     "category": "Data",
@@ -522,7 +569,10 @@
     "lang": "zh.tw",
     "lang_slide": "en",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-1",
+    "start": "2016-06-25T16:10:00+0800",
+    "end": "2016-06-25T16:40:00+0800"
   },
   "be-innovative-with-copyright-introduction-to-open-source-business-models": {
     "id": "be-innovative-with-copyright-introduction-to-open-source-business-models",
@@ -559,7 +609,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-3",
+    "start": "2016-06-25T14:10:00+0800",
+    "end": "2016-06-25T14:40:00+0800"
   },
   "mozilla-eir-bring-medical-devices-into-the-world-of-web": {
     "id": "mozilla-eir-bring-medical-devices-into-the-world-of-web",
@@ -576,7 +629,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "Welcome to publish it everywhere. But, please let me know.",
-    "licence_slide": "Welcome to publish it everywhere. But, please let me know."
+    "licence_slide": "Welcome to publish it everywhere. But, please let me know.",
+    "venue": "fn-room-3",
+    "start": "2016-06-25T14:45:00+0800",
+    "end": "2016-06-25T15:15:00+0800"
   },
   "yajs-vim-and-vim-syntax-system": {
     "id": "yajs-vim-and-vim-syntax-system",
@@ -593,7 +649,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-2",
+    "start": "2016-06-25T16:45:00+0800",
+    "end": "2016-06-25T17:15:00+0800"
   },
   "an-insight-about-glusterfs-and-its-enforcement-techniques": {
     "id": "an-insight-about-glusterfs-and-its-enforcement-techniques",
@@ -613,7 +672,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "all-rights-reserved",
-    "licence_slide": "all-rights-reserved"
+    "licence_slide": "all-rights-reserved",
+    "venue": "fn-room-1",
+    "start": "2016-06-25T14:45:00+0800",
+    "end": "2016-06-25T15:15:00+0800"
   },
   "what-is-freebsd-and-how-become-part-of-the-project": {
     "id": "what-is-freebsd-and-how-become-part-of-the-project",
@@ -630,7 +692,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-1",
+    "start": "2016-06-25T16:45:00+0800",
+    "end": "2016-06-25T17:15:00+0800"
   },
   "next-generation-config-mgmt": {
     "id": "next-generation-config-mgmt",
@@ -663,7 +728,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-2",
+    "start": "2016-06-25T14:45:00+0800",
+    "end": "2016-06-25T15:15:00+0800"
   },
   "apt-get-install-my-software-packaging-for-linux": {
     "id": "apt-get-install-my-software-packaging-for-linux",
@@ -688,7 +756,10 @@
     "lang_slide": "en",
     "length": "30min",
     "licence_video": "cc",
-    "licence_slide": "cc"
+    "licence_slide": "cc",
+    "venue": "fn-room-3",
+    "start": "2016-06-25T16:10:00+0800",
+    "end": "2016-06-25T16:40:00+0800"
   },
   "creating-your-mysql-group-replication-environment": {
     "id": "creating-your-mysql-group-replication-environment",

@@ -22,14 +22,6 @@ class TopicRow extends Component {
           <li className="speaker">{ speaker.name }</li>
           <li className="venue">{ venue.name }</li>
         </ul>
-        <ul className="details">
-          <li className="category">{ topic.category }</li>
-          { topic.target_audience.map((audience, index) => {
-            return (
-              <li className="target-audience">{ audience }</li>
-            );
-          }) }
-        </ul>
       </a>
     )
   }
@@ -62,19 +54,19 @@ class ScheduleItem extends Component {
         var inner = (hasFilter !== true) ? <div className="row schedule-row">{item.name}</div> : null;
       }
     } else {
-      // if this schedule item is not a topic container
-      var inner = <div className="row schedule-row">{item.name}</div>
+        // if this schedule item is not a topic container
+        var inner = (hasFilter) ? null : <div className="row schedule-row">{item.name}</div>;
     }
 
     // if there is inner item, display it
     // if not, show nothing
     return (inner !== null) ? (
       <div className={ [className, "row schedule-item"].join(" ") }>
-        <div className="col-sm-2 col-time">
+        <div className="col-xs-2 col-time">
           <span className="hour">{ start.format("H") }</span>
           <span className="minute">:{ start.format("mm") }</span>
         </div>
-        <div className="col-sm-10 col-topic container">
+        <div className="col-xs-10 col-topic container">
           { inner }
         </div>
       </div>

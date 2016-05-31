@@ -26,7 +26,7 @@
     }
   }
   .timetable {
-    font-size: 1.2em;
+    font-size: 1em;
 
     .day-container {
       margin: 0 0 2em;
@@ -68,12 +68,13 @@
         }
         .topic-row {
           .title {
-            font-size: 1.2em;
+            font-weight: 500;
           }
           .type {
-            color: rgba(0, 0, 0, .5);
+            font-size: .8em;
           }
           .details {
+            font-size: .8em;
             list-style-type: none;
             display: block;
             padding: 0;

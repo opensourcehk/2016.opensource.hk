@@ -15,6 +15,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base));
 
 // Global font Setting
 $font-family: 'Alegreya Sans', sans-serif;
+//$font-family: 'Open Sans', sans-serif;
 $default-font-size: 18px;
 
 // Global Color Setting
@@ -28,4 +29,5 @@ $inverse-foreground: #fff;
 $inverse-background: #111;
 
 // checkpoints
-$width-md: 991px;
+$width-md: 992px;
+$width-sm: 768px;

@@ -8,12 +8,12 @@ import Store from "./apps/Programmes/Store";
 import TicketButton from './apps/TicketButton';
 import Programmes from "./apps/Programmes/Programmes";
 
-import langs       from "../data/langs.json";
-import schedule    from "../data/schedule.json";
-import speakers    from "../data/speakers.json";
-import timeLengths from "../data/timeLengths.json";
-import topics      from "../data/topics.json";
-import venues      from "../data/venues.json";
+import langs       from "../data/langs";
+import schedule    from "../data/schedule";
+import speakers    from "../data/speakers";
+import timeLengths from "../data/timeLengths";
+import topics      from "../data/topics";
+import venues      from "../data/venues";
 
 
 navBar();
@@ -47,22 +47,28 @@ function topicStoreAll(data = {topics: {}}) {
   return all;
 }
 
-var data = {
+// mapStoreData maps data to store object
+// with the help of the mapAll function
+// to translate `topics` to `all`
+function mapStoreData(mapAll, data) {
+  var all = mapAll(data);
+  return {
+    data,
+    all,
+    filters: {},
+    display: all
+  };
+}
+
+// map all useful data to store as `data`
+var store = Store(mapStoreData(topicStoreAll, {
   langs,
   schedule,
   speakers,
   topics,
   timeLengths,
   venues
-};
-
-var all = topicStoreAll(data);
-var store = Store({
-  data,
-  all,
-  filters: {},
-  display: all
-});
+}));
 
 let timetableDiv = document.getElementById('timetable');
 if ((typeof timetableDiv !== "undefined") && (timetableDiv !== null)) {

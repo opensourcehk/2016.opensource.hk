@@ -1,4 +1,4 @@
-@media (min-width: 992px) {
+@media (min-width: $width-md) {
   #introjumbo {
     background-color: $theme-blue;
     background-image: url("/assets/images/hkoscon-2015-ckk.jpg");
@@ -8,7 +8,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $width-sm) {
   .jumbotron {
     padding-top: 30px;
 
@@ -51,7 +51,7 @@
       margin: 0 0 1em;
       padding: 0;
     }
-    @media (max-width: 768px) {
+    @media (max-width: $width-sm) {
       padding: 1em 2em;
       h2 {
         margin: 0 0 .5em;
