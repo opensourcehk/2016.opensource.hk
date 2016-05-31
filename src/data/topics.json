@@ -64,6 +64,27 @@
     "start": "2016-06-26T14:00:00+0800",
     "end": "2016-06-24T15:30:00+0800"
   },
+  "fast-prototyping-on-ibm-open-source-cloud": {
+    "id": "fast-prototyping-on-ibm-open-source-cloud",
+    "title": "Fast Prototyping on IBM Open Source Cloud",
+    "type": "talk",
+    "speaker": "tbd",
+    "category": "Cloud",
+    "level": "beginners",
+    "requirement": "Any developers or software engineers with knowledge in open source technology",
+    "target_audience": ["Developers", "IT Managers"],
+    "short_desc": "Open Technology on Bluemix development platform",
+    "description": "To-be-shared",
+    "lang": "en",
+    "lang_slide": "en",
+    "length": "25min",
+    "licence_video": "all-rights-reserved",
+    "licence_slide": "all-rights-reserved",
+    "isSponsorTopic": true,
+    "venue": "big-hall",
+    "start": "2016-06-24T11:00:00+0800",
+    "end": "2016-06-24T11:40:00+0800"
+  },
 
   "the-latest-innovation-mysql-document-store": {
     "id": "the-latest-innovation-mysql-document-store",
