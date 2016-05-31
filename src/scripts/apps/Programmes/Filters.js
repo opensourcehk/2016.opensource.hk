@@ -63,76 +63,32 @@ class Filters extends Component {
   }
 
   render() {
-    const { className } = this.props;
+    const { className, filterGroups } = this.props;
+    var groupDivs = [];
+
+    for (let filterGroup of filterGroups) {
+      var filterDivs = [];
+      for (let value of filterGroup.values) {
+        filterDivs.push(
+          <FilterToggle
+            filterKey={filterGroup.filterKey}
+            value={value}
+            getStatus={ this.filterStatus.bind(this) }
+            onChange={ this.handleChange.bind(this) }/>
+        );
+      }
+      groupDivs.push(
+        <div className="group">
+          <h2>{filterGroup.name}</h2>
+          {filterDivs}
+        </div>
+      );
+    }
 
     // TODO: render the topics into timetable rows by their time
     return (
       <div className={ className }>
-        <div className="group">
-          <h2>Category</h2>
-          <FilterToggle
-            filterKey="category" value="Cloud"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle
-            filterKey="category" value="Data"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle
-            filterKey="category" value="DevOps"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle
-            filterKey="category" value="Internet of Things"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle
-            filterKey="category" value="Community"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle
-            filterKey="category" value="Database"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle
-            filterKey="category" value="Security"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle
-            filterKey="category" value="Misc"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-        </div>
-        <div className="group">
-          <h2>Target Audience</h2>
-          <FilterToggle
-            filterKey="target_audience" value="Users"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle
-            filterKey="target_audience" value="Developers"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle
-            filterKey="target_audience" value="IT Managers"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-        </div>
-        <div className="group">
-          <h2>Difficult</h2>
-          <FilterToggle innerText="Beginners"
-            filterKey="level" value="beginners"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle innerText="Intermediate"
-            filterKey="level" value="intermediate"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-          <FilterToggle innerText="Advanced"
-            filterKey="level" value="advanced"
-            getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
-        </div>
+        {groupDivs}
       </div>
     )
   }
