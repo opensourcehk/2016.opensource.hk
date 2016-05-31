@@ -95,7 +95,16 @@
           "id": "vmware",
           "name": "VMWare",
           "grantedPerm": true,
-          "description": "",
+          "description": [
+            "VMware, a global leader in cloud infrastructure and business",
+            "mobility, accelerates our customers’ digital transformation",
+            "journey by enabling enterprises to master a software-defined",
+            "approach to business and IT. With VMware solutions, organizations",
+            "are creating exceptional experiences by mobilizing everything,",
+            "responding faster to opportunities with modern data and apps",
+            "hosted across hybrid clouds, and safeguarding customer trust",
+            "with a defense-in-depth approach to cybersecurity."
+          ],
           "logos": [
             {
               "title": "VMWare",
