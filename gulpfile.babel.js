@@ -217,19 +217,23 @@ gulp.task('pages', function() {
   // freeze all objects within data
   deepFreeze(data);
 
+  var catchError = function (e) {
+    gutil.log("Error compiling swig template: " + chalk.red(e.message));
+  }
+
   // most pages
   gulp.src([
-    pageSource + '/**/*.html',
-    '!/**/_*.html'
-  ])
-     .pipe(swig({
+      pageSource + '/**/*.html',
+      '!/**/_*.html'
+    ])
+    .pipe(swig({
        defaults: { cache: false },
        data: Object.assign(
          {},
          data,
          helperFuncs
        )
-    }))
+    }).on('error', catchError))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(baseTarget));
 
@@ -249,11 +253,12 @@ gulp.task('pages', function() {
           data,
           helperFuncs
         )
-      }))
+      }).on('error', catchError))
       .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(rename(topic_id + '/index.html'))
       .pipe(gulp.dest(baseTarget + "/topics/"));
   }
+
 
 });
 

@@ -25,7 +25,7 @@
     <!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
 
-  <body>
+  <body id="page--front">
     <div class="navbar navbar-default navbar-front" id="navbar" role="navigation" data-spy="affix">
       <div class="container">
         <div class="navbar-header">
@@ -51,8 +51,10 @@
 
     {% block content %}(contents here){% endblock %}
 
-    <footer class="container content-container">
-      {% include 'includes/footer.html' %}
+    <footer>
+      <div class="container content-container">
+        {% include 'includes/footer.html' %}
+      </div>
     </footer> <!-- /container -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react.min.js"></script>

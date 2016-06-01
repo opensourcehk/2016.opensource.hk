@@ -1,0 +1,32 @@
+
+.card-list {
+  .card {
+    background-color: rgba(0,0,0,.04);
+    margin-right: 10px;
+    margin-bottom: 1em;
+    padding: 1em;
+    &:hover {
+      background-color: rgba(0,0,0,.02);
+    }
+
+    .title{
+      margin-bottom: 1em;
+    }
+    .speaker {
+      display: block;
+      font-weight: bolder;
+      .nickname {
+        color: rgba(0, 0, 0, .4);
+      }
+    }
+    .desc {
+      padding: 1em 0;
+    }
+    .seats {
+    }
+    .actions {
+      margin-top: 2em;
+      text-align: right;
+    }
+  }
+}
