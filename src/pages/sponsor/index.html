@@ -20,28 +20,7 @@
         <div class="sponsors container">
           {% for sponsor in tier.sponsors %}
             {% if sponsor.grantedPerm %}
-              <div class="sponsor sponsor-{{ sponsor.id }}">
-                <div class="row">
-                  <div class="col-md-2 logos">
-                    {% for logo in sponsor.logos %}
-                      <a class="logo" href="{{ logo.url }}" title="{{ logo.title }}" target="_blank">
-                        <img src="{{ logo.img }}" alt="{{ logo.alt }}">
-                      </a>
-                    {% endfor %}
-                  </div>
-                  <div class="col-md-10 description">
-                    <h3>{{ sponsor.name }}</h3>
-                    <p>
-                      {{ displayDesc(sponsor.description) }}
-                    </p>
-                    <div class="links">
-                      {% for link in sponsor.links %}
-                        <a class="btn btn-default" target="_blank" href="{{ link.url }}" role="button">{{ link.text }}</a>
-                      {% endfor %}
-                    </div><!--/.links-->
-                  </div>
-                </div><!--/.row-->
-              </div><!--/.sponsor row-->
+              {%- include './_sponsor.html' %}
             {% endif %}
           {% endfor %}
         </div><!--/.sponsors-->
