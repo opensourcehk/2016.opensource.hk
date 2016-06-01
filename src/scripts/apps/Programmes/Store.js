@@ -20,6 +20,15 @@ class actions {
     }
   }
 
+  // set an attribute value
+  static setAttribute(key, value) {
+    return {
+      "type": "ATTR_SET",
+      key,
+      value
+    }
+  }
+
   // add a specific filter
   static addFilter(key, value) {
     return {
@@ -85,6 +94,11 @@ const initialState = {
   //
   "filters": {},
 
+  // an object of attributes
+  "attributes": {
+    "filterShow": true
+  },
+
   // a shortlisted version of "all" array according to filters criteria
   // (Note: if filters is empty, show all items in "all")
   "display": []
@@ -93,9 +107,27 @@ const initialState = {
 // apply filter add / remove actions to the store
 function reducer(state = initialState, action) {
 
-  const { data, all } = state;
+  const { data, all, attributes } = state;
 
   switch (action.type) {
+
+    case "ATTR_SET":
+      const newAttrs = Object.assign(
+        {},
+        attributes,
+        {
+          [action.key]: action.value
+        }
+      )
+
+      // apply filter properties and deduct the display array
+      return Object.assign(
+        {},
+        state,
+        {
+          attributes: newAttrs
+        }
+      );
 
     case "FILTER_SET":
       throw "FILTER_SET is not implmented by the reducer yet";

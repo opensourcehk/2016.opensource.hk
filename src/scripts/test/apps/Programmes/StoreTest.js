@@ -46,6 +46,17 @@ describe('actions', () => {
     should(actions.removeFilter(key, value)).deepEqual(expectedAction);
   });
 
+  it('setAttribute should create an action to set an attribute', () => {
+    const key = 'some key';
+    const value = 'some value'
+    const expectedAction = {
+      type: 'ATTR_SET',
+      key,
+      value
+    }
+    should(actions.setAttribute(key, value)).deepEqual(expectedAction);
+  });
+
 });
 
 describe('filterer', () => {
@@ -130,6 +141,9 @@ describe('reducer', () => {
         data: {},
         all: [],
         filters: {},
+        attributes: {
+          filterShow: true
+        },
         display: []
       }
     );
@@ -238,6 +252,37 @@ describe('reducer', () => {
       // empty
     });
 
+  });
+
+  it("setAttribute should modify the attributes", () => {
+    const attributes = {
+      foo: "bar",
+      hello: false
+    };
+    const all = [
+      {"var1": "value 1"},
+      {"var2": "value 2"}
+    ];
+    const filters = {
+      something: "nice"
+    };
+    const display = [
+      {"var1": "value 1"}
+    ];
+    should(
+      reducer(
+        { attributes, filters, all, display },
+        actions.setAttribute("hello", true)
+      )
+    ).deepEqual({
+      attributes: {
+        foo: "bar",
+        hello: true
+      },
+      filters,
+      all,
+      display
+    })
   });
 
   it("data should be passed by in any circumstances", () => {
