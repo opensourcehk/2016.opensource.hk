@@ -56,6 +56,9 @@ function mapStoreData(mapAll, data) {
     data,
     all,
     filters: {},
+    attributes: {
+      filterShow: true
+    },
     display: all
   };
 }

@@ -38,6 +38,30 @@ class FilterToggle extends Component {
 
 }
 
+
+class AttributeToggle extends Component {
+
+  handleToggle(e) {
+    e.preventDefault();
+    const { attrKey, getStatus, onChange } = this.props;
+    const current = getStatus(attrKey);
+    onChange(attrKey, !current);
+  }
+
+  render() {
+    const { attrKey, onText, offText, getStatus } = this.props;
+    const current = getStatus(attrKey);
+    const text = (current === true) ? onText : offText
+    return (
+      <div>
+        <a onClick={this.handleToggle.bind(this)} href="#">{text}</a>
+      </div>
+    );
+  }
+
+}
+
+
 // Filter is the UI for filtering results in the Programmes Store
 // that triggers uipdate of TimeTable
 class Filters extends Component {
@@ -53,7 +77,7 @@ class Filters extends Component {
     store:  PropTypes.object
   };
 
-  handleChange(key, value, status) {
+  filterChange(key, value, status) {
     const { store } = this.context;
     if (status === 1) {
       store.dispatch(actions.addFilter(key, value));
@@ -73,6 +97,19 @@ class Filters extends Component {
     return 0;
   }
 
+  attrChange(key, status) {
+    const { store } = this.context;
+    store.dispatch(actions.setAttribute(key, status));
+  }
+
+  attrStatus(key) {
+    const { attributes } = this.props;
+    if (typeof attributes[key] === "undefined") {
+      return false;
+    }
+    return attributes[key];
+  }
+
   render() {
     const { className, filterGroups } = this.props;
     var groupDivs = [];
@@ -85,7 +122,7 @@ class Filters extends Component {
             filterKey={filterGroup.filterKey}
             value={value}
             getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
+            onChange={ this.filterChange.bind(this) }/>
         );
       }
       groupDivs.push(
@@ -99,6 +136,11 @@ class Filters extends Component {
     // TODO: render the topics into timetable rows by their time
     return (
       <div className={ className }>
+        <AttributeToggle
+          attrKey="filterShow"
+          onText="Collapse" offText="Expand"
+          getStatus={this.attrStatus.bind(this)}
+          onChange={this.attrChange.bind(this)} />
         {groupDivs}
       </div>
     )
@@ -109,8 +151,8 @@ class Filters extends Component {
 // that short lists states in store
 //
 // (read Store.js to find what these parameters are)
-var mapStateToProps = function ({data, filters}) {
-  return { data, filters };
+var mapStateToProps = function ({data, filters, attributes}) {
+  return { data, filters, attributes };
 };
 
 export default connect(mapStateToProps)(Filters);
