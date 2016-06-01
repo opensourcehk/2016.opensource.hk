@@ -199,6 +199,30 @@ describe('reducer', () => {
 
   });
 
+  it('addFilter will leave unrelated attribute values untouch', () => {
+
+    const all = [
+      {"var1": "value1"},
+      {"var1": "value2"},
+      {"var1": "value3"}
+    ];
+    const display = [];
+    const something = "else";
+
+    should(
+      reducer(
+        {
+          all,
+          display,
+          something,
+          filters: {var1: ["value2"]}
+        },
+        actions.addFilter("var2", "value2")
+      ).something
+    ).equal("else");
+
+  });
+
   it('removeFilter will remove a value from filter', () => {
 
     const all = [
@@ -251,6 +275,34 @@ describe('reducer', () => {
     ).deepEqual({
       // empty
     });
+
+  });
+
+  it('removeFilter will leave unrelated attribute values untouch', () => {
+
+    const all = [
+      {"var1": "value1"},
+      {"var1": "value2"},
+      {"var1": "value3"}
+    ];
+    const filters = {
+      "var1": ["value2"]
+    }
+    const display = [];
+    const something = "else";
+
+    should(
+      reducer(
+        {
+          all,
+          display,
+          filters,
+          something,
+          filters: {var1: ["value2"]}
+        },
+        actions.removeFilter("var1", "value2")
+      ).something
+    ).equal("else");
 
   });
 

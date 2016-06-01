@@ -148,9 +148,8 @@ function reducer(state = initialState, action) {
       // apply filter properties and deduct the display array
       return Object.assign(
         {},
+        state,
         {
-          data,
-          all,
           filters,
           display: filterer(filters, all)
         }
@@ -179,9 +178,8 @@ function reducer(state = initialState, action) {
       // apply filter properties and deduct the display array
       return Object.assign(
         {},
+        state,
         {
-          data,
-          all,
           filters,
           display: filterer(filters, all)
         }
