@@ -60,6 +60,7 @@
     "licence_slide": "all-rights-reserved",
     "isSponsorTopic": true,
     "pre_register": true,
+    "register_url": "https://www.eventbrite.com/e/hkoscon-2016-workshop-processing-and-visualising-hong-kong-government-open-data-with-elasticsearch-tickets-25594463730",
     "venue": "workshop-fn-room-1-2",
     "start": "2016-06-26T14:00:00+0800",
     "end": "2016-06-24T15:30:00+0800"
@@ -799,6 +800,7 @@
     "licence_video": "all-rights-reserved",
     "licence_slide": "all-rights-reserved",
     "pre_register": true,
+    "register_url": "https://www.eventbrite.com/e/hkoscon-2016-workshop-creating-your-mysql-group-replication-environment-tickets-25594471754",
     "venue": "workshop-fn-room-1-2",
     "start": "2016-06-26T15:45:00+0800",
     "end": "2016-06-26T17:15:00+0800"
@@ -824,6 +826,7 @@
     "licence_video": "cc",
     "licence_slide": "cc",
     "pre_register": true,
+    "register_url": "https://www.eventbrite.com/e/hkoscon-2016-workshop-practical-computing-for-everyone-tickets-25594475766",
     "venue": "workshop-fn-room-3",
     "start": "2016-06-26T14:00:00+0800",
     "end": "2016-06-26T17:15:00+0800"
