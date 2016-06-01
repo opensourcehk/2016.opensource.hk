@@ -26,6 +26,28 @@
         line-height: 40px;
       }
     }
+    .sponsor {
+      .logos {
+        display: block;
+        width: 100%;
+        .logo img {
+          max-width: 30%;
+          max-height: 13em;
+        }
+        margin-bottom: 1.5em;
+      }
+      .description {
+        display: block;
+        width: 100%;
+        .name {
+          display: none;
+        }
+        .links {
+          margin: 1em 0;
+          text-align: right;
+        }
+      }
+    }
   }
 
   .speaker {

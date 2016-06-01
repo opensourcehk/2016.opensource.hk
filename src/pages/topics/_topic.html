@@ -93,6 +93,14 @@
           {{ displayDesc(topic.description) }}
         </div>
 
+        {% if topic.isSponsorTopic %}
+        <div class="sponsor">
+          <h2>Sponsored by</h2>
+          {% set sponsor = findSponsor(topic.sponsor, sponsors) %}
+          {% include '../sponsor/_sponsor.html' %}
+        </div>
+        {% endif %}
+
       </div>
       <div class="col-md-4 speaker">
 

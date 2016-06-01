@@ -4,6 +4,18 @@ import truncate from 'truncate';
 import moment from 'moment';
 
 
+// findSponsor find a sponsor in the given sponsors array
+function findSponsor(id, sponsors) {
+  for (let tier of sponsors.sponsors) {
+    for (let sponsor of tier.sponsors) {
+      if (sponsor.id === id) {
+        return Object.assign({}, sponsor);
+      }
+    }
+  }
+  return null;
+}
+
 // dayName returns "Day 1", "Day 2" or "Day 3"
 // according to the date of the given timeStr
 function dayName(timeStr) {
@@ -115,6 +127,7 @@ export default {
   displayDescText,
   displayDesc,
   filterBy,
+  findSponsor,
   toArray,
   findTopicSummary,
   formatTime,
