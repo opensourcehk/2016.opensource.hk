@@ -6,6 +6,15 @@ import { actions } from "./Store";
 // FilterToggle helps toggle a single filter key-value pair to on or off
 class FilterToggle extends Component {
 
+  static defaultProps = {
+    onChange: () => {},
+    className: "",
+    innerText: null,
+    filterKey: "",
+    value: "",
+    getStatus: () => 0
+  };
+
   toggle() {
     const { onChange, filterKey, value, getStatus } = this.props;
     const status = getStatus(filterKey, value);
@@ -29,18 +38,20 @@ class FilterToggle extends Component {
 
 }
 
-FilterToggle.defaultProps = {
-  onChange: () => {},
-  className: "",
-  innerText: null,
-  filterKey: "",
-  value: "",
-  getStatus: () => 0
-}
-
 // Filter is the UI for filtering results in the Programmes Store
 // that triggers uipdate of TimeTable
 class Filters extends Component {
+
+  static defaultProps = {
+    className: "",
+    data: {},
+    filters: {}
+  }
+
+  static contextTypes = {
+    // define store to receive it from Provider
+    store:  PropTypes.object
+  };
 
   handleChange(key, value, status) {
     const { store } = this.context;
@@ -93,17 +104,6 @@ class Filters extends Component {
     )
   }
 }
-
-Filters.defaultProps = {
-  className: "",
-  data: {},
-  filters: {}
-}
-
-Filters.contextTypes = {
-  // define store to receive it from Provider
-  store:  PropTypes.object
-};
 
 // mapStateToProps standard react-redux callback for connect
 // that short lists states in store

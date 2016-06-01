@@ -5,6 +5,12 @@ import { Component } from 'react';
 
 // Programmes is the react app for the programmes page
 class Programmes extends Component {
+
+  static contextTypes = {
+    // define store to receive it from Provider
+    store:  React.PropTypes.object
+  };
+
   render() {
     const filterGroups = [
       {
@@ -49,10 +55,5 @@ class Programmes extends Component {
     )
   }
 }
-
-Programmes.contextTypes = {
-  // define store to receive it from Provider
-  store:  React.PropTypes.object
-};
 
 export default Programmes;
