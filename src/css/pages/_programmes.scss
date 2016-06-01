@@ -42,13 +42,25 @@
         line-height: 1.2em;
         color: rgba(0, 0, 0, .45);
         .hour {
-          font-size: 2em;
+          font-size: 2.5em;
         }
         .minute {
-          font-size: 1.2em;
+          font-size: 1.5em;
         }
         .ampm {
           font-size: .7em;
+        }
+
+        @media(max-width: $width-sm) {
+          .hour {
+            font-size: 2em;
+          }
+          .minute {
+            font-size: 1.2em;
+          }
+          .ampm {
+            font-size: .7em;
+          }
         }
       }
       .col-topic {
@@ -66,7 +78,7 @@
             outline: none;
           }
         }
-        .topic-row {
+        .schedule-row, .topic-row {
           .title {
             font-weight: 500;
           }

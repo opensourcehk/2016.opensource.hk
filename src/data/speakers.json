@@ -630,6 +630,24 @@
     "hkoscon-sponsored": false
   },
 
+  "tbd": {
+    "name": "TBD",
+    "gender": "",
+    "social": {
+      "github": "",
+      "nickname": ""
+    },
+    "description": "TBD",
+    "residence": "",
+    "nationality": "",
+    "company": {
+      "name": "IBM",
+      "url": "https://www.ibm.com/hk/"
+    },
+    "portrait": "",
+    "hkoscon-sponsored": false
+  },
+
 
   "dumy": {
     "name": "Dummy Speaker",

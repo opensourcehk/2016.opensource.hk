@@ -1,4 +1,8 @@
 {
+  "entrance": {
+    "name": "Entrance",
+    "short": "EN"
+  },
   "big-hall": {
     "name": "Big Hall",
     "short": "BH",
@@ -37,6 +41,16 @@
   "workshop-tr-theatre": {
     "name": "Training Theatre",
     "short": "TT",
+    "capacity": 60
+  },
+  "seaview": {
+    "name": "Seaview Concourse",
+    "short": "SC",
+    "capacity": 300
+  },
+  "seaview-corner": {
+    "name": "Seaview Concourse | Community Corner",
+    "short": "SCCC",
     "capacity": 60
   }
 }
