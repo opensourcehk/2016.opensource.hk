@@ -1,0 +1,19 @@
+
+
+<div class="bottom-sponosors-list">
+  <div class="container">
+    {% for tier in sponsors.sponsors %}
+    <div class="row tier">
+      <h3 class="col-md-12">{{ tier.name }}</h3>
+      {% for sponsor in tier.sponsors %}
+        <div class="col-md-2"><div class=" sponsor sponsor--{{ sponsor.id }}">
+          {% set logo = sponsor.logos[0] %}
+          <a class="logo" href="{{ logo.url }}" title="{{ logo.title }}" target="_blank">
+            <img src="{{ logo.img }}" alt="{{ logo.alt }}">
+          </a>
+        </div></div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
