@@ -11,7 +11,6 @@
 @media screen and (min-width: $width-sm) {
   .jumbotron {
     padding-top: 30px;
-
   }
 }
 #introjumbo {
@@ -44,6 +43,7 @@
   .info {
     padding: 2em 5em;
     background-color: $theme-blue;
+    text-shadow: none;
     h2 {
       color: $theme-yellow;
       clear: left;
