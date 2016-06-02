@@ -1,7 +1,8 @@
+import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { actions } from "./Store";
-
+import Collapse from "react-collapse"
 
 // FilterToggle helps toggle a single filter key-value pair to on or off
 class FilterToggle extends Component {
@@ -53,9 +54,7 @@ class AttributeToggle extends Component {
     const current = getStatus(attrKey);
     const text = (current === true) ? onText : offText
     return (
-      <div>
         <a onClick={this.handleToggle.bind(this)} href="#">{text}</a>
-      </div>
     );
   }
 
@@ -110,8 +109,20 @@ class Filters extends Component {
     return attributes[key];
   }
 
+  componentDidMount() {
+    var $node = $(findDOMNode(this));
+    const { top } = $node.offset();
+    $(window).on('scroll', function () {
+      if ($(window).scrollTop() > top) {
+        $node.addClass('sticky');
+      } else {
+        $node.removeClass('sticky');
+      }
+    });
+  }
+
   render() {
-    const { className, filterGroups } = this.props;
+    const { className, filterGroups, attributes } = this.props;
     var groupDivs = [];
 
     for (let filterGroup of filterGroups) {
@@ -136,12 +147,20 @@ class Filters extends Component {
     // TODO: render the topics into timetable rows by their time
     return (
       <div className={ className }>
-        <AttributeToggle
-          attrKey="filterShow"
-          onText="Collapse" offText="Expand"
-          getStatus={this.attrStatus.bind(this)}
-          onChange={this.attrChange.bind(this)} />
-        {groupDivs}
+        <div className="navbar navbar-default">
+          <ul className="nav navbar-navn">
+            <li>
+              <AttributeToggle
+                attrKey="filterShow"
+                onText="Hide" offText="Filters"
+                getStatus={this.attrStatus.bind(this)}
+                onChange={this.attrChange.bind(this)} />
+            </li>
+          </ul>
+        </div>
+        <Collapse className="filter-toggles" isOpened={attributes.filterShow}>
+          {groupDivs}
+        </Collapse>
       </div>
     )
   }

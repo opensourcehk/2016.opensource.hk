@@ -49,7 +49,7 @@ class Programmes extends Component {
 
     return (
       <div className="programmes">
-        <Filters className="filters" filterGroups={filterGroups} />
+        <Filters className="filters container" filterGroups={filterGroups} />
         <TimeTable className="timetable" />
       </div>
     )
