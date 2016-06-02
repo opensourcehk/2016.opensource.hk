@@ -13,8 +13,6 @@ import moment from 'moment';
 import ls from 'ls';
 import deepFreeze from 'deep-freeze';
 
-import mocha from 'gulp-mocha';
-
 // some config files
 import webpackCfg from './configs/webpack.babel.config';
 

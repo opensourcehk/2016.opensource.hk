@@ -7,54 +7,54 @@ describe('actions', () => {
   it('setFilters should create an action to set all filter properties', () => {
     const props = {
       'key 1': 'value 1',
-      'key 2': 'value 2',
+      'key 2': 'value 2'
     };
     const expectedAction = {
-      type: 'FILTER_SET',
-      props
-    }
-    should(actions.setFilters(props)).deepEqual(expectedAction);
+      props,
+      type: 'FILTER_SET'
+    };
+    should(actions.setFilters(props)).eql(expectedAction).which.is.a.Object();
   });
 
   it('resetFilters should create an action to set filter properties to empty object', () => {
     const expectedAction = {
       type: 'FILTER_SET',
       props: {}
-    }
-    should(actions.resetFilters()).deepEqual(expectedAction);
+    };
+    should(actions.resetFilters()).eql(expectedAction).which.is.a.Object();
   });
 
   it('addFilter should create an action to add a filter property', () => {
     const key = 'some key';
-    const value = 'some value'
+    const value = 'some value';
     const expectedAction = {
-      type: 'FILTER_ADD_PROP',
       key,
-      value
-    }
-    should(actions.addFilter(key, value)).deepEqual(expectedAction);
+      value,
+      type: 'FILTER_ADD_PROP'
+    };
+    should(actions.addFilter(key, value)).eql(expectedAction).which.is.a.Object();
   });
 
   it('removeFilter should create an action to remove a filter property', () => {
     const key = 'some key';
-    const value = 'some value'
+    const value = 'some value';
     const expectedAction = {
-      type: 'FILTER_REMOVE_PROP',
       key,
-      value
-    }
-    should(actions.removeFilter(key, value)).deepEqual(expectedAction);
+      value,
+      type: 'FILTER_REMOVE_PROP'
+    };
+    should(actions.removeFilter(key, value)).eql(expectedAction).which.is.a.Object();
   });
 
   it('setAttribute should create an action to set an attribute', () => {
     const key = 'some key';
-    const value = 'some value'
+    const value = 'some value';
     const expectedAction = {
-      type: 'ATTR_SET',
       key,
-      value
-    }
-    should(actions.setAttribute(key, value)).deepEqual(expectedAction);
+      value,
+      type: 'ATTR_SET'
+    };
+    should(actions.setAttribute(key, value)).eql(expectedAction).which.is.a.Object();
   });
 
 });
@@ -64,7 +64,7 @@ describe('filterer', () => {
   it('should return all values if no filter is provided', () => {
 
     const all = [{"var1": "hello"}, {"var1": "world"}];
-    should(filterer({}, all)).deepEqual(all);
+    should(filterer({}, all)).eql(all).which.is.a.Object();
 
   });
 
@@ -76,24 +76,24 @@ describe('filterer', () => {
     ];
     should(
       filterer({"var1": ["hello"]}, allString)
-    ).deepEqual(
+    ).eql(
       [{"var1": "hello"}]
-    );
+    ).which.is.a.Object();
     should(
       filterer({"var1": ["world"]}, allString)
-    ).deepEqual(
+    ).eql(
       [{"var1": "world"}]
-    );
+    ).which.is.a.Object();
     should(
       filterer({"var1": ["foobar"]}, allString)
-    ).deepEqual(
+    ).eql(
       []
-    );
+    ).which.is.a.Object();
     should(
       filterer({"var2": ["hello"]}, allString)
-    ).deepEqual(
+    ).eql(
       []
-    );
+    ).which.is.a.Object();
 
     const allArray = [
       {"var1": ["hello", "foo"]},
@@ -102,41 +102,41 @@ describe('filterer', () => {
     ];
     should(
       filterer({"var1": ["hello"]}, allArray)
-    ).deepEqual([
+    ).eql([
       {"var1": ["hello", "foo"]}
-    ]);
+    ]).which.is.a.Object();
     should(
       filterer({"var1": ["world"]}, allArray)
-    ).deepEqual([
+    ).eql([
       {"var1": ["world", "bar"]}
     ]);
     should(
       filterer({"var1": ["hello", "world"]}, allArray)
-    ).deepEqual([
+    ).eql([
       {"var1": ["hello", "foo"]},
       {"var1": ["world", "bar"]}
-    ]);
+    ]).which.is.a.Object();
     should(
       filterer({"var1": ["foobar"]}, allArray)
-    ).deepEqual([
+    ).eql([
       // no result
-    ]);
+    ]).which.is.a.Object();
     should(
       filterer({"var2": ["hello"]}, allArray)
-    ).deepEqual([
+    ).eql([
       // no result
-    ]);
+    ]).which.is.a.Object();
 
   });
 
-})
+});
 
 describe('reducer', () => {
 
   it('should return initial state', () => {
     should(
       reducer(undefined, {})
-    ).deepEqual(
+    ).eql(
       {
         data: {},
         all: [],
@@ -146,7 +146,7 @@ describe('reducer', () => {
         },
         display: []
       }
-    );
+    ).which.is.a.Object();
   });
 
   it('addFilter will add filter properties and filter the display array', () => {
@@ -166,9 +166,9 @@ describe('reducer', () => {
         },
         actions.addFilter("var1", "value2")
       ).filters
-    ).deepEqual({
+    ).eql({
       "var1": ["value2"]
-    });
+    }).which.is.a.Object();
 
     should(
       reducer(
@@ -179,9 +179,9 @@ describe('reducer', () => {
         },
         actions.addFilter("var1", "value2")
       ).filters
-    ).deepEqual({
+    ).eql({
       "var1": ["value3", "value2"]
-    });
+    }).which.is.a.Object();
 
     should(
       reducer(
@@ -192,10 +192,10 @@ describe('reducer', () => {
         },
         actions.addFilter("var2", "value2")
       ).filters
-    ).deepEqual({
+    ).eql({
       "var1": ["value2"],
       "var2": ["value2"]
-    });
+    }).which.is.a.Object();
 
   });
 
@@ -219,7 +219,7 @@ describe('reducer', () => {
         },
         actions.addFilter("var2", "value2")
       ).something
-    ).equal("else");
+    ).eql("else").which.is.a.String();
 
   });
 
@@ -238,13 +238,13 @@ describe('reducer', () => {
         {
           all,
           display,
-          "filters": {"var1": ["value2"]},
+          "filters": {"var1": ["value2"]}
         },
         actions.removeFilter("var1", "value2")
       ).filters
-    ).deepEqual({
+    ).eql({
       // empty
-    });
+    }).which.is.a.Object();
 
     // remove non-existing property
     should(
@@ -252,13 +252,13 @@ describe('reducer', () => {
         {
           all,
           display,
-          "filters": {"var1": ["value2"]},
+          "filters": {"var1": ["value2"]}
         },
         actions.removeFilter("var2", "value2")
       ).filters
-    ).deepEqual({
+    ).eql({
       "var1": ["value2"]
-    });
+    }).which.is.a.Object();
 
     // handles duplicateions
     should(
@@ -272,9 +272,9 @@ describe('reducer', () => {
         },
         actions.removeFilter("var1", "value2")
       ).filters
-    ).deepEqual({
+    ).eql({
       // empty
-    });
+    }).which.is.a.Object();
 
   });
 
@@ -287,7 +287,7 @@ describe('reducer', () => {
     ];
     const filters = {
       "var1": ["value2"]
-    }
+    };
     const display = [];
     const something = "else";
 
@@ -297,12 +297,11 @@ describe('reducer', () => {
           all,
           display,
           filters,
-          something,
-          filters: {var1: ["value2"]}
+          something
         },
         actions.removeFilter("var1", "value2")
       ).something
-    ).equal("else");
+    ).equal("else").which.is.a.String();
 
   });
 
@@ -326,14 +325,14 @@ describe('reducer', () => {
         { attributes, filters, all, display },
         actions.setAttribute("hello", true)
       )
-    ).deepEqual({
+    ).eql({
+      filters,
+      all,
+      display,
       attributes: {
         foo: "bar",
         hello: true
-      },
-      filters,
-      all,
-      display
+      }
     })
   });
 
@@ -342,7 +341,7 @@ describe('reducer', () => {
     const data = {
       foo: "bar",
       something: "passby"
-    }
+    };
     const all = [
       {var1: "value1"},
       {var1: "value2"},
@@ -356,14 +355,14 @@ describe('reducer', () => {
         { data, all, display, filters },
         actions.addFilter("var1", "value2")
       ).data
-    ).deepEqual(data);
+    ).eql(data).which.is.a.Object();
 
     should(
       reducer(
         { data, all, display, filters },
         actions.removeFilter("var1", "value2")
       ).data
-    ).deepEqual(data);
+    ).eql(data).which.is.a.Object();
 
   });
 

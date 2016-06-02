@@ -7,16 +7,16 @@ class actions {
   // set all properties of the filters at once
   static setFilters(props) {
     return {
-      "type": "FILTER_SET",
-      props
+      props,
+      type: "FILTER_SET"
     }
   }
 
   // reset filter properties to empty object
   static resetFilters(props) {
     return {
-      "type": "FILTER_SET",
-      "props": {}
+      type: "FILTER_SET",
+      props: {}
     }
   }
 
@@ -32,18 +32,18 @@ class actions {
   // add a specific filter
   static addFilter(key, value) {
     return {
-      "type": "FILTER_ADD_PROP",
       key,
-      value
+      value,
+      type: "FILTER_ADD_PROP"
     }
   }
 
   // remove a specific filter
   static removeFilter(key, value) {
     return {
-      "type": "FILTER_REMOVE_PROP",
       key,
-      value
+      value,
+      type: "FILTER_REMOVE_PROP"
     }
   }
 
@@ -53,13 +53,15 @@ class actions {
 function filterer(filters, all) {
   return all.filter((item) => {
     for (let key in filters) {
-      var match = false
+      var match = false;
       for (let value of filters[key]) {
         if (Array.isArray(item[key])) {
+
           if (item[key].indexOf(value) !== -1) {
             match = true;
             break;
           }
+
         } else if (item[key] === value) {
           match = true;
           break;
@@ -102,7 +104,7 @@ const initialState = {
   // a shortlisted version of "all" array according to filters criteria
   // (Note: if filters is empty, show all items in "all")
   "display": []
-}
+};
 
 // apply filter add / remove actions to the store
 function reducer(state = initialState, action) {
@@ -118,7 +120,7 @@ function reducer(state = initialState, action) {
         {
           [action.key]: action.value
         }
-      )
+      );
 
       // apply filter properties and deduct the display array
       return Object.assign(
