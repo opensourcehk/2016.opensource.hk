@@ -14,8 +14,10 @@ $line-height-base:        1.428571429; // 20/14
 $line-height-computed:    floor(($font-size-base * $line-height-base));
 
 // Global font Setting
-$font-family: 'Alegreya Sans', sans-serif;
-//$font-family: 'Open Sans', sans-serif;
+$font-family: 'Roboto', sans-serif;
+$font-main-title: 'Geomanist', sans-serif;
+$font-subtitle: 'Open Sans', sans-serif;
+
 $default-font-size: 18px;
 
 // Global Color Setting
@@ -29,5 +31,6 @@ $inverse-foreground: #fff;
 $inverse-background: #111;
 
 // checkpoints
+$width-lg: 1200px;
 $width-md: 992px;
 $width-sm: 768px;

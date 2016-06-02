@@ -1,10 +1,20 @@
+import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { actions } from "./Store";
-
+import Collapse from "react-collapse"
 
 // FilterToggle helps toggle a single filter key-value pair to on or off
 class FilterToggle extends Component {
+
+  static defaultProps = {
+    onChange: () => {},
+    className: "",
+    innerText: null,
+    filterKey: "",
+    value: "",
+    getStatus: () => 0
+  };
 
   toggle() {
     const { onChange, filterKey, value, getStatus } = this.props;
@@ -29,20 +39,44 @@ class FilterToggle extends Component {
 
 }
 
-FilterToggle.defaultProps = {
-  onChange: () => {},
-  className: "",
-  innerText: null,
-  filterKey: "",
-  value: "",
-  getStatus: () => 0
+
+class AttributeToggle extends Component {
+
+  handleToggle(e) {
+    e.preventDefault();
+    const { attrKey, getStatus, onChange } = this.props;
+    const current = getStatus(attrKey);
+    onChange(attrKey, !current);
+  }
+
+  render() {
+    const { attrKey, onText, offText, getStatus } = this.props;
+    const current = getStatus(attrKey);
+    const text = (current === true) ? onText : offText
+    return (
+        <a onClick={this.handleToggle.bind(this)} href="#">{text}</a>
+    );
+  }
+
 }
+
 
 // Filter is the UI for filtering results in the Programmes Store
 // that triggers uipdate of TimeTable
 class Filters extends Component {
 
-  handleChange(key, value, status) {
+  static defaultProps = {
+    className: "",
+    data: {},
+    filters: {}
+  }
+
+  static contextTypes = {
+    // define store to receive it from Provider
+    store:  PropTypes.object
+  };
+
+  filterChange(key, value, status) {
     const { store } = this.context;
     if (status === 1) {
       store.dispatch(actions.addFilter(key, value));
@@ -62,8 +96,33 @@ class Filters extends Component {
     return 0;
   }
 
+  attrChange(key, status) {
+    const { store } = this.context;
+    store.dispatch(actions.setAttribute(key, status));
+  }
+
+  attrStatus(key) {
+    const { attributes } = this.props;
+    if (typeof attributes[key] === "undefined") {
+      return false;
+    }
+    return attributes[key];
+  }
+
+  componentDidMount() {
+    var $node = $(findDOMNode(this));
+    const { top } = $node.offset();
+    $(window).on('scroll', function () {
+      if ($(window).scrollTop() > top) {
+        $node.addClass('sticky');
+      } else {
+        $node.removeClass('sticky');
+      }
+    });
+  }
+
   render() {
-    const { className, filterGroups } = this.props;
+    const { className, filterGroups, attributes } = this.props;
     var groupDivs = [];
 
     for (let filterGroup of filterGroups) {
@@ -74,7 +133,7 @@ class Filters extends Component {
             filterKey={filterGroup.filterKey}
             value={value}
             getStatus={ this.filterStatus.bind(this) }
-            onChange={ this.handleChange.bind(this) }/>
+            onChange={ this.filterChange.bind(this) }/>
         );
       }
       groupDivs.push(
@@ -88,29 +147,31 @@ class Filters extends Component {
     // TODO: render the topics into timetable rows by their time
     return (
       <div className={ className }>
-        {groupDivs}
+        <div className="navbar navbar-default">
+          <ul className="nav navbar-navn">
+            <li>
+              <AttributeToggle
+                attrKey="filterShow"
+                onText="Hide" offText="Filters"
+                getStatus={this.attrStatus.bind(this)}
+                onChange={this.attrChange.bind(this)} />
+            </li>
+          </ul>
+        </div>
+        <Collapse className="filter-toggles" isOpened={attributes.filterShow}>
+          {groupDivs}
+        </Collapse>
       </div>
     )
   }
 }
 
-Filters.defaultProps = {
-  className: "",
-  data: {},
-  filters: {}
-}
-
-Filters.contextTypes = {
-  // define store to receive it from Provider
-  store:  PropTypes.object
-};
-
 // mapStateToProps standard react-redux callback for connect
 // that short lists states in store
 //
 // (read Store.js to find what these parameters are)
-var mapStateToProps = function ({data, filters}) {
-  return { data, filters };
+var mapStateToProps = function ({data, filters, attributes}) {
+  return { data, filters, attributes };
 };
 
 export default connect(mapStateToProps)(Filters);

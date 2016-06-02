@@ -37,7 +37,6 @@
           {% set speaker = speakers[topic.speaker] %}
           {% set lang = langs[topic.lang] %}
           {% set lang_slide = langs[topic.lang_slide] %}
-          {% set level = levels[topic.level] %}
           <tr>
             <td class="title">
               <div class="topic-title"><a href="{{ topicURL('topic', topic.id) }}">{{ topic.title }}</a></div>
@@ -70,7 +69,7 @@
             <td class="category">
               {{ topic.category }}
               <ul class="props-list">
-                <li>{{ level.name }}</li>
+                <li>{{ topic.level }}</li>
                 {% for audience in topic.target_audience %}
                   <li>{{ audience }}</li>
                 {% endfor %}

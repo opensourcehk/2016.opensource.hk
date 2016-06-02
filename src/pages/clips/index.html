@@ -2,18 +2,35 @@
 
 {% block title %}Clips{% endblock %}
 
+{% block description %}
+
+<p>Here are some video clips about HKOSCon</p>
+
+{% endblock %}
+
 {% block content %}
 <div id="wrap" class="container">
-    <div class="row">
-        <h2>Promotion Video 1</h2>
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe width="956" height="538" src="https://www.youtube.com/embed/43uVMqES0Kk" frameborder="0" allowfullscreen></iframe>
+    <div class="row video-cards">
+        <div class="video-card">
+          <div class="description">
+            <h2>What is HKOSCon?</h2>
+            <p>This is a video that give you a glimps of HKOSCon.</p>
+          </div>
+          <div class="embed-responsive embed-responsive-16by9">
+              <iframe width="956" height="538" src="https://www.youtube.com/embed/43uVMqES0Kk?showinfo=0" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
-    </div>
-    <div class="row">
-        <h2>Marcelo Araujo: Go beyond Open Source !</h2>
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe width="956" height="538" src="https://www.youtube.com/embed/QcQlh-BoeFM" frameborder="0" allowfullscreen></iframe>
+        <div class="video-card">
+          <div class="description">
+            <h2>Marcelo Araujo: Go beyond Open Source!</h2>
+            <p>
+              One of our <a href="/topics/what-is-freebsd-and-how-become-part-of-the-project/">speakers</a> have send us a video to
+              endorse our event. Thanks <a href="/topics/what-is-freebsd-and-how-become-part-of-the-project/">Marcelo</a>!
+            </p>
+          </div>
+          <div class="embed-responsive embed-responsive-16by9">
+              <iframe width="956" height="538" src="https://www.youtube.com/embed/QcQlh-BoeFM" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
     </div>
 </div>

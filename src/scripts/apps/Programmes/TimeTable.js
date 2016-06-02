@@ -71,6 +71,14 @@ class ScheduleRow extends Component {
 // ScheduleItem displays the scedhule in a schedule item (timeslot) level
 // definition
 class ScheduleItem extends Component {
+
+  static defaultProps = {
+    className: "",
+    data: {},
+    filters: {},
+    display: []
+  };
+
   render() {
     const { className, item, display, hasFilter, data } = this.props
     var start = moment(item.start);
@@ -119,13 +127,6 @@ class ScheduleItem extends Component {
   }
 }
 
-ScheduleItem.defaultProps = {
-  className: "",
-  data: {},
-  filters: {},
-  display: []
-};
-
 
 // DayContainer displays the schedule in a day level definition
 class DayContainer extends Component {
@@ -150,6 +151,18 @@ class DayContainer extends Component {
 // TimeTable display all scheduled items and topics with reference to the
 // filtered result (the `display` array)
 class TimeTable extends Component {
+
+  static defaultProps = {
+    className: "",
+    data: {},
+    filters: {},
+    display: []
+  };
+
+  static contextTypes = {
+    // define store to receive it from Provider
+    store:  PropTypes.object
+  };
 
   render() {
     // store inherited from root react-redux Provider
@@ -177,18 +190,6 @@ class TimeTable extends Component {
   }
 
 }
-
-TimeTable.defaultProps = {
-  className: "",
-  data: {},
-  filters: {},
-  display: []
-};
-
-TimeTable.contextTypes = {
-  // define store to receive it from Provider
-  store:  PropTypes.object
-};
 
 // mapStateToProps standard react-redux callback for connect
 // that short lists states in store

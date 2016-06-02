@@ -46,6 +46,17 @@ describe('actions', () => {
     should(actions.removeFilter(key, value)).deepEqual(expectedAction);
   });
 
+  it('setAttribute should create an action to set an attribute', () => {
+    const key = 'some key';
+    const value = 'some value'
+    const expectedAction = {
+      type: 'ATTR_SET',
+      key,
+      value
+    }
+    should(actions.setAttribute(key, value)).deepEqual(expectedAction);
+  });
+
 });
 
 describe('filterer', () => {
@@ -130,6 +141,9 @@ describe('reducer', () => {
         data: {},
         all: [],
         filters: {},
+        attributes: {
+          filterShow: true
+        },
         display: []
       }
     );
@@ -182,6 +196,30 @@ describe('reducer', () => {
       "var1": ["value2"],
       "var2": ["value2"]
     });
+
+  });
+
+  it('addFilter will leave unrelated attribute values untouch', () => {
+
+    const all = [
+      {"var1": "value1"},
+      {"var1": "value2"},
+      {"var1": "value3"}
+    ];
+    const display = [];
+    const something = "else";
+
+    should(
+      reducer(
+        {
+          all,
+          display,
+          something,
+          filters: {var1: ["value2"]}
+        },
+        actions.addFilter("var2", "value2")
+      ).something
+    ).equal("else");
 
   });
 
@@ -238,6 +276,65 @@ describe('reducer', () => {
       // empty
     });
 
+  });
+
+  it('removeFilter will leave unrelated attribute values untouch', () => {
+
+    const all = [
+      {"var1": "value1"},
+      {"var1": "value2"},
+      {"var1": "value3"}
+    ];
+    const filters = {
+      "var1": ["value2"]
+    }
+    const display = [];
+    const something = "else";
+
+    should(
+      reducer(
+        {
+          all,
+          display,
+          filters,
+          something,
+          filters: {var1: ["value2"]}
+        },
+        actions.removeFilter("var1", "value2")
+      ).something
+    ).equal("else");
+
+  });
+
+  it("setAttribute should modify the attributes", () => {
+    const attributes = {
+      foo: "bar",
+      hello: false
+    };
+    const all = [
+      {"var1": "value 1"},
+      {"var2": "value 2"}
+    ];
+    const filters = {
+      something: "nice"
+    };
+    const display = [
+      {"var1": "value 1"}
+    ];
+    should(
+      reducer(
+        { attributes, filters, all, display },
+        actions.setAttribute("hello", true)
+      )
+    ).deepEqual({
+      attributes: {
+        foo: "bar",
+        hello: true
+      },
+      filters,
+      all,
+      display
+    })
   });
 
   it("data should be passed by in any circumstances", () => {
