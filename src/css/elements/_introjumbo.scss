@@ -44,10 +44,11 @@
     padding: 2em 5em;
     background-color: $theme-blue;
     text-shadow: none;
+    font-family: $font-subtitle;
     h2 {
       color: $theme-yellow;
       clear: left;
-      font-weight: 200;
+      font-weight: 100;
       margin: 0 0 1em;
       padding: 0;
     }
