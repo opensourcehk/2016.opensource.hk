@@ -13,6 +13,8 @@ import moment from 'moment';
 import ls from 'ls';
 import deepFreeze from 'deep-freeze';
 
+import mocha from 'gulp-mocha';
+
 // some config files
 import webpackCfg from './configs/webpack.babel.config';
 
@@ -27,32 +29,32 @@ import htmlmin   from 'gulp-html-minifier';
 import minifyCss from 'gulp-clean-css';
 import helperFuncs from './src/scripts/utils/helperFuncs';
 
-const baseTarget    = __dirname + '/public';
-const assetsTarget  = baseTarget + '/assets';
-const stylesTarget  = assetsTarget + '/css';
-const scriptsTarget = assetsTarget + '/scripts';
-const fontsTarget   = assetsTarget + '/fonts';
-const imagesTarget  = assetsTarget + '/images';
-const baseSource    = __dirname + '/src';
-const pageSource    = baseSource + '/pages';
-const pageLayoutSrc = baseSource + '/layouts';
-const pageIncludes  = baseSource + '/pages/includes';
-const stylesSource  = baseSource + '/css';
-const scriptsSource = baseSource + '/scripts';
-const dataSource    = baseSource + '/data';
-const fontsSource   = baseSource + '/fonts';
-const imagesSource  = baseSource + '/images';
+const baseTarget    = `${__dirname}/public`;
+const assetsTarget  = `${baseTarget}/assets`;
+const stylesTarget  = `${assetsTarget}/css`;
+const scriptsTarget = `${assetsTarget}/scripts`;
+const fontsTarget   = `${assetsTarget}/fonts`;
+const imagesTarget  = `${assetsTarget}/images`;
+const baseSource    = `${__dirname}/src`;
+const pageSource    = `${baseSource}/pages`;
+const pageLayoutSrc = `${baseSource}/layouts`;
+const pageIncludes  = `${baseSource}/pages/includes`;
+const stylesSource  = `${baseSource}/css`;
+const scriptsSource = `${baseSource}/scripts`;
+const dataSource    = `${baseSource}/data`;
+const fontsSource   = `${baseSource}/fonts`;
+const imagesSource  = `${baseSource}/images`;
 
 function parseJSON(filename) {
   try {
     return JSON.parse(fs.readFileSync(filename, 'utf8'));
   } catch (err) {
-    throw "Failed parsing "+filename+" error: "+err;
+    throw `Failed parsing ${filename} error: ${err}`;
   }
 }
 
 function timeHash() {
-  var buffer = new Buffer(Date.now().toString()).toString('base64')
+  let buffer = new Buffer(Date.now().toString()).toString('base64')
   return buffer
     .replace(/\+/g, '-')
     .replace(/\//g, '_')
@@ -64,7 +66,7 @@ function timeHash() {
 // getData read those files everytime with fs
 // instead of `require` (will cache the file)
 function getData(dataSource) {
-  var data = {
+  let data = {
     "now":       moment().utcOffset("+08:00"),
     "timeHash":  timeHash(),
     "site_host": "http://2016.opensource.hk"
@@ -84,7 +86,7 @@ function getData(dataSource) {
 // watch the public files
 // hot reload if there is changes
 gulp.task('serve-dev', function() {
-  var devConfig = {
+  let devConfig = {
     devtool: 'eval',
     entry: [
       'webpack-dev-server/client?http://localhost:3000',
@@ -114,7 +116,7 @@ gulp.task('serve-dev', function() {
     }
   };
 
-  var server = new WebpackDevServer(webpack(devConfig), {
+  let server = new WebpackDevServer(webpack(devConfig), {
     contentBase: "./public",
     publicPath: devConfig.output.publicPath,
     hot: true,
@@ -122,7 +124,7 @@ gulp.task('serve-dev', function() {
     stats: { colors: true }
   });
 
-  var portInUse = function(port, callback) {
+  function portInUse(port, callback) {
     var server = net.createServer(function(socket) {
       socket.write('Echo server\r\n');
       socket.pipe(socket);
@@ -160,31 +162,22 @@ gulp.task('serve-dev', function() {
 // generates public files
 gulp.task('watch', function() {
   gulp.watch([
-    stylesSource + '/**/*.sass',
-    stylesSource + '/**/*.scss'
+    `${stylesSource}/**/*.sass`,
+    `${stylesSource}/**/*.scss`
   ], ["styles"]);
   gulp.watch([
-    pageSource + '/**/*.html',
-    pageLayoutSrc + '/**/*.html',
-    dataSource + '/*.json'
+    `${pageSource}/**/*.html`,
+    `${pageLayoutSrc}/**/*.html`,
+    `${dataSource}/*.json`
   ], ["pages"]);
   gulp.watch([
-    imagesSource + '/**/*.*'
+    `${imagesSource}/**/*.*`
   ], ["images"]);
 });
 
 // convert styles
 gulp.task('styles', function() {
-  gulp.src(stylesSource + '/*.sass')
-    .pipe(sass({
-      errLogToConsole: true
-    }))
-    .pipe(minifyCss({
-      compatibility: 'ie8'
-    }))
-    .pipe(gulp.dest(stylesTarget));
-
-  gulp.src(stylesSource + '/*.scss')
+  gulp.src(`${stylesSource}/*.scss`)
     .pipe(sass())
     .pipe(minifyCss({
       compatibility: 'ie8'
@@ -223,16 +216,16 @@ gulp.task('pages', function() {
 
   // most pages
   gulp.src([
-      pageSource + '/**/*.html',
-      '!/**/_*.html'
+      `${pageSource}/**/*.html`,
+      `!/**/_*.html`
     ])
     .pipe(swig({
-       defaults: { cache: false },
-       data: Object.assign(
-         {},
-         data,
-         helperFuncs
-       )
+      defaults: { cache: false },
+      data: Object.assign(
+        {},
+        data,
+        helperFuncs
+      )
     }).on('error', catchError))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(baseTarget));
@@ -241,7 +234,7 @@ gulp.task('pages', function() {
   for (let topic_id in data.topics) {
     var topic = data.topics[topic_id];
     gutil.log('Generate: \'/topics/' + chalk.magenta(topic_id) + '/index.html\'')
-    gulp.src(pageSource + '/topics/_topic.html')
+    gulp.src(`${pageSource}/topics/_topic.html`)
       .pipe(swig({
         defaults: {cache: false},
         load_json: false,
@@ -255,8 +248,8 @@ gulp.task('pages', function() {
         )
       }).on('error', catchError))
       .pipe(htmlmin({collapseWhitespace: true}))
-      .pipe(rename(topic_id + '/index.html'))
-      .pipe(gulp.dest(baseTarget + "/topics/"));
+      .pipe(rename(`${topic_id}/index.html`))
+      .pipe(gulp.dest(`${baseTarget}/topics/`));
   }
 
 
@@ -281,8 +274,8 @@ gulp.task('scripts-bundle', function(callback) {
 // concat and mangle vendor scripts
 gulp.task('scripts-vendors', function() {
   return gulp.src([
-      scriptsSource + '/vendors/bootstrap.min.js',
-      scriptsSource + '/vendors/ga.js'
+      `${scriptsSource}/vendors/bootstrap.min.js`,
+      `${scriptsSource} + '/vendors/ga.js`
     ])
     .pipe(gconcat('vendors.js'))
     .pipe(gulp.dest(scriptsTarget))
@@ -292,12 +285,12 @@ gulp.task('scripts-vendors', function() {
 });
 
 gulp.task('images', function() {
-  return gulp.src(imagesSource + '/**/*.*')
+  return gulp.src(`${imagesSource}/**/*.*`)
     .pipe(gulp.dest(imagesTarget));
 });
 
 gulp.task('fonts', function() {
-  return gulp.src(fontsSource + '/**/*.*')
+  return gulp.src(`${fontsSource}/**/*.*`)
     .pipe(gulp.dest(fontsTarget));
 });
 
