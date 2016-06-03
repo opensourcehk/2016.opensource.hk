@@ -70,7 +70,7 @@
   "fast-prototyping-on-ibm-open-source-cloud": {
     "id": "fast-prototyping-on-ibm-open-source-cloud",
     "title": "Fast Prototyping on IBM Open Source Cloud",
-    "type": "talk",
+    "type": "keynote",
     "speaker": "tbd",
     "category": "Cloud",
     "level": "Beginners",
@@ -80,7 +80,7 @@
     "description": "To-be-shared",
     "lang": "en",
     "lang_slide": "en",
-    "length": "25min",
+    "length": "40min",
     "licence_video": "all-rights-reserved",
     "licence_slide": "all-rights-reserved",
     "isSponsorTopic": true,
