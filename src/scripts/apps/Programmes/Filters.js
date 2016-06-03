@@ -148,20 +148,22 @@ class Filters extends Component {
     return (
       <div className={ className }>
         <div className="navbar navbar-default">
-          <ul className="nav navbar-navn">
+          <ul className="nav navbar-nav navbar-right">
             <li>
               <AttributeToggle
                 attrKey="filterShow"
-                onText="Hide" offText="Filters"
+                onText="Hide Filters" offText="Filters"
                 getStatus={this.attrStatus.bind(this)}
                 onChange={this.attrChange.bind(this)} />
             </li>
           </ul>
         </div>
         <Collapse className="filter-toggles" isOpened={attributes.filterShow}>
-          {groupDivs}
+          <div className="filter-toggles-inner">
+            {groupDivs}
+          </div>
         </Collapse>
-      </div>
+        </div>
     )
   }
 }

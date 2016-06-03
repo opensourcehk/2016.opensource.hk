@@ -58,6 +58,9 @@
   display: block;
   .navbar {
     margin-bottom: 0;
+    .navbar-right {
+      margin-right: 0;
+    }
   }
 
   &.sticky {
@@ -75,7 +78,6 @@
 
   .filter-toggles {
     position: absolute;
-    padding: .5em 2em 2em;
     border: solid 1px #e7e7e7;
     border-top-width: 0;
     border-bottom-left-radius: 4px;
@@ -90,6 +92,10 @@
     }
     @media(min-width: $width-lg) {
       width: 1170px;
+    }
+
+    .filter-toggles-inner {
+      padding: .5em 2em 2em;
     }
   }
 }
