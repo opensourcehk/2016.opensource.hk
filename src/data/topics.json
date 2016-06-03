@@ -176,7 +176,7 @@
   "interactive-dashboard-development-with-plotly": {
     "id": "interactive-dashboard-development-with-plotly",
     "title": "Interactive Dashboard Development with Plotly",
-    "type": "talk",
+    "type": "keynote",
     "speaker": "mart-van-de-ven",
     "category": "Data",
     "target_audience": ["Developers", "Data Scientists"],
@@ -199,7 +199,7 @@
   "fluentd-unified-logging-layer": {
     "id": "fluentd-unified-logging-layer",
     "title": "Fluentd: Unified Logging Layer",
-    "type": "talk",
+    "type": "keynote",
     "speaker": "masahiro-nakagawa",
     "category": "DevOps",
     "level": "Intermediate",
