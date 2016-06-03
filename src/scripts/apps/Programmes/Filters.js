@@ -2,7 +2,8 @@ import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { actions } from "./Store";
-import Collapse from "react-collapse"
+import Collapse from "react-collapse";
+import _ from 'lodash';
 
 // FilterToggle helps toggle a single filter key-value pair to on or off
 class FilterToggle extends Component {
@@ -60,6 +61,22 @@ class AttributeToggle extends Component {
 
 }
 
+class ButtonClear extends Component {
+
+  render () {
+    const { hasFilter, onClick, children } = this.props;
+    const inner = hasFilter ? (
+      <button className="btn" type="button" onClick={onClick}>{children || "Clear"}</button>
+    ) : null;
+    return (
+      <div className={"filter-actions"}>
+        {inner}
+      </div>
+    );
+  }
+
+}
+
 
 // Filter is the UI for filtering results in the Programmes Store
 // that triggers uipdate of TimeTable
@@ -75,6 +92,11 @@ class Filters extends Component {
     // define store to receive it from Provider
     store:  PropTypes.object
   };
+
+  clearFilters() {
+    const { store } = this.context;
+    store.dispatch(actions.resetFilters());
+  }
 
   filterChange(key, value, status) {
     const { store } = this.context;
@@ -122,7 +144,9 @@ class Filters extends Component {
   }
 
   render() {
-    const { className, filterGroups, attributes } = this.props;
+    const { className, filterGroups, attributes, filters } = this.props;
+    const hasFilter = !_.isEmpty(filters);
+
     var groupDivs = [];
 
     for (let filterGroup of filterGroups) {
@@ -144,9 +168,10 @@ class Filters extends Component {
       );
     }
 
+    // TODO: generate summary of the current filters
     return (
       <div className={ className }>
-        <div className="navbar navbar-default">
+        <div className="filterbar navbar-default">
           <ul className="nav navbar-nav navbar-right">
             <li>
               <AttributeToggle
@@ -157,12 +182,13 @@ class Filters extends Component {
             </li>
           </ul>
         </div>
-        <Collapse className="filter-toggles" isOpened={attributes.filterShow}>
+        <Collapse className="filter-toggles" keepCollapsedContent={true} isOpened={attributes.filterShow}>
           <div className="filter-toggles-inner">
             {groupDivs}
+            <ButtonClear hasFilter={hasFilter} onClick={this.clearFilters.bind(this)} >Clear</ButtonClear>
           </div>
         </Collapse>
-        </div>
+      </div>
     )
   }
 }
