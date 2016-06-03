@@ -33,6 +33,13 @@
   .timetable {
     font-size: 1em;
 
+    @media(max-width: $width-sm) {
+      h2 {
+        font-size: 1.2em;
+        margin-left: 0;
+      }
+    }
+
     .day-container {
       margin: 0 0 2em;
     }
@@ -58,10 +65,10 @@
 
         @media(max-width: $width-sm) {
           .hour {
-            font-size: 2em;
+            font-size: 1.3em;
           }
           .minute {
-            font-size: 1.2em;
+            font-size: 1em;
           }
           .ampm {
             font-size: .7em;
@@ -156,6 +163,7 @@
       display: block !important;
       margin-top: -4px;
     }
+
   }
 
   .filter-toggles {
@@ -178,6 +186,19 @@
 
     .filter-toggles-inner {
       padding: .5em 2em 2em;
+    }
+  }
+
+  @media(max-width: $width-sm) {
+
+    .filter-toggles {
+      .filter-toggles-inner {
+        padding: 1em;
+      }
+      h2 {
+        margin: 1em 0 .5em;
+        font-size: 1.2em;
+      }
     }
   }
 }
