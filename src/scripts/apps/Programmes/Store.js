@@ -107,7 +107,7 @@ const initialState = {
 // apply filter add / remove actions to the store
 function reducer(state = initialState, action) {
 
-  const { data, all, attributes } = state;
+  const { all, attributes } = state;
 
   switch (action.type) {
 
