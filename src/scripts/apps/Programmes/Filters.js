@@ -61,18 +61,13 @@ class AttributeToggle extends Component {
 
 }
 
-class ButtonClear extends Component {
+class FilterActionButton extends Component {
 
   render () {
-    const { hasFilter, onClick, children } = this.props;
-    const inner = hasFilter ? (
-      <button className="btn" type="button" onClick={onClick}>{children || "Clear"}</button>
+    const { show, onClick, children, className } = this.props;
+    return show ? (
+      <button className={className} type="button" onClick={onClick}>{children || "Clear"}</button>
     ) : null;
-    return (
-      <div className={"filter-actions"}>
-        {inner}
-      </div>
-    );
   }
 
 }
@@ -96,6 +91,7 @@ class Filters extends Component {
   clearFilters() {
     const { store } = this.context;
     store.dispatch(actions.resetFilters());
+    this.attrChange("filterShow", false); // also close the filter
   }
 
   filterChange(key, value, status) {
@@ -185,7 +181,12 @@ class Filters extends Component {
         <Collapse className="filter-toggles" keepCollapsedContent={true} isOpened={attributes.filterShow}>
           <div className="filter-toggles-inner">
             {groupDivs}
-            <ButtonClear hasFilter={hasFilter} onClick={this.clearFilters.bind(this)} >Clear</ButtonClear>
+            <div className="filter-actions">
+              <div className="btn-group">
+                <FilterActionButton show={hasFilter} className="btn btn-primary" onClick={this.attrChange.bind(this, "filterShow", false)} >Hide</FilterActionButton>
+                <FilterActionButton show={hasFilter} className="btn btn-danger" onClick={this.clearFilters.bind(this)} >Reset</FilterActionButton>
+              </div>
+            </div>
           </div>
         </Collapse>
       </div>
