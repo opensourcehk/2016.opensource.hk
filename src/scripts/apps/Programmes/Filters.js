@@ -2,7 +2,6 @@ import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { actions } from "./Store";
-import Collapse from "react-collapse";
 import _ from 'lodash';
 
 // FilterToggle helps toggle a single filter key-value pair to on or off
@@ -178,7 +177,7 @@ class Filters extends Component {
             </li>
           </ul>
         </div>
-        <Collapse className="filter-toggles" keepCollapsedContent={true} isOpened={attributes.filterShow}>
+        <div className="filter-toggles" style={ {display: attributes.filterShow ? "block" : "none"} }>
           <div className="filter-toggles-inner">
             {groupDivs}
             <div className="filter-actions">
@@ -188,7 +187,7 @@ class Filters extends Component {
               </div>
             </div>
           </div>
-        </Collapse>
+        </div>
       </div>
     )
   }
