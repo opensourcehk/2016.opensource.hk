@@ -1,4 +1,8 @@
 {
+  "admiralty-bus-stop": {
+    "name": "Bus Stop, Admiralty",
+    "short": "ABS"
+  },
   "entrance": {
     "name": "Entrance",
     "short": "EN"
