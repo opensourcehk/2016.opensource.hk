@@ -5,21 +5,21 @@ import should from "should";
 describe('actions', () => {
 
   it('setFilters should create an action to set all filter properties', () => {
-    const props = {
+    const filters = {
       'key 1': 'value 1',
       'key 2': 'value 2',
     };
     const expectedAction = {
       type: 'FILTER_SET',
-      props
+      filters
     }
-    should(actions.setFilters(props)).deepEqual(expectedAction);
+    should(actions.setFilters(filters)).deepEqual(expectedAction);
   });
 
   it('resetFilters should create an action to set filter properties to empty object', () => {
     const expectedAction = {
       type: 'FILTER_SET',
-      props: {}
+      filters: {}
     }
     should(actions.resetFilters()).deepEqual(expectedAction);
   });
@@ -147,6 +147,37 @@ describe('reducer', () => {
         display: []
       }
     );
+  });
+
+  it('setFilters should set the filter object to the given object', () => {
+    const filters = {
+      "var1": "value 1",
+      "var2": "value 2"
+    };
+    const toSet = {
+      "var3": "value3"
+    };
+
+    should(
+      reducer(
+        filters,
+        actions.setFilters(toSet)
+      ).filters
+    ).deepEqual(toSet);
+  });
+
+  it('resetFilters should set the filter object to empty', () => {
+    const filters = {
+      "var1": "value 1",
+      "var2": "value 2"
+    }
+
+    should(
+      reducer(
+        filters,
+        actions.resetFilters()
+      ).filters
+    ).deepEqual({});
   });
 
   it('addFilter will add filter properties and filter the display array', () => {

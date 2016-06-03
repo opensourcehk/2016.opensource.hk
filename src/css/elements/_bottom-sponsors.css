@@ -1,5 +1,6 @@
 .bottom-sponosors-list {
   margin-top: 4em;
+  padding-top: 4em;
   box-shadow: inset 0 15px 15px -15px rgba(0, 0, 0, .2);
 
   .tier {

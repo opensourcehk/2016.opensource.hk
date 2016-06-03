@@ -46,6 +46,7 @@
     "mocha": "^2.5.3",
     "mocha-better-spec-reporter": "^3.0.2",
     "moment": "^2.13.0",
+    "moment-range": "^2.2.0",
     "react": "^15.0.2",
     "react-collapse": "^2.2.4",
     "react-dom": "^15.0.2",

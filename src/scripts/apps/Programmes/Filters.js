@@ -2,7 +2,8 @@ import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { actions } from "./Store";
-import Collapse from "react-collapse"
+import Collapse from "react-collapse";
+import _ from 'lodash';
 
 // FilterToggle helps toggle a single filter key-value pair to on or off
 class FilterToggle extends Component {
@@ -60,6 +61,17 @@ class AttributeToggle extends Component {
 
 }
 
+class FilterActionButton extends Component {
+
+  render () {
+    const { show, onClick, children, className } = this.props;
+    return show ? (
+      <button className={className} type="button" onClick={onClick}>{children || "Clear"}</button>
+    ) : null;
+  }
+
+}
+
 
 // Filter is the UI for filtering results in the Programmes Store
 // that triggers uipdate of TimeTable
@@ -75,6 +87,12 @@ class Filters extends Component {
     // define store to receive it from Provider
     store:  PropTypes.object
   };
+
+  clearFilters() {
+    const { store } = this.context;
+    store.dispatch(actions.resetFilters());
+    this.attrChange("filterShow", false); // also close the filter
+  }
 
   filterChange(key, value, status) {
     const { store } = this.context;
@@ -122,7 +140,9 @@ class Filters extends Component {
   }
 
   render() {
-    const { className, filterGroups, attributes } = this.props;
+    const { className, filterGroups, attributes, filters } = this.props;
+    const hasFilter = !_.isEmpty(filters);
+
     var groupDivs = [];
 
     for (let filterGroup of filterGroups) {
@@ -144,22 +164,30 @@ class Filters extends Component {
       );
     }
 
-    // TODO: render the topics into timetable rows by their time
+    // TODO: generate summary of the current filters
     return (
       <div className={ className }>
-        <div className="navbar navbar-default">
-          <ul className="nav navbar-navn">
+        <div className="filterbar navbar-default">
+          <ul className="nav navbar-nav navbar-right">
             <li>
               <AttributeToggle
                 attrKey="filterShow"
-                onText="Hide" offText="Filters"
+                onText="Hide Filters" offText="Filters"
                 getStatus={this.attrStatus.bind(this)}
                 onChange={this.attrChange.bind(this)} />
             </li>
           </ul>
         </div>
-        <Collapse className="filter-toggles" isOpened={attributes.filterShow}>
-          {groupDivs}
+        <Collapse className="filter-toggles" keepCollapsedContent={true} isOpened={attributes.filterShow}>
+          <div className="filter-toggles-inner">
+            {groupDivs}
+            <div className="filter-actions">
+              <div className="btn-group">
+                <FilterActionButton show={hasFilter} className="btn btn-primary" onClick={this.attrChange.bind(this, "filterShow", false)} >Hide</FilterActionButton>
+                <FilterActionButton show={hasFilter} className="btn btn-danger" onClick={this.clearFilters.bind(this)} >Reset</FilterActionButton>
+              </div>
+            </div>
+          </div>
         </Collapse>
       </div>
     )

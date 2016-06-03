@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import moment from 'moment';
+import 'moment-range';
 import _ from 'lodash';
 
 class Details extends Component {
@@ -131,9 +132,30 @@ class ScheduleItem extends Component {
 // DayContainer displays the schedule in a day level definition
 class DayContainer extends Component {
   render() {
-    const { day, dayKey, id } = this.props;
+    const { day, dayKey, id, hasFilter, display } = this.props;
     const { items } = day
-    return (
+
+    // compute the day's time range
+    const firstItem = items[0];
+    const lastItem = items[items.length - 1];
+    var timeRange = moment.range(
+      moment(firstItem.start), moment(lastItem.end));
+
+    var hasDisplay = true;
+    if (hasFilter) {
+      hasDisplay = false;
+      for (let topic of display) {
+        if (timeRange.contains(moment(topic.topic.start))) {
+          hasDisplay = true;
+          break;
+        }
+      }
+      if (!hasDisplay) {
+        return null
+      }
+    }
+
+    return (hasDisplay) ? (
       <div className="day-container row container" id={id}>
         <h2 className="row">{day.name}</h2>
         { items.map((item, key) => {
@@ -143,7 +165,7 @@ class DayContainer extends Component {
           );
         }) }
       </div>
-    );
+    ) : null;
   }
 }
 
@@ -171,8 +193,6 @@ class TimeTable extends Component {
     const hasFilter = !_.isEmpty(filters);
 
     // TODO: sort display by start time
-    // TODO: group display by start time as RowGroup
-    //       with start time as first column
     return (
       <div className={ className }>
         { schedule.map((day, key) => {
