@@ -210,7 +210,7 @@ gulp.task('pages', function() {
         "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js",
         "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js",
         "/assets/scripts/vendors.js",
-        "/assets/scripts/bundle.js"
+        "/assets/scripts/bundle.js?" + rawData.timeHash
       ]
     },
     rawData,
