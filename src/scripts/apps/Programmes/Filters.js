@@ -144,7 +144,6 @@ class Filters extends Component {
       );
     }
 
-    // TODO: render the topics into timetable rows by their time
     return (
       <div className={ className }>
         <div className="navbar navbar-default">

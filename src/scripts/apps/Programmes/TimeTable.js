@@ -143,7 +143,6 @@ class DayContainer extends Component {
 
     var hasDisplay = true;
     if (hasFilter) {
-      // TODO: test if the day has any display item
       hasDisplay = false;
       for (let topic of display) {
         if (timeRange.contains(moment(topic.topic.start))) {
@@ -194,8 +193,6 @@ class TimeTable extends Component {
     const hasFilter = !_.isEmpty(filters);
 
     // TODO: sort display by start time
-    // TODO: group display by start time as RowGroup
-    //       with start time as first column
     return (
       <div className={ className }>
         { schedule.map((day, key) => {
