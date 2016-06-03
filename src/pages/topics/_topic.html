@@ -93,7 +93,7 @@
           {{ displayDesc(topic.description) }}
         </div>
 
-        {% if topic.isSponsorTopic %}
+        {% if topic.isSponsorTopic and topic.sponsor %}
         <div class="sponsor">
           <h2>Sponsored by</h2>
           {% set sponsor = findSponsor(topic.sponsor, sponsors) %}

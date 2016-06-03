@@ -857,6 +857,7 @@
     "length": "30min",
     "licence_video": "cc",
     "licence_slide": "cc",
+    "isSponsorTopic": true,
     "venue": "fn-room-3",
     "start": "2016-06-25T16:45:00+0800",
     "end": "2016-06-25T17:15:00+0800"
