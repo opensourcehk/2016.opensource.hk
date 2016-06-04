@@ -89,7 +89,7 @@
 
 
   li > a {
-    color: $white !important;
+    color: $white;
   }
 
   .dropdown-menu > li > a {
@@ -99,4 +99,16 @@
   li.dropdown.open a {
     color: $black !important;
   }
+
+  @media(max-width: $width-md) {
+    ul, li, div,
+    a.dropdown-toggle,
+    a.navbar-brand,
+    li > a,
+    li > a:focus,
+    li > a:hover {
+      color: #333;
+    }
+  }
+
 }
