@@ -181,7 +181,7 @@ class Filters extends Component {
             <li>
               <AttributeToggle
                 attrKey="filterShow"
-                onText="Filters ▾" offText="Filters ◂"
+                onText="Filters ▼" offText="Filters ◀"
                 getStatus={this.attrStatus.bind(this)}
                 onChange={this.attrChange.bind(this)} />
             </li>
