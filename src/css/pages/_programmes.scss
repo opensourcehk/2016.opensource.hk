@@ -1,7 +1,14 @@
 /**
  * Programmes
  */
- @media(max-width: $width-sm) {
+
+$day-container-title-padding-top:    40px;
+$day-container-title-padding-bottom: 20px;
+$day-container-title-line-height:    40px;
+$top-navbar-height: 50px;
+$filterbar-min-height: 50px;
+
+@media(max-width: $width-sm) {
    .title-container h1 {
      padding-left: 15px;
    }
@@ -28,10 +35,19 @@
   .filters {
     display: block;
     position: absolute;
-    margin-top: 20px;
     padding: 0;
     transition: box-shadow .5s;
     transition: height .5s;
+
+    @media(max-width: $width-sm) {
+      width: 100%;
+    }
+    @media(min-width: $width-md) {
+      width: 970px;
+    }
+    @media(min-width: $width-lg) {
+      width: 1170px;
+    }
 
     /**
      * FilterToggles sub-component
@@ -60,24 +76,18 @@
       border-bottom-right-radius: 4px;
       background-color: #FFF;
       z-index: 2;
-      max-width: 100%;
       width: 100%;
 
-      @media(min-width: $width-md) {
-        width: 970px;
-      }
-      @media(min-width: $width-lg) {
-        width: 1170px;
+      h2 {
+        margin-top: 1em;
+        font-size: 1.2em;
       }
 
       .filter-toggles-inner {
         padding: .5em 2em 2em;
       }
-    }
 
-    @media(max-width: $width-sm) {
-
-      .filter-toggles {
+      @media(max-width: $width-sm) {
         .filter-toggles-inner {
           padding: 1em;
         }
@@ -86,7 +96,9 @@
           font-size: 1.2em;
         }
       }
+
     }
+
 
     /**
      * filter-actions portion of Filter
@@ -102,7 +114,7 @@
      */
     .filterbar {
       position: relative;
-      min-height: 58px;
+      min-height: $filterbar-min-height;
       margin-bottom: 0;
       border: 1px solid #e7e7e7;
       background-color: #EEE;
@@ -110,16 +122,20 @@
       .filters-desc{
         display: block;
         float: left;
-        margin: 15px 0 0 15px;
+        padding: 10px 0 0 15px;
+        line-height: 20px;
+      }
+
+      .navbar-nav {
+        margin: 0 -15px;
+        & > li > a {
+          line-height: 20px;
+        }
       }
 
       .navbar-right {
         margin-right: 0;
-      }
-
-      @media(max-width: $width-sm) {
-        width: 100%;
-        .navbar-right {
+        @media(max-width: $width-sm) {
           float: right;
         }
       }
@@ -128,7 +144,7 @@
     &.sticky {
       position: fixed;
       z-index: 1040;
-      top: 30px;
+      top: $top-navbar-height;
       box-shadow: 0 1px 10px rgba(0, 0, 0, .5);
 
       .filterbar {
@@ -142,7 +158,6 @@
       }
 
     }
-
   }
 
 
@@ -151,6 +166,7 @@
    */
   .timetable {
     font-size: 1em;
+    padding-top: $filterbar-min-height;
 
     @media(max-width: $width-sm) {
       h2 {
@@ -165,32 +181,43 @@
     .day-container {
       margin: 0 0 2em;
 
-      &.sticky-title {
-        margin-top: 150px;
+      h2 {
+        display: block;
+        position: absolute;
+        line-height: $day-container-title-line-height;
 
-        h2 {
-          display: block;
-          z-index:1;
-          background-color: #fff;
-          margin: 0 -15px;
-          padding: 15px;
-          position: fixed;
-          top: 105px;
-          border-bottom: 1px solid #eee;
-          box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+        //margin-top: 30px;
+        //margin-bottom: 30px;
+        padding-top: $day-container-title-padding-top;
+        padding-bottom: $day-container-title-padding-bottom;
+        padding-left: 15px;
 
-          @media(max-width: $width-sm) {
-            width: 100%;
-          }
-          @media(min-width: $width-md) {
-            width: 970px;
-          }
-          @media(min-width: $width-lg) {
-            width: 1170px;
-          }
+        margin: 0 -15px;
+        //padding: 15px;
 
+        z-index:1;
+        background-color: #fff;
+
+        @media(max-width: $width-sm) {
+          width: 100%;
+        }
+        @media(min-width: $width-md) {
+          width: 970px;
+        }
+        @media(min-width: $width-lg) {
+          width: 1170px;
         }
       }
+
+      &.sticky-title {
+       h2 {
+         position: fixed;
+         top: $top-navbar-height + $filterbar-min-height;
+         border-bottom: 1px solid #eee;
+         box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+       }
+     }
+
     }
 
     /**
@@ -199,7 +226,14 @@
     .schedule-item {
       background-color: rgba(0, 0, 0, .02);
       border-bottom: solid 1px rgba(0, 0, 0, .1);
-      padding-top: 3.5em;
+
+      // the item under title of day-container
+      &:nth-child(2) {
+        margin-top:
+          $day-container-title-line-height +
+          $day-container-title-padding-top +
+          $day-container-title-padding-bottom;
+      }
 
       .col-time {
         padding-top: 1em;

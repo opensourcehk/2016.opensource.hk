@@ -175,10 +175,10 @@ class DayContainer extends Component {
     }
 
     const { top } = $node.offset();
-    const realTop = top; // subtract the top margin
+    const realTop = top - 80;
     const bottom = top + $node.height() - 200;
     $(window).on('scroll', function () {
-      if ($(window).scrollTop() > top && $(window).scrollTop() < bottom) {
+      if ($(window).scrollTop() > realTop && $(window).scrollTop() < bottom) {
         $node.addClass('sticky-title');
       } else {
         $node.removeClass('sticky-title');
