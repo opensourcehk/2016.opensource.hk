@@ -81,6 +81,14 @@ function getData(dataSource) {
   return data;
 }
 
+function getErrorCatcher (msg) {
+  return function (e) {
+    console.error(e);
+    gutil.log(`${msg}\n${e}`);
+  }
+}
+
+
 // TODO: add pre-rendered Programmes app (initial state) to the programmes page
 
 // watch the public files
@@ -182,9 +190,7 @@ gulp.task('watch', function() {
 // convert styles
 gulp.task('styles', function() {
   gulp.src(stylesSource + '/*.sass')
-    .pipe(sass({
-      errLogToConsole: true
-    }))
+    .pipe(sass().on('error', getErrorCatcher("Error compiling sass file")))
     .pipe(autoprefixer({
 			browsers: ['last 2 versions'],
 			cascade: false
@@ -195,7 +201,7 @@ gulp.task('styles', function() {
     .pipe(gulp.dest(stylesTarget));
 
   gulp.src(stylesSource + '/*.scss')
-    .pipe(sass())
+    .pipe(sass().on('error', getErrorCatcher("Error compiling scss file")))
     .pipe(autoprefixer({
 			browsers: ['last 2 versions'],
 			cascade: false
@@ -241,9 +247,7 @@ gulp.task('pages', function() {
   // freeze all objects within data
   deepFreeze(data);
 
-  var catchError = function (e) {
-    gutil.log("Error compiling swig template: " + chalk.red(e.message));
-  }
+  var catchError = getErrorCatcher("Error compiling swig template");
 
   // most pages
   gulp.src([
