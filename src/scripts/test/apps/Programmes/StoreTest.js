@@ -150,31 +150,72 @@ describe('reducer', () => {
   });
 
   it('setFilters should set the filter object to the given object', () => {
+    const all = [
+      {"var3": "value1"},
+      {"var3": "value3"}
+    ];
     const filters = {
       "var1": "value 1",
       "var2": "value 2"
     };
     const toSet = {
-      "var3": "value3"
+      "var3": ["value3"]
     };
 
     should(
       reducer(
-        filters,
+        {
+          all,
+          filters,
+        },
         actions.setFilters(toSet)
       ).filters
     ).deepEqual(toSet);
   });
 
-  it('resetFilters should set the filter object to empty', () => {
+  it('setFilters should trigger display update', () => {
+    const all = [
+      {"var3": "value 1"},
+      {"var3": "value 3"}
+    ];
     const filters = {
-      "var1": "value 1",
-      "var2": "value 2"
+      "var1": ["value 1"],
+      "var2": ["value 2"]
+    };
+    const display = [];
+
+    should(
+      reducer(
+        {
+          all,
+          filters,
+          display
+        },
+        actions.setFilters({
+          "var3": ["value 3"]
+        })
+      ).display
+    ).deepEqual([
+      {"var3": "value 3"}
+    ]);
+  });
+
+  it('resetFilters should set the filter object to empty', () => {
+    const all = [
+      {"var3": "value 1"},
+      {"var3": "value 3"}
+    ];
+    const filters = {
+      "var1": ["value 1"],
+      "var2": ["value 2"]
     }
 
     should(
       reducer(
-        filters,
+        {
+          all,
+          filters,
+        },
         actions.resetFilters()
       ).filters
     ).deepEqual({});

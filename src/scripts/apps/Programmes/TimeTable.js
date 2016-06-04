@@ -1,3 +1,4 @@
+import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import moment from 'moment';
@@ -166,6 +167,46 @@ class ScheduleItem extends Component {
 
 // DayContainer displays the schedule in a day level definition
 class DayContainer extends Component {
+
+  stickyTitle() {
+    var $node = $(findDOMNode(this));
+    if ($node.length === 0) {
+      return // do nothing if element is null
+    }
+
+    const { top } = $node.offset();
+    const realTop = top - 80;
+    const bottom = top + $node.height() - 200;
+    $(window).on('scroll', function () {
+      if ($(window).scrollTop() > realTop && $(window).scrollTop() < bottom) {
+        $node.addClass('sticky-title');
+      } else {
+        $node.removeClass('sticky-title');
+      }
+    });
+
+    /*
+        const { top } = $node.offset();
+        $(window).on('scroll', function () {
+          if ($(window).scrollTop() > top) {
+            $node.addClass('sticky');
+          } else {
+            $node.removeClass('sticky');
+          }
+        });
+    */
+
+    console.log("DayContainer - $node", $node.length)
+  }
+
+  componentDidMount() {
+    this.stickyTitle();
+  }
+
+  componentDidUpdate() {
+    this.stickyTitle();
+  }
+
   render() {
     const { day, dayKey, id, hasFilter, display } = this.props;
     const { items } = day

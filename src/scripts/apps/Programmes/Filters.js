@@ -133,7 +133,7 @@ class Filters extends Component {
     var $node = $(findDOMNode(this));
     const { top } = $node.offset();
     $(window).on('scroll', function () {
-      if ($(window).scrollTop() > top) {
+      if ($(window).scrollTop() > top - 50) {
         $node.addClass('sticky');
       } else {
         $node.removeClass('sticky');
@@ -181,7 +181,7 @@ class Filters extends Component {
             <li>
               <AttributeToggle
                 attrKey="filterShow"
-                onText="Filters ▾" offText="Filters ◂"
+                onText="Filters ▼" offText="Filters ◀"
                 getStatus={this.attrStatus.bind(this)}
                 onChange={this.attrChange.bind(this)} />
             </li>

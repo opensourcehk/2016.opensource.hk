@@ -81,15 +81,27 @@ function getData(dataSource) {
   return data;
 }
 
+function getErrorCatcher (msg) {
+  return function (e) {
+    console.error(e);
+    gutil.log(`${msg}\n${e}`);
+  }
+}
+
+
 // TODO: add pre-rendered Programmes app (initial state) to the programmes page
 
 // watch the public files
 // hot reload if there is changes
 gulp.task('serve-dev', function() {
+
+  const hostname = process.env.HOSTNAME || "127.0.0.1";
+  const port = process.env.PORT || 3000;
+
   var devConfig = {
     devtool: 'eval',
     entry: [
-      'webpack-dev-server/client?http://localhost:3000',
+      `webpack-dev-server/client?http://${hostname}:${port}`,
       'webpack/hot/only-dev-server',
       './src/scripts/client'
     ],
@@ -124,35 +136,35 @@ gulp.task('serve-dev', function() {
     stats: { colors: true }
   });
 
-  var portInUse = function(port, callback) {
+  var portInUse = function(port, hostname, callback) {
     var server = net.createServer(function(socket) {
       socket.write('Echo server\r\n');
       socket.pipe(socket);
     });
 
-    server.listen(port, '127.0.0.1');
+    server.listen(port, hostname);
     server.on('error', function (e) {
-      callback(true, port);
+      callback(true, hostname, port);
     });
 
     server.on('listening', function (e) {
       server.close();
-      callback(false, port);
+      callback(false, hostname, port);
     });
   };
 
   // test if port in use
-  portInUse(3000, function (inUse, port) {
+  portInUse(port, hostname, function (inUse, hostname, port) {
     if (inUse) {
-      gutil.log('Port ' + chalk.magenta(`localhost:${port}`) + ' is in use. ' + chalk.red.bold('[failed]'));
+      gutil.log('Port ' + chalk.magenta(`${hostname}:${port}`) + ' is in use. ' + chalk.red.bold('[failed]'));
       process.exit(1); // quit with fail code
     }
-    server.listen(port, "localhost", function (err, result) {
+    server.listen(port, hostname, function (err, result) {
       if (err) {
         return console.log(err);
       }
 
-      gutil.log('Listening at ' + chalk.magenta(`http://localhost:${port}/`) + ' ' + chalk.green.bold('[success]'));
+      gutil.log('Listening at ' + chalk.magenta(`http://${hostname}:${port}/`) + ' ' + chalk.green.bold('[success]'));
     });
   });
 
@@ -178,9 +190,7 @@ gulp.task('watch', function() {
 // convert styles
 gulp.task('styles', function() {
   gulp.src(stylesSource + '/*.sass')
-    .pipe(sass({
-      errLogToConsole: true
-    }))
+    .pipe(sass().on('error', getErrorCatcher("Error compiling sass file")))
     .pipe(autoprefixer({
 			browsers: ['last 2 versions'],
 			cascade: false
@@ -191,7 +201,7 @@ gulp.task('styles', function() {
     .pipe(gulp.dest(stylesTarget));
 
   gulp.src(stylesSource + '/*.scss')
-    .pipe(sass())
+    .pipe(sass().on('error', getErrorCatcher("Error compiling scss file")))
     .pipe(autoprefixer({
 			browsers: ['last 2 versions'],
 			cascade: false
@@ -237,9 +247,7 @@ gulp.task('pages', function() {
   // freeze all objects within data
   deepFreeze(data);
 
-  var catchError = function (e) {
-    gutil.log("Error compiling swig template: " + chalk.red(e.message));
-  }
+  var catchError = getErrorCatcher("Error compiling swig template");
 
   // most pages
   gulp.src([
