@@ -10,7 +10,8 @@
   user-select: none;
 
   .filters {
-    padding: 1em 0;
+    margin-top: 20px;
+    padding: 0;
 
     .filter-toggle {
       display: inline-block;
@@ -131,6 +132,8 @@
 .filters{
   display: block;
   position: absolute;
+  transition: box-shadow .5s;
+  transition: height .5s;
 
   @media(max-width: $width-sm) {
     width: 100%;
@@ -138,7 +141,7 @@
 
   .filterbar {
     position: relative;
-    min-height: 50px;
+    min-height: 58px;
     margin-bottom: 0;
     border: 1px solid #e7e7e7;
     background-color: #EEE;
@@ -146,7 +149,7 @@
     .filters-desc{
       display: block;
       float: left;
-      margin: 15px 0 15px 15px;
+      margin: 15px 0 0 15px;
     }
 
     .navbar-right {
@@ -165,10 +168,16 @@
     position: fixed;
     z-index: 1;
     top: 2em;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .5);
 
     .filterbar {
-      display: block !important;
-      margin-top: -4px;
+      display: block;
+      z-index: 1;
+    }
+
+    .filter-toggles {
+      z-index: 0;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, .5);
     }
 
   }
@@ -211,7 +220,7 @@
 }
 
 .timetable {
-  padding-top: 4em;
+  padding-top: 3.5em;
   .filters-desc {
     margin: 0 0 1em;
     padding: 1em;
@@ -223,6 +232,7 @@
       display: blocsk;
       width: 160px;
       float: left;
+      text-transform: capitalize;
       &::after {
         content: ': ';
       }
