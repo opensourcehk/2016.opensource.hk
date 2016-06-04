@@ -27,7 +27,9 @@ class FilterToggle extends Component {
     const status = getStatus(filterKey, value);
     const statusClass = (status === 1) ? "active" : "";
     return (
-      <div className={ ["filter-toggle", className, statusClass].join(" ") }
+      <div
+        key={`filter-toggle--${filterKey}--${value}--${status}`}
+        className={ ["filter-toggle", className, statusClass].join(" ") }
         onClick={ this.toggle.bind(this) }
         data-key={ filterKey }
         data-value={ value }
@@ -54,7 +56,8 @@ class AttributeToggle extends Component {
     const current = getStatus(attrKey);
     const text = (current === true) ? onText : offText
     return (
-        <a onClick={this.handleToggle.bind(this)} href="#">{text}</a>
+        <a key={`attribute-toggle--${attrKey}-${current}`}
+          onClick={this.handleToggle.bind(this)} href="#">{text}</a>
     );
   }
 
@@ -182,8 +185,16 @@ class Filters extends Component {
             {groupDivs}
             <div className="filter-actions">
               <div className="btn-group">
-                <FilterActionButton show={hasFilter} className="btn btn-primary" onClick={this.attrChange.bind(this, "filterShow", false)} >Hide</FilterActionButton>
-                <FilterActionButton show={hasFilter} className="btn btn-danger" onClick={this.clearFilters.bind(this)} >Reset</FilterActionButton>
+                <FilterActionButton key={`filter-action-button--hide`}
+                  show={hasFilter} className="btn btn-default"
+                  onClick={this.attrChange.bind(this, "filterShow", false)} >
+                  Hide
+                </FilterActionButton>
+                <FilterActionButton key={`filter-action-button--reset`}
+                  show={hasFilter} className="btn btn-danger"
+                  onClick={this.clearFilters.bind(this)} >
+                  Reset
+                </FilterActionButton>
               </div>
             </div>
           </div>
