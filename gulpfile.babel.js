@@ -25,6 +25,8 @@ import sass      from 'gulp-sass';
 import uglify    from 'gulp-uglify';
 import htmlmin   from 'gulp-html-minifier';
 import minifyCss from 'gulp-clean-css';
+import autoprefixer from 'gulp-autoprefixer';
+
 import helperFuncs from './src/scripts/utils/helperFuncs';
 
 const baseTarget    = __dirname + '/public';
@@ -179,6 +181,10 @@ gulp.task('styles', function() {
     .pipe(sass({
       errLogToConsole: true
     }))
+    .pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
     .pipe(minifyCss({
       compatibility: 'ie8'
     }))
@@ -186,6 +192,10 @@ gulp.task('styles', function() {
 
   gulp.src(stylesSource + '/*.scss')
     .pipe(sass())
+    .pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
     .pipe(minifyCss({
       compatibility: 'ie8'
     }))

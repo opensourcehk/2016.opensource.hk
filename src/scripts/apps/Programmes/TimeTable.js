@@ -4,6 +4,41 @@ import moment from 'moment';
 import 'moment-range';
 import _ from 'lodash';
 
+// FiltersDesc renders the description to the filter
+class FiltersDesc extends Component {
+
+  defaultProps = {
+    children: null,
+    filters: {}
+  }
+
+  renderDesc(filters) {
+    var descGroups = [];
+    for (let filterKey in filters) {
+      const desc = filters[filterKey].map((item) => `"${item}"`).join(" or ");
+      const name = _.capitalize(filterKey.replace("_", " "));
+      descGroups.push(
+        <dl className="desc-group">
+          <dt className="name">{name}</dt>
+          <dd className="desc">{desc}</dd>
+        </dl>
+      );
+    }
+    return descGroups;
+  }
+
+  render() {
+    const { className, filters } = this.props;
+    const hasFilter = !_.isEmpty(filters);
+    const inner = this.renderDesc(filters);
+    return hasFilter ? (
+      <div className={ className }>
+        {inner}
+      </div>
+    ) : null;
+  }
+}
+
 class Details extends Component {
 
   render() {
@@ -195,6 +230,7 @@ class TimeTable extends Component {
     // TODO: sort display by start time
     return (
       <div className={ className }>
+        <FiltersDesc filters={filters} className="filters-desc" />
         { schedule.map((day, key) => {
           const dayNum = key + 1;
           const dayKey = `day-${dayNum}`;
