@@ -64,11 +64,12 @@
         }
 
         @media(max-width: $width-sm) {
+          padding-left: 10px;
           .hour {
-            font-size: 1.3em;
+            font-size: 1.1em;
           }
           .minute {
-            font-size: 1em;
+            font-size: .9em;
           }
           .ampm {
             font-size: .7em;
