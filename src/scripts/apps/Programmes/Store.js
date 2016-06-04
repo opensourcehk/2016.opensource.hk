@@ -13,7 +13,7 @@ class actions {
   }
 
   // reset filter properties to empty object
-  static resetFilters(filters) {
+  static resetFilters() {
     return {
       "type": "FILTER_SET",
       "filters": {}
@@ -51,7 +51,7 @@ class actions {
 
 // filterer the all array by the definition of filters
 function filterer(filters, all) {
-  return all.filter((item) => {
+  const result = all.filter((item) => {
     for (let key in filters) {
       var match = false
       for (let value of filters[key]) {
@@ -71,6 +71,7 @@ function filterer(filters, all) {
     }
     return true;
   });
+  return result
 }
 
 const initialState = {
@@ -134,6 +135,7 @@ function reducer(state = initialState, action) {
         {},
         state,
         {
+          display: filterer(action.filters, all),
           filters: action.filters
         }
       );
