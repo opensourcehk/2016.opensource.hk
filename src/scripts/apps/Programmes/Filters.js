@@ -68,12 +68,12 @@ class FilterActionButton extends Component {
   render () {
     const { show, onClick, children, className } = this.props;
     return show ? (
-      <button className={className} type="button" onClick={onClick}>{children || "Clear"}</button>
+      <button className={className}
+        type="button" onClick={onClick}>{children || "Clear"}</button>
     ) : null;
   }
 
 }
-
 
 // Filter is the UI for filtering results in the Programmes Store
 // that triggers uipdate of TimeTable
@@ -142,7 +142,7 @@ class Filters extends Component {
   }
 
   render() {
-    const { className, filterGroups, attributes, filters } = this.props;
+    const { className, filterGroups, attributes, display, filters } = this.props;
     const hasFilter = !_.isEmpty(filters);
 
     var groupDivs = [];
@@ -166,15 +166,22 @@ class Filters extends Component {
       );
     }
 
+    const filterDesc = hasFilter ? (
+      <div className="filters-desc">
+        <span className="figure">{display.length}</span> topic(s) found
+      </div>
+    ) : null;
+
     // TODO: generate summary of the current filters
     return (
       <div className={ className }>
         <div className="filterbar navbar-default">
+          { filterDesc }
           <ul className="nav navbar-nav navbar-right">
             <li>
               <AttributeToggle
                 attrKey="filterShow"
-                onText="Hide Filters" offText="Filters"
+                onText="Filters ▾" offText="Filters ◂"
                 getStatus={this.attrStatus.bind(this)}
                 onChange={this.attrChange.bind(this)} />
             </li>
@@ -208,8 +215,8 @@ class Filters extends Component {
 // that short lists states in store
 //
 // (read Store.js to find what these parameters are)
-var mapStateToProps = function ({data, filters, attributes}) {
-  return { data, filters, attributes };
+var mapStateToProps = function ({data, display, filters, attributes}) {
+  return { data, display, filters, attributes };
 };
 
 export default connect(mapStateToProps)(Filters);

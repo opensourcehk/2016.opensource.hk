@@ -142,6 +142,12 @@
     border: 1px solid #e7e7e7;
     background-color: #EEE;
 
+    .filters-desc{
+      display: block;
+      float: left;
+      margin: 15px 0 15px 15px;
+    }
+
     .navbar-right {
       margin-right: 0;
     }
@@ -204,5 +210,24 @@
 }
 
 .timetable {
-  padding-top: 3em;
+  padding-top: 4em;
+  .filters-desc {
+    margin: 0 0 1em;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, .03);
+    .desc-group {
+      margin: .5em 0;
+    }
+    .name {
+      display: blocsk;
+      width: 160px;
+      float: left;
+      &::after {
+        content: ': ';
+      }
+    }
+    .desc {
+      margin-left: 160px;
+    }
+  }
 }
