@@ -130,10 +130,10 @@ class Filters extends Component {
   }
 
   componentDidMount() {
+    const {bindScrollWithin} = this.props;
     var $node = $(findDOMNode(this));
-    const { top } = $node.offset();
-    $(window).on('scroll', function () {
-      if ($(window).scrollTop() > top - 50) {
+    bindScrollWithin((within) => {
+      if (within) {
         $node.addClass('sticky');
       } else {
         $node.removeClass('sticky');
