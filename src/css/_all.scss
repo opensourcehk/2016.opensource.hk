@@ -1,0 +1,17 @@
+#main {
+  margin-bottom: 4em;
+}
+
+/** mobile friendly tables **/
+@media screen and (max-width: 640px) {
+  table {
+    overflow-x: auto;
+    display: block;
+  }
+}
+
+@media (max-width: $width-md) {
+  .media-body {
+    display: table-row;
+  }
+}
