@@ -13,7 +13,7 @@ describe('actions', () => {
       filters,
       type: 'FILTER_SET'
     };
-    should(actions.setFilters(props)).eql(expectedAction).which.is.a.Object();
+    should(actions.setFilters(filters)).eql(expectedAction).which.is.a.Object();
   });
 
   it('resetFilters should create an action to set filter properties to empty object', () => {
