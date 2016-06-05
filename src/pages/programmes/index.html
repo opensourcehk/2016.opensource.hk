@@ -1,22 +1,27 @@
-{% extends '../../layouts/default.html' %}
+{% extends '../../layouts/schedule.html' %}
 
 {% block og_url %}{{ site_host }}/schedule/{% endblock %}
 
-{% block title %}Programmes{% endblock %}
-
-{% block description %}
-  <p>Keynotes and Talks are in single tracks on Friday. Sessions are in multiple tracks on Weekend, keynotes and talks are on Saturday, and workshops are on Sunday.</p>
-  <p><a class="btn btn-lg btn-hkosc" href="https://hkoscon2016.eventbrite.com/?aff=website" role="button">Buy Ticket &raquo;</a></p>
-{% endblock %}
+{% block title %}Schedule{% endblock %}
 
 {% block content %}
+
+<div class="container title-container">
+  <div class="row">
+    <h1>Schedule</h1>
+  </div>
+</div>
 
 <div class="container" id="schedule">
 
     <div class="row">
-      <div id="timetable"></div><!--/#timetable-->
+      <div id="timetable">
+        <span class="loading">Loading...</span>
+      </div><!--/#timetable-->
     </div>
 
 </div>
+
+{% include '../_bottom-sponsors.html' %}
 
 {% endblock %}

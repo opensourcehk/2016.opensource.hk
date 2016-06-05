@@ -1,7 +1,44 @@
+import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import moment from 'moment';
+import 'moment-range';
 import _ from 'lodash';
+
+// FiltersDesc renders the description to the filter
+class FiltersDesc extends Component {
+
+  defaultProps = {
+    children: null,
+    filters: {}
+  }
+
+  renderDesc(filters) {
+    var descGroups = [];
+    for (let filterKey in filters) {
+      const desc = filters[filterKey].map((item) => `"${item}"`).join(" or ");
+      const name = _.capitalize(filterKey.replace("_", " "));
+      descGroups.push(
+        <dl className="desc-group">
+          <dt className="name">{name}</dt>
+          <dd className="desc">{desc}</dd>
+        </dl>
+      );
+    }
+    return descGroups;
+  }
+
+  render() {
+    const { className, filters } = this.props;
+    const hasFilter = !_.isEmpty(filters);
+    const inner = this.renderDesc(filters);
+    return hasFilter ? (
+      <div className={ className }>
+        {inner}
+      </div>
+    ) : null;
+  }
+}
 
 class Details extends Component {
 
@@ -130,10 +167,71 @@ class ScheduleItem extends Component {
 
 // DayContainer displays the schedule in a day level definition
 class DayContainer extends Component {
+
+  stickyTitle() {
+    var $node = $(findDOMNode(this));
+    if ($node.length === 0) {
+      return // do nothing if element is null
+    }
+
+    const { top } = $node.offset();
+    const realTop = top - 80;
+    const bottom = top + $node.height() - 200;
+    $(window).on('scroll', function () {
+      if ($(window).scrollTop() > realTop && $(window).scrollTop() < bottom) {
+        $node.addClass('sticky-title');
+      } else {
+        $node.removeClass('sticky-title');
+      }
+    });
+
+    /*
+        const { top } = $node.offset();
+        $(window).on('scroll', function () {
+          if ($(window).scrollTop() > top) {
+            $node.addClass('sticky');
+          } else {
+            $node.removeClass('sticky');
+          }
+        });
+    */
+
+    console.log("DayContainer - $node", $node.length)
+  }
+
+  componentDidMount() {
+    this.stickyTitle();
+  }
+
+  componentDidUpdate() {
+    this.stickyTitle();
+  }
+
   render() {
-    const { day, dayKey, id } = this.props;
+    const { day, dayKey, id, hasFilter, display } = this.props;
     const { items } = day
-    return (
+
+    // compute the day's time range
+    const firstItem = items[0];
+    const lastItem = items[items.length - 1];
+    var timeRange = moment.range(
+      moment(firstItem.start), moment(lastItem.end));
+
+    var hasDisplay = true;
+    if (hasFilter) {
+      hasDisplay = false;
+      for (let topic of display) {
+        if (timeRange.contains(moment(topic.topic.start))) {
+          hasDisplay = true;
+          break;
+        }
+      }
+      if (!hasDisplay) {
+        return null
+      }
+    }
+
+    return (hasDisplay) ? (
       <div className="day-container row container" id={id}>
         <h2 className="row">{day.name}</h2>
         { items.map((item, key) => {
@@ -143,7 +241,7 @@ class DayContainer extends Component {
           );
         }) }
       </div>
-    );
+    ) : null;
   }
 }
 
@@ -171,10 +269,9 @@ class TimeTable extends Component {
     const hasFilter = !_.isEmpty(filters);
 
     // TODO: sort display by start time
-    // TODO: group display by start time as RowGroup
-    //       with start time as first column
     return (
       <div className={ className }>
+        <FiltersDesc filters={filters} className="filters-desc" />
         { schedule.map((day, key) => {
           const dayNum = key + 1;
           const dayKey = `day-${dayNum}`;

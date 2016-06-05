@@ -5,12 +5,12 @@ import should from "should";
 describe('actions', () => {
 
   it('setFilters should create an action to set all filter properties', () => {
-    const props = {
+    const filters = {
       'key 1': 'value 1',
       'key 2': 'value 2'
     };
     const expectedAction = {
-      props,
+      filters,
       type: 'FILTER_SET'
     };
     should(actions.setFilters(props)).eql(expectedAction).which.is.a.Object();
@@ -19,7 +19,7 @@ describe('actions', () => {
   it('resetFilters should create an action to set filter properties to empty object', () => {
     const expectedAction = {
       type: 'FILTER_SET',
-      props: {}
+      filters: {}
     };
     should(actions.resetFilters()).eql(expectedAction).which.is.a.Object();
   });
@@ -147,6 +147,78 @@ describe('reducer', () => {
         display: []
       }
     ).which.is.a.Object();
+  });
+
+  it('setFilters should set the filter object to the given object', () => {
+    const all = [
+      {"var3": "value1"},
+      {"var3": "value3"}
+    ];
+    const filters = {
+      "var1": "value 1",
+      "var2": "value 2"
+    };
+    const toSet = {
+      "var3": ["value3"]
+    };
+
+    should(
+      reducer(
+        {
+          all,
+          filters
+        },
+        actions.setFilters(toSet)
+      ).filters
+    ).deepEqual(toSet);
+  });
+
+  it('setFilters should trigger display update', () => {
+    const all = [
+      {"var3": "value 1"},
+      {"var3": "value 3"}
+    ];
+    const filters = {
+      "var1": ["value 1"],
+      "var2": ["value 2"]
+    };
+    const display = [];
+
+    should(
+      reducer(
+        {
+          all,
+          filters,
+          display
+        },
+        actions.setFilters({
+          "var3": ["value 3"]
+        })
+      ).display
+    ).deepEqual([
+      {"var3": "value 3"}
+    ]);
+  });
+
+  it('resetFilters should set the filter object to empty', () => {
+    const all = [
+      {"var3": "value 1"},
+      {"var3": "value 3"}
+    ];
+    const filters = {
+      "var1": ["value 1"],
+      "var2": ["value 2"]
+    };
+
+    should(
+      reducer(
+        {
+          all,
+          filters
+        },
+        actions.resetFilters()
+      ).filters
+    ).deepEqual({});
   });
 
   it('addFilter will add filter properties and filter the display array', () => {

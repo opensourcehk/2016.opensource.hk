@@ -3,6 +3,12 @@
     "name": "24th June 2016, Friday (Day 1)",
     "items": [
       {
+        "name": "Shuttle Bus departs from Admiraty",
+        "hasTopics": false,
+        "start": "2016-06-24T09:00:00+0800",
+        "venue": "admiralty-bus-stop"
+      },
+      {
         "name": "Reception and Check-ins",
         "hasTopics": false,
         "start": "2016-06-24T09:30:00+0800",
@@ -100,7 +106,7 @@
         "venue": "big-hall"
       },
       {
-        "name": "End of Day 1",
+        "name": "End of Day 1 and Shuttle Buses to Admiralty",
         "hasTopics": false,
         "start": "2016-06-24T17:40:00+0800"
       },
@@ -115,6 +121,12 @@
   {
     "name": "25th June 2016, Friday (Day 2)",
     "items": [
+      {
+        "name": "Shuttle Bus departs from Admiraty",
+        "hasTopics": false,
+        "start": "2016-06-25T09:00:00+0800",
+        "venue": "admiralty-bus-stop"
+      },
       {
         "name": "Reception and Check-ins",
         "hasTopics": false,
@@ -279,13 +291,13 @@
         "venue": "seaview-corner"
       },
       {
-        "name": "Announcement, HKOSP for Youth Award Ceremony and Lucky Draw",
+        "name": "Announcement and Lucky Draw",
         "hasTopics": false,
         "start": "2016-06-25T17:15:00+0800",
         "end": "2016-06-25T17:30:00+0800"
       },
       {
-        "name": "End of Day 2",
+        "name": "End of Day 2 and Shuttle Buses to Admiralty",
         "hasTopics": false,
         "start": "2016-06-25T17:45:00+0800"
       },
@@ -330,7 +342,7 @@
         "end": "2016-06-26T17:15:00+0800"
       },
       {
-        "name": "End of Day 3",
+        "name": "End of Day 3 and Shuttle Buses to Admiralty",
         "hasTopics": false,
         "start": "2016-06-26T17:15:00+0800",
         "end": "2016-06-26T17:30:00+0800"

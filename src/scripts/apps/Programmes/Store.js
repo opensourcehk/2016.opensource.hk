@@ -5,18 +5,18 @@ import { createStore } from "redux";
 class actions {
 
   // set all properties of the filters at once
-  static setFilters(props) {
+  static setFilters(filters) {
     return {
-      props,
+      filters,
       type: "FILTER_SET"
     }
   }
 
   // reset filter properties to empty object
-  static resetFilters(props) {
+  static resetFilters() {
     return {
       type: "FILTER_SET",
-      props: {}
+      filters: {}
     }
   }
 
@@ -51,7 +51,7 @@ class actions {
 
 // filterer the all array by the definition of filters
 function filterer(filters, all) {
-  return all.filter((item) => {
+  const result = all.filter((item) => {
     for (let key in filters) {
       var match = false;
       for (let value of filters[key]) {
@@ -73,6 +73,7 @@ function filterer(filters, all) {
     }
     return true;
   });
+  return result
 }
 
 const initialState = {
@@ -109,7 +110,7 @@ const initialState = {
 // apply filter add / remove actions to the store
 function reducer(state = initialState, action) {
 
-  const { data, all, attributes } = state;
+  const { all, attributes } = state;
 
   switch (action.type) {
 
@@ -132,7 +133,14 @@ function reducer(state = initialState, action) {
       );
 
     case "FILTER_SET":
-      throw "FILTER_SET is not implmented by the reducer yet";
+      return Object.assign(
+        {},
+        state,
+        {
+          display: filterer(action.filters, all),
+          filters: action.filters
+        }
+      );
 
     case "FILTER_ADD_PROP":
 
