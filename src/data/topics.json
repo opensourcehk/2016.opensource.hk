@@ -682,29 +682,6 @@
     "start": "2016-06-25T16:45:00+0800",
     "end": "2016-06-25T17:15:00+0800"
   },
-  "an-insight-about-glusterfs-and-its-enforcement-techniques": {
-    "id": "an-insight-about-glusterfs-and-its-enforcement-techniques",
-    "title": "An Insight about GlusterFS and it’s Enforcement Techniques",
-    "type": "talk",
-    "speaker": "manikandan-selvaganesan",
-    "category": "Cloud",
-    "level": "Intermediate",
-    "requirement": "To know the very basic concepts of any file system",
-    "target_audience": ["Developers", "Users"],
-    "short_desc": "In this paper, we discuss the internal working of the translators and key architectural components of GlusterFS. Along with that, one can gain a deep insight about the enforcement techniques, few challenges, undergoing researches and projects of GlusterFS. To be precise here is the bottom line, ”Gluster - data management for the 21st century, leaving the past behind and Enforcer, an important component in GlusterFS, which will never let you go off limits and is extremely useful for the real time applications.”",
-    "description":[
-      "<p>The world keeps contributing to the increase in data everyday drastically. Scientific applications, weather forecasting, researches, hospitals, military services are few such major contributors. As the amount of data increases, the need to provide efficient, easy to use solutions has become one of the main issues for these type of computations. The best solution to this issue is the use of Distributed File Systems(DFS). Some existing Distributed File Systems are too complex to deploy and maintain, although they are extremely scalable and cheap since they can be entirely built out of commodity Operating System(OS) and hardware. GlusterFS solves this problem. Gluster File System(GFS) is open source and is capable of scaling to several petabytes(upto 72 brontobytes) and handling thousands of clients. It is based on a stackable user space design and can deliver exceptional performance for diverse workloads. GlusterFS is an easy to use clustered file system that meets enterprise-level requirements. It is written in user space which uses FUSE(File system in user space) to hook itself with the VFS layer. It takes a layered approach to the file system, where features are added/removed as per the requirement. Enforcer is a major component in Gluster which finds its extensive use in production. Enforcer is concerned more about limits. It helps to restrict the usage(both in terms of size and count) at directory or volume level in the file system. In this paper, we discuss the internal working of the translators and key architectural components of GlusterFS. Along with that, one can gain a deep insight about the enforcement techniques, few challenges, undergoing researches and projects of GlusterFS. To be precise here is the bottom line, ”Gluster - data management for the 21st century, leaving the past behind and Enforcer, an important component in GlusterFS, which will never let you go off the limits and is extremely useful for the real time applications.”</p>",
-      "<p>Keywords: Distributed File System(DFS), Gluster File System(GFS), Translators, Enforcer, Marker, GFS Researches.</p>"
-    ],
-    "lang": "en",
-    "lang_slide": "en",
-    "length": "30min",
-    "licence_video": "all-rights-reserved",
-    "licence_slide": "all-rights-reserved",
-    "venue": "fn-room-1",
-    "start": "2016-06-25T14:45:00+0800",
-    "end": "2016-06-25T15:15:00+0800"
-  },
   "what-is-freebsd-and-how-become-part-of-the-project": {
     "id": "what-is-freebsd-and-how-become-part-of-the-project",
     "title": "What is FreeBSD and how become part of the project",

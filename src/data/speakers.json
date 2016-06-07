@@ -408,27 +408,6 @@
     "portrait": "https://c8.staticflickr.com/3/2889/9850224343_553cf2524b_n.jpg",
     "hkoscon-sponsored": false
   },
-  "manikandan-selvaganesan": {
-    "name": "Manikandan Selvaganesan",
-    "gender": "male",
-    "social": {
-      "github": "https://github.com/Manikandan-Selvaganesh",
-      "nickname": ""
-    },
-    "description": "Manikandan here from India. I did my Bachelors in Computer Science and working for Red Hat currently. An Open Source enthusiast passionate to code(for work and hobby) and love to explore places, technologies and a better speaker.",
-    "residence": "India",
-    "nationality": "India",
-    "community": {
-      "name": "GlusterFS",
-      "url": "https://www.gluster.org/"
-    },
-    "company": {
-      "name": "Red Hat",
-      "url": "https://www.redhat.com/"
-    },
-    "portrait": "",
-    "hkoscon-sponsored": false
-  },
   "marcelo-araujo": {
     "name": "Marcelo Araujo",
     "gender": "male",
