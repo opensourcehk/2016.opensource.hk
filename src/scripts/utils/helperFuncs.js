@@ -92,7 +92,11 @@ function filterBy (name, value) {
 
 // turn an object into an array
 function toArray (obj) {
-  return Array.from(obj);
+  var arr = [];
+  for ( var key in obj ) {
+      arr.push(obj[key]);
+  }
+  return arr;
 }
 
 // strip tags from description text and return
