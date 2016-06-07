@@ -1,5 +1,11 @@
 [
   {
+    "date": "2016/06/25",
+    "title": "We have received some endorsement video from our speakers. Check them out!",
+    "url": "/clips/",
+    "published": true
+  },
+  {
     "date": "2016/05/25",
     "title": "Workshop day and time are confirmed! Please check them out",
     "url": "/topics/#Workshops",
@@ -15,7 +21,7 @@
     "date": "2016/05/19",
     "title": "Please visit the Topics page to see what's in the conference this year!",
     "url": "/topics/",
-    "published": true
+    "published": false
   },
   {
     "date": "2016/05/06",
