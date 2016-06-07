@@ -16,18 +16,17 @@ function findSponsor(id, sponsors) {
   return null;
 }
 
+const Days = {
+  24: 'Day 1',
+  25: 'Day 2',
+  26: 'Day 3'
+};
+
 // dayName returns "Day 1", "Day 2" or "Day 3"
 // according to the date of the given timeStr
 function dayName(timeStr) {
-  switch (formatTime(timeStr, 'DD')) {
-    case "24":
-      return "Day 1";
-    case "25":
-      return "Day 2";
-    case "26":
-      return "Day 3";
-  }
-  return null;
+  let day = formatTime(timeStr, 'DD');
+  return day in Days ? Days[day] : null;
 }
 
 // formatTome parse input time string
@@ -54,7 +53,7 @@ function findTopicSummary(data, placeholder, props) {
   }
 
   // show topic summary
-  var [id, topic] = result;
+  let [id, topic] = result;
   return topicSummary(data, id);
 }
 
@@ -79,7 +78,7 @@ function topicSummary(data, id) {
 // topicURL generator
 function topicURL (type, id) {
   if (type == 'topic') {
-    return '/topics/' + id + '/';
+    return `/topics/${id}/`;
   }
 }
 
@@ -93,11 +92,7 @@ function filterBy (name, value) {
 
 // turn an object into an array
 function toArray (obj) {
-  var arr = [];
-  for ( var key in obj ) {
-      arr.push(obj[key]);
-  }
-  return arr
+  return Array.from(obj);
 }
 
 // strip tags from description text and return

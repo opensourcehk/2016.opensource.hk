@@ -8,16 +8,15 @@ export default function () {
   let drop = $('#navbar-collapse', $navbar);
   if (!largeScreen)
     drop.removeClass('dropup');
+
   $navbar.affix({
     offset: {
       top: $('.jumbotron').height() + $navbar.height()
     }
-  });
-  $navbar.on('affixed.bs.affix', function () {
+  }).on('affixed.bs.affix', function () {
     if (largeScreen)
       drop.removeClass('dropup');
-  });
-  $navbar.on('affixed-top.bs.affix', function () {
+  }).on('affixed-top.bs.affix', function () {
     if (largeScreen)
       drop.addClass('dropup');
   });

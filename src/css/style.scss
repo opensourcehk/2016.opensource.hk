@@ -1,55 +1,13 @@
 @charset "UTF-8";
-@import "lib/lib";
+
+@import "lib";
 
 @import
   "color",
   "variable",
   "common",
-  "elements/dark-section",
-  "elements/navbar",
-  "elements/button",
-  "elements/cardlist",
-  "elements/bottom-sponsors",
-  "elements/video-card",
-  "pages/front",
-  "pages/programmes",
-  "pages/schedule",
-  "pages/sponsors",
-  "pages/topics",
-  "pages/venue"
+  "elements",
+  "pages",
+  "all",
+  "filter"
 ;
-
-#main {
-  margin-bottom: 4em;
-}
-
-/** mobile friendly tables **/
-@media screen and (max-width: 640px) {
-	table {
-		overflow-x: auto;
-		display: block;
-	}
-}
-
-.page-topic-header {
-  a {
-    text-decoration: underline;
-    color: inherit;
-  }
-}
-
-@media (max-width: $width-md) {
-  .media-body {
-    display: table-row;
-  }
-}
-
-.breadcrumb > li + li:before {
-  color: #CCCCCC;
-  content: "/ ";
-  padding: 0 5px;
-}
-
-.pp_pic_holder .pp_description {
-  display: none !important;
-}
