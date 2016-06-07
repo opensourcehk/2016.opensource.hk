@@ -1,13 +1,24 @@
 @charset "UTF-8";
 
-@import "lib";
+@import
+  "lib/bootstrap",
+  "lib/progress-bar"
+;
 
 @import
-  "color",
-  "variable",
+  "colors",
+  "variables",
   "common",
-  "elements",
-  "pages",
-  "all",
-  "filter"
+  "elements/dark-section",
+  "elements/navbar",
+  "elements/button",
+  "elements/cardlist",
+  "elements/bottom-sponsors",
+  "elements/video-card",
+  "pages/front",
+  "pages/programmes",
+  "pages/schedule",
+  "pages/sponsors",
+  "pages/topics",
+  "pages/venue"
 ;
