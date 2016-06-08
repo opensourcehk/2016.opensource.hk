@@ -677,6 +677,29 @@
     "portrait": "/assets/images/speakers/jserv.jpg",
     "hkoscon-sponsored": false
   },
+  "fabio-rapposelli": {
+    "name": "Fabio Rapposelli",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/frapposelli",
+      "nickname": "frapposelli"
+    },
+    "description": [
+      "<p>Fabio is a Staff Engineer 2 at VMware working on Cloud Native",
+      "technologies, Fabio is responsible for the Open Source R&D work",
+      "done in the Cloud Native business unit and leader of a new",
+      "next-generation application platform currently in early stage",
+      "of development.</p>"
+    ],
+    "residence": "Italy",
+    "nationality": "Italy",
+    "company": {
+      "name": "VMWare",
+      "url": "https://www.vmware.com/"
+    },
+    "portrait": "/assets/images/speakers/frapposelli.png",
+    "hkoscon-sponsored": false
+  },
 
   "dumy": {
     "name": "Dummy Speaker",
