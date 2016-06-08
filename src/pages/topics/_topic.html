@@ -156,6 +156,16 @@
               <dd>{{ speaker.company.name }}</dd>
             {% endif %}
           {% endif %}
+
+          {% if speaker.affiliation %}
+            <dt>Affiliation</dt>
+            {% if speaker.affiliation.url %}
+              <dd><a href="{{ speaker.affiliation.url }}" target="_blank">{{ speaker.affiliation.name }}</a></dd>
+            {% else %}
+              <dd>{{ speaker.affiliation.name }}</dd>
+            {% endif %}
+          {% endif %}
+
         </dl>
 
         <h3>Biography</h3>
