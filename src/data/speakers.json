@@ -648,7 +648,35 @@
     "portrait": "https://avatars1.githubusercontent.com/u/1532932",
     "hkoscon-sponsored": false
   },
-
+  "jim-huang": {
+    "name": "Jim Huang",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/jserv",
+      "nickname": "jserv"
+    },
+    "description": [
+      "<p>Jim, as known as \"jserv\",  is a university lecturer, teaching the course",
+      "about system programming and building open source solutions for",
+      "embedded devices and rockets. After involved in Android Open Source",
+      "Project, Jim specialises in real-time and virtualization to bring",
+      "Linux based industrial products. He is the co-founder of LXDE project,",
+      "a lightweight desktop environment widely used in embedded devices",
+      "such as Raspbery Pi.</p>",
+      "<p>網路暱稱 \"jserv\"，在台灣的大學任教，探討系統軟體、開源生態，以及建構火箭控制系統。",
+      "過去參與 Android Open Source Project 開發，近期則專注於即時處理和虛擬化技術，導入",
+      "以 Linux 為基礎的工業控制產品。他也是 LXDE 計畫的共同發起人，這個輕量級的桌面系統",
+      "廣泛應用於 Raspberry Pi 一類的小型電腦，作為預設的桌面系統。</p>"
+    ],
+    "residence": "Taiwan",
+    "nationality": "Taiwan",
+    "affiliation": {
+      "name": "National Cheng Kung University, Taiwan / 台灣國立成功大學",
+      "url": "http://web.ncku.edu.tw/bin/home.php"
+    },
+    "portrait": "/assets/images/speakers/jserv.jpg",
+    "hkoscon-sponsored": false
+  },
 
   "dumy": {
     "name": "Dummy Speaker",

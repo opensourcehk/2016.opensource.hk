@@ -89,6 +89,39 @@
     "start": "2016-06-24T11:00:00+0800",
     "end": "2016-06-24T11:40:00+0800"
   },
+  "free-and-open-source-software-involvement-in-taiwan": {
+    "id": "free-and-open-source-software-involvement-in-taiwan",
+    "title": "Free and Open Source Software Involvement in Taiwan / 回顧台灣自由開源軟體發展",
+    "type": "keynote",
+    "speaker": "jim-huang",
+    "category": "Community",
+    "level": "Beginners",
+    "requirement": "Any developers or software engineers with knowledge in open source technology",
+    "target_audience": ["Developers", "Users"],
+    "short_desc": [
+      "<p>A Brief History of Free Software and Open Source Involvement in Taiwan</p>",
+      "<p>簡介台灣二十餘年的自由軟體和開放原始碼生態變遷</p>"
+    ],
+    "description": [
+      "<p>Free software was first noticed in university campuses in Taiwan two",
+      "decades ago when the GNU utilities started to spread out on the",
+      "Unix-like workstations, and the community awareness of free software",
+      "was gradually formed in early 1990s. The creation of the Chinese Linux",
+      "Extension (CLE) project in 1997 is the most referenced Linux",
+      "environment in Taiwan, and the industries start catching up OSS",
+      "activities since 1998. As a long-time contributor of various open",
+      "source project, I would like to share my understanding about Taiwanese",
+      "OSS development in historical perspective.</p>"
+    ],
+    "lang": "zh.tw",
+    "lang_slide": "zh.traditional",
+    "length": "40min",
+    "licence_video": "cc-by-sa-3",
+    "licence_slide": "cc-by-sa-3",
+    "venue": "big-hall",
+    "start": "2016-06-25T10:10:00+0800",
+    "end": "2016-06-25T11:50:00+0800"
+  },
 
   "the-latest-innovation-mysql-document-store": {
     "id": "the-latest-innovation-mysql-document-store",

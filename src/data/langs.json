@@ -7,6 +7,10 @@
     "name": "Mandarin",
     "short": "M"
   },
+  "zh.traditional": {
+    "name": "Traditional Chinese",
+    "short": "M"
+  },
   "zh.cn": {
     "name": "Mandarin",
     "short": "M"
