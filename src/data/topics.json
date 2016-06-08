@@ -89,6 +89,75 @@
     "start": "2016-06-24T11:00:00+0800",
     "end": "2016-06-24T11:40:00+0800"
   },
+  "open-source-cloud-native-infrastructure-software": {
+    "id": "open-source-cloud-native-infrastructure-software",
+    "title": "Open Source, Cloud-Native infrastructure software",
+    "type": "keynote",
+    "speaker": "fabio-rapposelli",
+    "category": "Cloud",
+    "level": "Intermediate",
+    "requirement": "",
+    "target_audience": ["Developers", "IT Managers", "Users"],
+    "short_desc": [
+      "VMware's Cloud Native team builds Enterprise-ready, Open Source",
+      "infrastructure software, come see what's cooking!"
+    ],
+    "description": [
+      "<p>Since VMware established its Cloud Native applications business unit",
+      "last year, we decided to embrace open source to the fullest.</p>",
+      "<p>At Cloud Native, we believe in collaborating with the community and",
+      "sharing ideas with developers as we work together to build useful tools",
+      "and products. Following on the open source nature of the</p>",
+      "<p>container community, we wanted to give our customer and partner",
+      "communities access to the code, visibility into our work, more direct",
+      "access to file issues, contribute code back, and help</p>",
+      "<p>us make our code better for their use. In this session I will walk",
+      "you through our available projects and show how they fit together.</p>"
+    ],
+    "lang": "en",
+    "lang_slide": "en",
+    "length": "40min",
+    "licence_video": "all-rights-reserved",
+    "licence_slide": "all-rights-reserved",
+    "isSponsorTopic": true,
+    "sponsor": "vmware",
+    "venue": "big-hall",
+    "start": "2016-06-24T15:40:00+0800",
+    "end": "2016-06-24T16:05:00+0800"
+  },
+  "free-and-open-source-software-involvement-in-taiwan": {
+    "id": "free-and-open-source-software-involvement-in-taiwan",
+    "title": "Free and Open Source Software Involvement in Taiwan / 回顧台灣自由開源軟體發展",
+    "type": "keynote",
+    "speaker": "jim-huang",
+    "category": "Community",
+    "level": "Beginners",
+    "requirement": "Any developers or software engineers with knowledge in open source technology",
+    "target_audience": ["Developers", "Users"],
+    "short_desc": [
+      "<p>A Brief History of Free Software and Open Source Involvement in Taiwan</p>",
+      "<p>簡介台灣二十餘年的自由軟體和開放原始碼生態變遷</p>"
+    ],
+    "description": [
+      "<p>Free software was first noticed in university campuses in Taiwan two",
+      "decades ago when the GNU utilities started to spread out on the",
+      "Unix-like workstations, and the community awareness of free software",
+      "was gradually formed in early 1990s. The creation of the Chinese Linux",
+      "Extension (CLE) project in 1997 is the most referenced Linux",
+      "environment in Taiwan, and the industries start catching up OSS",
+      "activities since 1998. As a long-time contributor of various open",
+      "source project, I would like to share my understanding about Taiwanese",
+      "OSS development in historical perspective.</p>"
+    ],
+    "lang": "zh.tw",
+    "lang_slide": "zh.traditional",
+    "length": "40min",
+    "licence_video": "cc-by-sa-3",
+    "licence_slide": "cc-by-sa-3",
+    "venue": "big-hall",
+    "start": "2016-06-25T10:10:00+0800",
+    "end": "2016-06-25T11:50:00+0800"
+  },
 
   "the-latest-innovation-mysql-document-store": {
     "id": "the-latest-innovation-mysql-document-store",
@@ -684,7 +753,7 @@
   },
   "what-is-freebsd-and-how-become-part-of-the-project": {
     "id": "what-is-freebsd-and-how-become-part-of-the-project",
-    "title": "What is FreeBSD and how become part of the project",
+    "title": "What is FreeBSD and how to become part of the project",
     "type": "talk",
     "speaker": "marcelo-araujo",
     "category": "Community",

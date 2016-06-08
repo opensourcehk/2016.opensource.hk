@@ -92,23 +92,16 @@
         "venue": "big-hall"
       },
       {
-        "name": "Talk #5",
-        "hasTopics": true,
-        "start": "2016-06-24T16:40:00+0800",
-        "end": "2016-06-24T17:05:00+0800",
-        "venue": "big-hall"
-      },
-      {
         "name": "Announcement and Lucky Draw",
         "hasTopics": false,
-        "start": "2016-06-24T17:05:00+0800",
-        "end": "2016-06-24T17:30:00+0800",
+        "start": "2016-06-24T16:35:00+0800",
+        "end": "2016-06-24T16:55:00+0800",
         "venue": "big-hall"
       },
       {
         "name": "End of Day 1 and Shuttle Buses to Admiralty",
         "hasTopics": false,
-        "start": "2016-06-24T17:40:00+0800"
+        "start": "2016-06-24T16:55:00+0800"
       },
       {
         "name": "Speaker Dinner (by invitation only)",
