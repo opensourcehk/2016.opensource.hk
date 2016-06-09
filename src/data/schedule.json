@@ -3,7 +3,7 @@
     "name": "24th June 2016, Friday (Day 1)",
     "items": [
       {
-        "name": "Shuttle Bus departs from Admiraty",
+        "name": "Shuttle Bus departs from Admiralty",
         "hasTopics": false,
         "start": "2016-06-24T09:00:00+0800",
         "venue": "admiralty-bus-stop"
@@ -115,7 +115,7 @@
     "name": "25th June 2016, Friday (Day 2)",
     "items": [
       {
-        "name": "Shuttle Bus departs from Admiraty",
+        "name": "Shuttle Bus departs from Admiralty",
         "hasTopics": false,
         "start": "2016-06-25T09:00:00+0800",
         "venue": "admiralty-bus-stop"
@@ -306,7 +306,7 @@
     "name": "26th June 2016, Friday (Day 3)",
     "items": [
       {
-        "name": "Shuttle Bus departs from Admiraty",
+        "name": "Shuttle Bus departs from Admiralty",
         "hasTopics": false,
         "start": "2016-06-26T13:15:00+0800"
       },
