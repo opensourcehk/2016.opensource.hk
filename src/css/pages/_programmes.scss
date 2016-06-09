@@ -9,9 +9,9 @@ $top-navbar-height: 50px;
 $filterbar-min-height: 50px;
 
 @media(max-width: $width-sm) {
-   .title-container h1 {
-     padding-left: 15px;
-   }
+  .title-container h1 {
+    padding-left: 15px;
+  }
 }
 
 #timetable {
@@ -210,13 +210,13 @@ $filterbar-min-height: 50px;
       }
 
       &.sticky-title {
-       h2 {
-         position: fixed;
-         top: $top-navbar-height + $filterbar-min-height;
-         border-bottom: 1px solid #eee;
-         box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
-       }
-     }
+        h2 {
+          position: fixed;
+          top: $top-navbar-height + $filterbar-min-height;
+          border-bottom: 1px solid #eee;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+        }
+      }
 
     }
 
@@ -230,7 +230,7 @@ $filterbar-min-height: 50px;
       // the item under title of day-container
       &:nth-child(2) {
         margin-top:
-          $day-container-title-line-height +
+                $day-container-title-line-height +
           $day-container-title-padding-top +
           $day-container-title-padding-bottom;
       }
@@ -303,6 +303,10 @@ $filterbar-min-height: 50px;
           padding-bottom: 1em;
           border-bottom: solid 1px rgba(0, 0, 0, .1);
         }
+
+        .topic-row:hover {
+          cursor: pointer;
+        }
       }
     }
     .schedule-item:last-child {
@@ -322,7 +326,7 @@ $filterbar-min-height: 50px;
         margin: .5em 0;
       }
       .name {
-        display: blocsk;
+        display: block;
         width: 160px;
         float: left;
         text-transform: capitalize;
@@ -335,6 +339,25 @@ $filterbar-min-height: 50px;
       }
     }
 
+  }
+
+}
+
+.topic-modal {
+
+  width: 80%;
+
+  img {
+    max-height: 200px;
+  }
+
+  .right {
+    margin: 10px 10px;
+    margin-top: 20px;
+
+    p {
+      text-align: justify;
+    }
   }
 
 }

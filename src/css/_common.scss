@@ -8,6 +8,10 @@ footer {
   background-color: rgba(0, 0, 0, .03);
   padding-top: 3em;
   text-align: center;
+
+  img {
+    border-width: 0;
+  }
 }
 
 .title-container {

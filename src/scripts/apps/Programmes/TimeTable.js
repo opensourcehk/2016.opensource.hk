@@ -1,6 +1,6 @@
 import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
-import { Modal, Image } from 'react-bootstrap';
+import { Modal, Image, Button, Grid, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import 'moment-range';
@@ -123,30 +123,51 @@ class TopicModal extends Component {
         </Modal.Header>
       ), body = (
         <Modal.Body>
+          <Grid>
+            <Row>
+              <Col md={4}>
+                <Image src={ icon || '/assets/images/speakers/placeholder.jpg' } rounded responsive className="center-block" />
+              </Col>
+              <Col md={6}>
+                <div dangerouslySetInnerHTML={{__html: display}} />
+                <hr />
+                <ul>
+                  <li>Speaker: { name }</li>
+                  <li>Language: { lang }</li>
+                  <li>Location: { location }</li>
+                  <li>Time: { dayName(start) } ({ formatTime(start, 'HH:mm') } - { formatTime(end, 'HH:mm') })</li>
+                  <li>Level: { level }</li>
+                </ul>
+              </Col>
+            </Row>
+          </Grid>
           <div className="left">
-            <Image src={ icon || '/assets/images/speakers/placeholder.jpg' } rounded responsive className="center-block" />
+
 
           </div>
           <div className="right">
-            <p>{ display }</p>
-            <hr />
-            <ul>
-              <li>Speaker: { name }</li>
-              <li>Language: { lang }</li>
-              <li>Location: { location }</li>
-              <li>Time: { dayName(start) } ({ formatTime(start, 'HH:mm') } - { formatTime(end, 'HH:mm') })</li>
-              <li>Level: { level }</li>
-            </ul>
+
           </div>
         </Modal.Body>
-      );
+    ), footer = (
+      <Modal.Footer>
+        <Button bsStyle="primary" onClick={ this.showDetail.bind(this) }>See Detail</Button>
+        <Button bsStyle="default" onClick={ this.props.close }>Close</Button>
+      </Modal.Footer>
+    );
 
     return (
       <Modal show={ this.props.show } onHide={ this.props.close } dialogClassName="topic-modal">
         { header }
         { body }
+        { footer }
       </Modal>
     )
+  }
+
+  showDetail() {
+    let link = `/topics/${this.props.topic.id}`;
+    window.location = link;
   }
 }
 
