@@ -1,9 +1,13 @@
 import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
+import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import 'moment-range';
 import _ from 'lodash';
+import helper from '../../utils/helperFuncs';
+
+var {displayDesc, dayName, formatTime} = helper;
 
 // FiltersDesc renders the description to the filter
 class FiltersDesc extends Component {
@@ -11,7 +15,7 @@ class FiltersDesc extends Component {
   defaultProps = {
     children: null,
     filters: {}
-  }
+  };
 
   renderDesc(filters) {
     var descGroups = [];
@@ -74,19 +78,77 @@ class Details extends Component {
 // TopicRow display a topic
 class TopicRow extends Component {
 
+  constructor(props) {
+    super(props);
+    this.topic = this.props.item.topic;
+    this.onClick = this.onClick.bind(this);
+  }
+
   render() {
-    const { item, data, className } = this.props;
-    const { topic } = item;
+    const { data, className } = this.props;
+    const topic = this.topic;
     return (
-      <a className={className} target="_blank" href={`/topics/${topic.id}/`}>
+      <div className={className} onClick={this.onClick}>
         <div className="type">{ _.capitalize(topic.type) }</div>
         <div className="title">{ topic.title }</div>
         <Details data={data}
-          length={topic.length} speaker={topic.speaker} venue={topic.venue} />
-      </a>
-    )
+                 length={topic.length} speaker={topic.speaker} venue={topic.venue} />
+      </div>
+    );
   }
 
+  onClick() {
+    console.log('show topic');
+    let topic = this.topic;
+    let { speakers, venues, langs } = this.props.data;
+    let language = `${ langs[topic.lang].name } (${ langs[topic.lang_slide].name } Slide)`;
+    this.props.topicShow(topic, speakers[topic.speaker], venues[topic.venue].name, language);
+  }
+
+}
+
+class TopicModal extends Component {
+  render() {
+    if (null === this.props.topic) return null;
+    let { title, description, level, start, end } = this.props.topic;
+    let icon = this.props.speaker.portrait;
+    let { name } = this.props.speaker;
+    let { lang, location } = this.props;
+    let display = displayDesc(description);
+
+    let
+      header = (
+        <Modal.Header closeButton>
+          <Modal.Title>{title}</Modal.Title>
+        </Modal.Header>
+      ), body = (
+        <Modal.Body>
+          <div className="left">
+            <div className="photo">
+              <img src={ icon || '/assets/images/speakers/placeholder.jpg' } />
+            </div>
+          </div>
+          <div className="right">
+            <p>{ display }</p>
+            <hr />
+            <ul>
+              <li>Speaker: { name }</li>
+              <li>Language: { lang }</li>
+              <li>Location: { location }</li>
+              <li>Time: { dayName(start) }{ formatTime(start, 'HH:mm') } - { formatTime(end, 'HH:mm') }</li>
+              <li>Level: { level }</li>
+            </ul>
+          </div>
+        </Modal.Body>
+      );
+
+    return (
+      <Modal show={ this.props.show } onHide={ this.props.close } dialogClassName="topic-modal">
+        { header }
+        { body }
+      </Modal>
+    )
+  }
 }
 
 // ScheduleRow display a schedule
@@ -97,7 +159,7 @@ class ScheduleRow extends Component {
     return (
       <div className={className}>
         <div className="title">{ text }</div>
-        <Details length={length} venue={venue} data={data} />
+        <Details length={length} venue={venue} data={data} topicShow={this.props.topicShow} />
       </div>
     )
   }
@@ -117,7 +179,7 @@ class ScheduleItem extends Component {
   };
 
   render() {
-    const { className, item, display, hasFilter, data } = this.props
+    const { className, item, display, hasFilter, data } = this.props;
     var start = moment(item.start);
     var inner = null;
 
@@ -125,9 +187,9 @@ class ScheduleItem extends Component {
       // this item is a topic container
 
       // construct a list of inner items
-      var inner = display.reduce((collected, current, index) => {
+      inner = display.reduce((collected, current, index) => {
         if (current.topic.start === item.start) {
-          collected.push(<TopicRow className="row topic-row" item={current} data={data} />);
+          collected.push(<TopicRow className="row topic-row" item={current} data={data} topicShow={this.props.topicShow} />);
         }
         return collected;
       }, []);
@@ -142,10 +204,10 @@ class ScheduleItem extends Component {
     // show something anyway if there is no filter
     // (for non-topic-container)
     if (inner === null && hasFilter !== true) {
-        var inner = (
-          <ScheduleRow className="row schedule-row" data={data}
-            text={item.name} venue={item.venue} length={item.length} />
-        );
+      inner = (
+        <ScheduleRow className="row schedule-row" data={data}
+                     text={item.name} venue={item.venue} length={item.length} />
+      );
     }
 
     // if there is inner item, display it
@@ -186,15 +248,15 @@ class DayContainer extends Component {
     });
 
     /*
-        const { top } = $node.offset();
-        $(window).on('scroll', function () {
-          if ($(window).scrollTop() > top) {
-            $node.addClass('sticky');
-          } else {
-            $node.removeClass('sticky');
-          }
-        });
-    */
+     const { top } = $node.offset();
+     $(window).on('scroll', function () {
+     if ($(window).scrollTop() > top) {
+     $node.addClass('sticky');
+     } else {
+     $node.removeClass('sticky');
+     }
+     });
+     */
 
     console.log("DayContainer - $node", $node.length)
   }
@@ -262,6 +324,34 @@ class TimeTable extends Component {
     store:  PropTypes.object
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalShow: false,
+      modalTopic: null,
+      modalSpeaker: null,
+      modalVenue: null,
+      modalLanguage: null
+    };
+  }
+
+  modalClose() {
+    console.log('Timetable: close modal');
+    this.setState({modalShow: false});
+  }
+
+  topicShow(topic, speaker, location, language) {
+    console.log('Timetable: show topic');
+    console.log(Modal);
+    this.setState({
+      modalShow: true,
+      modalTopic: topic,
+      modalSpeaker: speaker,
+      modalVenue: location,
+      modalLanguage: language
+    });
+  }
+
   render() {
     // store inherited from root react-redux Provider
     const { data, display, filters, className } = this.props;
@@ -277,11 +367,20 @@ class TimeTable extends Component {
           const dayKey = `day-${dayNum}`;
           return (
             <DayContainer key={dayKey} id={dayKey}
-              day={day} dayKey={dayKey}
-              data={data} display={display} filters={filters}
-              hasFilter={hasFilter} />
+                          day={day} dayKey={dayKey}
+                          data={data} display={display} filters={filters}
+                          hasFilter={hasFilter} topicShow={this.topicShow.bind(this)} />
           )
         }) }
+
+        <TopicModal
+          show={this.state.modalShow}
+          close={this.modalClose.bind(this)}
+          topic={this.state.modalTopic}
+          speaker={this.state.modalSpeaker}
+          location={this.state.modalVenue}
+          lang={this.state.modalLanguage}
+        />
       </div>
     )
   }

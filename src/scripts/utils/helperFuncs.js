@@ -109,10 +109,7 @@ function displayDescText(input, length=400) {
 
 // formatting (or not formatting) description strings
 function displayDesc (input) {
-  if (Array.isArray(input)) {
-    return input.join(' ');
-  }
-  return input;
+  return Array.isArray(input) ? input.join(' ') : input;
 }
 
 // capitalize string
