@@ -225,10 +225,11 @@ gulp.task('pages', function() {
       defaultScripts: [
         "https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.29.4/react-bootstrap.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/redux/3.5.2/redux.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js",
-        "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js",
         "/assets/scripts/vendors.js",
         "/assets/scripts/bundle.js?" + rawData.timeHash
       ]

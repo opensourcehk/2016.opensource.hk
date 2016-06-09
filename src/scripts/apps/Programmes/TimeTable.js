@@ -1,6 +1,6 @@
 import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
-import { Modal } from 'react-bootstrap';
+import { Modal, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import 'moment-range';
@@ -124,9 +124,8 @@ class TopicModal extends Component {
       ), body = (
         <Modal.Body>
           <div className="left">
-            <div className="photo">
-              <img src={ icon || '/assets/images/speakers/placeholder.jpg' } />
-            </div>
+            <Image src={ icon || '/assets/images/speakers/placeholder.jpg' } rounded responsive className="center-block" />
+
           </div>
           <div className="right">
             <p>{ display }</p>
@@ -135,7 +134,7 @@ class TopicModal extends Component {
               <li>Speaker: { name }</li>
               <li>Language: { lang }</li>
               <li>Location: { location }</li>
-              <li>Time: { dayName(start) }{ formatTime(start, 'HH:mm') } - { formatTime(end, 'HH:mm') }</li>
+              <li>Time: { dayName(start) } ({ formatTime(start, 'HH:mm') } - { formatTime(end, 'HH:mm') })</li>
               <li>Level: { level }</li>
             </ul>
           </div>
