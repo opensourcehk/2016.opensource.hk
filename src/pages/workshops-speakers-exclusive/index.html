@@ -1,0 +1,54 @@
+{% extends '../../layouts/default.html' %}
+
+{% block title %}Exclusive Workshop Reservation{% endblock %}
+
+{% block description %}
+<p>
+    You now have exclusive chance to reserve seat in workshops
+</p>
+{% endblock %}
+
+{% block content %}
+<div class="container content-container">
+
+<p><strong>Dear Participant,</strong></p>
+
+<p>There will be 3 interesting workshop in Day 3 (26th June). We only have <strong>limited seats</strong> for these workshops.</p>
+<p>You now have exclusive chance to reserve for a seat here:</p>
+
+<p>&nbsp;</p>
+
+<div class="card-list row">
+
+  {% for topic in topics %}
+    {% if topic.pre_register %}
+      {% set venue = venues[topic.venue] %}
+      <div class="col-md-4">
+        <div class="card">
+          <h3 class="title"><a href="{{ topicURL('topic', topic.id) }}" target="_blank">{{ topic.title }}</a></h3>
+          <div class="speaker">
+            {{ speakers[topic.speaker].name }}
+            {% if speakers[topic.speaker].social.nickname %}
+              <span class="nickname">/ {{ speakers[topic.speaker].social.nickname }}</span>
+            {% endif %}
+          </div>
+          <div class="desc">
+            {{ displayDesc(topic.short_desc) }}
+          </div>
+          <div class="seats">
+            Seats: {{ venue.capacity }}
+          </div>
+          <div class="actions">
+            <a class="btn btn-default" target="_blank" href="{{ topicURL('topic', topic.id) }}" role="button">More Info</a>
+            <a class="btn btn-default btn-hkosc" target="_blank" href="{{ topic.register_url }}?access=HKOSCON-FUT8HUPH&aff=speakers" role="button">Reserve Seat</a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+</div>
+
+</div><!--/.container .content-container -->
+
+{% endblock %}
