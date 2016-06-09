@@ -8,8 +8,8 @@
     "short": "EN"
   },
   "big-hall": {
-    "name": "Big Hall",
-    "short": "BH",
+    "name": "Function Room 1-3",
+    "short": "FR1+2+3",
     "capacity": 220
   },
   "fn-room-1": {
@@ -33,7 +33,7 @@
     "capacity": 60
   },
   "workshop-fn-room-1-2": {
-    "name": "Function Room 1+2",
+    "name": "Function Room 1-2",
     "short": "FR1+2",
     "capacity": 70
   },
