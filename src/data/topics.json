@@ -903,7 +903,12 @@
     "target_audience": ["Developers"],
     "short_desc": "A Software Carpentry workshop is hands-on that covers the core skills needed to be productive in a small research team.",
     "description": [
-      "<p>Your domain knowledge is important. Be it Social Science, Hard Science or even Journalism. With a deeper understanding of how computer really works, can make you more efficient in your research career. In this workshop, you will learn (1) how to use the command line interface (Unix Shell), (2) how to write software that is maintainable and reusable and (3) how to use version control software.</p>",
+      "<p>Your domain knowledge is important. Be it Social Science, Hard Science or even Journalism. With a deeper understanding of how computer really works, can make you more efficient in your research career.</p>",
+      "<p>In this workshop, you will learn:<ol>",
+      "<li>how to use the command line interface (Unix Shell),</li>",
+      "<li>how to write software that is maintainable and reusable and</li>",
+      "<li>how to use version control software.</li>",
+      "</ol></p>",
       "<p>This course is based on the material from the Software Carpentry.</p>",
       "<p><a href=\"http://software-carpentry.org/\" target=\"_blank\"> http://software-carpentry.org/</a></p>"
     ],
