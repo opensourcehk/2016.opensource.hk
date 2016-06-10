@@ -125,44 +125,6 @@
     "start": "2016-06-24T13:40:00+0800",
     "end": "2016-06-24T14:20:00+0800"
   },
-  "the-cultural-shift-of-microsofts-web-stack": {
-    "id": "the-cultural-shift-of-microsofts-web-stack",
-    "title": "The Cultural Shift of Microsoft’s Web Stack",
-    "type": "talk",
-    "speaker": "bart-verkoeijen",
-    "category": "Cloud",
-    "level": "Beginners",
-    "requirement": "",
-    "target_audience": ["Developers"],
-    "short_desc": [
-      "This talk covers how Microsoft is adopting an open approach to web",
-      "development with the Microsoft stack"
-    ],
-    "description": [
-      "This talk covers how Microsoft is adopting an open approach to web",
-      "development with the Microsoft stack, including hosting with",
-      "<a href=\"https://azure.microsoft.com\" target=\"_blank\">Azure</a>,",
-      "open-source cross-platform .NET, support for other web platforms like",
-      "<a href=\"https://nodejs.org/\" target=\"_blank\">Node.js</a>,",
-      "<a href=\"https://www.typescriptlang.org/\" target=\"_blank\">TypeScript</a>,",
-      "and even the <a href=\"https://code.visualstudio.com/\" target=\"_blank\">Visual Studio Code</a>",
-      "editor. Learn",
-      "about what benefits this brings to you as a developer, and how you",
-      "can participate in this open development. A lot has happened in the",
-      "last few years, you could even say a cultural shift is happening,",
-      "and there’s a lot to be excited about with the new Microsoft."
-    ],
-    "lang": "en",
-    "lang_slide": "en",
-    "length": "25min",
-    "licence_video": "all-rights-reserved",
-    "licence_slide": "cc-by-sa",
-    "isSponsorTopic": true,
-    "sponsor": "microsoft",
-    "venue": "big-hall",
-    "start": "2016-06-24T15:40:00+0800",
-    "end": "2016-06-24T16:05:00+0800"
-  },
   "free-and-open-source-software-involvement-in-taiwan": {
     "id": "free-and-open-source-software-involvement-in-taiwan",
     "title": "Free and Open Source Software Involvement in Taiwan / 回顧台灣自由開源軟體發展",
@@ -254,6 +216,44 @@
     "venue": "big-hall",
     "start": "2016-06-24T14:55:00+0800",
     "end": "2016-06-24T15:20:00+0800"
+  },
+  "the-cultural-shift-of-microsofts-web-stack": {
+    "id": "the-cultural-shift-of-microsofts-web-stack",
+    "title": "The Cultural Shift of Microsoft’s Web Stack",
+    "type": "talk",
+    "speaker": "bart-verkoeijen",
+    "category": "Cloud",
+    "level": "Beginners",
+    "requirement": "",
+    "target_audience": ["Developers"],
+    "short_desc": [
+      "This talk covers how Microsoft is adopting an open approach to web",
+      "development with the Microsoft stack"
+    ],
+    "description": [
+      "This talk covers how Microsoft is adopting an open approach to web",
+      "development with the Microsoft stack, including hosting with",
+      "<a href=\"https://azure.microsoft.com\" target=\"_blank\">Azure</a>,",
+      "open-source cross-platform .NET, support for other web platforms like",
+      "<a href=\"https://nodejs.org/\" target=\"_blank\">Node.js</a>,",
+      "<a href=\"https://www.typescriptlang.org/\" target=\"_blank\">TypeScript</a>,",
+      "and even the <a href=\"https://code.visualstudio.com/\" target=\"_blank\">Visual Studio Code</a>",
+      "editor. Learn",
+      "about what benefits this brings to you as a developer, and how you",
+      "can participate in this open development. A lot has happened in the",
+      "last few years, you could even say a cultural shift is happening,",
+      "and there’s a lot to be excited about with the new Microsoft."
+    ],
+    "lang": "en",
+    "lang_slide": "en",
+    "length": "25min",
+    "licence_video": "all-rights-reserved",
+    "licence_slide": "cc-by-sa",
+    "isSponsorTopic": true,
+    "sponsor": "microsoft",
+    "venue": "big-hall",
+    "start": "2016-06-24T15:40:00+0800",
+    "end": "2016-06-24T16:05:00+0800"
   },
   "gandi-net-ngtlds-and-gandi-in-asia": {
     "id": "gandi-net-ngtlds-and-gandi-in-asia",
@@ -471,7 +471,7 @@
     "length": "30min",
     "licence_video": "cc",
     "licence_slide": "cc",
-    "venue": "tr-theatre",
+    "venue": "fn-tr-theatre",
     "start": "2016-06-25T13:35:00+0800",
     "end": "2016-06-25T14:05:00+0800"
   },
@@ -517,7 +517,7 @@
     "length": "30min",
     "licence_video": "cc",
     "licence_slide": "cc",
-    "venue": "tr-theatre",
+    "venue": "fn-tr-theatre",
     "start": "2016-06-25T14:10:00+0800",
     "end": "2016-06-25T15:40:00+0800"
   },
@@ -606,7 +606,7 @@
     "length": "30min",
     "licence_video": "cc",
     "licence_slide": "cc",
-    "venue": "tr-theatre",
+    "venue": "fn-tr-theatre",
     "start": "2016-06-25T16:10:00+0800",
     "end": "2016-06-25T16:40:00+0800"
   },
@@ -626,7 +626,7 @@
     "length": "30min",
     "licence_video": "cc",
     "licence_slide": "cc",
-    "venue": "tr-theatre",
+    "venue": "fn-tr-theatre",
     "start": "2016-06-25T15:35:00+0800",
     "end": "2016-06-25T16:05:00+0800"
   },
@@ -661,7 +661,7 @@
     "length": "30min",
     "licence_video": "cc",
     "licence_slide": "cc",
-    "venue": "tr-theatre",
+    "venue": "fn-tr-theatre",
     "start": "2016-06-25T14:45:00+0800",
     "end": "2016-06-25T15:15:00+0800"
   },
