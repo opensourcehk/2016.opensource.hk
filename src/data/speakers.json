@@ -700,6 +700,28 @@
     "portrait": "/assets/images/speakers/frapposelli.png",
     "hkoscon-sponsored": false
   },
+  "bart-verkoeijen": {
+    "name": "Bart Verkoeijen",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/bgever",
+      "nickname": "bgever"
+    },
+    "description": [
+      "<p>Covering application logic, interface, architecture, and IT infrastructure from frontend to backend, ensuring that end-users and customers achieve their goals through software. In the process wearing several hats; Developer, System Architect, DevOp, and IT Administrator. Actively liaise and collaborate with Designers, Business Managers and Marketers.</p>",
+      "<p>Areas of current interest are; Web Systems (SPA, Web APIs, and cloud), and Hybrid Mobile Apps. Using technologies like HTML5, JavaScript, TypeScript, AngularJS, Node.js, Cordova, PhoneGap, ASP.NET MVC & Web API, C#, .NET, and Windows Azure.</p>",
+      "<p>Counting 2 years client-side web app and cloud backend development, 1 year mobile app development, 8 years of .NET web application development. 11 years of frontend & backend web development, and 3 years IT management.</p>"
+    ],
+    "residence": "Hong Kong",
+    "nationality": "Dutch",
+    "company": {
+      "name": "Microsoft",
+      "url": "https://microsoft.com"
+    },
+    "portrait": "https://www.quantifeed.com/wp-content/uploads/2016/02/Quantifeed-0514-400x400-2.jpg",
+    "hkoscon-sponsored": false
+  },
+
 
   "dumy": {
     "name": "Dummy Speaker",
