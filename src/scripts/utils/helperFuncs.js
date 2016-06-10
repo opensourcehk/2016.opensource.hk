@@ -2,7 +2,43 @@
 import striptags from 'striptags';
 import truncate from 'truncate';
 import moment from 'moment';
+import 'moment-range';
 
+// multi compose several Array.prototype.sort() callback
+// into a single one
+export function multi(...callbacks) {
+  return (a, b) => {
+    for (let callback of callbacks) {
+      var result = callback(a, b);
+      if (result != 0) {
+        return result
+      }
+    }
+    return 0; // return 0 by default
+  }
+}
+
+// byStart returns a sorting callback of the key "start"
+// as a moment parsable timestamp, with the specified order
+export function byStart(order = 'asc') {
+  const factor = (order === 'desc') ? -1 : 1;
+  return (a, b) => {
+    const a_start = moment(a.start);
+    const b_start = moment(b.start);
+    const diff = a_start.diff(b_start);
+    return factor * diff;
+  }
+}
+
+export function byVenue(order = 'asc') {
+  const factor = (order === 'desc') ? -1 : 1;
+  return (a, b) => {
+    const a_venue = String(a.venue === undefined ? "" : a.venue);
+    const b_venue = String(b.venue === undefined ? "" : b.venue);
+    const diff = a_venue.localeCompare(b_venue);
+    return factor * diff;
+  }
+}
 
 // findSponsor find a sponsor in the given sponsors array
 function findSponsor(id, sponsors) {
@@ -130,6 +166,7 @@ export default {
   toArray,
   findTopicSummary,
   formatTime,
+  multi,
   topicSummary,
   topicURL
 };
