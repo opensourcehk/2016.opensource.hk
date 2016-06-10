@@ -1,3 +1,9 @@
+@media screen and (min-width: $width-sm) {
+  .jumbotron {
+    padding-top: 50px;
+  }
+}
+
 .dark-sections {
   margin-bottom: 2em;
   color: $theme-yellow;
