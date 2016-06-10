@@ -8,6 +8,9 @@
 {% block og_desc %}{{ displayDescText(topic.short_desc, 300) }}{% endblock %}
 {% block og_url %}{{ site_host }}{{ topicURL('topic', topic_id) }}{% endblock %}
 
+{% block before_title %}
+  <div class="topic-type-name">{{ capitalize(topic.type) }}</div>
+{% endblock %}
 {% block title %}{{ topic.title }}{% endblock %}
 
 {% block description %}
