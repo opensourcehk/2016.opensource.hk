@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import Store from "./apps/Programmes/Store";
 import TicketButton from './apps/TicketButton';
 import Programmes from "./apps/Programmes/Programmes";
+import { extractSort, composeSort, byMoment, byString } from './utils/helperFuncs.js'
 
 import langs       from "../data/langs";
 import schedule    from "../data/schedule";
@@ -51,7 +52,22 @@ function topicStoreAll(data = {topics: {}}) {
 // with the help of the mapAll function
 // to translate `topics` to `all`
 function mapStoreData(mapAll, data) {
-  var all = mapAll(data);
+
+  // helps to extract attributes inside variables
+  // for sorting
+  var extractor = (item) => {
+    return item.topic || {};
+  }
+
+  // sort all items in data by its
+  // .topic.start and .topic.venue values
+  var all = mapAll(data).sort(
+    extractSort(extractor)(composeSort(
+      byMoment('start', 'desc'),
+      byString('venue')
+    ))
+  );
+
   return {
     data,
     all,
