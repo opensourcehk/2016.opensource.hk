@@ -708,15 +708,25 @@
       "nickname": "bgever"
     },
     "description": [
-      "<p>Covering application logic, interface, architecture, and IT infrastructure from frontend to backend, ensuring that end-users and customers achieve their goals through software. In the process wearing several hats; Developer, System Architect, DevOp, and IT Administrator. Actively liaise and collaborate with Designers, Business Managers and Marketers.</p>",
-      "<p>Areas of current interest are; Web Systems (SPA, Web APIs, and cloud), and Hybrid Mobile Apps. Using technologies like HTML5, JavaScript, TypeScript, AngularJS, Node.js, Cordova, PhoneGap, ASP.NET MVC & Web API, C#, .NET, and Windows Azure.</p>",
-      "<p>Counting 2 years client-side web app and cloud backend development, 1 year mobile app development, 8 years of .NET web application development. 11 years of frontend & backend web development, and 3 years IT management.</p>"
+      "<p>Bart is a full-stack senior web developer at",
+      "<a href=\"https://www.quantifeed.com/\" target=\"_blank\">Quantifeed</a>,",
+      "where he builds the frontend for a FinTech web platform for Asia’s mass",
+      "affluent to invest in market trends. His current technology stack",
+      "includes Azure, ASP.NET, AngularJS and TypeScript</p>",
+      "<p>He is active in the community as co-organizer of the",
+      "<a href=\"http://www.meetup.com/Microsoft-Developers-HK/\" target=\"_blank\">Microsoft Developers HK meetup</a>, and organizer of",
+      "<a href=\"http://www.meetup.com/Friday-Beer-Bay-HH/\" target=\"_blank\">the Friday Beer",
+      "Bay meetup</a> for Web, Tech, and Startups.</p>"
     ],
     "residence": "Hong Kong",
-    "nationality": "Dutch",
+    "nationality": "The Netherlands",
+    "community": {
+      "name": "Microsoft Developers HK meetup",
+      "url": "http://www.meetup.com/Microsoft-Developers-HK/"
+    },
     "company": {
-      "name": "Microsoft",
-      "url": "https://microsoft.com"
+      "name": "Quantifeed",
+      "url": "https://www.quantifeed.com/"
     },
     "portrait": "https://www.quantifeed.com/wp-content/uploads/2016/02/Quantifeed-0514-400x400-2.jpg",
     "hkoscon-sponsored": false
