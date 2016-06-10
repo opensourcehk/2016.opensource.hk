@@ -1,4 +1,4 @@
-import helperFuncs, { multi, byStart, byVenue } from '../../utils/helperFuncs.js'
+import helperFuncs, { extractSort, multi, byStart, byVenue } from '../../utils/helperFuncs.js'
 import should from "should";
 
 describe('helperFuncs.toArray', () => {
@@ -114,5 +114,37 @@ describe('helperFuncs.byVenue', () => {
     arr.sort(byVenue('desc')); // assigned to sort by desc
     should(arr).eql(desc).which.is.an.Array();
   });
+
+});
+
+describe('helperFuncs.extractSort', () => {
+
+  const original = [
+    { name: 'item 1', someKey: 3 },
+    { name: 'item 2', someKey: 5 },
+    { name: 'item 3', someKey: 1 },
+    { name: 'item 4', someKey: 2 },
+    { name: 'item 5', someKey: 4 },
+  ];
+  const expected = [
+    { name: 'item 3', someKey: 1 },
+    { name: 'item 4', someKey: 2 },
+    { name: 'item 1', someKey: 3 },
+    { name: 'item 5', someKey: 4 },
+    { name: 'item 2', someKey: 5 },
+  ];
+
+  it('should extract value in values for sorting', () => {
+    var arr = original.slice(0);
+    var callback = (a, b) => {
+      return a - b; // normal numerical sort
+    }
+    var extractor = (obj) => {
+      return obj.someKey;
+    }
+    arr.sort(extractSort(extractor)(callback));
+    should(arr).eql(expected).which.is.an.Array();
+  });
+
 
 });

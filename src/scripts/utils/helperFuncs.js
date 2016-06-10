@@ -4,6 +4,20 @@ import truncate from 'truncate';
 import moment from 'moment';
 import 'moment-range';
 
+// extractSort returns a sorting function which extracts the a and b
+// key to further do sorting
+export function extractSort(extractorFn) {
+  // returns a function to modify a sort() callback's parameters (a, b)
+  // with the extractor function
+  return (callback) => {
+    // returns the wrapped callback
+    return (a, b) => {
+      // return the callback result
+      return callback(extractorFn(a), extractorFn(b));
+    }
+  }
+}
+
 // multi compose several Array.prototype.sort() callback
 // into a single one
 export function multi(...callbacks) {
