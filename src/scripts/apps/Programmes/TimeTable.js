@@ -128,7 +128,7 @@ class TopicModal extends Component {
               <Col md={4}>
                 <Image src={ icon || '/assets/images/speakers/placeholder.jpg' } rounded responsive className="center-block" />
               </Col>
-              <Col md={6}>
+              <Col md={6} className="detail">
                 <div dangerouslySetInnerHTML={{__html: display}} />
                 <hr />
                 <ul>
