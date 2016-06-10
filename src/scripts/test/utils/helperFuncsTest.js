@@ -1,4 +1,4 @@
-import helperFuncs, { extractSort, multi, byStart, byVenue } from '../../utils/helperFuncs.js'
+import helperFuncs, { extractSort, composeSort, byMoment, byString } from '../../utils/helperFuncs.js'
 import should from "should";
 
 describe('helperFuncs.toArray', () => {
@@ -13,12 +13,12 @@ describe('helperFuncs.toArray', () => {
   })
 });
 
-describe('helperFuncs.multi', () => {
+describe('helperFuncs.composeSort', () => {
 
   it('should take multiple Array.prototype.sort() callback and apply in ordered priority', () => {
     var runOrder = [];
     var arrayToSort = ["hello", "world"];
-    const combined = multi(
+    const combined = composeSort(
       () => {
         runOrder.push("callback 1")
         return 0
@@ -44,7 +44,7 @@ describe('helperFuncs.multi', () => {
 
 });
 
-describe('helperFuncs.byStart', () => {
+describe('helperFuncs.byMoment', () => {
 
   const original = [
     { name: 'item 1', start: '2016-06-24T10:15:00+0800' },
@@ -67,19 +67,19 @@ describe('helperFuncs.byStart', () => {
 
   it('should return callback to sort items by start in asc order', () => {
     var arr = original.slice(0); // clone the original
-    arr.sort(byStart()); // default sort by asc
+    arr.sort(byMoment('start')); // default sort by asc
     should(arr).eql(asc).which.is.an.Array();
   });
 
   it('should, with argument "desc", return callback to sort items by start in desc order', () => {
     var arr = original.slice(0); // clone the original
-    arr.sort(byStart('desc')); // assigned to sort by desc
+    arr.sort(byMoment('start', 'desc')); // assigned to sort by desc
     should(arr).eql(desc).which.is.an.Array();
   });
 
 });
 
-describe('helperFuncs.byVenue', () => {
+describe('helperFuncs.byString', () => {
 
   const original = [
     { name: 'item 1', venue: 'fn-room-2' },
@@ -105,13 +105,13 @@ describe('helperFuncs.byVenue', () => {
 
   it('should return callback to sort items by start in asc order', () => {
     var arr = original.slice(0); // clone the original
-    arr.sort(byVenue()); // default sort by asc
+    arr.sort(byString('venue')); // default sort by asc
     should(arr).eql(asc).which.is.an.Array();
   });
 
   it('should, with argument "desc", return callback to sort items by start in desc order', () => {
     var arr = original.slice(0); // clone the original
-    arr.sort(byVenue('desc')); // assigned to sort by desc
+    arr.sort(byString('venue', 'desc')); // assigned to sort by desc
     should(arr).eql(desc).which.is.an.Array();
   });
 

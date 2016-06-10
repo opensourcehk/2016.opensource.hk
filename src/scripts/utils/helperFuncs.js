@@ -18,9 +18,9 @@ export function extractSort(extractorFn) {
   }
 }
 
-// multi compose several Array.prototype.sort() callback
+// composeSort compose several Array.prototype.sort() callback
 // into a single one
-export function multi(...callbacks) {
+export function composeSort(...callbacks) {
   return (a, b) => {
     for (let callback of callbacks) {
       var result = callback(a, b);
@@ -32,24 +32,24 @@ export function multi(...callbacks) {
   }
 }
 
-// byStart returns a sorting callback of the key "start"
+// byMoment returns a sorting callback of the key "start"
 // as a moment parsable timestamp, with the specified order
-export function byStart(order = 'asc') {
+export function byMoment(name, order = 'asc') {
   const factor = (order === 'desc') ? -1 : 1;
   return (a, b) => {
-    const a_start = moment(a.start);
-    const b_start = moment(b.start);
-    const diff = a_start.diff(b_start);
+    const a_moment = moment(a[name]);
+    const b_moment = moment(b[name]);
+    const diff = a_moment.diff(b_moment);
     return factor * diff;
   }
 }
 
-export function byVenue(order = 'asc') {
+export function byString(name, order = 'asc') {
   const factor = (order === 'desc') ? -1 : 1;
   return (a, b) => {
-    const a_venue = String(a.venue === undefined ? "" : a.venue);
-    const b_venue = String(b.venue === undefined ? "" : b.venue);
-    const diff = a_venue.localeCompare(b_venue);
+    const a_string = String(a[name] === undefined ? "" : a[name]);
+    const b_string = String(b[name] === undefined ? "" : b[name]);
+    const diff = a_string.localeCompare(b_string);
     return factor * diff;
   }
 }
@@ -180,7 +180,6 @@ export default {
   toArray,
   findTopicSummary,
   formatTime,
-  multi,
   topicSummary,
   topicURL
 };
