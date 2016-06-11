@@ -35,3 +35,21 @@ footer {
     display: table-row;
   }
 }
+
+/**
+ * container-like scales itself like container against checkpoints
+ * allow floating elements to scale width like normal containers
+ * in the grid system
+ */
+.container-like {
+  width: 100%;
+  @media(min-width: $width-sm) {
+    width: 750px;
+  }
+  @media(min-width: $width-md) {
+    width: 970px;
+  }
+  @media(min-width: $width-lg) {
+    width: 1170px;
+  }
+}

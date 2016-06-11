@@ -38,16 +38,7 @@ $filterbar-min-height: 50px;
     padding: 0;
     transition: box-shadow .5s;
     transition: height .5s;
-
-    @media(max-width: $width-sm) {
-      width: 100%;
-    }
-    @media(min-width: $width-md) {
-      width: 970px;
-    }
-    @media(min-width: $width-lg) {
-      width: 1170px;
-    }
+    @extend .container-like;
 
     /**
      * FilterToggles sub-component
@@ -193,15 +184,10 @@ $filterbar-min-height: 50px;
         display: block;
         position: absolute;
         line-height: $day-container-title-line-height;
-
-        //margin-top: 30px;
-        //margin-bottom: 30px;
         padding-top: $day-container-title-padding-top;
         padding-bottom: $day-container-title-padding-bottom;
         padding-left: 15px;
-
         margin: 0 -15px;
-        //padding: 15px;
 
         z-index:1;
         background-color: #fff;
@@ -209,17 +195,8 @@ $filterbar-min-height: 50px;
         @media(max-width: $width-sm) {
           padding-top: $day-container-title-padding-top / 2;
           padding-bottom: $day-container-title-padding-bottom / 2;
-          width: 100%;
         }
-        @media(min-width: $width-sm) {
-          width: 750px;
-        }
-        @media(min-width: $width-md) {
-          width: 970px;
-        }
-        @media(min-width: $width-lg) {
-          width: 1170px;
-        }
+        @extend .container-like;
       }
 
       &.sticky-title {
@@ -243,7 +220,7 @@ $filterbar-min-height: 50px;
       // the item under title of day-container
       &:nth-child(2) {
         margin-top:
-                $day-container-title-line-height +
+          $day-container-title-line-height +
           $day-container-title-padding-top +
           $day-container-title-padding-bottom;
 
