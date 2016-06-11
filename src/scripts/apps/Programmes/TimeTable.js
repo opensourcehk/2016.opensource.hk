@@ -155,11 +155,39 @@ class HighlightModal extends Component {
     )
   }
 
+  renderScheduleItem(type, item) {
+    let
+      header = (
+        <Modal.Header closeButton>
+          <Modal.Title>{item.name}</Modal.Title>
+        </Modal.Header>
+      ), body = (
+        <Modal.Body>
+          <Row>
+          </Row>
+        </Modal.Body>
+    ), footer = (
+      <Modal.Footer htmlStyle="clear: both;">
+        <Button bsStyle="default" onClick={ this.props.close }>Close</Button>
+      </Modal.Footer>
+    );
+
+    return (
+      <Modal show={ this.props.show } onHide={ this.props.close } dialogClassName="topic-modal">
+        { header }
+        { body }
+        { footer }
+      </Modal>
+    );
+  }
+
   render() {
     let { type, item } = this.props;
     if (null === item || null === type) return null;
     if (type === "topic") {
       return this.renderTopic(type, item);
+    } else if (type === "schedule-item") {
+      return this.renderScheduleItem(type, item);
     }
     return null;
   }
@@ -173,11 +201,12 @@ class HighlightModal extends Component {
 class ScheduleRow extends Component {
 
   render() {
-    const { text, length, venue, data, className } = this.props;
+    const { item, data, className, showHighlight } = this.props;
+    const { name, length, venue } = item;
     return (
-      <div className={className}>
-        <div className="title">{ text }</div>
-        <Details length={length} venue={venue} data={data} showHighlight={this.props.showHighlight} />
+      <div className={className} onClick={() => { showHighlight("schedule-item", item); } }>
+        <div className="title">{ name }</div>
+        <Details length={length} venue={venue} data={data} />
       </div>
     )
   }
@@ -230,10 +259,8 @@ class ScheduleItem extends Component {
     if (inner === null && hasFilter !== true) {
       inner = (
         <ScheduleRow className="row schedule-row"
+                     item={item}
                      data={data}
-                     text={item.name}
-                     venue={item.venue}
-                     length={item.length}
                      showHighlight={showHighlight}
         />
       );
@@ -368,13 +395,11 @@ class TimeTable extends Component {
   }
 
   showHighlight(type, item) {
-    if (type == "topic") {
-      this.setState({
-        modalShow: true,
-        highlightType: type,
-        highlight: item,
-      });
-    }
+    this.setState({
+      modalShow: true,
+      highlightType: type,
+      highlight: item,
+    });
   }
 
   render() {
