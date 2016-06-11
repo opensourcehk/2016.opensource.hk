@@ -77,6 +77,9 @@ $filterbar-min-height: 50px;
       background-color: #FFF;
       z-index: 2;
       width: 100%;
+      transition: all .5s;
+      overflow: hidden;
+      max-height: 9999px;
 
       h2 {
         margin-top: 1em;
@@ -93,12 +96,17 @@ $filterbar-min-height: 50px;
         }
         h2 {
           margin: 1em 0 .5em;
-          font-size: 1.2em;
+          font-size: 1.1em;
         }
       }
 
     }
 
+    .filter-toggle-show {
+    }
+    .filter-toggles-hide {
+      max-height: 0;
+    }
 
     /**
      * filter-actions portion of Filter
@@ -127,7 +135,6 @@ $filterbar-min-height: 50px;
       }
 
       .navbar-nav {
-        margin: 0 -15px;
         & > li > a {
           line-height: 20px;
         }
@@ -143,9 +150,10 @@ $filterbar-min-height: 50px;
 
     &.sticky {
       position: fixed;
-      z-index: 1040;
+      z-index: 2;
       top: $top-navbar-height;
       box-shadow: 0 1px 10px rgba(0, 0, 0, .5);
+      height: $filterbar-min-height;
 
       .filterbar {
         z-index: inherit;
@@ -199,6 +207,8 @@ $filterbar-min-height: 50px;
         background-color: #fff;
 
         @media(max-width: $width-sm) {
+          padding-top: $day-container-title-padding-top / 2;
+          padding-bottom: $day-container-title-padding-bottom / 2;
           width: 100%;
         }
         @media(min-width: $width-md) {
@@ -214,7 +224,7 @@ $filterbar-min-height: 50px;
          position: fixed;
          top: $top-navbar-height + $filterbar-min-height;
          border-bottom: 1px solid #eee;
-         box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+         box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
        }
      }
 
@@ -233,6 +243,13 @@ $filterbar-min-height: 50px;
           $day-container-title-line-height +
           $day-container-title-padding-top +
           $day-container-title-padding-bottom;
+
+        @media(max-width: $width-sm) {
+          margin-top:
+            $day-container-title-line-height +
+            $day-container-title-padding-top / 2 +
+            $day-container-title-padding-bottom / 2;
+        }
       }
 
       .col-time {
