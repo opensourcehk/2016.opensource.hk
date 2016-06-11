@@ -57,7 +57,8 @@
 
     <header class="jumbotron dark-sections">
         <div class="container">
-            <h1><span class="brand-yellow">{% block title %}{% endblock %}</span></h1>
+            {%- block before_title %}{% endblock -%}
+            <h1>{% block title %}{% endblock %}</h1>
             {% block description %}{% endblock %}
         </div>
     </header>

@@ -8,6 +8,9 @@
 {% block og_desc %}{{ displayDescText(topic.short_desc, 300) }}{% endblock %}
 {% block og_url %}{{ site_host }}{{ topicURL('topic', topic_id) }}{% endblock %}
 
+{% block before_title %}
+  <div class="topic-type-name">{{ capitalize(topic.type) }}</div>
+{% endblock %}
 {% block title %}{{ topic.title }}{% endblock %}
 
 {% block description %}
@@ -21,14 +24,40 @@
   <div class="page-topic container">
 
     <div class="row">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/schedule">Events</a></li>
+        <li><a href="/topics">Topics</a></li>
+        <li class="active">{{ topic.title }}</li>
+      </ol>
+    </div>
+
+    <div class="row">
       <div class="col-md-8 topic">
 
         <h2 class="visible-md visible-lg">Details</h2>
 
         <dl class="datasheet">
 
-          <dt>Type</dt>
-          <dd>{{ capitalize(topic.type) }}</dd>
+          {% if topic.start and topic.end %}
+            <dt>Date &amp; Time</dt>
+            <dd>
+              <span class="day-name">
+                {{ dayName(topic.start) }} ({{ formatTime(topic.start, 'Do MMMM') }})
+              </span>
+              <span class="time-range">
+                <span class="time">{{ formatTime(topic.start, 'HH:mm') }}</span> -
+                <span class="time">{{ formatTime(topic.end, 'HH:mm') }}</span>
+              </span>
+            </dd>
+          {% endif %}
+
+          {% if topic.venue %}
+            <dt>Location</dt>
+            <dd>
+              {{ venues[topic.venue].name }}
+            </dd>
+          {% endif %}
 
           <dt>Category</dt>
           <dd>{{ topic.category }}</dd>
@@ -47,26 +76,6 @@
           {% if topic.requirement %}
             <dt>Requirement</dt>
             <dd>{{ topic.requirement }}</dd>
-          {% endif %}
-
-          {% if topic.start and topic.end %}
-            <dt>Date &amp; Time</dt>
-            <dd>
-              <span class="day-name">
-                {{ formatTime(topic.start, 'Do MMMM') }} ({{ dayName(topic.start) }})
-              </span>
-              <span class="time-range">
-                <span class="time">{{ formatTime(topic.start, 'HH:mm') }}</span> -
-                <span class="time">{{ formatTime(topic.end, 'HH:mm') }}</span>
-              </span>
-            </dd>
-          {% endif %}
-
-          {% if topic.venue %}
-            <dt>Location</dt>
-            <dd>
-              {{ venues[topic.venue].name }}
-            </dd>
           {% endif %}
 
         </dl>

@@ -1,3 +1,7 @@
+.jumbotron {
+  padding-top: 50px;
+}
+
 .dark-sections {
   margin-bottom: 2em;
   color: $theme-yellow;
@@ -10,7 +14,6 @@
 
   h1 {
     margin: 0.8em 0 0.5em;
-    text-shadow: rgba(0, 0, 0, 0.5) 0.1em 0.1em 0.1em;
     strong {
       color: $menu-blue;
     }
