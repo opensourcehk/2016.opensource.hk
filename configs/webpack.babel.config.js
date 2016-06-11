@@ -22,7 +22,8 @@ var externals =  {
   'react-dom': 'ReactDOM',
   'redux': 'Redux',
   'react-redux': 'ReactRedux',
-  'moment': 'moment'
+  'moment': 'moment',
+  'react-bootstrap': 'ReactBootstrap'
 };
 
 var plugins = [
