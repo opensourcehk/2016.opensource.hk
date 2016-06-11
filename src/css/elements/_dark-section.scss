@@ -1,7 +1,24 @@
+.jumbotron {
+  padding-top: 70px;
+}
+
 .dark-sections {
-  margin-bottom: 2em;
-  color: $theme-yellow;
+  margin-bottom: 0;
   background-color: $theme-blue;
+  color: $white;
+
+  @media(min-width: $width-sm) {
+    background-image: url('/assets/images/style/yellow-circles.svg');
+    background-size: 400px 400px;
+    background-position: left -220px top -120px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  @media(min-width: $width-xl) {
+    background-size: 500px 500px;
+    background-position: left -270px top -150px;
+  }
 
   p {
     font-weight: 400 !important;
@@ -9,11 +26,15 @@
   }
 
   h1 {
-    margin: 0.8em 0 0.5em;
-    text-shadow: rgba(0, 0, 0, 0.5) 0.1em 0.1em 0.1em;
+    color: $theme-yellow;
+    margin: 0.5em 0;
     strong {
       color: $menu-blue;
     }
+  }
+
+  h2 {
+    color: $theme-yellow;
   }
 
   .content-container a:not(.btn) {

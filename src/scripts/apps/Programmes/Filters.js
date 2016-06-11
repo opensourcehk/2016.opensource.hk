@@ -172,6 +172,8 @@ class Filters extends Component {
       </div>
     ) : null;
 
+    const filterToggleClass = "filter-toggles filter-toggles-" + (attributes.filterShow ? "show" : "hide")
+
     // TODO: generate summary of the current filters
     return (
       <div className={ className }>
@@ -187,7 +189,7 @@ class Filters extends Component {
             </li>
           </ul>
         </div>
-        <div className="filter-toggles" style={ {display: attributes.filterShow ? "block" : "none"} }>
+        <div className={filterToggleClass}>
           <div className="filter-toggles-inner">
             {groupDivs}
             <div className="filter-actions">

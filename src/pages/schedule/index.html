@@ -14,6 +14,13 @@
 <div class="container" id="schedule">
 
     <div class="row">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Events</li>
+      </ol>
+    </div>
+
+    <div class="row">
         <h1>Schedule (Tentative)</h1>
         <p>The agenda is last updated on <strong><u>{{ now.format('Do MMMM YYYY') }}</u></strong>. Sessions are subject to changes without notice.</p>
         <p>The full list of topics can also be found <a href="/topics/">here</a>.</p>
@@ -182,7 +189,7 @@
                     {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T13:35:00+0800', venue: 'fn-room-3'}) }}
                 </td>
                 <td>
-                    {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T13:35:00+0800', venue: 'tr-theatre'}) }}
+                    {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T13:35:00+0800', venue: 'fn-tr-theatre'}) }}
                 </td>
             </tr>
             <tr>
@@ -197,7 +204,7 @@
                     {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:10:00+0800', venue: 'fn-room-3'}) }}
                 </td>
                 <td>
-                    {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:10:00+0800', venue: 'tr-theatre'}) }}
+                    {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:10:00+0800', venue: 'fn-tr-theatre'}) }}
                 </td>
             </tr>
             <tr>
@@ -212,7 +219,7 @@
                     {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T14:45:00+0800', venue: 'fn-room-3'}) }}
                 </td>
                 <td>
-                    {{ findTopicSummary(data, "HKOSP for Youth", {start: '2016-06-25T14:45:00+0800', venue: 'tr-theatre'}) }}
+                    {{ findTopicSummary(data, "HKOSP for Youth", {start: '2016-06-25T14:45:00+0800', venue: 'fn-tr-theatre'}) }}
                 </td>
             </tr>
             <tr>
@@ -231,7 +238,7 @@
                     {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T15:35:00+0800', venue: 'fn-room-3'}) }}
                 </td>
                 <td>
-                    {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T15:35:00+0800', venue: 'tr-theatre'}) }}
+                    {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T15:35:00+0800', venue: 'fn-tr-theatre'}) }}
                 </td>
             </tr>
             <tr>
@@ -246,7 +253,7 @@
                     {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:10:00+0800', venue: 'fn-room-3'}) }}
                 </td>
                 <td>
-                    {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:10:00+0800', venue: 'tr-theatre'}) }}
+                    {{ findTopicSummary(data, "Talk (30 mins)", {start: '2016-06-25T16:10:00+0800', venue: 'fn-tr-theatre'}) }}
                 </td>
             </tr>
             <tr>
@@ -261,7 +268,7 @@
                     {{ findTopicSummary(data, "Hong Kong Open Source Program (HKOSP) for Youth", {start: '2016-06-25T16:45:00+0800', venue: 'fn-room-3'}) }}
                 </td>
                 <td>
-                  {{ findTopicSummary(data, "-", {start: '2016-06-25T16:45:00+0800', venue: 'tr-theatre'}) }}
+                  {{ findTopicSummary(data, "-", {start: '2016-06-25T16:45:00+0800', venue: 'fn-tr-theatre'}) }}
                 </td>
             </tr>
             <tr>
@@ -307,7 +314,7 @@
                     {{ findTopicSummary(data, "Workshop (90 mins)<br />(Pre-registration is required)", {start: '2016-06-26T14:00:00+0800', venue: 'workshop-fn-room-3'}) }}
                 </td>
                 <td>
-                    {{ findTopicSummary(data, "Reserved", {start: '2016-06-26T14:00:00+0800', venue: 'workshop-tr-theatre'}) }}
+                    {{ findTopicSummary(data, "Reserved", {start: '2016-06-26T14:00:00+0800', venue: 'workshop-fn-tr-theatre'}) }}
                 </td>
             </tr>
             <tr>
@@ -323,7 +330,7 @@
                     {{ findTopicSummary(data, "Workshop (90 mins)<br />(Pre-registration is required)", {start: '2016-06-26T14:00:00+0800', venue: 'workshop-fn-room-3'}) }}
                 </td>
                 <td>
-                    {{ findTopicSummary(data, "Reserved", {start: '2016-06-26T15:45:00+0800', venue: 'workshop-tr-theatre'}) }}
+                    {{ findTopicSummary(data, "Reserved", {start: '2016-06-26T15:45:00+0800', venue: 'workshop-fn-tr-theatre'}) }}
                 </td>
             </tr>
             <tr>
@@ -336,6 +343,8 @@
 
 </div>
 
-{% include '../_bottom-sponsors.html' %}
+{% endblock %}
 
+{% block bottom %}
+  {% include '../_bottom-sponsors.html' %}
 {% endblock %}

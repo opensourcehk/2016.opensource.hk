@@ -1,13 +1,13 @@
 {% extends '../layouts/front.html' %}
 
-{% block title %}Hong Kong Open Source Conference 2016{% endblock %}
+{% block title %}Hong Kong Open Source Conference 2016 // 香港開源年會 2016{% endblock %}
 
 {% block content %}
 
   <div class="jumbotron dark-sections" id="introjumbo">
     <div class="container">
         <h1>
-          HKOSCon 2016
+          HKOSCon 2016 香港開源年會
           <div class="slogan">// Go Beyond <strong>Open-source</strong></div>
           <div id="ticket"></div>
         </h1>
@@ -54,16 +54,20 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="video-card">
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe width="956" height="538" src="https://www.youtube.com/embed/43uVMqES0Kk?showinfo=0" frameborder="0" allowfullscreen></iframe>
+  <div id="main-wrapper"><div id="main">
+    <div class="container">
+      <div class="row">
+        <div class="video-card">
+          <div class="embed-responsive embed-responsive-16by9">
+              <iframe width="956" height="538" src="https://www.youtube.com/embed/43uVMqES0Kk?showinfo=0" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </div></div><!--/#main /#main-wrapper-->
 
+{% endblock %}
+
+{% block bottom %}
   {% include './_bottom-sponsors.html' %}
-
 {% endblock %}

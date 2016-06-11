@@ -16,7 +16,7 @@
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
     <link href='//2016.opensource.hk/statics/genericons/genericons.css?v={{ timeHash }}' rel='stylesheet' type='text/css' />
 
-    <title>{% block title %}{% endblock %} | Hong Kong Open Source Conference 2016</title>
+    <title>{% block title %}{% endblock %} | Hong Kong Open Source Conference 2016 // 香港開源年會 2016</title>
 
     <link href="/assets/css/style.css?v={{ timeHash }}" rel="stylesheet" />
 
@@ -55,9 +55,11 @@
     </div>
     <!-- menu ends -->
 
-    <div id="main">
-    {% block content %}(contents here){% endblock %}
-    </div><!--/#main-->
+    <div id="main-wrapper"><div id="main">
+      {% block content %}(contents here){% endblock %}
+    </div></div><!--/#main #main-wrapper-->
+
+    {% block bottom %}{% endblock %}
 
     <footer>
       <div class="container content-container">
