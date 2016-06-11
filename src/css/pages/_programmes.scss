@@ -68,9 +68,7 @@ $filterbar-min-height: 50px;
       background-color: #FFF;
       z-index: 2;
       width: 100%;
-      transition: all .5s;
       overflow: hidden;
-      max-height: 9999px;
 
       h2 {
         margin-top: 1em;
@@ -93,10 +91,12 @@ $filterbar-min-height: 50px;
 
     }
 
-    .filter-toggle-show {
-    }
     .filter-toggles-hide {
       max-height: 0;
+    }
+    .filter-toggles-show {
+      transition: all 1s;
+      max-height: 800px;
     }
 
     /**
