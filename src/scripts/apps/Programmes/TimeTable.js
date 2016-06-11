@@ -1,9 +1,13 @@
 import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
+import { Modal, Image, Button, Grid, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import 'moment-range';
 import _ from 'lodash';
+import helper from '../../utils/helperFuncs';
+
+var {displayDesc, dayName, formatTime} = helper;
 
 // FiltersDesc renders the description to the filter
 class FiltersDesc extends Component {
@@ -11,7 +15,7 @@ class FiltersDesc extends Component {
   defaultProps = {
     children: null,
     filters: {}
-  }
+  };
 
   renderDesc(filters) {
     var descGroups = [];
@@ -74,29 +78,134 @@ class Details extends Component {
 // TopicRow display a topic
 class TopicRow extends Component {
 
+  constructor(props) {
+    super(props);
+    this.topic = this.props.item.topic;
+    this.onClick = this.onClick.bind(this);
+  }
+
   render() {
-    const { item, data, className } = this.props;
-    const { topic } = item;
+    const { data, className } = this.props;
+    const topic = this.topic;
     return (
-      <a className={className} target="_blank" href={`/topics/${topic.id}/`}>
+      <div className={className} onClick={this.onClick}>
         <div className="type">{ _.capitalize(topic.type) }</div>
         <div className="title">{ topic.title }</div>
         <Details data={data}
-          length={topic.length} speaker={topic.speaker} venue={topic.venue} />
-      </a>
+                 length={topic.length} speaker={topic.speaker} venue={topic.venue} />
+      </div>
+    );
+  }
+
+  onClick() {
+    this.props.showHighlight("topic", this.topic);
+  }
+
+}
+
+class HighlightModal extends Component {
+
+  renderTopic(type, topic) {
+    let { speakers, venues, langs } = this.props.data;
+    let lang =
+      (topic.lang === topic.lang_slide || (typeof topic.lang_slide == "undefined")) ?
+      `${ langs[topic.lang].name }` :
+      `${ langs[topic.lang].name } (${ langs[topic.lang_slide].name } Slide)`;
+    let speaker = speakers[topic.speaker];
+    let venue = venues[topic.venue];
+
+    let
+      header = (
+        <Modal.Header closeButton>
+          <Modal.Title>{topic.title}</Modal.Title>
+        </Modal.Header>
+      ), body = (
+        <Modal.Body>
+          <Row>
+            <Col md={4}>
+              <Image src={ speaker.portrait || '/assets/images/speakers/placeholder.jpg' } rounded responsive className="center-block" />
+            </Col>
+            <Col md={8} className="detail">
+              <div dangerouslySetInnerHTML={{__html: displayDesc(topic.description)}} />
+              <hr />
+              <ul>
+                <li>Speaker: { speaker.name }</li>
+                <li>Language: { lang }</li>
+                <li>Location: { venue.name }</li>
+                <li>Seats: { venue.capacity }</li>
+                <li>Time: { dayName(topic.start) } ({ formatTime(topic.start, 'HH:mm') } - { formatTime(topic.end, 'HH:mm') })</li>
+                <li>Level: { topic.level }</li>
+              </ul>
+            </Col>
+          </Row>
+        </Modal.Body>
+    ), footer = (
+      <Modal.Footer htmlStyle="clear: both;">
+        <Button bsStyle="primary" onClick={ this.showDetail.bind(this, type, topic) }>See Detail</Button>
+        <Button bsStyle="default" onClick={ this.props.close }>Close</Button>
+      </Modal.Footer>
+    );
+
+    return (
+      <Modal show={ this.props.show } onHide={ this.props.close } dialogClassName="topic-modal">
+        { header }
+        { body }
+        { footer }
+      </Modal>
     )
   }
 
+  renderScheduleItem(type, item) {
+    let
+      header = (
+        <Modal.Header closeButton>
+          <Modal.Title>{item.name}</Modal.Title>
+        </Modal.Header>
+      ), body = (
+        <Modal.Body>
+          <Row>
+          </Row>
+        </Modal.Body>
+    ), footer = (
+      <Modal.Footer htmlStyle="clear: both;">
+        <Button bsStyle="default" onClick={ this.props.close }>Close</Button>
+      </Modal.Footer>
+    );
+
+    return (
+      <Modal show={ this.props.show } onHide={ this.props.close } dialogClassName="topic-modal">
+        { header }
+        { body }
+        { footer }
+      </Modal>
+    );
+  }
+
+  render() {
+    let { type, item } = this.props;
+    if (null === item || null === type) return null;
+    if (type === "topic") {
+      return this.renderTopic(type, item);
+    } else if (type === "schedule-item") {
+      return this.renderScheduleItem(type, item);
+    }
+    return null;
+  }
+
+  showDetail(type, item) {
+    window.open(`/topics/${item.id}`, '_blank');
+  }
 }
 
 // ScheduleRow display a schedule
 class ScheduleRow extends Component {
 
   render() {
-    const { text, length, venue, data, className } = this.props;
+    const { item, data, className, showHighlight } = this.props;
+    const { name, length, venue } = item;
     return (
-      <div className={className}>
-        <div className="title">{ text }</div>
+      <div className={className} onClick={() => { showHighlight("schedule-item", item); } }>
+        <div className="title">{ name }</div>
         <Details length={length} venue={venue} data={data} />
       </div>
     )
@@ -117,7 +226,7 @@ class ScheduleItem extends Component {
   };
 
   render() {
-    const { className, item, display, hasFilter, data } = this.props
+    const { className, item, display, hasFilter, data, showHighlight } = this.props;
     var start = moment(item.start);
     var inner = null;
 
@@ -125,9 +234,15 @@ class ScheduleItem extends Component {
       // this item is a topic container
 
       // construct a list of inner items
-      var inner = display.reduce((collected, current, index) => {
+      inner = display.reduce((collected, current, index) => {
         if (current.topic.start === item.start) {
-          collected.push(<TopicRow className="row topic-row" item={current} data={data} />);
+          collected.push(
+            <TopicRow className="row topic-row"
+                      item={current}
+                      data={data}
+                      showHighlight={showHighlight}
+            />
+          );
         }
         return collected;
       }, []);
@@ -142,10 +257,13 @@ class ScheduleItem extends Component {
     // show something anyway if there is no filter
     // (for non-topic-container)
     if (inner === null && hasFilter !== true) {
-        var inner = (
-          <ScheduleRow className="row schedule-row" data={data}
-            text={item.name} venue={item.venue} length={item.length} />
-        );
+      inner = (
+        <ScheduleRow className="row schedule-row"
+                     item={item}
+                     data={data}
+                     showHighlight={showHighlight}
+        />
+      );
     }
 
     // if there is inner item, display it
@@ -186,15 +304,15 @@ class DayContainer extends Component {
     });
 
     /*
-        const { top } = $node.offset();
-        $(window).on('scroll', function () {
-          if ($(window).scrollTop() > top) {
-            $node.addClass('sticky');
-          } else {
-            $node.removeClass('sticky');
-          }
-        });
-    */
+     const { top } = $node.offset();
+     $(window).on('scroll', function () {
+     if ($(window).scrollTop() > top) {
+     $node.addClass('sticky');
+     } else {
+     $node.removeClass('sticky');
+     }
+     });
+     */
 
     console.log("DayContainer - $node", $node.length)
   }
@@ -262,6 +380,28 @@ class TimeTable extends Component {
     store:  PropTypes.object
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalShow: false,
+      highlightType: null,
+      highlight: null
+    };
+  }
+
+  modalClose() {
+    console.log('Timetable: close modal');
+    this.setState({modalShow: false});
+  }
+
+  showHighlight(type, item) {
+    this.setState({
+      modalShow: true,
+      highlightType: type,
+      highlight: item,
+    });
+  }
+
   render() {
     // store inherited from root react-redux Provider
     const { data, display, filters, className } = this.props;
@@ -277,11 +417,19 @@ class TimeTable extends Component {
           const dayKey = `day-${dayNum}`;
           return (
             <DayContainer key={dayKey} id={dayKey}
-              day={day} dayKey={dayKey}
-              data={data} display={display} filters={filters}
-              hasFilter={hasFilter} />
+                          day={day} dayKey={dayKey}
+                          data={data} display={display} filters={filters}
+                          hasFilter={hasFilter} showHighlight={this.showHighlight.bind(this)} />
           )
         }) }
+
+        <HighlightModal
+          data={data}
+          show={this.state.modalShow}
+          close={this.modalClose.bind(this)}
+          type={this.state.highlightType}
+          item={this.state.highlight}
+        />
       </div>
     )
   }

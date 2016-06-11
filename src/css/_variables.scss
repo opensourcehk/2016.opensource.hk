@@ -32,6 +32,7 @@ $inverse-background: #111;
 
 // checkpoints
 $width-xl: 1600px;
-$width-lg: 1200px;
-$width-md: 992px;
-$width-sm: 768px;
+$width-lg: $screen-lg;
+$width-md: $screen-md;
+$width-sm: $screen-sm;
+$width-xs: $screen-xs;

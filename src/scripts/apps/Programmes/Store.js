@@ -47,6 +47,23 @@ class actions {
     }
   }
 
+  // setHighlight highlights some
+  // row information provided to the action
+  // (should trigger pop up)
+  static setHighlight(highlightType, highlight) {
+    return {
+      highlightType,
+      highlight,
+      type: "SET_HIGHLIGHT"
+    }
+  }
+
+  static unsetHighlight() {
+    return {
+      type: "UNSET_HIGHLIGHT"
+    }
+  }
+
 }
 
 // filterer the all array by the definition of filters
@@ -194,6 +211,29 @@ function reducer(state = initialState, action) {
           display: filterer(filters, all)
         }
       );
+
+    case "SET_HIGHLIGHT":
+      // set the highlight object
+      return Object.assign(
+        {},
+        state,
+        {
+          highlight: {
+            type: action.highlightType,
+            item: action.highlight
+          }
+        }
+      );
+
+    case "UNSET_HIGHLIGHT":
+      var result = Object.assign(
+        {},
+        state
+      )
+      if (typeof result.highlight != "undefined") {
+        delete result.highlight;
+      }
+      return result;
 
     default:
       return state;

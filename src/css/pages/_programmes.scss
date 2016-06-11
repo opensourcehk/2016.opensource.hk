@@ -9,9 +9,9 @@ $top-navbar-height: 50px;
 $filterbar-min-height: 50px;
 
 @media(max-width: $width-sm) {
-   .title-container h1 {
-     padding-left: 15px;
-   }
+  .title-container h1 {
+    padding-left: 15px;
+  }
 }
 
 #timetable {
@@ -38,16 +38,7 @@ $filterbar-min-height: 50px;
     padding: 0;
     transition: box-shadow .5s;
     transition: height .5s;
-
-    @media(max-width: $width-sm) {
-      width: 100%;
-    }
-    @media(min-width: $width-md) {
-      width: 970px;
-    }
-    @media(min-width: $width-lg) {
-      width: 1170px;
-    }
+    @extend .container-like;
 
     /**
      * FilterToggles sub-component
@@ -77,9 +68,7 @@ $filterbar-min-height: 50px;
       background-color: #FFF;
       z-index: 2;
       width: 100%;
-      transition: all .5s;
       overflow: hidden;
-      max-height: 9999px;
 
       h2 {
         margin-top: 1em;
@@ -102,10 +91,12 @@ $filterbar-min-height: 50px;
 
     }
 
-    .filter-toggle-show {
-    }
     .filter-toggles-hide {
       max-height: 0;
+    }
+    .filter-toggles-show {
+      transition: all 1s;
+      max-height: 800px;
     }
 
     /**
@@ -193,15 +184,10 @@ $filterbar-min-height: 50px;
         display: block;
         position: absolute;
         line-height: $day-container-title-line-height;
-
-        //margin-top: 30px;
-        //margin-bottom: 30px;
         padding-top: $day-container-title-padding-top;
         padding-bottom: $day-container-title-padding-bottom;
         padding-left: 15px;
-
         margin: 0 -15px;
-        //padding: 15px;
 
         z-index:1;
         background-color: #fff;
@@ -209,14 +195,8 @@ $filterbar-min-height: 50px;
         @media(max-width: $width-sm) {
           padding-top: $day-container-title-padding-top / 2;
           padding-bottom: $day-container-title-padding-bottom / 2;
-          width: 100%;
         }
-        @media(min-width: $width-md) {
-          width: 970px;
-        }
-        @media(min-width: $width-lg) {
-          width: 1170px;
-        }
+        @extend .container-like;
       }
 
       &.sticky-title {
@@ -292,6 +272,7 @@ $filterbar-min-height: 50px;
           }
         }
         .schedule-row, .topic-row {
+          cursor: pointer;
           .title {
             font-weight: 500;
           }
@@ -339,7 +320,7 @@ $filterbar-min-height: 50px;
         margin: .5em 0;
       }
       .name {
-        display: blocsk;
+        display: block;
         width: 160px;
         float: left;
         text-transform: capitalize;
@@ -354,4 +335,40 @@ $filterbar-min-height: 50px;
 
   }
 
+}
+
+.topic-modal {
+  img {
+    max-height: 200px;
+  }
+
+  .detail {
+    padding-top: 20px;
+  }
+
+  width: auto;
+  @media(min-width: $width-sm) {
+    width: 730px;
+  }
+  @media(min-width: $width-md) {
+    width: 950px;
+  }
+  @media(min-width: $width-lg) {
+    width: 1150px;
+  }
+
+}
+
+@media (min-width: $width-md) {
+  .topic-modal {
+
+    .detail {
+      padding-top: 0;
+    }
+
+    img {
+      max-height: 500px;
+    }
+
+  }
 }
