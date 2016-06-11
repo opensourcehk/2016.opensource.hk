@@ -15,5 +15,44 @@
       {% endfor %}
     </div>
     {% endfor %}
+
+    <div class="row tier">
+      <h3 class="col-md-12">Patrions</h3>
+      <div class="col-md-12">
+        <ul class="patrons">
+          {% for patron in sponsors.patrons %}
+            <li class="patron">{{ patron.name }}</li><!--/.patron-->
+          {% endfor %}
+        </ul><!--/.patrons-->
+        <p>(Patrons are listed above in alphabetical orders).</p>
+      </div>
+    </div>
+
+    <div class="row tier logo-only">
+      <h3 class="col-md-12">Supporting Organizations</h3>
+      {% for org in sponsors.supporting_orgs %}
+        <div class="col-md-2">
+          <a href="{{ org.url }}" title="{{ org.name }}">
+            <div class="logo-wrapper"><div class="logo">
+              <img src="{{ org.logo_url }}" alt="{{ org.name }}"/>
+            </div></div>
+          </a>
+        </div><!--/.patron-->
+      {% endfor %}
+    </div>
+
+    <div class="row tier logo-only coorganizers">
+      <h3 class="col-md-12">Co-organizers</h3>
+      {% for org in sponsors.co_organizers %}
+        <div class="col-md-2">
+          <a href="{{ org.url }}" title="{{ org.name }}">
+            <div class="logo-wrapper"><div class="logo">
+              <img src="{{ org.logo_url }}" alt="{{ org.name }}"/>
+            </div></div>
+          </a>
+        </div><!--/.patron-->
+      {% endfor %}
+    </div>
+
   </div>
 </div>
