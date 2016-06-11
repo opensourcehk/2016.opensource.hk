@@ -32,7 +32,7 @@
       <h3 class="col-md-12">Supporting Organizations</h3>
       {% for org in sponsors.supporting_orgs %}
         <div class="col-md-2">
-          <a href="{{ org.url }}" title="{{ org.name }}">
+          <a href="{{ org.url }}" title="{{ org.name }}" target="_blank">
             <div class="logo-wrapper"><div class="logo">
               <img src="{{ org.logo_url }}" alt="{{ org.name }}"/>
             </div></div>
@@ -45,7 +45,7 @@
       <h3 class="col-md-12">Co-organizers</h3>
       {% for org in sponsors.co_organizers %}
         <div class="col-md-2">
-          <a href="{{ org.url }}" title="{{ org.name }}">
+          <a href="{{ org.url }}" title="{{ org.name }}" target="_blank">
             <div class="logo-wrapper"><div class="logo">
               <img src="{{ org.logo_url }}" alt="{{ org.name }}"/>
             </div></div>
