@@ -211,6 +211,9 @@ $filterbar-min-height: 50px;
           padding-bottom: $day-container-title-padding-bottom / 2;
           width: 100%;
         }
+        @media(min-width: $width-sm) {
+          width: 750px;
+        }
         @media(min-width: $width-md) {
           width: 970px;
         }
