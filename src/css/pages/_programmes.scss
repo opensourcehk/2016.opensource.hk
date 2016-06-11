@@ -348,11 +348,22 @@ $filterbar-min-height: 50px;
   .detail {
     padding-top: 20px;
   }
+
+  width: auto;
+  @media(min-width: $width-sm) {
+    width: 730px;
+  }
+  @media(min-width: $width-md) {
+    width: 950px;
+  }
+  @media(min-width: $width-lg) {
+    width: 1150px;
+  }
+
 }
 
 @media (min-width: $width-md) {
   .topic-modal {
-    width: 80%;
 
     .detail {
       padding-top: 0;
