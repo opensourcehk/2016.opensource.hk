@@ -158,7 +158,7 @@ class TopicModal extends Component {
 
   showDetail() {
     let link = `/topics/${this.props.topic.id}`;
-    window.location = link;
+    window.open(link, '_blank');
   }
 }
 
