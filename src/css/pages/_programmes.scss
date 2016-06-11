@@ -373,9 +373,8 @@ $filterbar-min-height: 50px;
   }
 }
 
-@media (min-width: 901px) {
+@media (min-width: $width-md) {
   .topic-modal {
-
     width: 80%;
 
     .detail {

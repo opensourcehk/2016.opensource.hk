@@ -123,34 +123,25 @@ class TopicModal extends Component {
         </Modal.Header>
       ), body = (
         <Modal.Body>
-          <Grid>
-            <Row>
-              <Col md={4}>
-                <Image src={ icon || '/assets/images/speakers/placeholder.jpg' } rounded responsive className="center-block" />
-              </Col>
-              <Col md={6} className="detail">
-                <div dangerouslySetInnerHTML={{__html: display}} />
-                <hr />
-                <ul>
-                  <li>Speaker: { name }</li>
-                  <li>Language: { lang }</li>
-                  <li>Location: { location }</li>
-                  <li>Time: { dayName(start) } ({ formatTime(start, 'HH:mm') } - { formatTime(end, 'HH:mm') })</li>
-                  <li>Level: { level }</li>
-                </ul>
-              </Col>
-            </Row>
-          </Grid>
-          <div className="left">
-
-
-          </div>
-          <div className="right">
-
-          </div>
+          <Row>
+            <Col md={4}>
+              <Image src={ icon || '/assets/images/speakers/placeholder.jpg' } rounded responsive className="center-block" />
+            </Col>
+            <Col md={8} className="detail">
+              <div dangerouslySetInnerHTML={{__html: display}} />
+              <hr />
+              <ul>
+                <li>Speaker: { name }</li>
+                <li>Language: { lang }</li>
+                <li>Location: { location }</li>
+                <li>Time: { dayName(start) } ({ formatTime(start, 'HH:mm') } - { formatTime(end, 'HH:mm') })</li>
+                <li>Level: { level }</li>
+              </ul>
+            </Col>
+          </Row>
         </Modal.Body>
     ), footer = (
-      <Modal.Footer>
+      <Modal.Footer htmlStyle="clear: both;">
         <Button bsStyle="primary" onClick={ this.showDetail.bind(this) }>See Detail</Button>
         <Button bsStyle="default" onClick={ this.props.close }>Close</Button>
       </Modal.Footer>
