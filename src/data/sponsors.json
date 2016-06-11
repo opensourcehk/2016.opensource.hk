@@ -320,5 +320,45 @@
     {
       "name": "Nintex"
     }
+  ],
+  "supporting_orgs": [
+    {
+      "name": "Internet Society Hong Kong",
+      "short": "ISOCHK",
+      "logo_url": "//2016.opensource.hk/statics/images/supporting-organizations/isochk_logo.jpg",
+      "url": "https://www.isoc.hk/"
+    },
+    {
+      "name": "Hong Kong Science & Technology Parks",
+      "short": "HKSTP",
+      "logo_url": "//2016.opensource.hk/statics/images/supporting-organizations/HKSTP_2015.svg",
+      "url": "https://www.hkstp.org/"
+    },
+    {
+      "name": "Hong Kong Computer Society",
+      "short": "HKCS",
+      "logo_url": "//2016.opensource.hk/statics/images/supporting-organizations/hkcs.jpg",
+      "url": "http://www.hkcs.org.hk"
+    }
+  ],
+  "co_organizers": [
+    {
+      "name": "Hong Kong Creative Open Technology Association",
+      "short": "HKCOTA",
+      "logo_url": "//2016.opensource.hk/statics/images/co-organizers/HKCOTAofficiallogo_trans_200x148-1.png",
+      "url": "http://www.cota.hk/"
+    },
+    {
+      "name": "Hong Kong Linux User Group",
+      "short": "HKLUG",
+      "logo_url": "//2016.opensource.hk/statics/images/co-organizers/hklug-250.jpg",
+      "url": "http://www.linux.org.hk/"
+    },
+    {
+      "name": "Open Source Hong Kong",
+      "short": "OSHK",
+      "logo_url": "//2016.opensource.hk/statics/images/co-organizers/OSHK-logo.png",
+      "url": "https://opensource.hk"
+    }
   ]
 }
