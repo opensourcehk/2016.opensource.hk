@@ -96,7 +96,7 @@ $filterbar-min-height: 50px;
         }
         h2 {
           margin: 1em 0 .5em;
-          font-size: 1.2em;
+          font-size: 1.1em;
         }
       }
 
@@ -243,6 +243,13 @@ $filterbar-min-height: 50px;
           $day-container-title-line-height +
           $day-container-title-padding-top +
           $day-container-title-padding-bottom;
+
+        @media(max-width: $width-sm) {
+          margin-top:
+            $day-container-title-line-height +
+            $day-container-title-padding-top / 2 +
+            $day-container-title-padding-bottom / 2;
+        }
       }
 
       .col-time {
