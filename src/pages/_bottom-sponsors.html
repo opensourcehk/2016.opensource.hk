@@ -4,9 +4,9 @@
   <div class="container">
     {% for tier in sponsors.sponsors %}
     <div class="row tier">
-      <h3 class="col-md-12">{{ tier.name }}</h3>
+      <h3 class="col-sm-12">{{ tier.name }}</h3>
       {% for sponsor in tier.sponsors %}
-        <div class="col-md-2"><div class=" sponsor sponsor--{{ sponsor.id }}">
+        <div class="col-sm-2"><div class=" sponsor sponsor--{{ sponsor.id }}">
           {% set logo = sponsor.logos[0] %}
           <a class="logo" href="{{ logo.url }}" title="{{ logo.title }}" target="_blank">
             <img src="{{ logo.img }}" alt="{{ logo.alt }}">
@@ -17,8 +17,8 @@
     {% endfor %}
 
     <div class="row tier">
-      <h3 class="col-md-12">Patrions</h3>
-      <div class="col-md-12">
+      <h3 class="col-sm-12">Patrions</h3>
+      <div class="col-sm-12">
         <ul class="patrons">
           {% for patron in sponsors.patrons %}
             <li class="patron">{{ patron.name }}</li><!--/.patron-->
@@ -29,9 +29,9 @@
     </div>
 
     <div class="row tier logo-only">
-      <h3 class="col-md-12">Supporting Organizations</h3>
+      <h3 class="col-sm-12">Supporting Organizations</h3>
       {% for org in sponsors.supporting_orgs %}
-        <div class="col-md-2">
+        <div class="col-sm-2">
           <a href="{{ org.url }}" title="{{ org.name }}" target="_blank">
             <div class="logo-wrapper"><div class="logo">
               <img src="{{ org.logo_url }}" alt="{{ org.name }}"/>
@@ -42,9 +42,9 @@
     </div>
 
     <div class="row tier logo-only coorganizers">
-      <h3 class="col-md-12">Co-organizers</h3>
+      <h3 class="col-sm-12">Co-organizers</h3>
       {% for org in sponsors.co_organizers %}
-        <div class="col-md-2">
+        <div class="col-sm-2">
           <a href="{{ org.url }}" title="{{ org.name }}" target="_blank">
             <div class="logo-wrapper"><div class="logo">
               <img src="{{ org.logo_url }}" alt="{{ org.name }}"/>
