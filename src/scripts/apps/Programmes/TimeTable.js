@@ -78,17 +78,11 @@ class Details extends Component {
 // TopicRow display a topic
 class TopicRow extends Component {
 
-  constructor(props) {
-    super(props);
-    this.topic = this.props.item.topic;
-    this.onClick = this.onClick.bind(this);
-  }
-
   render() {
     const { data, className } = this.props;
-    const topic = this.topic;
+    const { topic } = this.props.item;
     return (
-      <div className={className} onClick={this.onClick}>
+      <div className={className} onClick={this.onClick.bind(this, "topic", topic)}>
         <div className="type">{ _.capitalize(topic.type) }</div>
         <div className="title">{ topic.title }</div>
         <Details data={data}
@@ -97,8 +91,8 @@ class TopicRow extends Component {
     );
   }
 
-  onClick() {
-    this.props.showHighlight("topic", this.topic);
+  onClick(type, item) {
+    this.props.showHighlight(type, item);
   }
 
 }
