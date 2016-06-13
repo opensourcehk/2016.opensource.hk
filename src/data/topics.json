@@ -586,9 +586,9 @@
     "length": "30min",
     "licence_video": "cc",
     "licence_slide": "cc",
-    "venue": "fn-room-3",
-    "start": "2016-06-25T15:35:00+0800",
-    "end": "2016-06-25T16:05:00+0800"
+    "venue": "fn-room-1",
+    "start": "2016-06-25T14:45:00+0800",
+    "end": "2016-06-25T15:15:00+0800"
   },
   "pentest-fun-with-metasploit": {
     "id": "pentest-fun-with-metasploit",
@@ -746,8 +746,8 @@
     "licence_video": "cc",
     "licence_slide": "cc",
     "venue": "fn-room-3",
-    "start": "2016-06-25T14:10:00+0800",
-    "end": "2016-06-25T14:40:00+0800"
+    "start": "2016-06-25T14:45:00+0800",
+    "end": "2016-06-25T15:15:00+0800"
   },
   "mozilla-eir-bring-medical-devices-into-the-world-of-web": {
     "id": "mozilla-eir-bring-medical-devices-into-the-world-of-web",
@@ -766,8 +766,8 @@
     "licence_video": "Welcome to publish it everywhere. But, please let me know.",
     "licence_slide": "Welcome to publish it everywhere. But, please let me know.",
     "venue": "fn-room-3",
-    "start": "2016-06-25T14:45:00+0800",
-    "end": "2016-06-25T15:15:00+0800"
+    "start": "2016-06-25T14:10:00+0800",
+    "end": "2016-06-25T14:40:00+0800"
   },
   "yajs-vim-and-vim-syntax-system": {
     "id": "yajs-vim-and-vim-syntax-system",
