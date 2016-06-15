@@ -5,38 +5,12 @@ import { Component } from 'react';
  */
 export default class TicketButton extends Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {display: false};
-		var self = this;
-		$(window).resize(function () {
-			self.decideToShow()
-		});
-	}
-
 	render() {
-		let status = this.state.display ? 'inline-block' : 'none';
 		return (
-			<a {...this.props} style={{ 'display': status }}>
+			<a {...this.props}>
 				Get Your Ticket
 			</a>
 		);
-	}
-
-	decideToShow() {
-		this[screen.width < 768 ? 'display' : 'hide']();
-	}
-
-	componentDidMount() {
-		this.decideToShow();
-	}
-
-	display() {
-		this.setState({display: true});
-	}
-
-	hide() {
-		this.setState({display: false});
 	}
 
 }
