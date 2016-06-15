@@ -522,7 +522,7 @@
       "name": "OurSky",
       "url": "https://oursky.com"
     },
-    "portrait": "",
+    "portrait": "/assets/images/speakers/david-ng.jpg",
     "hkoscon-sponsored": false
   },
   "thomas-kulper": {
@@ -583,7 +583,7 @@
       "name": "Oracle",
       "url": "https://www.oracle.com/"
     },
-    "portrait": "",
+    "portrait": "/assets/images/speakers/ryusukekajiyama.jpg",
     "hkoscon-sponsored": false
   },
   "joshua-rich": {
