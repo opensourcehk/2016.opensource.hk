@@ -1,6 +1,12 @@
 [
   {
-    "date": "2016/06/25",
+    "date": "2016/06/16",
+    "title": "Still puzzling how to spend your time in HKOSCon? We re-made our schedule with interactive filters. Use it well ;-)",
+    "url": "/schedule/",
+    "published": true
+  },
+  {
+    "date": "2016/06/05",
     "title": "We have received some endorsement video from our speakers. Check them out!",
     "url": "/clips/",
     "published": true
@@ -15,7 +21,7 @@
     "date": "2016/05/19",
     "title": "We are updating the date and time of all topics. Stay tuned to the schedule",
     "url": "/schedule/",
-    "published": true
+    "published": false
   },
   {
     "date": "2016/05/19",

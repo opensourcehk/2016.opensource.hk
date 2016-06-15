@@ -37,8 +37,19 @@
     color: $theme-yellow;
   }
 
-  .content-container a:not(.btn) {
-    color: $inverse-foreground;
+  .news-updates {
+    li {
+      margin-bottom: .5em;
+      margin-top: .5em;
+    }
+    a {
+      color: $inverse-foreground;
+      text-decoration: none;
+      transition: color .5s;
+      &:hover {
+        color: $theme-yellow;
+      }
+    }
   }
 }
 
