@@ -22,47 +22,6 @@ footer {
   padding-bottom: 2em;
 }
 
-.front-sns-links {
-  font-size: 16pt;
-  line-height: 26pt;
-  color: $theme-yellow;
-  a {
-    color: #fff;
-    text-decoration: none;
-    .genericon {
-      color: $theme-yellow;
-      position: relative;
-      top: 4px;
-      font-size: 20pt;
-      margin-right: 6px;
-    }
-  }
-  p {
-    padding-top: .4em;
-  }
-}
-
-#bottom-sns-logos {
-  background-color: #DDD;
-  text-align: center;
-  padding: 2em;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    &:hover {
-      color: rgba(0, 0, 0, .5);
-    }
-    &:focus {
-      outline: none;
-    }
-  }
-  .genericon {
-    font-size: 26px;
-    margin: 1em;
-  }
-}
-
 /** mobile friendly tables **/
 @media screen and (max-width: 640px) {
   table {
