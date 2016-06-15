@@ -229,7 +229,7 @@ gulp.task('pages', function() {
         "https://cdnjs.cloudflare.com/ajax/libs/redux/3.5.2/redux.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js",
+        "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
         "/assets/scripts/vendors.js",
         "/assets/scripts/bundle.js?" + rawData.timeHash
       ]
