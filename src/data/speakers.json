@@ -522,7 +522,7 @@
       "name": "OurSky",
       "url": "https://oursky.com"
     },
-    "portrait": "",
+    "portrait": "/assets/images/speakers/david-ng.jpg",
     "hkoscon-sponsored": false
   },
   "thomas-kulper": {
@@ -583,7 +583,7 @@
       "name": "Oracle",
       "url": "https://www.oracle.com/"
     },
-    "portrait": "",
+    "portrait": "/assets/images/speakers/ryusukekajiyama.jpg",
     "hkoscon-sponsored": false
   },
   "joshua-rich": {
@@ -729,6 +729,22 @@
       "url": "https://www.quantifeed.com/"
     },
     "portrait": "https://www.quantifeed.com/wp-content/uploads/2016/02/Quantifeed-0514-400x400-2.jpg",
+    "hkoscon-sponsored": false
+  },
+  "alfred-tse": {
+    "name": "Alfred Tse",
+    "gender": "male",
+    "description": [
+      "<p>Alfred Tse, Cloud Technical Executive, IBM Greater China Group</p>",
+      "<p>Alfred Tse is responsible for the creation and execution of IBM’s Cloud strategy in Greater China Group.  His career spans 20+ years in the IT industry, holding a variety of positions in development, consulting, sales, and leadership positions. He joined IBM in 1998 in the United States as a technology consultant. Most recently, he was IBM Growth Market Unit’s technical leader.  He previously worked for Intel, Andersen Consulting (now Accenture), and Honeywell Corp.  Alfred holds a Bachelor degree in Computer Systems Engineering and a Masters in Computer Science, from Arizona State University in the United States.</p>"
+    ],
+    "residence": "Hong Kong",
+    "nationality": "Hong Kong",
+    "company": {
+      "name": "IBM",
+      "url": "https://www.ibm.com/hk/"
+    },
+    "portrait": "/assets/images/speakers/alfred-tse.jpg",
     "hkoscon-sponsored": false
   },
 
