@@ -14,6 +14,13 @@
 <div class="container sponsorship-tiers">
 
   <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li class="active">Sponsor</li>
+    </ol>
+  </div>
+
+  <div class="row">
     {% for tier in sponsors.sponsors %}
       <section class="sponsorship-tier">
         <h2>{{ tier.name }}</h2>
