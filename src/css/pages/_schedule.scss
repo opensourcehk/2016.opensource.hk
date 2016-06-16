@@ -9,9 +9,9 @@ $top-navbar-height: 50px;
 $filterbar-min-height: 50px;
 
 @media(max-width: $width-sm) {
-   .title-container h1 {
-     padding-left: 15px;
-   }
+  .title-container h1 {
+    padding-left: 15px;
+  }
 }
 
 #timetable {
@@ -39,6 +39,7 @@ $filterbar-min-height: 50px;
     transition: box-shadow .5s;
     transition: height .5s;
 
+
     @media(max-width: $width-sm) {
       width: 100%;
     }
@@ -57,11 +58,15 @@ $filterbar-min-height: 50px;
       margin-right: 1em;
       transition: background-color .5s;
       cursor: pointer;
+      padding: 5px;
       &:hover {
-        background-color: #FFD;
+        background-color: lighten($theme-yellow, 10%);
       }
       &.active {
-        background-color: #FFA;
+        background-color: $theme-yellow;
+        color: $theme-blue;
+        font-weight: bold;
+        border-radius: 5px;
       }
     }
 
@@ -125,7 +130,7 @@ $filterbar-min-height: 50px;
       min-height: $filterbar-min-height;
       margin-bottom: 0;
       border: 1px solid #e7e7e7;
-      background-color: #EEE;
+      background-color: $theme-blue;
 
       .filters-desc{
         display: block;
@@ -137,6 +142,7 @@ $filterbar-min-height: 50px;
       .navbar-nav {
         & > li > a {
           line-height: 20px;
+          color: $theme-yellow;
         }
       }
 
@@ -220,13 +226,13 @@ $filterbar-min-height: 50px;
       }
 
       &.sticky-title {
-       h2 {
-         position: fixed;
-         top: $top-navbar-height + $filterbar-min-height;
-         border-bottom: 1px solid #eee;
-         box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
-       }
-     }
+        h2 {
+          position: fixed;
+          top: $top-navbar-height + $filterbar-min-height;
+          border-bottom: 1px solid #eee;
+          box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+        }
+      }
 
     }
 
@@ -240,13 +246,13 @@ $filterbar-min-height: 50px;
       // the item under title of day-container
       &:nth-child(2) {
         margin-top:
-          $day-container-title-line-height +
+                $day-container-title-line-height +
           $day-container-title-padding-top +
           $day-container-title-padding-bottom;
 
         @media(max-width: $width-sm) {
           margin-top:
-            $day-container-title-line-height +
+                  $day-container-title-line-height +
             $day-container-title-padding-top / 2 +
             $day-container-title-padding-bottom / 2;
         }
@@ -339,7 +345,7 @@ $filterbar-min-height: 50px;
         margin: .5em 0;
       }
       .name {
-        display: blocsk;
+        display: block;
         width: 160px;
         float: left;
         text-transform: capitalize;
