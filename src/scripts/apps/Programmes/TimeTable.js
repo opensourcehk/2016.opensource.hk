@@ -100,15 +100,15 @@ class TopicRow extends Component {
 class HighlightModal extends Component {
 
   renderTopic(type, topic) {
-    let { speakers, venues, langs } = this.props.data;
-    let lang =
+    const { speakers, venues, langs } = this.props.data;
+    const lang =
       (topic.lang === topic.lang_slide || (typeof topic.lang_slide == "undefined")) ?
       `${ langs[topic.lang].name }` :
       `${ langs[topic.lang].name } (${ langs[topic.lang_slide].name } Slide)`;
-    let speaker = speakers[topic.speaker];
-    let venue = venues[topic.venue];
+    const speaker = speakers[topic.speaker];
+    const venue = venues[topic.venue];
 
-    let
+    const
       header = (
         <Modal.Header closeButton>
           <Modal.Title>{topic.title}</Modal.Title>
@@ -158,6 +158,7 @@ class HighlightModal extends Component {
       ), body = (
         <Modal.Body>
           <Row>
+            Just go and discover by yourself!
           </Row>
         </Modal.Body>
     ), footer = (
