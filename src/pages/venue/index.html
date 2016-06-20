@@ -2,6 +2,10 @@
 
 {% block title %}Venue{% endblock %}
 
+{% block style %}
+<style>time{font-weight: bold;}</style>
+{% endblock %}
+
 {% block description %}
 <p>
     Cyberport 3, 100 Cyberport Road, Telegraph Bay
@@ -18,16 +22,66 @@
     <div class="container">
 
         <div class="row">
+            <div class="col-md-10">
+                <h2>Shuttle Bus Service</h2>
+
+                <h3>To Cyberport</h3>
+                <ul>
+                    <li>
+                        Day 1-2 (Fri - Sat)
+                        -
+                        3 buses departs from Admiralty Centre 海富中心 (near McDonald) at <time>09:00</time>
+                    </li>
+                    <li>
+                        Day 3 (Sun)
+                        -
+                        3 buses departs from Admiralty Centre 海富中心 (near McDonald) at <time datetime="2016-06-26T13:15+08:00">13:15</time>
+                    </li>
+                </ul>
+
+                <h3>Depart From Cyberport</h3>
+                <ul>
+                    <li>
+                        Day 1 -
+                        2 buses depart to Admiralty MTR station and
+                        1 bus depart to 1 Peking Road, Tsim Sha Tsui
+                    </li>
+                    <li>
+                        Day 2 -
+                        2 buses depart to Admiralty MTR station and
+                        1 bus depart to Central Ferry Pier
+                    </li>
+                    <li>
+                        Day 3 -
+                        3 buses depart to Admiralty MTR station
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
 
             <div class="col-md-6">
                 <h2>By Bus</h2>
                 <ul>
-                    <li>30X Central</li>
-                    <li>42C North Point Ferry Pier</li>
-                    <li>73 Stanley</li>
-                    <li>73P Aberdeen</li>
-                    <li>107P Laguna Verde</li>
-                    <li>970 So Uk Estate</li>
+                    <li>
+                        30X Central (via Pok Fu Lam, Wah Fu)
+                        <a href="https://cdn.tonyhhyip.pro/personal/doc/hkosc/2016/30x.pdf" target="_blank">
+                            Detail
+                        </a>
+                    </li>
+                    <li>
+                        73 Stanley (via Repulse Bay, Wong Chuk Hang, Aberdeen, Wah Fu)
+                        <a href="https://cdn.tonyhhyip.pro/personal/doc/hkosc/2016/73.pdf" target="_blank">
+                            Detail
+                        </a>
+                    </li>
+                    <li>
+                        970 So Uk Estate (via Sham Shui Po, Prince Edward, Mong Kok, Yau Ma Tei, Jordan)
+                        <a href="https://cdn.tonyhhyip.pro/personal/doc/hkosc/2016/970.pdf" target="_blank">
+                            Detail
+                        </a>
+                    </li>
                 </ul>
             </div>
 
