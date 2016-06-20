@@ -9,38 +9,38 @@
 {% block og_url %}{{ site_host }}{{ topicURL('topic', topic_id) }}{% endblock %}
 
 {% block before_title %}
-  <div class="topic-type-name">{{ capitalize(topic.type) }}</div>
+<div class="topic-type-name">{{ capitalize(topic.type) }}</div>
 {% endblock %}
 {% block title %}{{ topic.title }}{% endblock %}
 
 {% block description %}
-  <div class="page-topic-header">
-    <p>By <span class="name">{{ speaker.name }}</span>{% if speaker.social.nickname %} <span class="nickname">({{ speaker.social.nickname }})</span>{% endif %}</p>
-    <p>{{ displayDesc(topic.short_desc) }}</p>
-  </div>
+<div class="page-topic-header">
+  <p>By <span class="name">{{ speaker.name }}</span>{% if speaker.social.nickname %} <span class="nickname">({{ speaker.social.nickname }})</span>{% endif %}</p>
+  <p>{{ displayDesc(topic.short_desc) }}</p>
+</div>
 {% endblock %}
 
 {% block content %}
-  <div class="page-topic container">
+<div class="page-topic container">
 
-    <div class="row">
-      <ol class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li><a href="/schedule">Events</a></li>
-        <li><a href="/topics">Topics</a></li>
-      </ol>
-    </div>
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/schedule">Events</a></li>
+      <li><a href="/topics">Topics</a></li>
+    </ol>
+  </div>
 
-    <div class="row">
-      <div class="col-md-8 topic">
+  <div class="row">
+    <div class="col-md-8 topic">
 
-        <h2 class="visible-md visible-lg">Details</h2>
+      <h2 class="visible-md visible-lg">Details</h2>
 
-        <dl class="datasheet">
+      <dl class="datasheet">
 
-          {% if topic.start and topic.end %}
-            <dt>Date &amp; Time</dt>
-            <dd>
+        {% if topic.start and topic.end %}
+        <dt>Date &amp; Time</dt>
+        <dd>
               <span class="day-name">
                 {{ dayName(topic.start) }} ({{ formatTime(topic.start, 'Do MMMM') }})
               </span>
@@ -48,140 +48,140 @@
                 <span class="time">{{ formatTime(topic.start, 'HH:mm') }}</span> -
                 <span class="time">{{ formatTime(topic.end, 'HH:mm') }}</span>
               </span>
-            </dd>
-          {% endif %}
-
-          {% if topic.venue %}
-            <dt>Location</dt>
-            <dd>
-              {{ venues[topic.venue].name }}
-            </dd>
-          {% endif %}
-
-          <dt>Category</dt>
-          <dd>{{ topic.category }}</dd>
-
-          <dt>Language</dt>
-          <dd>{{ lang.name }}{% if topic.lang_slide %} (with {{ lang_slide.name }} Slides){% endif %}</dd>
-
-          {% if topic.tags and (topic.tags.length > 0) %}
-            <dt>Tags</dt>
-            <dd>{% for tag in topic.tags %}<span class="tag">{{ tags[tag].name}}</span> {% endfor %}</dd>
-          {% endif %}
-
-          <dt>Target Audience</dt>
-          <dd>{{ topic.target_audience.join(", ") }}</dd>
-
-          {% if topic.requirement %}
-            <dt>Requirement</dt>
-            <dd>{{ topic.requirement }}</dd>
-          {% endif %}
-
-        </dl>
-
-        {% if topic.level %}
-          <div class="progress">
-          {% if topic.level == "Beginners" %}
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 33%;">
-              Beginners
-            </div>
-          {% elseif topic.level == "Intermediate" %}
-            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 66%;">
-              Intermediate
-            </div>
-          {% elseif topic.level == "Advanced" %}
-            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 100%;">
-              Advanced
-            </div>
-          {% endif %}
-          </div>
+        </dd>
         {% endif %}
 
-        <div class="description">
-          {{ displayDesc(topic.description) }}
-        </div>
-
-        {% if topic.isSponsorTopic and topic.sponsor %}
-        <div class="sponsor-wrapper">
-          <h2>Sponsored by</h2>
-          {% set sponsor = findSponsor(topic.sponsor, sponsors) %}
-          {% include '../sponsor/_sponsor.html' %}
-        </div>
+        {% if topic.venue %}
+        <dt>Location</dt>
+        <dd>
+          {{ venues[topic.venue].name }}
+        </dd>
         {% endif %}
 
+        <dt>Category</dt>
+        <dd>{{ topic.category }}</dd>
+
+        <dt>Language</dt>
+        <dd>{{ lang.name }}{% if topic.lang_slide %} (with {{ lang_slide.name }} Slides){% endif %}</dd>
+
+        {% if topic.tags and (topic.tags.length > 0) %}
+        <dt>Tags</dt>
+        <dd>{% for tag in topic.tags %}<span class="tag">{{ tags[tag].name}}</span> {% endfor %}</dd>
+        {% endif %}
+
+        <dt>Target Audience</dt>
+        <dd>{{ topic.target_audience.join(", ") }}</dd>
+
+        {% if topic.requirement %}
+        <dt>Requirement</dt>
+        <dd>{{ displayDesc(topic.requirement) }}</dd>
+        {% endif %}
+
+      </dl>
+
+      {% if topic.level %}
+      <div class="progress">
+        {% if topic.level == "Beginners" %}
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 33%;">
+          Beginners
+        </div>
+        {% elseif topic.level == "Intermediate" %}
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 66%;">
+          Intermediate
+        </div>
+        {% elseif topic.level == "Advanced" %}
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 100%;">
+          Advanced
+        </div>
+        {% endif %}
       </div>
-      <div class="col-md-4 speaker">
+      {% endif %}
 
-        <h2>
-          <span class="name">{{ speaker.name }}</span>
-          {% if speaker.social.nickname %}<span class="nickname">{{ speaker.social.nickname }}</span>{% endif %}
-        </h2>
-
-        {% if speaker.social.github or speaker.social.blog or speaker.portrait %}
-        <div class="quick-info {% if speaker.portrait %}thumbnail{% endif %}">
-          {% if speaker.portrait %}
-            <div class="portrait">
-              <img src="{{ speaker.portrait }}" alt="Photo of {{ speaker.name }}">
-            </div>
-          {% endif %}
-          {% if speaker.social.github or speaker.social.blog %}
-            <div class="social">
-              {% if speaker.social.github %}
-                <a title="Github of {{ speaker.name }}" href="{{ speaker.social.github }}" target="_blank"><span class="genericon genericon-github"></span></a>
-              {% endif %}
-              {% if speaker.social.blog %}
-                <a title="Blog of {{ speaker.name }}" href="{{ speaker.social.blog }}" target="_blank"><span class="genericon genericon-website"></span></a>
-              {% endif %}
-            </div>
-          {% endif %}
-        </div>
-        {% endif %}
-
-        <dl class="datasheet">
-          {% if speaker.nationality %}
-            <dt>Origin</dt>
-            <dd>{{ speaker.nationality }}</dd>
-          {% endif %}
-          {% if speaker.residence and (speaker.residence != speaker.nationality)%}
-            <dt>Residence</dt>
-            <dd>{{ speaker.residence }}</dd>
-          {% endif %}
-
-          {% if speaker.community %}
-            <dt>Community</dt>
-            {% if speaker.community.url %}
-              <dd><a href="{{ speaker.community.url }}" target="_blank">{{ speaker.community.name }}</a></dd>
-            {% else %}
-              <dd>{{ speaker.community.name }}</dd>
-            {% endif %}
-          {% endif %}
-
-          {% if speaker.company %}
-            <dt>Company</dt>
-            {% if speaker.company.url %}
-              <dd><a href="{{ speaker.company.url }}" target="_blank">{{ speaker.company.name }}</a></dd>
-            {% else %}
-              <dd>{{ speaker.company.name }}</dd>
-            {% endif %}
-          {% endif %}
-
-          {% if speaker.affiliation %}
-            <dt>Affiliation</dt>
-            {% if speaker.affiliation.url %}
-              <dd><a href="{{ speaker.affiliation.url }}" target="_blank">{{ speaker.affiliation.name }}</a></dd>
-            {% else %}
-              <dd>{{ speaker.affiliation.name }}</dd>
-            {% endif %}
-          {% endif %}
-
-        </dl>
-
-        <h3>Biography</h3>
-        <p>{{ displayDesc(speaker.description) }}</p>
-
+      <div class="description">
+        {{ displayDesc(topic.description) }}
       </div>
-      <!-- TODO: add social links (e.g. github) -->
+
+      {% if topic.isSponsorTopic and topic.sponsor %}
+      <div class="sponsor-wrapper">
+        <h2>Sponsored by</h2>
+        {% set sponsor = findSponsor(topic.sponsor, sponsors) %}
+        {% include '../sponsor/_sponsor.html' %}
+      </div>
+      {% endif %}
+
     </div>
+    <div class="col-md-4 speaker">
 
+      <h2>
+        <span class="name">{{ speaker.name }}</span>
+        {% if speaker.social.nickname %}<span class="nickname">{{ speaker.social.nickname }}</span>{% endif %}
+      </h2>
+
+      {% if speaker.social.github or speaker.social.blog or speaker.portrait %}
+      <div class="quick-info {% if speaker.portrait %}thumbnail{% endif %}">
+        {% if speaker.portrait %}
+        <div class="portrait">
+          <img src="{{ speaker.portrait }}" alt="Photo of {{ speaker.name }}">
+        </div>
+        {% endif %}
+        {% if speaker.social.github or speaker.social.blog %}
+        <div class="social">
+          {% if speaker.social.github %}
+          <a title="Github of {{ speaker.name }}" href="{{ speaker.social.github }}" target="_blank"><span class="genericon genericon-github"></span></a>
+          {% endif %}
+          {% if speaker.social.blog %}
+          <a title="Blog of {{ speaker.name }}" href="{{ speaker.social.blog }}" target="_blank"><span class="genericon genericon-website"></span></a>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <dl class="datasheet">
+        {% if speaker.nationality %}
+        <dt>Origin</dt>
+        <dd>{{ speaker.nationality }}</dd>
+        {% endif %}
+        {% if speaker.residence and (speaker.residence != speaker.nationality)%}
+        <dt>Residence</dt>
+        <dd>{{ speaker.residence }}</dd>
+        {% endif %}
+
+        {% if speaker.community %}
+        <dt>Community</dt>
+        {% if speaker.community.url %}
+        <dd><a href="{{ speaker.community.url }}" target="_blank">{{ speaker.community.name }}</a></dd>
+        {% else %}
+        <dd>{{ speaker.community.name }}</dd>
+        {% endif %}
+        {% endif %}
+
+        {% if speaker.company %}
+        <dt>Company</dt>
+        {% if speaker.company.url %}
+        <dd><a href="{{ speaker.company.url }}" target="_blank">{{ speaker.company.name }}</a></dd>
+        {% else %}
+        <dd>{{ speaker.company.name }}</dd>
+        {% endif %}
+        {% endif %}
+
+        {% if speaker.affiliation %}
+        <dt>Affiliation</dt>
+        {% if speaker.affiliation.url %}
+        <dd><a href="{{ speaker.affiliation.url }}" target="_blank">{{ speaker.affiliation.name }}</a></dd>
+        {% else %}
+        <dd>{{ speaker.affiliation.name }}</dd>
+        {% endif %}
+        {% endif %}
+
+      </dl>
+
+      <h3>Biography</h3>
+      <p>{{ displayDesc(speaker.description) }}</p>
+
+    </div>
+    <!-- TODO: add social links (e.g. github) -->
   </div>
+
+</div>
 {% endblock %}
