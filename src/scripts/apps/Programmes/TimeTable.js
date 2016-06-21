@@ -100,7 +100,8 @@ class TopicRow extends Component {
 class HighlightModal extends Component {
 
   renderTopic(type, topic) {
-    const { speakers, venues, langs } = this.props.data;
+    const { speakers, venues, langs, sponsors } = this.props.data;
+    const sponsor = (topic.sponsor) ? helper.findSponsor(topic.sponsor, sponsors) : null;
     const lang =
       (topic.lang === topic.lang_slide || (typeof topic.lang_slide == "undefined")) ?
       `${ langs[topic.lang].name }` :
@@ -134,7 +135,6 @@ class HighlightModal extends Component {
               </dl>
             </Col>
             <Col sm={4} className="speaker">
-              <h2>Speaker Info</h2>
               {
                 (speaker.portrait) ?
                 (
@@ -143,7 +143,7 @@ class HighlightModal extends Component {
               }
               <div className="speaker-details">
                 <Accordion>
-                  <Panel header="Basic" eventKey="1" collapsible expanded={true}>
+                  <Panel header="Speaker Info" eventKey="1" collapsible expanded={true}>
                     <h3 className="speaker-name">
                       <span className="name">{ speaker.name }</span>
                       { (speaker.social && speaker.social.nickname) ? (<div className="nickname">{ speaker.social.nickname }</div>) : null }
@@ -191,7 +191,7 @@ class HighlightModal extends Component {
                             <dt>See Also</dt>
                             <dd>
                               {(speaker.social.github) ? (<a href={speaker.social.github} target="_blank">Github</a>) : null}
-                              {(speaker.social.blog) ? (<a href={speaker.social.blog} target="_blank">Blog</a>) : null}                              
+                              {(speaker.social.blog) ? (<a href={speaker.social.blog} target="_blank">Blog</a>) : null}
                             </dd>
                           </span>
                         ) : null
@@ -199,11 +199,34 @@ class HighlightModal extends Component {
 
                     </dl>
                   </Panel>
-                  <Panel header="Biography" eventKey="2">
+                  <Panel header="Speaker Biography" eventKey="2">
                     <div className="biography" dangerouslySetInnerHTML={{__html: displayDesc(speaker.description)}} />
                   </Panel>
                 </Accordion>
               </div>
+            </Col>
+            <Col sm={12}>
+              {
+                (sponsor) ? (
+                  <div className="sponsor-info">
+                    <h2>Sponsored by</h2>
+                    <div className="info">
+                      <div className="logos">
+                        {
+                          sponsor.logos.map((logo) => {
+                            return (
+                              <a className="logo-link" href={logo.url} target="_blank">
+                                <img className="logo" src={logo.img} alt={logo.alt} title={logo.title} />
+                              </a>
+                            );
+                          })
+                        }
+                      </div>
+                      <div className="details"  dangerouslySetInnerHTML={{__html: displayDesc(sponsor.description)}} />
+                    </div>
+                  </div>
+                ) : null
+              }
             </Col>
           </Row>
         </Modal.Body>

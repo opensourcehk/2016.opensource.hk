@@ -456,4 +456,21 @@ $filterbar-min-height: 50px;
     }
   }
 
+  .sponsor-info {
+    border-top: 1px solid rgba(0,0,0,.1);
+    margin-top: 2em;
+    h2 {
+      font-size: 1em;
+    }
+    .logos {
+      margin-bottom: 1em;
+    }
+    .logo {
+      max-width: 200px;
+    }
+    .details {
+      text-align: justify;
+    }
+  }
+
 }
