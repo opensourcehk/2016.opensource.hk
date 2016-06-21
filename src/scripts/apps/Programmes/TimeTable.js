@@ -138,7 +138,7 @@ class HighlightModal extends Component {
               {
                 (speaker.portrait) ?
                 (
-                    <Image src={ speaker.portrait} rounded responsive />
+                    <Image className="speaker-portrait" src={ speaker.portrait} rounded responsive />
                 ) : null
               }
               <div className="speaker-details">

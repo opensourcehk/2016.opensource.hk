@@ -224,6 +224,10 @@
       {
         "name": "Lunch",
         "hasTopics": false,
+        "description": [
+          "We have prepared your lunch at the Seaview Concourse"
+        ],
+        "image": "",
         "start": "2016-06-25T12:35:00+0800",
         "end": "2016-06-25T13:35:00+0800",
         "venue": "seaview"
