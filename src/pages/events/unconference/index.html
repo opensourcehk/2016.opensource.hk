@@ -1,0 +1,44 @@
+{% extends '../../../layouts/default.html' %}
+
+{% block og_url %}{{ site_host }}/events/unconference/{% endblock %}
+
+{% block title %}Unconference{% endblock %}
+
+{% block description %}
+<p>Unconference is a participant-driven activity which you (attendees) create the agenda. At HKOSCon 2016, each unconference session is 15 minutes long, and topics must be related to open source technologies and projects.</p>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/schedule">Events</a></li>
+      <li class="active">Dev Room</li>
+    </ol>
+  </div>
+
+  <p>Unconference will be started from Day 2 Lunch to the end of Day 3 (2pm - 5pm).</p>
+
+  <p>Unconference is a participant-driven activity which you (attendees) create the agenda. At HKOSCon 2016, each unconference session is 15 minutes long, and topics must be related to open source technologies and projects.</p>
+
+  <p>Registration of Unconference topics &amp; speakers will be started on Day 2 09:30 near reception counter. You are welcome to write down your topic and name.</p>
+
+  <p>Schedule will be published &amp; updated online by conference staff anytime.</p>
+
+  <h2 style="font-size: 1.1em;">Unconference schedule</h2>
+
+  <div class="iframe-wrapper">
+    <iframe class="embed-unconf-sheet" src="https://docs.google.com/spreadsheets/d/1AwXHfKqlDXUhZjLcI48-jcWIMVXlOunYSB2X9YQaxJQ/htmlembed" />
+  </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block bottom %}
+  {% include '../../_bottom-sponsors.html' %}
+{% endblock %}

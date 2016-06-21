@@ -1,0 +1,47 @@
+{% extends '../../../layouts/default.html' %}
+
+{% block og_url %}{{ site_host }}/events/dev-room/{% endblock %}
+
+{% block title %}Dev Room{% endblock %}
+
+{% block description %}
+<p>Dev room is a open space for open source developers/contributors to code, discuss and contribute on open source projects.</p>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/schedule">Events</a></li>
+      <li class="active">Dev Room</li>
+    </ol>
+  </div>
+
+  <p>Dev room is a open space for open source developers/contributors to code, discuss and contribute on open source projects.</p>
+
+  <p>Dev room is located at Training Room 1 at Core F (behind Lecture Theatre), open on from 09:30 on Day 1 and Day 2 to 16:00 (Day 1) and 17:00 (Day 2).</p>
+
+  <p>We suggests that developers/contributors can fill up a online form, so everyone can check out on a public online spreadsheet and find any interesting topics. And don't forget to tweet it with hashtag #hkoscon !</p>
+
+  <p>Dev room are open on Day 1 and 2.</p>
+
+  <p>
+    If you're coming, please fill in this form to let everyone know:<br/>
+    <a href="http://goo.gl/forms/RvTTw2TP3NRSQJBp1">http://goo.gl/forms/RvTTw2TP3NRSQJBp1</a>
+  </p>
+
+  <h2 style="font-size: 1.1em;">Who will be in dev room?</h2>
+  <div class="iframe-wrapper">
+    <iframe class="embed-google-spreadsheet" src="https://docs.google.com/spreadsheets/d/1BShgfY78EUKM0OllV7b86nSpcUGI3kbwJJGOZv6mVto/htmlembed" />
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block bottom %}
+  {% include '../../_bottom-sponsors.html' %}
+{% endblock %}
