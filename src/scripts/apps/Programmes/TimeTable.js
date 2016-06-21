@@ -1,6 +1,6 @@
 import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
-import { Modal, Image, Button, Grid, Row, Col } from 'react-bootstrap';
+import { Modal, Image, Button, Grid, Row, Col, Accordion, Panel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import 'moment-range';
@@ -108,34 +108,110 @@ class HighlightModal extends Component {
     const speaker = speakers[topic.speaker];
     const venue = venues[topic.venue];
 
-    const
-      header = (
-        <Modal.Header closeButton>
-          <Modal.Title>{topic.title}</Modal.Title>
-        </Modal.Header>
-      ), body = (
+    const header = (
+      <Modal.Header closeButton>
+        <Modal.Title>{topic.title}</Modal.Title>
+      </Modal.Header>
+    );
+
+    const body = (
         <Modal.Body>
           <Row>
-            <Col md={4}>
-              <Image src={ speaker.portrait || '/assets/images/speakers/placeholder.jpg' } rounded responsive className="center-block" />
-            </Col>
-            <Col md={8} className="detail">
-              <div dangerouslySetInnerHTML={{__html: displayDesc(topic.description)}} />
+            <Col sm={8} className="details">
+              <div className="speaker-brief">
+                by <span className="speaker-name">{ speaker.name }</span>
+              </div>
+              <div className="topic-description" dangerouslySetInnerHTML={{__html: displayDesc(topic.description)}} />
               <hr />
-              <ul>
-                <li>Speaker: { speaker.name }</li>
-                <li>Language: { lang }</li>
-                <li>Location: { venue.name }</li>
-                <li>Seats: { venue.capacity }</li>
-                <li>Time: { dayName(topic.start) } ({ formatTime(topic.start, 'HH:mm') } - { formatTime(topic.end, 'HH:mm') })</li>
-                <li>Level: { topic.level }</li>
-              </ul>
+              <dl>
+                <dt>Time</dt><dd>{ formatTime(topic.start, 'HH:mm') } - { formatTime(topic.end, 'HH:mm') }, { dayName(topic.start) }</dd>
+                <dt>Location</dt><dd>{ venue.name } <span className="capacity">({ venue.capacity } seats)</span></dd>
+                <dt>Language</dt><dd>{ lang }</dd>
+                <dt>Level</dt><dd>{ topic.level }</dd>
+                <dt>Category</dt><dd>{ topic.category }</dd>
+                <dt>Audience</dt><dd>{ topic.target_audience.join(", ") }</dd>
+                { (topic.requirement) ? (<span><dt>Requirement</dt><dd dangerouslySetInnerHTML={{__html: displayDesc(topic.requirement)}}/></span>) : null }
+              </dl>
+            </Col>
+            <Col sm={4} className="speaker">
+              <h2>Speaker Info</h2>
+              {
+                (speaker.portrait) ?
+                (
+                    <Image src={ speaker.portrait} rounded responsive />
+                ) : null
+              }
+              <div className="speaker-details">
+                <Accordion>
+                  <Panel header="Basic" eventKey="1" collapsible expanded={true}>
+                    <h3 className="speaker-name">
+                      <span className="name">{ speaker.name }</span>
+                      { (speaker.social && speaker.social.nickname) ? (<div className="nickname">{ speaker.social.nickname }</div>) : null }
+                    </h3>
+                    <dl>
+                      {(speaker.nationality) ? ( <span><dt>Origin</dt><dd>{speaker.nationality}</dd></span> ) : null}
+                      {(speaker.residence && (speaker.residence != speaker.nationality)) ? ( <span><dt>Residence</dt><dd>{speaker.residence}</dd></span> ) : null}
+
+                      {
+                        (speaker.community) ? (
+                          (
+                            <span>
+                              <dt>Community</dt>
+                              <dd><a href={ speaker.community.url } target="_blank">{ speaker.community.name }</a></dd>
+                            </span>
+                          )
+                        ) : null
+                      }
+
+                      {
+                        (speaker.company) ? (
+                          (
+                            <span>
+                              <dt>Company</dt>
+                              <dd><a href={ speaker.company.url } target="_blank">{ speaker.company.name }</a></dd>
+                            </span>
+                          )
+                        ) : null
+                      }
+
+                      {
+                        (speaker.affiliation) ? (
+                          (
+                            <span>
+                              <dt>Affiliation</dt>
+                              <dd><a href={ speaker.affiliation.url } target="_blank">{ speaker.affiliation.name }</a></dd>
+                            </span>
+                          )
+                        ) : null
+                      }
+
+                      {
+                        (speaker.social && (speaker.social.github || speaker.social.blog)) ? (
+                          <span>
+                            <dt>See Also</dt>
+                            <dd>
+                              {(speaker.social.github) ? (<a href={speaker.social.github} target="_blank">Github</a>) : null}
+                              {(speaker.social.blog) ? (<a href={speaker.social.blog} target="_blank">Blog</a>) : null}                              
+                            </dd>
+                          </span>
+                        ) : null
+                      }
+
+                    </dl>
+                  </Panel>
+                  <Panel header="Biography" eventKey="2">
+                    <div className="biography" dangerouslySetInnerHTML={{__html: displayDesc(speaker.description)}} />
+                  </Panel>
+                </Accordion>
+              </div>
             </Col>
           </Row>
         </Modal.Body>
-    ), footer = (
+    );
+
+    const footer = (
       <Modal.Footer htmlStyle="clear: both;">
-        <Button bsStyle="primary" onClick={ this.showDetail.bind(this, type, topic) }>See Detail</Button>
+        <Button bsStyle="primary" onClick={ this.showDetail.bind(this, type, topic) }>More</Button>
         <Button bsStyle="default" onClick={ this.props.close }>Close</Button>
       </Modal.Footer>
     );
@@ -155,14 +231,25 @@ class HighlightModal extends Component {
         <Modal.Header closeButton>
           <Modal.Title>{item.name}</Modal.Title>
         </Modal.Header>
-      ), body = (
+      ), body = ((typeof item.image != "undefined") && (item.image != "")) ? (
         <Modal.Body>
           <Row>
-            <Col md={12} className="details">
+            <Col md={8} className="details">
               <div dangerouslySetInnerHTML={{__html: displayDesc(item.description)}} />
+            </Col>
+            <Col md={4}>
+              <img src={item.image}/>
             </Col>
           </Row>
         </Modal.Body>
+    ):(
+      <Modal.Body>
+        <Row>
+          <Col md={12} className="details">
+            <div dangerouslySetInnerHTML={{__html: displayDesc(item.description)}} />
+          </Col>
+        </Row>
+      </Modal.Body>
     ), footer = (
       <Modal.Footer htmlStyle="clear: both;">
         <Button bsStyle="default" onClick={ this.props.close }>Close</Button>

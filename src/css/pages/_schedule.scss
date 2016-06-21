@@ -276,6 +276,7 @@ $filterbar-min-height: 50px;
           padding: 1em;
           text-decoration: none;
           color: inherit;
+          cursor: pointer;
           &:hover {
             color: inherit;
             background-color: rgba(0, 0, 0, .03);
@@ -354,4 +355,105 @@ $filterbar-min-height: 50px;
   @media(max-width: $width-sm) {
     width: auto;
   }
+
+  .speaker-brief {
+    padding-top: .2em;
+    padding-bottom: .6em;
+    .speaker-name {
+      font-weight: bold;
+    }
+  }
+
+  .details {
+    .topic-description {
+      text-align: justify;
+    }
+
+    dt {
+      display: block;
+      float: left;
+      width: 116px;
+    }
+    dd {
+      display: block;
+      margin-left: 116px;
+      margin-bottom: 0.5em;
+      .time, .capacity {
+        color: rgba(0,0,0,.5);
+      }
+    }
+  }
+
+  .speaker {
+    h2 {
+      font-size: 1.1em;
+      margin-top: 0;
+      @media(max-width: $width-sm) {
+        border-top: solid 1px rgba(0,0,0,.1);
+        padding-top: 1em;
+        margin-top: 1em;
+      }
+    }
+    h3.speaker-name {
+      margin-top: 0;
+      font-size: 1.2em;
+    }
+    figcaption.speaker-name {
+      font-size: 1em;
+      font-weight: bold;
+      padding-top: .5em;
+      padding-bottom: .5em;
+    }
+    .nickname {
+      color: rgba(0,0,0,.4);
+    }
+
+    .speaker-details {
+      margin-top: .5em;
+    }
+
+    .speaker-details .panel-title a {
+      display: block;
+      width: 100%;
+      &:hover, &:focus, &:active {
+        text-decoration: none;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+
+    dt {
+      display: block;
+      margin-top: .6em;
+    }
+
+    @media (max-width: $width-sm) {
+      dt {
+        display: block;
+        float: left;
+        width: 110px;
+        margin-top: 0;
+      }
+      dd {
+        display: block;
+        margin-left: 110px;
+        margin-bottom: 0.5em;
+      }
+    }
+    @media (min-width: $width-md) {
+      dt {
+        display: block;
+        float: left;
+        width: 110px;
+        margin-top: 0;
+      }
+      dd {
+        display: block;
+        margin-left: 110px;
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+
 }
