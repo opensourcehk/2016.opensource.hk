@@ -158,7 +158,9 @@ class HighlightModal extends Component {
       ), body = (
         <Modal.Body>
           <Row>
-            Just go and discover by yourself!
+            <Col md={12} className="details">
+              <div dangerouslySetInnerHTML={{__html: displayDesc(item.description)}} />
+            </Col>
           </Row>
         </Modal.Body>
     ), footer = (
