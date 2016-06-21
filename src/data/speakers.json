@@ -522,7 +522,7 @@
       "name": "OurSky",
       "url": "https://oursky.com"
     },
-    "portrait": "",
+    "portrait": "/assets/images/speakers/david-ng.jpg",
     "hkoscon-sponsored": false
   },
   "thomas-kulper": {
@@ -583,7 +583,7 @@
       "name": "Oracle",
       "url": "https://www.oracle.com/"
     },
-    "portrait": "",
+    "portrait": "/assets/images/speakers/ryusukekajiyama.jpg",
     "hkoscon-sponsored": false
   },
   "joshua-rich": {
@@ -700,6 +700,54 @@
     "portrait": "/assets/images/speakers/frapposelli.png",
     "hkoscon-sponsored": false
   },
+  "bart-verkoeijen": {
+    "name": "Bart Verkoeijen",
+    "gender": "male",
+    "social": {
+      "github": "https://github.com/bgever",
+      "nickname": "bgever"
+    },
+    "description": [
+      "<p>Bart is a full-stack senior web developer at",
+      "<a href=\"https://www.quantifeed.com/\" target=\"_blank\">Quantifeed</a>,",
+      "where he builds the frontend for a FinTech web platform for Asia’s mass",
+      "affluent to invest in market trends. His current technology stack",
+      "includes Azure, ASP.NET, AngularJS and TypeScript</p>",
+      "<p>He is active in the community as co-organizer of the",
+      "<a href=\"http://www.meetup.com/Microsoft-Developers-HK/\" target=\"_blank\">Microsoft Developers HK meetup</a>, and organizer of",
+      "<a href=\"http://www.meetup.com/Friday-Beer-Bay-HH/\" target=\"_blank\">the Friday Beer",
+      "Bay meetup</a> for Web, Tech, and Startups.</p>"
+    ],
+    "residence": "Hong Kong",
+    "nationality": "The Netherlands",
+    "community": {
+      "name": "Microsoft Developers HK meetup",
+      "url": "http://www.meetup.com/Microsoft-Developers-HK/"
+    },
+    "company": {
+      "name": "Quantifeed",
+      "url": "https://www.quantifeed.com/"
+    },
+    "portrait": "https://www.quantifeed.com/wp-content/uploads/2016/02/Quantifeed-0514-400x400-2.jpg",
+    "hkoscon-sponsored": false
+  },
+  "alfred-tse": {
+    "name": "Alfred Tse",
+    "gender": "male",
+    "description": [
+      "<p>Alfred Tse, Cloud Technical Executive, IBM Greater China Group</p>",
+      "<p>Alfred Tse is responsible for the creation and execution of IBM’s Cloud strategy in Greater China Group.  His career spans 20+ years in the IT industry, holding a variety of positions in development, consulting, sales, and leadership positions. He joined IBM in 1998 in the United States as a technology consultant. Most recently, he was IBM Growth Market Unit’s technical leader.  He previously worked for Intel, Andersen Consulting (now Accenture), and Honeywell Corp.  Alfred holds a Bachelor degree in Computer Systems Engineering and a Masters in Computer Science, from Arizona State University in the United States.</p>"
+    ],
+    "residence": "Hong Kong",
+    "nationality": "Hong Kong",
+    "company": {
+      "name": "IBM",
+      "url": "https://www.ibm.com/hk/"
+    },
+    "portrait": "/assets/images/speakers/alfred-tse.jpg",
+    "hkoscon-sponsored": false
+  },
+
 
   "dumy": {
     "name": "Dummy Speaker",

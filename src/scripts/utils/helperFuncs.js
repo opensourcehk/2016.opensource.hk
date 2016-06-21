@@ -2,7 +2,57 @@
 import striptags from 'striptags';
 import truncate from 'truncate';
 import moment from 'moment';
+import 'moment-range';
 
+// extractSort returns a sorting function which extracts the a and b
+// key to further do sorting
+export function extractSort(extractorFn) {
+  // returns a function to modify a sort() callback's parameters (a, b)
+  // with the extractor function
+  return (callback) => {
+    // returns the wrapped callback
+    return (a, b) => {
+      // return the callback result
+      return callback(extractorFn(a), extractorFn(b));
+    }
+  }
+}
+
+// composeSort compose several Array.prototype.sort() callback
+// into a single one
+export function composeSort(...callbacks) {
+  return (a, b) => {
+    for (let callback of callbacks) {
+      var result = callback(a, b);
+      if (result != 0) {
+        return result
+      }
+    }
+    return 0; // return 0 by default
+  }
+}
+
+// byMoment returns a sorting callback of the key "start"
+// as a moment parsable timestamp, with the specified order
+export function byMoment(name, order = 'asc') {
+  const factor = (order === 'desc') ? -1 : 1;
+  return (a, b) => {
+    const a_moment = moment(a[name]);
+    const b_moment = moment(b[name]);
+    const diff = a_moment.diff(b_moment);
+    return factor * diff;
+  }
+}
+
+export function byString(name, order = 'asc') {
+  const factor = (order === 'desc') ? -1 : 1;
+  return (a, b) => {
+    const a_string = String(a[name] === undefined ? "" : a[name]);
+    const b_string = String(b[name] === undefined ? "" : b[name]);
+    const diff = a_string.localeCompare(b_string);
+    return factor * diff;
+  }
+}
 
 // findSponsor find a sponsor in the given sponsors array
 function findSponsor(id, sponsors) {

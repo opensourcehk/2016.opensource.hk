@@ -1,6 +1,15 @@
 /**
  * topic page
  */
+.topic-type-name {
+  position: relative;
+  top: 1.5em;
+  font-size: 1.5em;
+  @media(max-width: $width-sm) {
+    top: 1em;
+  }
+}
+
 .page-topic {
 
   .topic {
@@ -25,6 +34,11 @@
       .progress-bar {
         line-height: 40px;
       }
+    }
+    .sponsor-wrapper {
+      margin-top: 4em;
+      padding-top: 2em;
+      border-top: 1px solid #ddd;
     }
     .sponsor {
       .logos {

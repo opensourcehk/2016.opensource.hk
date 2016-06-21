@@ -1,78 +1,363 @@
 /**
- * schedule / agenda page
+ * Programmes
  */
- #schedule .day:target {
-   background: #FFD;
- }
 
- #day-1 {
-   table th:nth-child(1) {
-     width: 16%;
-   }
- }
+$day-container-title-padding-top:    40px;
+$day-container-title-padding-bottom: 20px;
+$day-container-title-line-height:    40px;
+$top-navbar-height: 50px;
+$filterbar-min-height: 50px;
 
- #day-2 {
-   table th:nth-child(1) {
-     width: 16%;
-   }
-   table th:nth-child(n+2) {
-     width: 21%;
-   }
- }
-
- #day-3 {
-   table th:nth-child(1) {
-     width: 16%;
-   }
-   table th:nth-child(n+2) {
-     width: 28%;
-   }
-   // customized height to content
-   tr:nth-child(2) td a {
-     min-height: 9em;
-   }
-   tr:nth-child(4) td a {
-     min-height: 8em;
-   }
- }
-
-.topic-summary {
-  display: block;
-  width: 100%;
-  text-decoration: none;
-  color: inherit;
-  outline: solid 8px #FFF;
-  transition: all .5s;
-
-  &:active, &:focus, &:hover {
-    text-decoration: none;
-    color: inherit;
-    outline: solid 8px #FFF;
+@media(max-width: $width-sm) {
+  .title-container h1 {
+    padding-left: 15px;
   }
-  &:hover {
-    background-color: #FFE;
-    outline-color: #FFE;
+}
+
+#timetable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;
+
+  @media(max-width: $width-sm) {
+    .loading {
+      display: block;
+      padding: 1em 15px;
+    }
   }
-  .type {
+
+  /**
+   * Filters component
+   */
+  .filters {
     display: block;
-    font-size: 0.8em;
-    font-weight: bolder;
+    position: absolute;
+    padding: 0;
+    transition: box-shadow .5s;
+    transition: height .5s;
+
+
+    @media(max-width: $width-sm) {
+      width: 100%;
+    }
+    @media(min-width: $width-md) {
+      width: 970px;
+    }
+    @media(min-width: $width-lg) {
+      width: 1170px;
+    }
+
+    /**
+     * FilterToggles sub-component
+     */
+    .filter-toggle {
+      display: inline-block;
+      margin-right: 1em;
+      transition: background-color .5s;
+      cursor: pointer;
+      padding: 5px;
+      &:hover {
+        background-color: lighten($theme-yellow, 10%);
+      }
+      &.active {
+        background-color: $theme-yellow;
+        color: $theme-blue;
+        font-weight: bold;
+        border-radius: 5px;
+      }
+    }
+
+    /**
+     * .filter-toggles portion of Filters
+     */
+    .filter-toggles {
+      position: absolute;
+      border: 1px solid #e7e7e7;
+      border-top-width: 0;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      background-color: #FFF;
+      z-index: 2;
+      width: 100%;
+      transition: all .5s;
+      overflow: hidden;
+      max-height: 9999px;
+
+      h2 {
+        margin-top: 1em;
+        font-size: 1.2em;
+      }
+
+      .filter-toggles-inner {
+        padding: .5em 2em 2em;
+      }
+
+      @media(max-width: $width-sm) {
+        .filter-toggles-inner {
+          padding: 1em;
+        }
+        h2 {
+          margin: 1em 0 .5em;
+          font-size: 1.1em;
+        }
+      }
+
+    }
+
+    .filter-toggle-show {
+    }
+    .filter-toggles-hide {
+      max-height: 0;
+    }
+
+    /**
+     * filter-actions portion of Filter
+     */
+    .filter-actions {
+      margin-top: .5em;
+      height: 1.5em;
+      text-align: right;
+    }
+
+    /**
+     * filterbar portion of Filter
+     */
+    .filterbar {
+      position: relative;
+      min-height: $filterbar-min-height;
+      margin-bottom: 0;
+      border: 1px solid #e7e7e7;
+      background-color: $theme-blue;
+
+      .filters-desc{
+        display: block;
+        float: left;
+        padding: 15px 0 15px 15px;
+        line-height: 20px;
+      }
+
+      .navbar-nav {
+        & > li > a {
+          line-height: 20px;
+          color: $theme-yellow;
+        }
+      }
+
+      .navbar-right {
+        margin-right: 0;
+        @media(max-width: $width-sm) {
+          float: right;
+        }
+      }
+    }
+
+    &.sticky {
+      position: fixed;
+      z-index: 2;
+      top: $top-navbar-height;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, .5);
+      height: $filterbar-min-height;
+
+      .filterbar {
+        z-index: inherit;
+        display: block;
+      }
+
+      .filter-toggles {
+        z-index: 0;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, .5);
+      }
+
+    }
   }
-  .title {
-    display: inline-block;
-    font-weight: bolder;
-    color: #337ab7;
+
+
+  /**
+   * TimeTable component
+   */
+  .timetable {
+    font-size: 1em;
+    padding-top: $filterbar-min-height;
+
+    @media(max-width: $width-sm) {
+      h2 {
+        font-size: 1.2em;
+        margin-left: 0;
+      }
+    }
+
+    /**
+     * DayContainer subcomponent
+     */
+    .day-container {
+      margin: 0 0 2em;
+
+      h2 {
+        display: block;
+        position: absolute;
+        line-height: $day-container-title-line-height;
+
+        //margin-top: 30px;
+        //margin-bottom: 30px;
+        padding-top: $day-container-title-padding-top;
+        padding-bottom: $day-container-title-padding-bottom;
+        padding-left: 15px;
+
+        margin: 0 -15px;
+        //padding: 15px;
+
+        z-index:1;
+        background-color: #fff;
+
+        @media(max-width: $width-sm) {
+          padding-top: $day-container-title-padding-top / 2;
+          padding-bottom: $day-container-title-padding-bottom / 2;
+          width: 100%;
+        }
+        @media(min-width: $width-md) {
+          width: 970px;
+        }
+        @media(min-width: $width-lg) {
+          width: 1170px;
+        }
+      }
+
+      &.sticky-title {
+        h2 {
+          position: fixed;
+          top: $top-navbar-height + $filterbar-min-height;
+          border-bottom: 1px solid #eee;
+          box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+        }
+      }
+
+    }
+
+    /**
+     * ScheduleItem subcomponent
+     */
+    .schedule-item {
+      background-color: rgba(0, 0, 0, .02);
+      border-bottom: solid 1px rgba(0, 0, 0, .1);
+
+      // the item under title of day-container
+      &:nth-child(2) {
+        margin-top:
+                $day-container-title-line-height +
+          $day-container-title-padding-top +
+          $day-container-title-padding-bottom;
+
+        @media(max-width: $width-sm) {
+          margin-top:
+                  $day-container-title-line-height +
+            $day-container-title-padding-top / 2 +
+            $day-container-title-padding-bottom / 2;
+        }
+      }
+
+      .col-time {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        vertical-align: top;
+        line-height: 1.2em;
+        color: rgba(0, 0, 0, .45);
+
+        .hour {
+          font-size: 2.5em;
+        }
+        .minute {
+          font-size: 1.5em;
+        }
+
+        @media(max-width: $width-sm) {
+          padding-left: 10px;
+          .hour {
+            font-size: 1.1em;
+          }
+          .minute {
+            font-size: .9em;
+          }
+        }
+      }
+      .col-topic {
+        .schedule-row, .topic-row {
+          transition: background-color .3s;
+          display: block;
+          padding: 1em;
+          text-decoration: none;
+          color: inherit;
+          &:hover {
+            color: inherit;
+            background-color: rgba(0, 0, 0, .03);
+          }
+          &:active, &:focus {
+            outline: none;
+          }
+        }
+        .schedule-row, .topic-row {
+          .title {
+            font-weight: 500;
+          }
+          .type {
+            font-size: .8em;
+          }
+          .details {
+            font-size: .8em;
+            list-style-type: none;
+            display: block;
+            padding: 0;
+            color: rgba(0, 0, 0, .5);
+            li {
+              display: inline-block;
+              margin-right: .2em;
+              &:not(:last-child)::after {
+                content: ' / ';
+              }
+            }
+          }
+        }
+        .topic-row:not(:first-child) {
+          padding-top: 1em;
+        }
+        .topic-row:not(:last-child) {
+          padding-bottom: 1em;
+          border-bottom: solid 1px rgba(0, 0, 0, .1);
+        }
+      }
+    }
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+
+
+    /**
+     * FiltersDesc subcomponent
+     * (yes, it is in TimeTable.js)
+     */
+    .filters-desc {
+      margin: 0 0 1em;
+      padding: 1em;
+      background-color: rgba(0, 0, 0, .03);
+      .desc-group {
+        margin: .5em 0;
+      }
+      .name {
+        display: block;
+        width: 160px;
+        float: left;
+        text-transform: capitalize;
+        &::after {
+          content: ': ';
+        }
+      }
+      .desc {
+        margin-left: 160px;
+      }
+    }
+
   }
-  .speaker {
-    display: block;
-    font-size: 0.8em;
-  }
-  .speaker::before {
-    content: "by ";
-  }
-  .time {
-    display: block;
-    font-size: 0.8em;
-    color: rgba(0,0,0,0.6);
-  }
+
 }

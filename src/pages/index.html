@@ -1,13 +1,13 @@
 {% extends '../layouts/front.html' %}
 
-{% block title %}Hong Kong Open Source Conference 2016{% endblock %}
+{% block title %}Hong Kong Open Source Conference 2016 // 香港開源年會 2016{% endblock %}
 
 {% block content %}
 
   <div class="jumbotron dark-sections" id="introjumbo">
     <div class="container">
         <h1>
-          HKOSCon 2016
+          HKOSCon 2016 香港開源年會
           <div class="slogan">// Go Beyond <strong>Open-source</strong></div>
           <div id="ticket"></div>
         </h1>
@@ -46,24 +46,32 @@
           </p>
         </div>
         <div class="col-md-4">
-          <h2>Contact Organiser</h2>
-          <p>For enquiry, please feel freely to email to us.</p>
-          <p><a class="btn btn-primary" href="mailto:conference@opensource.hk">Contact Organiser &raquo;</a></p>
+          <h2>Find Us</h2>
+          <p>You are welcome to find us with links below:</p>
+          <div class="front-sns-links">
+            <p><a target="_blank" href="https://facebook.com/hkoscon/"><span class="genericon genericon-facebook-alt"></span> facebook.com/hkoscon</a></p>
+            <p><a target="_blank" href="https://twitter.com/hkoscon/"><span class="genericon genericon-twitter"></span> twitter.com/hkoscon</a></p>
+            <p><a href="mailto:conference@opensource.hk"><span class="genericon genericon-mail"></span> conference at opensource.hk</a></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="video-card">
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe width="956" height="538" src="https://www.youtube.com/embed/43uVMqES0Kk?showinfo=0" frameborder="0" allowfullscreen></iframe>
+  <div id="main-wrapper"><div id="main">
+    <div class="container">
+      <div class="row">
+        <div class="video-card">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/videoseries?list=PLZVCyfeZqdY0nEw__7D1_pDmihBJay06Y" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </div></div><!--/#main /#main-wrapper-->
 
+{% endblock %}
+
+{% block bottom %}
   {% include './_bottom-sponsors.html' %}
-
 {% endblock %}

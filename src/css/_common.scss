@@ -8,6 +8,10 @@ footer {
   background-color: rgba(0, 0, 0, .03);
   padding-top: 3em;
   text-align: center;
+
+  img {
+    border-width: 0;
+  }
 }
 
 .title-container {
@@ -16,10 +20,6 @@ footer {
 
 .content-container {
   padding-bottom: 2em;
-}
-
-#main {
-  margin-bottom: 4em;
 }
 
 /** mobile friendly tables **/
@@ -33,5 +33,23 @@ footer {
 @media (max-width: $width-md) {
   .media-body {
     display: table-row;
+  }
+}
+
+/**
+ * container-like scales itself like container against checkpoints
+ * allow floating elements to scale width like normal containers
+ * in the grid system
+ */
+.container-like {
+  width: 100%;
+  @media(min-width: $width-sm) {
+    width: 750px;
+  }
+  @media(min-width: $width-md) {
+    width: 970px;
+  }
+  @media(min-width: $width-lg) {
+    width: 1170px;
   }
 }

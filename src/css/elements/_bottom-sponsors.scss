@@ -1,7 +1,13 @@
 .bottom-sponosors-list {
-  margin-top: 4em;
   padding-top: 4em;
   box-shadow: inset 0 15px 15px -15px rgba(0, 0, 0, .2);
+
+  h3 {
+    font-size: 1.3em;
+    @media(max-width: $width-md) {
+      font-size: 1.1em;
+    }
+  }
 
   .tier {
     margin-top: 1em;
@@ -12,6 +18,13 @@
     display: flex;
     align-items: center;
 
+
+    &:hover {
+      -webkit-transform: scale(1.3);
+      -ms-transform: scale(1.3);
+      transform: scale(1.3);
+    }
+
     @media(max-width: $width-sm) {
       min-height: none;
     }
@@ -19,10 +32,40 @@
       display: table-cell;
       vertical-align:middle;
       width: 100%;
+
+      img {
+        display: block;
+        width: 100%;
+
+      }
+
     }
-    .logo img {
-      display: block;
-      width: 100%;
+
+  }
+
+  .tier.logo-only {
+    .logo {
+      height: 225px;
+      display: flex;
+      align-items: center;
+      img {
+        width: 100%;
+        height: auto;
+
+      }
+
+      &:hover {
+        -webkit-transform: scale(1.3);
+        -ms-transform: scale(1.3);
+        transform: scale(1.3);
+      }
+      @media(max-width: $width-sm) {
+        height: auto;
+      }
+    }
+    .name {
+      color: #000;
     }
   }
+
 }

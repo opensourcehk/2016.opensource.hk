@@ -57,6 +57,24 @@ describe('actions', () => {
     should(actions.setAttribute(key, value)).eql(expectedAction).which.is.a.Object();
   });
 
+  it('setHighlight should create a set highlight action, which highlights given row information and type', () => {
+    const highlightType = 'some row type';
+    const highlight = { name: "hello", someKey: "world"};
+    const expectedAction = {
+      highlightType,
+      highlight,
+      type: 'SET_HIGHLIGHT'
+    }
+    should(actions.setHighlight(highlightType, highlight)).eql(expectedAction).which.is.a.Object();
+  });
+
+  it('unsetHighlight should create a unset highlight action', () => {
+    const expectedAction = {
+      type: 'UNSET_HIGHLIGHT'
+    }
+    should(actions.unsetHighlight()).eql(expectedAction).which.is.a.Object();
+  });
+
 });
 
 describe('filterer', () => {
@@ -435,6 +453,82 @@ describe('reducer', () => {
         actions.removeFilter("var1", "value2")
       ).data
     ).eql(data).which.is.a.Object();
+
+  });
+
+  it("setHighlight should store the highlight information", () => {
+
+    const data = {};
+    const all = [
+      {var1: "value1"},
+      {var1: "value2"},
+      {var1: "value3"}
+    ];
+    const display = [];
+    const filters = {};
+    const toHighlight = {
+      foo: "bar",
+      hello: "world"
+    }
+
+    should(
+      reducer(
+        { data, all, display, filters },
+        actions.setHighlight("someType", toHighlight)
+      ).highlight
+    ).eql(
+      {
+        type: "someType",
+        item: toHighlight
+      }
+    ).which.is.a.Object();
+
+  });
+
+  it("unsetHighlight should remove the highlight information from store", () => {
+
+    const data = {};
+    const all = [
+      {var1: "value1"},
+      {var1: "value2"},
+      {var1: "value3"}
+    ];
+    const display = [];
+    const filters = {};
+    const highlight = {
+      type: "sometype",
+      item: {
+        foo: "bar",
+        hello: "world"
+      }
+    }
+
+    should(
+      reducer(
+        { data, all, display, filters, highlight },
+        actions.unsetHighlight()
+      ).highlight
+    ).be.undefined();
+
+  });
+
+  it("unsetHighlight should work even if there is no highlight", () => {
+
+    const data = {};
+    const all = [
+      {var1: "value1"},
+      {var1: "value2"},
+      {var1: "value3"}
+    ];
+    const display = [];
+    const filters = {};
+
+    should(
+      reducer(
+        { data, all, display, filters },
+        actions.unsetHighlight()
+      ).highlight
+    ).be.undefined();
 
   });
 

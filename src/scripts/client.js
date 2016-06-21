@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import Store from "./apps/Programmes/Store";
 import TicketButton from './apps/TicketButton';
 import Programmes from "./apps/Programmes/Programmes";
+import { extractSort, composeSort, byMoment, byString } from './utils/helperFuncs'
 
 import langs       from "../data/langs";
 import schedule    from "../data/schedule";
@@ -22,10 +23,10 @@ navBar();
 let ticketDiv = document.getElementById('ticket');
 if ((typeof ticketDiv !== "undefined") && (ticketDiv !== null)) {
   render((
-    <TicketButton
-      className="btn btn-lg btn-hkosc button-front-mobile-ticket"
-      target="_blank"
-      href="https://hkoscon2016.eventbrite.com/?aff=website" />
+      <TicketButton
+        className="btn btn-lg btn-hkosc button-front-mobile-ticket"
+        target="_blank"
+        href="https://hkoscon2016.eventbrite.com/?aff=website" />
     ),
     ticketDiv
   );
@@ -34,7 +35,7 @@ if ((typeof ticketDiv !== "undefined") && (ticketDiv !== null)) {
 // translate data into array that's suitable for
 // store to filter
 function topicStoreAll(data = {topics: {}}) {
-  var all = [];
+  let all = [];
   for (let id in data.topics) {
     let topic = topics[id];
     all.push({
@@ -51,7 +52,22 @@ function topicStoreAll(data = {topics: {}}) {
 // with the help of the mapAll function
 // to translate `topics` to `all`
 function mapStoreData(mapAll, data) {
-  var all = mapAll(data);
+
+  // helps to extract attributes inside variables
+  // for sorting
+  const extractor = (item) => {
+    return item.topic || {};
+  };
+
+  // sort all items in data by its
+  // .topic.start and .topic.venue values
+  const all = mapAll(data).sort(
+    extractSort(extractor)(composeSort(
+      byMoment('start', 'desc'),
+      byString('venue')
+    ))
+  );
+
   return {
     data,
     all,
@@ -64,7 +80,7 @@ function mapStoreData(mapAll, data) {
 }
 
 // map all useful data to store as `data`
-var store = Store(mapStoreData(topicStoreAll, {
+const store = Store(mapStoreData(topicStoreAll, {
   langs,
   schedule,
   speakers,
@@ -73,7 +89,7 @@ var store = Store(mapStoreData(topicStoreAll, {
   venues
 }));
 
-let timetableDiv = document.getElementById('timetable');
+const timetableDiv = document.getElementById('timetable');
 if ((typeof timetableDiv !== "undefined") && (timetableDiv !== null)) {
   render((
       <Provider store={store}>

@@ -8,11 +8,6 @@
   }
 }
 
-@media screen and (min-width: $width-sm) {
-  .jumbotron {
-    padding-top: 30px;
-  }
-}
 #introjumbo {
   min-height: 100vh;
   margin-bottom: 0;
@@ -61,6 +56,30 @@
   }
 }
 
+.front-sns-links {
+  font-size: 16pt;
+  line-height: 26pt;
+  color: $theme-yellow;
+  a {
+    color: #fff;
+    text-decoration: none;
+    transition: color .5s;
+    &:hover {
+      color: $theme-yellow;
+    }
+    .genericon {
+      color: $theme-yellow;
+      position: relative;
+      top: 4px;
+      font-size: 20pt;
+      margin-right: 6px;
+    }
+  }
+  p {
+    padding-top: .4em;
+  }
+}
+
 #promotion-video {
   display: block;
   background-image: url('/assets/images/noun_10352_100.png');
@@ -74,9 +93,16 @@
 }
 
 .button-front-mobile-ticket {
-  text-shadow: none;
-  width: 100%;
-  margin: 2em 0 0.5em;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .button-front-mobile-ticket {
+    text-shadow: none;
+    width: 100%;
+    margin: 2em 0 0.5em;
+    display: inline-block;
+  }
 }
 
 #page--front {

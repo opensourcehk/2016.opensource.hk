@@ -1,6 +1,6 @@
 import { findDOMNode } from "react-dom";
 import { Component, PropTypes } from "react";
-import { Modal, Image } from 'react-bootstrap';
+import { Modal, Image, Button, Grid, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import 'moment-range';
@@ -78,17 +78,11 @@ class Details extends Component {
 // TopicRow display a topic
 class TopicRow extends Component {
 
-  constructor(props) {
-    super(props);
-    this.topic = this.props.item.topic;
-    this.onClick = this.onClick.bind(this);
-  }
-
   render() {
     const { data, className } = this.props;
-    const topic = this.topic;
+    const { topic } = this.props.item;
     return (
-      <div className={className} onClick={this.onClick}>
+      <div className={className} onClick={this.onClick.bind(this, "topic", topic)}>
         <div className="type">{ _.capitalize(topic.type) }</div>
         <div className="title">{ topic.title }</div>
         <Details data={data}
@@ -97,56 +91,104 @@ class TopicRow extends Component {
     );
   }
 
-  onClick() {
-    console.log('show topic');
-    let topic = this.topic;
-    let { speakers, venues, langs } = this.props.data;
-    let language = `${ langs[topic.lang].name } (${ langs[topic.lang_slide].name } Slide)`;
-    this.props.topicShow(topic, speakers[topic.speaker], venues[topic.venue].name, language);
+  onClick(type, item) {
+    this.props.showHighlight(type, item);
   }
 
 }
 
-class TopicModal extends Component {
-  render() {
-    if (null === this.props.topic) return null;
-    let { title, description, level, start, end } = this.props.topic;
-    let icon = this.props.speaker.portrait;
-    let { name } = this.props.speaker;
-    let { lang, location } = this.props;
-    let display = displayDesc(description);
+class HighlightModal extends Component {
 
-    let
+  renderTopic(type, topic) {
+    const { speakers, venues, langs } = this.props.data;
+    const lang =
+      (topic.lang === topic.lang_slide || (typeof topic.lang_slide == "undefined")) ?
+      `${ langs[topic.lang].name }` :
+      `${ langs[topic.lang].name } (${ langs[topic.lang_slide].name } Slide)`;
+    const speaker = speakers[topic.speaker];
+    const venue = venues[topic.venue];
+
+    const
       header = (
         <Modal.Header closeButton>
-          <Modal.Title>{title}</Modal.Title>
+          <Modal.Title>{topic.title}</Modal.Title>
         </Modal.Header>
       ), body = (
         <Modal.Body>
-          <div className="left">
-            <Image src={ icon || '/assets/images/speakers/placeholder.jpg' } rounded responsive className="center-block" />
-
-          </div>
-          <div className="right">
-            <p>{ display }</p>
-            <hr />
-            <ul>
-              <li>Speaker: { name }</li>
-              <li>Language: { lang }</li>
-              <li>Location: { location }</li>
-              <li>Time: { dayName(start) } ({ formatTime(start, 'HH:mm') } - { formatTime(end, 'HH:mm') })</li>
-              <li>Level: { level }</li>
-            </ul>
-          </div>
+          <Row>
+            <Col md={4}>
+              <Image src={ speaker.portrait || '/assets/images/speakers/placeholder.jpg' } rounded responsive className="center-block" />
+            </Col>
+            <Col md={8} className="detail">
+              <div dangerouslySetInnerHTML={{__html: displayDesc(topic.description)}} />
+              <hr />
+              <ul>
+                <li>Speaker: { speaker.name }</li>
+                <li>Language: { lang }</li>
+                <li>Location: { venue.name }</li>
+                <li>Seats: { venue.capacity }</li>
+                <li>Time: { dayName(topic.start) } ({ formatTime(topic.start, 'HH:mm') } - { formatTime(topic.end, 'HH:mm') })</li>
+                <li>Level: { topic.level }</li>
+              </ul>
+            </Col>
+          </Row>
         </Modal.Body>
-      );
+    ), footer = (
+      <Modal.Footer htmlStyle="clear: both;">
+        <Button bsStyle="primary" onClick={ this.showDetail.bind(this, type, topic) }>See Detail</Button>
+        <Button bsStyle="default" onClick={ this.props.close }>Close</Button>
+      </Modal.Footer>
+    );
 
     return (
       <Modal show={ this.props.show } onHide={ this.props.close } dialogClassName="topic-modal">
         { header }
         { body }
+        { footer }
       </Modal>
     )
+  }
+
+  renderScheduleItem(type, item) {
+    let
+      header = (
+        <Modal.Header closeButton>
+          <Modal.Title>{item.name}</Modal.Title>
+        </Modal.Header>
+      ), body = (
+        <Modal.Body>
+          <Row>
+            Just go and discover by yourself!
+          </Row>
+        </Modal.Body>
+    ), footer = (
+      <Modal.Footer htmlStyle="clear: both;">
+        <Button bsStyle="default" onClick={ this.props.close }>Close</Button>
+      </Modal.Footer>
+    );
+
+    return (
+      <Modal show={ this.props.show } onHide={ this.props.close } dialogClassName="topic-modal">
+        { header }
+        { body }
+        { footer }
+      </Modal>
+    );
+  }
+
+  render() {
+    let { type, item } = this.props;
+    if (null === item || null === type) return null;
+    if (type === "topic") {
+      return this.renderTopic(type, item);
+    } else if (type === "schedule-item") {
+      return this.renderScheduleItem(type, item);
+    }
+    return null;
+  }
+
+  showDetail(type, item) {
+    window.open(`/topics/${item.id}`, '_blank');
   }
 }
 
@@ -154,11 +196,12 @@ class TopicModal extends Component {
 class ScheduleRow extends Component {
 
   render() {
-    const { text, length, venue, data, className } = this.props;
+    const { item, data, className, showHighlight } = this.props;
+    const { name, length, venue } = item;
     return (
-      <div className={className}>
-        <div className="title">{ text }</div>
-        <Details length={length} venue={venue} data={data} topicShow={this.props.topicShow} />
+      <div className={className} onClick={() => { showHighlight("schedule-item", item); } }>
+        <div className="title">{ name }</div>
+        <Details length={length} venue={venue} data={data} />
       </div>
     )
   }
@@ -178,7 +221,7 @@ class ScheduleItem extends Component {
   };
 
   render() {
-    const { className, item, display, hasFilter, data } = this.props;
+    const { className, item, display, hasFilter, data, showHighlight } = this.props;
     var start = moment(item.start);
     var inner = null;
 
@@ -188,7 +231,13 @@ class ScheduleItem extends Component {
       // construct a list of inner items
       inner = display.reduce((collected, current, index) => {
         if (current.topic.start === item.start) {
-          collected.push(<TopicRow className="row topic-row" item={current} data={data} topicShow={this.props.topicShow} />);
+          collected.push(
+            <TopicRow className="row topic-row"
+                      item={current}
+                      data={data}
+                      showHighlight={showHighlight}
+            />
+          );
         }
         return collected;
       }, []);
@@ -204,8 +253,11 @@ class ScheduleItem extends Component {
     // (for non-topic-container)
     if (inner === null && hasFilter !== true) {
       inner = (
-        <ScheduleRow className="row schedule-row" data={data}
-                     text={item.name} venue={item.venue} length={item.length} />
+        <ScheduleRow className="row schedule-row"
+                     item={item}
+                     data={data}
+                     showHighlight={showHighlight}
+        />
       );
     }
 
@@ -327,10 +379,8 @@ class TimeTable extends Component {
     super(props);
     this.state = {
       modalShow: false,
-      modalTopic: null,
-      modalSpeaker: null,
-      modalVenue: null,
-      modalLanguage: null
+      highlightType: null,
+      highlight: null
     };
   }
 
@@ -339,15 +389,11 @@ class TimeTable extends Component {
     this.setState({modalShow: false});
   }
 
-  topicShow(topic, speaker, location, language) {
-    console.log('Timetable: show topic');
-    console.log(Modal);
+  showHighlight(type, item) {
     this.setState({
       modalShow: true,
-      modalTopic: topic,
-      modalSpeaker: speaker,
-      modalVenue: location,
-      modalLanguage: language
+      highlightType: type,
+      highlight: item,
     });
   }
 
@@ -368,17 +414,16 @@ class TimeTable extends Component {
             <DayContainer key={dayKey} id={dayKey}
                           day={day} dayKey={dayKey}
                           data={data} display={display} filters={filters}
-                          hasFilter={hasFilter} topicShow={this.topicShow.bind(this)} />
+                          hasFilter={hasFilter} showHighlight={this.showHighlight.bind(this)} />
           )
         }) }
 
-        <TopicModal
+        <HighlightModal
+          data={data}
           show={this.state.modalShow}
           close={this.modalClose.bind(this)}
-          topic={this.state.modalTopic}
-          speaker={this.state.modalSpeaker}
-          location={this.state.modalVenue}
-          lang={this.state.modalLanguage}
+          type={this.state.highlightType}
+          item={this.state.highlight}
         />
       </div>
     )

@@ -25,6 +25,8 @@ import sass      from 'gulp-sass';
 import uglify    from 'gulp-uglify';
 import htmlmin   from 'gulp-html-minifier';
 import minifyCss from 'gulp-clean-css';
+import imagemin  from 'gulp-imagemin';
+import svgmin    from 'gulp-svgmin';
 import autoprefixer from 'gulp-autoprefixer';
 
 import helperFuncs from './src/scripts/utils/helperFuncs';
@@ -156,7 +158,7 @@ gulp.task('serve-dev', function() {
   // test if port in use
   portInUse(port, hostname, function (inUse, hostname, port) {
     if (inUse) {
-      gutil.log('Port ' + chalk.magenta(`${hostname}:${port}`) + ' is in use. ' + chalk.red.bold('[failed]'));
+      gutil.log(`Port ${chalk.magenta(`${hostname}:${port}`)} is in use. ${chalk.red.bold('[failed]')}`);
       process.exit(1); // quit with fail code
     }
     server.listen(port, hostname, function (err, result) {
@@ -164,7 +166,7 @@ gulp.task('serve-dev', function() {
         return console.log(err);
       }
 
-      gutil.log('Listening at ' + chalk.magenta(`http://${hostname}:${port}/`) + ' ' + chalk.green.bold('[success]'));
+      gutil.log(`Listening at ${ chalk.magenta(`http://${hostname}:${port}/`) } ${chalk.green.bold('[success]')}`);
     });
   });
 
@@ -192,9 +194,9 @@ gulp.task('styles', function() {
   gulp.src(`${stylesSource}/*.scss`)
     .pipe(sass().on('error', getErrorCatcher("Error compiling sass file")))
     .pipe(autoprefixer({
-			browsers: ['last 2 versions'],
-			cascade: false
-		}))
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(minifyCss({
       compatibility: 'ie8'
     }))
@@ -203,9 +205,9 @@ gulp.task('styles', function() {
   gulp.src(stylesSource + '/*.scss')
     .pipe(sass().on('error', getErrorCatcher("Error compiling scss file")))
     .pipe(autoprefixer({
-			browsers: ['last 2 versions'],
-			cascade: false
-		}))
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(minifyCss({
       compatibility: 'ie8'
     }))
@@ -229,7 +231,7 @@ gulp.task('pages', function() {
         "https://cdnjs.cloudflare.com/ajax/libs/redux/3.5.2/redux.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js",
+        "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
         "/assets/scripts/vendors.js",
         "/assets/scripts/bundle.js?" + rawData.timeHash
       ]
@@ -269,7 +271,7 @@ gulp.task('pages', function() {
   // generate topic pages
   for (let topic_id in data.topics) {
     var topic = data.topics[topic_id];
-    gutil.log('Generate: \'/topics/' + chalk.magenta(topic_id) + '/index.html\'')
+    gutil.log(`Generate: '/topics/${ chalk.magenta(topic_id) }/index.html'`);
     gulp.src(`${pageSource}/topics/_topic.html`)
       .pipe(swig({
         defaults: {cache: false},
@@ -321,7 +323,11 @@ gulp.task('scripts-vendors', function() {
 });
 
 gulp.task('images', function() {
-  return gulp.src(`${imagesSource}/**/*.*`)
+  gulp.src(`${imagesSource}/**/*.*`)
+    .pipe(imagemin())
+    .pipe(gulp.dest(imagesTarget));
+  gulp.src(`${imagesSource}/**/*.svg`)
+    .pipe(svgmin())
     .pipe(gulp.dest(imagesTarget));
 });
 
@@ -337,7 +343,7 @@ gulp.task('build-assets', [
   'images',
   'fonts',
   'scripts-vendors'
-])
+]);
 
 // build statics and javascripts
 gulp.task('build', [

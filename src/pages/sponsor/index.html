@@ -14,6 +14,13 @@
 <div class="container sponsorship-tiers">
 
   <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li class="active">Sponsor</li>
+    </ol>
+  </div>
+
+  <div class="row">
     {% for tier in sponsors.sponsors %}
       <section class="sponsorship-tier">
         <h2>{{ tier.name }}</h2>
@@ -26,9 +33,7 @@
         </div><!--/.sponsors-->
       </section>
     {% endfor %}
-  </div><!--/.row-->
 
-  <div class="row">
     <section class="sponsorship-tier">
       <h2>Patrons</h2>
       <div class="container">
@@ -40,6 +45,37 @@
         <p>(Patrons are listed above in alphabetical orders).</p>
       </div>
     </section>
+
+    <section class="sponsorship-tier">
+      <h2>Supporting Organizations</h2>
+      <div class="container supporting_orgs"><div class="row">
+        {% for org in sponsors.supporting_orgs %}
+          <div class="col-md-2">
+            <a href="{{ org.url }}" title="{{ org.name }}">
+              <div class="logo-wrapper"><div class="logo">
+                <img src="{{ org.logo_url }}" alt="{{ org.name }}"/>
+              </div></div>
+            </a>
+          </div><!--/.patron-->
+        {% endfor %}
+      </div></div>
+    </section>
+
+    <section class="sponsorship-tier">
+      <h2>Co-organizers</h2>
+      <div class="container coorganizers"><div class="row">
+        {% for org in sponsors.co_organizers %}
+          <div class="col-md-2">
+            <a href="{{ org.url }}" title="{{ org.name }}">
+              <div class="logo-wrapper"><div class="logo">
+                <img src="{{ org.logo_url }}" alt="{{ org.name }}"/>
+              </div></div>
+            </a>
+          </div><!--/.patron-->
+        {% endfor %}
+      </div></div>
+    </section>
+
   </div><!--/.row-->
 
 </div><!--/.container-->
