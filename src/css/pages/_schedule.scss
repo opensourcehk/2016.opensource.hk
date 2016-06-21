@@ -39,16 +39,7 @@ $filterbar-min-height: 50px;
     transition: box-shadow .5s;
     transition: height .5s;
 
-
-    @media(max-width: $width-sm) {
-      width: 100%;
-    }
-    @media(min-width: $width-md) {
-      width: 970px;
-    }
-    @media(min-width: $width-lg) {
-      width: 1170px;
-    }
+    @extend .container-like;
 
     /**
      * FilterToggles sub-component
@@ -215,14 +206,10 @@ $filterbar-min-height: 50px;
         @media(max-width: $width-sm) {
           padding-top: $day-container-title-padding-top / 2;
           padding-bottom: $day-container-title-padding-bottom / 2;
-          width: 100%;
         }
-        @media(min-width: $width-md) {
-          width: 970px;
-        }
-        @media(min-width: $width-lg) {
-          width: 1170px;
-        }
+
+        @extend .container-like;
+
       }
 
       &.sticky-title {
@@ -252,7 +239,7 @@ $filterbar-min-height: 50px;
 
         @media(max-width: $width-sm) {
           margin-top:
-                  $day-container-title-line-height +
+            $day-container-title-line-height +
             $day-container-title-padding-top / 2 +
             $day-container-title-padding-bottom / 2;
         }
@@ -360,4 +347,11 @@ $filterbar-min-height: 50px;
 
   }
 
+}
+
+.topic-modal {
+  @extend .container-like;
+  @media(max-width: $width-sm) {
+    width: auto;
+  }
 }
