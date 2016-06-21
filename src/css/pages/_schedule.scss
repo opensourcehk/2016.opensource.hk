@@ -39,16 +39,7 @@ $filterbar-min-height: 50px;
     transition: box-shadow .5s;
     transition: height .5s;
 
-
-    @media(max-width: $width-sm) {
-      width: 100%;
-    }
-    @media(min-width: $width-md) {
-      width: 970px;
-    }
-    @media(min-width: $width-lg) {
-      width: 1170px;
-    }
+    @extend .container-like;
 
     /**
      * FilterToggles sub-component
@@ -59,6 +50,7 @@ $filterbar-min-height: 50px;
       transition: background-color .5s;
       cursor: pointer;
       padding: 5px;
+      border-radius: 5px;
       &:hover {
         background-color: lighten($theme-yellow, 10%);
       }
@@ -66,7 +58,6 @@ $filterbar-min-height: 50px;
         background-color: $theme-yellow;
         color: $theme-blue;
         font-weight: bold;
-        border-radius: 5px;
       }
     }
 
@@ -129,8 +120,9 @@ $filterbar-min-height: 50px;
       position: relative;
       min-height: $filterbar-min-height;
       margin-bottom: 0;
-      border: 1px solid #e7e7e7;
+      border: 1px solid $theme-blue;
       background-color: $theme-blue;
+      color: $theme-yellow;
 
       .filters-desc{
         display: block;
@@ -142,7 +134,7 @@ $filterbar-min-height: 50px;
       .navbar-nav {
         & > li > a {
           line-height: 20px;
-          color: $theme-yellow;
+          color: inherit;
         }
       }
 
@@ -215,14 +207,10 @@ $filterbar-min-height: 50px;
         @media(max-width: $width-sm) {
           padding-top: $day-container-title-padding-top / 2;
           padding-bottom: $day-container-title-padding-bottom / 2;
-          width: 100%;
         }
-        @media(min-width: $width-md) {
-          width: 970px;
-        }
-        @media(min-width: $width-lg) {
-          width: 1170px;
-        }
+
+        @extend .container-like;
+
       }
 
       &.sticky-title {
@@ -252,7 +240,7 @@ $filterbar-min-height: 50px;
 
         @media(max-width: $width-sm) {
           margin-top:
-                  $day-container-title-line-height +
+            $day-container-title-line-height +
             $day-container-title-padding-top / 2 +
             $day-container-title-padding-bottom / 2;
         }
@@ -289,6 +277,7 @@ $filterbar-min-height: 50px;
           padding: 1em;
           text-decoration: none;
           color: inherit;
+          cursor: pointer;
           &:hover {
             color: inherit;
             background-color: rgba(0, 0, 0, .03);
@@ -358,6 +347,138 @@ $filterbar-min-height: 50px;
       }
     }
 
+  }
+
+}
+
+.topic-modal {
+  @extend .container-like;
+  @media(max-width: $width-sm) {
+    width: auto;
+  }
+
+  .speaker-brief {
+    padding-top: .2em;
+    padding-bottom: .6em;
+    .speaker-name {
+      font-weight: bold;
+    }
+  }
+
+  .details {
+    .topic-description {
+      text-align: justify;
+    }
+
+    dt {
+      display: block;
+      float: left;
+      width: 116px;
+    }
+    dd {
+      display: block;
+      margin-left: 116px;
+      margin-bottom: 0.5em;
+      .time, .capacity {
+        color: rgba(0,0,0,.5);
+      }
+    }
+  }
+
+  .speaker {
+    @media(max-width: $width-sm) {
+      border-top: solid 1px rgba(0,0,0,.1);
+      padding-top: 1em;
+      margin-top: 1em;
+    }
+
+    h2 {
+      font-size: 1.1em;
+      margin-top: 0;
+    }
+    h3.speaker-name {
+      margin-top: 0;
+      font-size: 1.2em;
+    }
+    figcaption.speaker-name {
+      font-size: 1em;
+      font-weight: bold;
+      padding-top: .5em;
+      padding-bottom: .5em;
+    }
+    .nickname {
+      color: rgba(0,0,0,.4);
+    }
+
+    @media(min-width: $width-sm) {
+      .speaker-portrait {
+        width: 100%;
+      }
+    }
+
+    .speaker-details {
+      margin-top: .5em;
+    }
+
+    .speaker-details .panel-title a {
+      display: block;
+      width: 100%;
+      &:hover, &:focus, &:active {
+        text-decoration: none;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+
+    dt {
+      display: block;
+      margin-top: .6em;
+    }
+
+    @media (max-width: $width-sm) {
+      dt {
+        display: block;
+        float: left;
+        width: 110px;
+        margin-top: 0;
+      }
+      dd {
+        display: block;
+        margin-left: 110px;
+        margin-bottom: 0.5em;
+      }
+    }
+    @media (min-width: $width-md) {
+      dt {
+        display: block;
+        float: left;
+        width: 110px;
+        margin-top: 0;
+      }
+      dd {
+        display: block;
+        margin-left: 110px;
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+
+  .sponsor-info {
+    border-top: 1px solid rgba(0,0,0,.1);
+    margin-top: 2em;
+    h2 {
+      font-size: 1em;
+    }
+    .logos {
+      margin-bottom: 1em;
+    }
+    .logo {
+      max-width: 200px;
+    }
+    .details {
+      text-align: justify;
+    }
   }
 
 }

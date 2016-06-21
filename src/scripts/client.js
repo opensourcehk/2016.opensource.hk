@@ -12,6 +12,7 @@ import { extractSort, composeSort, byMoment, byString } from './utils/helperFunc
 import langs       from "../data/langs";
 import schedule    from "../data/schedule";
 import speakers    from "../data/speakers";
+import sponsors    from "../data/sponsors";
 import timeLengths from "../data/timeLengths";
 import topics      from "../data/topics";
 import venues      from "../data/venues";
@@ -84,6 +85,7 @@ const store = Store(mapStoreData(topicStoreAll, {
   langs,
   schedule,
   speakers,
+  sponsors,
   topics,
   timeLengths,
   venues
