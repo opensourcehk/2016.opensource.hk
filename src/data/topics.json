@@ -74,21 +74,22 @@
     "start": "2016-06-26T14:00:00+0800",
     "end": "2016-06-24T15:30:00+0800"
   },
-  "fast-prototyping-on-ibm-open-source-cloud": {
-    "id": "fast-prototyping-on-ibm-open-source-cloud",
-    "title": "Fast Prototyping on IBM Open Source Cloud",
+  "ibm-cloud-open-by-design": {
+    "id": "ibm-cloud-open-by-design",
+    "title": "IBM Cloud - Open by Design",
     "type": "keynote",
     "speaker": "alfred-tse",
     "category": "Cloud",
     "level": "Beginners",
     "requirement": ["Any developers or software engineers with knowledge in open source technology"],
     "target_audience": ["Developers", "IT Managers"],
-    "short_desc": "IBM Bluemix Open Source capability in IoT, DevOps, Analytics & AI",
+    "short_desc": "IBM Contributions to Open Source: A Wealth of Innovation & Access to Valuable Skills",
     "description": [
-      "You will learn how enterprise APIs, SoftLayer APIs and 3rd-party",
-      "services can be used on Bluemix, IBM open cloud platform. We will",
-      "also introduce IBM incubator programme and premium developer package",
-      "so that you can utilise the most benefits of IBM cloud platform."
+      "Technology is enabling a new era of innovation. Come and understand how",
+      "open technology and open APIs are empowering the world with",
+      "unprecedented access to data & function. IBM will also introduce",
+      "premium developer package and incubator scheme to fully utilise",
+      "the power of open cloud."
     ],
     "lang": "en",
     "lang_slide": "en",
