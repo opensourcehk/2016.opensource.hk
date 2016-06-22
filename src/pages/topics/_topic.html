@@ -77,6 +77,11 @@
         <dd>{{ displayDesc(topic.requirement) }}</dd>
         {% endif %}
 
+        {% if topic.pre_register %}
+        <dt>Registration</dt>
+        <dd>This event requires pre-registration. You'll get the registration link after you purchased HKOSCon 2016 ticket</dd>
+        {% endif %}
+
       </dl>
 
       {% if topic.level %}

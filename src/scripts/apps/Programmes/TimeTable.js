@@ -131,6 +131,7 @@ class HighlightModal extends Component {
                 <dt>Level</dt><dd>{ topic.level }</dd>
                 <dt>Category</dt><dd>{ topic.category }</dd>
                 <dt>Audience</dt><dd>{ topic.target_audience.join(", ") }</dd>
+                { (topic.pre_register) ? (<span><dt>Registration</dt><dd>Require pre-registration</dd></span>) : null }
                 { (topic.requirement) ? (<span><dt>Requirement</dt><dd dangerouslySetInnerHTML={{__html: displayDesc(topic.requirement)}}/></span>) : null }
               </dl>
             </Col>
