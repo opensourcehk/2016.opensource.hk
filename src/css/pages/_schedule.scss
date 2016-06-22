@@ -9,8 +9,10 @@ $top-navbar-height: 50px;
 $filterbar-min-height: 50px;
 
 @media(max-width: $width-sm) {
-  .title-container h1 {
-    padding-left: 15px;
+  .title-container {
+    h1, p {
+      padding-left: 15px;
+    }
   }
 }
 

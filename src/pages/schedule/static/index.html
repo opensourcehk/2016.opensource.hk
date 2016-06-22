@@ -1,8 +1,8 @@
 {% extends '../../../layouts/default.html' %}
 
-{% block og_url %}{{ site_host }}/schedule/{% endblock %}
+{% block og_url %}{{ site_host }}/schedule/static/{% endblock %}
 
-{% block title %}Schedule{% endblock %}
+{% block title %}Schedule (Static){% endblock %}
 
 {% block description %}
 <p>Keynotes and Talks are in single tracks on Friday. Sessions are in multiple tracks on Weekend, keynotes and talks are on Saturday, and workshops are on Sunday.</p>
@@ -16,7 +16,8 @@
     <div class="row">
       <ol class="breadcrumb">
         <li><a href="/">Home</a></li>
-        <li class="active">Events</li>
+        <li><a href="/schedule/">Events</a></li>
+        <li class="active">Schedule (Static)</li>
       </ol>
     </div>
 
